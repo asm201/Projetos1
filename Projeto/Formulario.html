@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title> Form Cadastro: </title>
+<head>
+<br>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="css" media="screen" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+		<div class="jumbotron">
+            <h1> INSTRUÇÕES</h1>
+            <p>Deverá ser preenchido um formulário para cada criança e adolescente desacompanhado ou separado;</p>
+            <p>O preenchimento do presente formulário será realizado pelo Defensor Público, conforme expresso pela
+            Portaria Conjunta CONANDA, CONARE e CNIg e DPU.</p>
+            <p>É necessário o preenchimento de todas as perguntas. Nos casos em que a pergunta não se aplica ao caso
+            concreto ou a informação não esteja disponível, escreva NÃO APLICÁVEL ou NÃO DISPONÍVEL. Não
+            deixe resposta em branco.</p>
+        </div>
+    </div>
+
+    <div class="container">
+		<div class="jumbotron">
+            <h2> DADOS DO DEFENSOR PÚBLICO FEDERAL</h2>
+            <form action="/pagina-processa-dados-do-form" method="post">
+                <div>
+                    <label for="Nome_Defensor">Nome Completo:</label>
+                    <input type="text" id="Nome_Defensor" placeholder="digite seu Nome Completo"/>
+                </div>
+                <div>
+                    <label for="Documento_Defensor">Documento de Identificação:</label>
+                    <input type="text" id="Documento_Defensor" placeholder="digite seu Documento"/>
+                </div>
+                <div>
+                    <label for="Cargo_Defensor">Cargo:</label>
+                    <input type="text" id="Cargo_Defensor" placeholder="digite seu Cargo"/>
+                </div>
+                <div>
+                    <label for="Endereço_Defensor">Endereço:</label>
+                    <input type="text" id="Endereço_Defensor" placeholder="digite seu Endereço"/>
+                </div>
+                <div>
+                    <label for="Cidade/UF_Defensor">Cidade/UF:</label>
+                    <input type="text" id="Cidade/UF_Defensor" placeholder="digite sua Cidade/UF"/>
+                </div>
+                <div>
+                    <label for="Telefone_Defensor">Telefone:</label>
+                    <input type="tel" id="Telefone_Defensor" placeholder="digite seu Telefone" />
+                </div>
+                <div>
+                    <label for="e-mail_Defensor">E-mail:</label>
+                    <input type="email" id="e-mail_Defensor" placeholder="digite seu e-mail"/>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+    <div class="container">
+		<div class="jumbotron">
+            <h2> DADOS DA CRIANÇA OU ADOLESCENTE</h2>
+            <p>Identificação da criança ou adolescente desacompanhado ou separado.</p>
+            <form action="/pagina-processa-dados-do-form" method="post">
+                <div>
+                    <label for="Nome_Pessoa">Nome Completo:</label>
+                    <input type="text" id="Nome_Pessoa" placeholder="digite o Nome Completo"/>
+                </div>
+                <div>
+                    <label for="Nascimento_Pessoa">Data de Nascimento:</label>
+                    <input type="date" name="Nascimento_Pessoa">
+                </div>
+
+                <div class="field radiobox">
+                    <label>Gênero:</label>
+                    <input type="radio" name="Gênero" id="masculino" value="masculino" checked><label for="masculino">Masculino</label>
+                    <input type="radio" name="Gênero" id="feminino" value="feminino"><label for="feminino">Feminino</label>
+                </div>
+
+                <div>
+                    <label for="Nacionalidade_Pessoa">Nacionalidade:</label>
+                    <input type="text" id="Nacionalidade_Pessoa" placeholder="digite a Nacionalidade:"/>
+                </div>
+                <div>
+                    <label for="País_Cid_Pessoa">País e cidade de nascimento:</label>
+                    <input type="text" id="País_Cid_Pessoa" placeholder="digite a Cidaede ou País:"/>
+                </div>
+                <div>
+                    <label for="Escolaridade_Pessoa">Escolaridade:</label>
+                    <input type="text" id="Escolaridade_Pessoa" placeholder="digite a Escolaridade:"/>
+                </div>
+                <div>
+                    <label for="Endereço_Antigo_Pessoa">Endereço no pais de origem:</label>
+                    <input type="text" id="Endereço_Antigo_Pessoa" placeholder="digite o Endereço no pais de origem:"/>
+                </div>
+                <div>
+                    <label for="Endereço_Atual_Pessoa">Endereço atual:</label>
+                    <input type="text" id="Endereço_Atual_Pessoa" placeholder="digite o Endereço atual:"/>
+                </div>
+                <div>
+                    <label for="Telefone_Pessoa">Telefone:</label>
+                    <input type="tel" id="Telefone_Pessoa" placeholder="digite o Telefone" />
+                </div>
+                <div>
+                    <label for="e-mail_Pessoa">E-mail:</label>
+                    <input type="email" id="e-mail_Pessoa" placeholder="digite o e-mail"/>
+                </div>
+                <div>
+                    <label for="Identidade_Pessoa">Cédula de identidade:</label>
+                    <input type="text" id="Identidade_Pessoa" placeholder="digite a Cédula de identidade:"/>
+                </div>
+                <div>
+                    <label for="Passaporte_Pessoa">Passaporte:</label>
+                    <input type="text" id="Passaporte_Pessoa" placeholder="digite o Passaporte:"/>
+                </div>
+
+                <div class="field radiobox">
+                    <label>Possui certidão de nascimento?</label>
+                    <input type="radio" name="certidão" id="Certidão_SIM" value="SIM" checked><label for="Certidão_SIM">Sim &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="certidão" id="Certidão_NÃO" value="NÃO"><label for="Certidão_NÃO">Não &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="certidão" id="Certidão_COP" value="COP" checked><label for="Certidão_COP">Possui cópia &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="certidão" id="Certidão_NAS" value="NAS"><label for="Certidão_NAS">Possui apenas a declaração de nascido vivo &nbsp&nbsp&nbsp</label>
+                </div>
+
+                <div>
+                    <label for="Mãe_Pessoa">Nome da Mãe:</label>
+                    <input type="text" id="Mãe_Pessoa" placeholder="digite o Nome da Mãe:"/>
+                </div>
+                <div>
+                    <label for="Residencia_Mãe_Pessoa">Residência da Mãe:</label>
+                    <input type="text" id="Residencia_Mãe_Pessoa" placeholder="digite a Residência da Mãe:"/>
+                </div>
+                <div class="field radiobox">
+                    <label>Mãe Viva? </label>
+                    <input type="radio" name="Mãe_Viva" id="Mãe_Viva_Sim" value="SIM" checked><label for="Mãe_Viva_Sim">Sim &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Mãe_Viva" id="Mãe_Viva_NÃO" value="NÃO"><label for="Mãe_Viva_NÃO">Não &nbsp&nbsp&nbsp</label>
+                    </div>
+                <div>
+                    <label for="Passaporte_Pessoa">Nome do Pai:</label>
+                    <input type="text" id="Passaporte_Pessoa" placeholder="digite o Nome do Pai:"/>
+                </div>
+                <div>
+                    <label for="Residencia_Pai_Pessoa">Residência do Pai:</label>
+                    <input type="text" id="Residencia_Pai_Pessoa" placeholder="digite a Residência do Pai:"/>
+                </div>
+                <div class="field radiobox">
+                    <label>Pai Vivo? </label>
+                    <input type="radio" name="Pai_Vivo" id="Pai_Vivo_Sim" value="SIM" checked><label for="Pai_Vivo_Sim">Sim &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Pai_Vivo" id="Pai_Vivo_NÃO" value="NÃO"><label for="Pai_Vivo_NÃO">Não &nbsp&nbsp&nbsp</label>
+                </div>
+
+                <p>Circunstâncias de entrada no Brasil</p>
+
+                <div>
+                    <label for="Cidade_Saida_Pessoa">Cidade de saída da Venezuela:</label>
+                    <input type="text" id="Cidade_Saida_Pessoa" placeholder="digite a Cidade de saída da Venezuela:"/>
+                </div>
+
+                <div>
+                    <label for="Data_Saida_Pessoa">Data de Saida:</label>
+                    <input type="date" name="Data_Saida_Pessoa">
+                </div>
+
+                <div>
+                    <label for="Cidade_Chegada_Pessoa">Cidade de chegada no Brasil:</label>
+                    <input type="text" id="Cidade_Chegada_Pessoa" placeholder="digite a Cidade de chegada no Brasil:"/>
+                </div>
+
+                <div>
+                    <label for="Data_Chegada_Pessoa">Data de Chegada:</label>
+                    <input type="date" name="Data_Chegada_Pessoa">
+                </div>
+
+                <div class="field radiobox">
+                    <label>Meio de transporte: </label>
+                    <input type="radio" name="Meio_Transporte:" id="Transporte_Aereo" value="Aereo" checked><label for="Aéreo">aéreo &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Meio_Transporte:" id="Transporte_Marítimo" value="Marítimo"><label for="Marítimo">marítimo &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Meio_Transporte:" id="Terrestre" value="Terrestre"><label for="Terrestre">Terrestre &nbsp&nbsp&nbsp</label>
+                    <label for="Transporte_Detalhado_Pessoa:">Detalhes do Transporte:</label>
+                    <input type="text" id="Transporte_Detalhado_Pessoa" placeholder="digite detalhes do Transporte:"/>
+                </div>
+
+                <div>
+                    <label for="Data_Reconhecido_Pessoa">Data em que foi reconhecido:</label>
+                    <input type="date" name="Data_Reconhecido_Pessoa">
+                </div>
+
+                <div>
+                    <label for="Pais_Reconhecido_Pessoa">Pais Reconhecido Pessoa:</label>
+                    <input type="text" id="Pais_Reconhecido_Pessoa" placeholder="digite o País em que foi reconhecido:"/>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+		<div class="jumbotron">
+            <h2> SITUAÇÃO DA CRIANÇA OU ADOLESCENTE</h2>
+            <form action="/pagina-processa-dados-do-form" method="post">
+                <div>
+                    <label for="msg">Como era sua vida em seu país de origem, antes de você se separar de sua família ?</label>
+                    <textarea cols="70" rows="5">Digite aqui sua mensagem....</textarea>
+                </div>
+                <div>
+                    <label for="Momento_Pergunta_Pessoa">Em que momento e por qual razão você deixou seu país e se separou de sua família?</label>
+                    <textarea cols="70" rows="5">Digite aqui sua mensagem....</textarea>
+                </div>
+                <div>
+                    <label for="Situação_Pergunta_Pessoa">Alguma situação forçou você a sair do seu país de origem?</label>
+                    <input type="radio" name="Situação_Pessoa" id="Situação_Pessoa_SIM" value="SIM" checked><label for="SIM">Sim. Que situação? &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Situação_Pessoa" id="Situação_Pessoa_NÃO" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de SIM....</textarea>
+                </div>
+                <div>
+                    <label for="Alguem_Pergunta_Pessoa">Alguém o ajudou a chegar até o Brasil?</label>
+                    <label for="Alguem_Pergunta_Pessoa">Alguma situação forçou você a sair do seu país de origem?</label>
+                    <input type="radio" name="Alguem_Pessoa" id="Alguem_Pessoa_SIM" value="SIM" checked><label for="SIM">Sim. Quem? Onde essa pessoa está no momento&nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Alguem_Pessoa" id="Alguem_Pessoa_NÃO" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de SIM....</textarea>
+                </div>
+                <div>
+                    <label for="Viagem_Pergunta_Pessoa">Você realizou a viagem acompanhado?</label>
+                    <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_SIM" value="SIM" checked><label for="SIM">Sim. Que Foi acompanhado por quem e como a conheceu? &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_NÃO" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de SIM....</textarea>
+                </div>
+                <div>
+                    <label for="Entrou_Pergunta_Pessoa">Você entrou no Brasil sozinho?</label>
+                    <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa" value="SIM" checked><label for="SIM">Sim.&nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa" value="NÃO"><label for="NÃO">Não. Você tem intenção de se deslocar para outro país? Informe &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de NÃO....</textarea>
+                </div>
+                <div>
+                    <label for="Retornar_Pergunta_Pessoa">Você deseja retornar ao seu país?</label>
+                    <input type="radio" name="Retornar_Pessoa" id="Retornar_Pessoa" value="SIM" checked><label for="SIM">Sim.&nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Retornar_Pessoa" id="Retornar_Pessoa" value="NÃO"><label for="NÃO">Não. Por quê? &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de NÃO....</textarea>
+                </div>
+                <div>
+                    <label for="Medo_Pergunta_Pessoa">Você tem medo de regressar ao seu país de origem?</label>
+                    <input type="radio" name="Medo_Pessoa" id="Medo_Pessoa" value="SIM" checked><label for="SIM">Sim.Que problemas você pode enfrentar caso tenha que retornar ao seu país neste momento? &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Medo_Pessoa" id="Medo_Pessoa" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de SIM....</textarea>
+                </div>
+                <div>
+                    <label for="Parentes_Origem_Pergunta_Pessoa">Tem parentes (irmãos tios, primos e avós) no país de origem?</label>
+                    <input type="radio" name="Parentes_Origem_Pessoa" id="Parentes_Origem_Pessoa" value="SIM" checked><label for="SIM">Sim. &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Parentes_Origem_Pessoa" id="Parentes_Origem_Pessoa" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
+                </div>
+                <div>
+                    <label for="Parentes_Brasil_Pergunta_Pessoa">Tem parentes (irmãos tios, primos e avós) no país de origem?</label>
+                    <input type="radio" name="Parentes_Brasil_Pessoa" id="Parentes_Brasil_Pessoa" value="SIM" checked><label for="SIM">Sim. &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Parentes_Brasil_Pessoa" id="Parentes_Brasil_Pessoa" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+		<div class="jumbotron">
+            <h2> MEDIDAS PROTETIVAS:</h2>
+            <form action="/pagina-processa-dados-do-form" method="post">
+                <div>
+                    <label for="Encaminhada_Protetivas">Em caso de a criança ou o adolescente já encaminhado para instituição de acolhimento, favor informar:</label>
+                    <input type="radio" name="Encaminhada_Protetivas" id="Encaminhada_Protetivas" value="SIM" checked><label for="SIM">Sim &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Encaminhada_Protetivas" id="Encaminhada_Protetivas" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
+                </div>
+                <div>
+                    <label for="Instituição_Protetivas">Instituição de acolhimento:</label>
+                    <input type="text" id="Instituição_Protetivas" placeholder="digite o Nome da Instituição de acolhimento:"/>
+                </div>
+                <div>
+                    <label for="Endereço_Protetivas">Endereço:</label>
+                    <input type="text" id="Endereço_Protetivas" placeholder="digite o Endereço:"/>
+                </div>
+                <div>
+                    <label for="Responsável_Protetivas">Responsável:</label>
+                    <input type="text" id="Responsável_Protetivas" placeholder="digite o Nome do Responsável:"/>
+                </div>
+                <div>
+                    <label for="Vara_Protetivas">Vara da Infância e da Juventude:</label>
+                    <input type="text" id="Vara_Protetivas" placeholder="digite a Vara da Infância e da Juventude:"/>
+                </div>
+                <div>
+                    <label for="Representante_Protetiva">Em caso de a criança ou o adolescente representado por responsável legal já designado(a) no Brasil, favor informar:</label>
+                    <input type="radio" name="Representante_Protetiva" id="Representante_Protetiva" value="SIM" checked><label for="SIM">Sim. &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Representante_Protetiva" id="Representante_Protetiva" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
+                </div> 
+
+                <div>
+                    <label for="Responsavel_Protetivas">Nome completo do responsável legal:</label>
+                    <input type="text" id="Responsavel_Protetivas" placeholder="digite o Nome do responsável:"/>
+                </div>
+                <div>
+                    <label for="Documento_Protetivas">Documento Tipo:</label>
+                    <input type="text" id="Documento_Protetivas" placeholder="digite o Documento Tipo"/>
+                </div>
+                <div>
+                    <label for="Numero_Documento_Protetivas">Número:</label>
+                    <input type="text" id="Numero_Documento_Protetivas" placeholder="digite o Número::"/>
+                </div>
+                <div>
+                    <label for="Responsavel_Nascimento_Protetivas">Data de Nascimento:</label>
+                    <input type="date" name="Responsavel_Nascimento_Protetivas">
+                </div>
+
+                <div class="field radiobox">
+                    <label>Gênero:</label>
+                    <input type="radio" name="Gênero" id="masculino" value="masculino" checked><label for="masculino">Masculino</label>
+                    <input type="radio" name="Gênero" id="feminino" value="feminino"><label for="feminino">Feminino</label>
+                </div>
+                <div>
+                    <label for="Responsavel_Nacionalidade_Protetivas">Nacionalidade:</label>
+                    <input type="text" id="Responsavel_Nacionalidade_Protetivas" placeholder="digite a  do Responsavel:"/>
+                </div>
+                <div>
+                    <label for="Responsavel_Endereço_Protetivas">Endereço:</label>
+                    <input type="text" id="Responsavel_Endereço_Protetivas" placeholder="digite o endereço do responsavel"/>
+                </div>
+                <div>
+                    <label for="Responsavel_Parentesco_Protetivas">Parentesco:</label>
+                    <input type="text" id="Responsavel_Endereço_Protetivas" placeholder="digite o Parentesco"/>
+                </div>
+                <div>
+                    <label for="Vinculo_Protetivas">Constata o vínculo pelos observação e documentação apresentada?</label>
+                    <input type="radio" name="Vinculo_Protetivas" id="Vinculo_Protetivas" value="SIM" checked><label for="SIM">Sim &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Vinculo_Protetivas" id="Vinculo_Protetivas" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
+                </div>
+
+
+
+            </form>
+        </div>
+    </div>
+    <div class="container">
+		<div class="jumbotron">
+            <h2> AVALIAÇÃO PRELIMINAR DA CRIANÇA OU ADOLESCENTE:</h2>
+            <form action="/pagina-processa-dados-do-form" method="post">
+                <div>
+                    <label for="Mental_Avalização">Avaliação de saúde mental (conduta): indique se a criança ou adolescente apresenta pensamento confuso
+                        (ex. respostas frequentemente incoerentes ou contraditórias)/evidencia perda de contato com a realidade (ex:
+                        seu comportamento parece estranho ou sem sentido/ conduta estranha evidente (ex: hiperatividade,
+                        impulsividade, comportamento hostil)/ou risco de causar danos a outros a si mesmo (a)</label>
+                    <input type="radio" name="Mental_Avalização" id="Mental_Avalização" value="Normal" checked><label for="Normal">Normal &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Mental_Avalização" id="Mental_Avalização" value="Anormal"><label for="Anormal">Anormal. &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5">Digite aqui a anormalidade em caso de Não....</textarea>
+                </div>
+                <div>
+                    <label for="Fisico_Avalização">Avaliação física preliminar: sinalize se a criança ou adolescente apresenta sinais visíveis de trauma físico
+                        ou deficiência física; queixa-se de dores ou doenças, quadro de deficiência motora, etc.</label>
+                    <input type="radio" name="Fisico_Avalização" id="Fisico_Avalização" value="Normal" checked><label for="Normal">Normal &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Fisico_Avalização" id="Fisico_Avalização" value="Anormal"><label for="Anormal">Anormal. &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5">Digite aqui a anormalidade em caso de Não....</textarea>
+                </div>
+                <div>
+                    <label for="Fisico_Avalização">Avaliação de idade e maturidade (a avaliação de idade só deve ser realizada quando houver significativas
+                        dúvidas sobre a idade da criança ou adolescente, tal como ausência de documentação, e não deve levar em
+                        consideração apenas a aparência física, mas também a maturidade psicológica)</label>
+                    <input type="radio" name="Idade_Avalização" id="Idade_Avalização" value="Normal" checked><label for="Normal">Normal &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Idade_Avalização" id="Idade_Avalização" value="Anormal"><label for="Anormal">Anormal. &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5">Digite aqui a anormalidade em caso de Não....</textarea>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="container">
+		<div class="jumbotron">
+            <h2> INDICADORES:</h2>
+            <form action="/pagina-processa-dados-do-form" method="post">
+                <div>
+                    <label for="Saida_Indicadores">Forçado a deixar o país de origem?</label>
+                    <input type="radio" name="Saida_Indicadores" id="Saida_Indicadores_SIM" value="SIM" checked><label for="Saida_Indicadores_SIM">Sim &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Saida_Indicadores" id="Saida_Indicadoreso_NÃO" value="NÃO"><label for="Saida_Indicadores_NÃO">Não &nbsp&nbsp&nbsp</label>
+                </div>
+                <div>
+                    <label for="Ficar_Indicadores">Deseja permanecer no Brasil?</label>
+                    <input type="radio" name="Ficar_Indicadores" id="Ficar_Indicadores_SIM" value="SIM" checked><label for="Ficar_Indicadores_SIM">Sim &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Ficar_Indicadores" id="Ficar_Indicadores_NÃO" value="NÃO"><label for="Ficar_Indicadores_NÃO">Não &nbsp&nbsp&nbsp</label>
+                </div>
+                <div>
+                    <label for="Medo_Indicadores">Manifesta temor em retornar ao país de origem?</label>
+                    <input type="radio" name="Medo_Indicadores" id="Medo_Indicadores_SIM" value="SIM" checked><label for="Medo_Indicadores_SIM">Sim &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Medo_Indicadores" id="Medo_Indicadores_NÃO" value="NÃO"><label for="Medo_Indicadores_NÃO">Não &nbsp&nbsp&nbsp</label>
+                </div>
+                <div>
+                    <label for="Acompanhado_Indicadores">Viaja acompanhado?</label>
+                    <input type="radio" name="Acompanhado_Indicadores" id="Acompanhado_Indicadores_SIM" value="SIM" checked><label for="Acompanhado_Indicadores_SIM">Sim &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Acompanhado_Indicadores" id="Acompanhado_Indicadores_NÃO" value="NÃO"><label for="Acompanhado_Indicadores_NÃO">Não &nbsp&nbsp&nbsp</label>
+                </div>
+                <div>
+                    <label for="Vinculo_Indicadores">Está comprovado o vínculo?</label>
+                    <input type="radio" name="Vinculo_Indicadores" id="Vinculo_Indicadores_SIM" value="SIM" checked><label for="Vinculo_Indicadores_SIM">Sim &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Vinculo_Indicadores" id="Vinculo_Indicadores_NÃO" value="NÃO"><label for="Vinculo_Indicadores_NÃO">Não &nbsp&nbsp&nbsp</label>
+                </div>
+                <div>
+                    <label for="Proteção_Indicadores">Possíveis necessidades de proteção da criança ou adolescente:</label>
+                    <input type="radio" name="Proteção_Indicadores" id="Convivencia_Proteção" value="ProteçãoC" checked><label for="Convivencia_Proteção">Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança e do adolescente; &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Proteção_Indicadores" id="Familiar_Proteção" value="ProteçãoF"><label for="Familiar_Proteção">Medida de proteção por reunião familiar &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Proteção_Indicadores" id="Trafico_Proteção" value="ProteçãoT" checked><label for="Trafico_Proteção">Proteção como vítima de tráfico de pessoas; &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Proteção_Indicadores" id="Outro_Proteção" value="ProteçãoO"><label for="Outro_Proteção">Outra medida de regularização migratória ou proteção como refugiado ou apátrida, conforme a legislação em vigor. Informe: &nbsp&nbsp&nbsp</label>
+                </div>
+                <div>
+                    <label for="Solicitação_Indicadores">Solicitação de:</label>
+                    <input type="radio" name="Temporaria_Indicadores" id="Temporaria_Indicadores" value="Temporaria_Indicadores" checked><label for="Temporaria_Indicadores">RESIDÊNCIA TEMPORÁRIA &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Refugiu_Indicadores" id="Refugiu_Indicadores" value="Refugiu_Indicadores"><label for="Refugiu_Indicadores">REFÚGIO &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Institucionalização_Indicadores" id="Institucionalização_Indicadores" value="Institucionalização_Indicadores" checked><label for="Institucionalização_Indicadores">INSTITUCIONALIZAÇÃO &nbsp&nbsp&nbsp</label>
+                </div>
+            </form>
+        </div>
+        <div class="container">
+            <div class="jumbotron">
+                <h2> IDENTIFICAÇÃO DO INTÉRPRETE:</h2>
+                <form action="/pagina-processa-dados-do-form" method="post">
+                    <div>
+                        <label for="Nome_Interprete">Nome Completo:</label>
+                        <input type="text" id="Nome_Interprete" placeholder="digite o Nome Completo"/>
+                    </div>
+                    <div>
+                        <label for="Documento_Interprete">Documento de Identificação:</label>
+                        <input type="text" id="Documento_Interprete" placeholder="digite o Documento"/>
+                    </div>
+                    <div>
+                        <label for="Endereço_Interprete">Endereço:</label>
+                        <input type="text" id="Endereço_Interprete" placeholder="digite o Endereço"/>
+                    </div>
+                    <div>
+                        <label for="Telefone_Interprete">Telefone:</label>
+                        <input type="tel" id="Telefone_Interprete" placeholder="digite o Telefone" />
+                    </div>
+                    <div>
+                        <label for="e-mail_Interprete">E-mail:</label>
+                        <input type="email" id="e-mail_Interprete" placeholder="digite o e-mail"/>
+                    </div>
+
+
+                    <p>assinatura da criança, adolescente ou responsável</p>
+                    <p>assinatura do interprete, se houver</p>
+
+                </form>
+            </div>
+    </div>
+
+</html>
