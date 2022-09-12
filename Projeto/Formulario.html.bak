@@ -225,7 +225,7 @@
                 <div>
                     <label for="Situação_Pergunta_Pessoa">Alguma situação forçou você a sair do seu país de origem?</label>
                     <br>
-					<input type="radio" name="Situação_Pessoa" id="Situação_Pessoa_SIM" value="SIM"><label for="SIM">Sim. Que situação? &nbsp&nbsp&nbsp</label>
+					<input type="radio" name="Situação_Pessoa" id="Situação_Pessoa_SIM" value="SIM" checked><label for="SIM">Sim. Que situação? &nbsp&nbsp&nbsp</label>
                     <input type="radio" name="Situação_Pessoa" id="Situação_Pessoa_NÃO" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
                     <br>
 					<textarea cols="70" rows="5">Digite aqui a Situação em caso de SIM....</textarea>
