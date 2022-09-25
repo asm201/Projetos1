@@ -38,11 +38,45 @@
     $Transporte_Detalhado_Pessoa   = $_POST['Transporte_Detalhado_Pessoa'];
     $Data_Reconhecido_Pessoa       = $_POST['Data_Reconhecido_Pessoa'];
     $Data_Chegada_Pessoa           = $_POST['Data_Chegada_Pessoa'];
+    $Pais_Reconhecido_Pessoa       = $_POST['Pais_Reconhecido_Pessoa'];
     
+    //Variáveis tabela Situação
+    $Vida_Pais_Origem          = $_POST['Vida_Pais_Origem'];
+    $Razao_Saida               = $_POST['Razao_Saida'];
+    $Situação_Pessoa           = $_POST['Situação_Pessoa'];
+    $Alguem_Pessoa             = $_POST['Alguem_Pessoa'];
+    $Viagem_Pessoa             = $_POST['Viagem_Pessoa'];
+    $Entrou_Pessoa             = $_POST['Entrou_Pessoa'];
+    $Retornar_Pessoa           = $_POST['Retornar_Pessoa'];
+    $Medo_Pessoa               = $_POST['Medo_Pessoa'];
 
+    //Variáveis tabela Medidas_Protetivas
+
+    $Instituição_Protetivas                 = $_POST['Instituição_Protetivas'];
+    $Endereço_Protetivas                    = $_POST['Endereço_Protetivas'];
+    $Responsável_Protetivas                 = $_POST['Responsável_Protetivas'];
+    $Vara_Protetivas                        = $_POST['Vara_Protetivas'];
+    $Responsavel_Protetivas                 = $_POST['Responsavel_Protetivas'];
+    $Documento_Protetivas                   = $_POST['Documento_Protetivas'];
+    $Numero_Documento_Protetivas            = $_POST['Numero_Documento_Protetivas'];
+    $Responsavel_Nascimento_Protetivas      = $_POST['Responsavel_Nascimento_Protetivas'];
+    $Gênero_Protetivas                      = $_POST['Gênero_Protetivas'];
+    $Responsavel_Nacionalidade_Protetivas   = $_POST['Responsavel_Nacionalidade_Protetivas'];
+    $Responsavel_Endereço_Protetivas        = $_POST['Responsavel_Endereço_Protetivas'];
+    $Responsavel_Parentesco_Protetivas      = $_POST['Responsavel_Parentesco_Protetivas'];
+    $Mental_Avaliação                       = $_POST['Mental_Avaliação'];
+    $Fisico_Avaliação                       = $_POST['Fisico_Avaliação'];
+    $Idade_Avaliação                        = $_POST['Idade_Avaliação'];
+    
+    //Variáveis tabela INTÉRPRETE
+    $Nome_Interprete           = $_POST['Nome_Interprete'];
+    $Documento_Interprete      = $_POST['Documento_Interprete'];
+    $Endereço_Interprete       = $_POST['Endereço_Interprete'];
+    $Telefone_Interprete       = $_POST['Telefone_Interprete'];
+    $email_Interprete           = $_POST['e-mail_Interprete']; //***Incluir na tabela contato
+    
     /*** ADICIONAR TODAS OS OUTROS ELEMENTOS ***/
 
-   
     
 
 

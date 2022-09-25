@@ -305,14 +305,14 @@
             <h2> SITUAÇÃO DA CRIANÇA OU ADOLESCENTE</h2>
             <form action="/pagina-processa-dados-do-form" method="post">
                 <div>
-                    <label for="msg">Como era sua vida em seu país de origem, antes de você se separar de sua família ?</label>
+                    <label for="Vida_Pais_Origem">Como era sua vida em seu país de origem, antes de você se separar de sua família ?</label>
                     <br>
-					<textarea cols="70" rows="5">Digite aqui sua mensagem....</textarea>
+					<textarea cols="70" rows="5" id="Vida_Pais_Origem" placeholder="Digite aqui sua mensagem...."></textarea>
                 </div>
                 <div>
                     <label for="Momento_Pergunta_Pessoa">Em que momento e por qual razão você deixou seu país e se separou de sua família?</label>
                     <br>
-					<textarea cols="70" rows="5">Digite aqui sua mensagem....</textarea>
+					<textarea cols="70" rows="5" id="Razao_Saida" placeholder="Digite aqui sua mensagem...."></textarea>
                 </div>
                 <div>
                     <label for="Situação_Pergunta_Pessoa">Alguma situação forçou você a sair do seu país de origem?</label>
@@ -320,38 +320,38 @@
 					<input type="radio" name="Situação_Pessoa" id="Situação_Pessoa_SIM" value="SIM"><label for="SIM">Sim. Que situação? &nbsp&nbsp&nbsp</label>
                     <input type="radio" name="Situação_Pessoa" id="Situação_Pessoa_NÃO" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
                     <br>
-					<textarea cols="70" rows="5">Digite aqui a Situação em caso de SIM....</textarea>
+					<textarea cols="70" rows="5" id="Situação_Pessoa" placeholder="Digite aqui a Situação em caso de SIM...."></textarea>
                 </div>
                 <div>
                     <label for="Alguem_Pergunta_Pessoa">Alguém o ajudou a chegar até o Brasil?</label>
                     <label for="Alguem_Pergunta_Pessoa">Alguma situação forçou você a sair do seu país de origem?</label>
                     <input type="radio" name="Alguem_Pessoa" id="Alguem_Pessoa_SIM" value="SIM"><label for="SIM">Sim. Quem? Onde essa pessoa está no momento&nbsp&nbsp&nbsp</label>
                     <input type="radio" name="Alguem_Pessoa" id="Alguem_Pessoa_NÃO" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
-                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de SIM....</textarea>
+                    <textarea cols="70" rows="5" id="Alguem_Pessoa" placeholder="Digite aqui a Situação em caso de SIM...."></textarea>
                 </div>
                 <div>
                     <label for="Viagem_Pergunta_Pessoa">Você realizou a viagem acompanhado?</label>
                     <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_SIM" value="SIM"><label for="SIM">Sim. Que Foi acompanhado por quem e como a conheceu? &nbsp&nbsp&nbsp</label>
                     <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_NÃO" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
-                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de SIM....</textarea>
+                    <textarea cols="70" rows="5" id="Viagem_Pessoa" placeholder="Digite aqui a Situação em caso de SIM...."></textarea>
                 </div>
                 <div>
                     <label for="Entrou_Pergunta_Pessoa">Você entrou no Brasil sozinho?</label>
                     <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa" value="SIM" ><label for="SIM">Sim.&nbsp&nbsp&nbsp</label>
                     <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa" value="NÃO"><label for="NÃO">Não. Você tem intenção de se deslocar para outro país? Informe &nbsp&nbsp&nbsp</label>
-                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de NÃO....</textarea>
+                    <textarea cols="70" rows="5" id="Entrou_Pessoa" placeholder="Digite aqui a Situação em caso de NÃO...."></textarea>
                 </div>
                 <div>
                     <label for="Retornar_Pergunta_Pessoa">Você deseja retornar ao seu país?</label>
                     <input type="radio" name="Retornar_Pessoa" id="Retornar_Pessoa" value="SIM" ><label for="SIM">Sim.&nbsp&nbsp&nbsp</label>
                     <input type="radio" name="Retornar_Pessoa" id="Retornar_Pessoa" value="NÃO"><label for="NÃO">Não. Por quê? &nbsp&nbsp&nbsp</label>
-                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de NÃO....</textarea>
+                    <textarea cols="70" rows="5" id="Retornar_Pessoa" placeholder="Digite aqui a Situação em caso de NÃO....">Digite aqui a Situação em caso de NÃO....</textarea>
                 </div>
                 <div>
                     <label for="Medo_Pergunta_Pessoa">Você tem medo de regressar ao seu país de origem?</label>
                     <input type="radio" name="Medo_Pessoa" id="Medo_Pessoa" value="SIM" ><label for="SIM">Sim.Que problemas você pode enfrentar caso tenha que retornar ao seu país neste momento? &nbsp&nbsp&nbsp</label>
                     <input type="radio" name="Medo_Pessoa" id="Medo_Pessoa" value="NÃO"><label for="NÃO">Não. &nbsp&nbsp&nbsp</label>
-                    <textarea cols="70" rows="5">Digite aqui a Situação em caso de SIM....</textarea>
+                    <textarea cols="70" rows="5" id="Medo_Pessoa" placeholder="Digite aqui a Situação em caso de SIM...."></textarea>
                 </div>
                 <div>
                     <label for="Parentes_Origem_Pergunta_Pessoa">Tem parentes (irmãos tios, primos e avós) no país de origem?</label>
@@ -412,8 +412,8 @@
 
                 <div class="field radiobox">
                     <label>Gênero:</label>
-                    <input type="radio" name="Gênero" id="masculino" value="masculino" ><label for="masculino">Masculino</label>
-                    <input type="radio" name="Gênero" id="feminino" value="feminino"><label for="feminino">Feminino</label>
+                    <input type="radio" name="Gênero_Protetivas" id="masculino" value="masculino" ><label for="masculino">Masculino</label>
+                    <input type="radio" name="Gênero_Protetivas" id="feminino" value="feminino"><label for="feminino">Feminino</label>
                 </div>
                 <div>
                     <label for="Responsavel_Nacionalidade_Protetivas">Nacionalidade:</label>
@@ -425,7 +425,7 @@
                 </div>
                 <div>
                     <label for="Responsavel_Parentesco_Protetivas">Parentesco:</label>
-                    <input type="text" id="Responsavel_Endereço_Protetivas" placeholder="digite o Parentesco"/>
+                    <input type="text" id="Responsavel_Parentesco_Protetivas" placeholder="digite o Parentesco"/>
                 </div>
                 <div>
                     <label for="Vinculo_Protetivas">Constata o vínculo pelos observação e documentação apresentada?</label>
@@ -443,28 +443,28 @@
             <h2> AVALIAÇÃO PRELIMINAR DA CRIANÇA OU ADOLESCENTE:</h2>
             <form action="/pagina-processa-dados-do-form" method="post">
                 <div>
-                    <label for="Mental_Avalização">Avaliação de saúde mental (conduta): indique se a criança ou adolescente apresenta pensamento confuso
+                    <label for="Mental_Avaliação">Avaliação de saúde mental (conduta): indique se a criança ou adolescente apresenta pensamento confuso
                         (ex. respostas frequentemente incoerentes ou contraditórias)/evidencia perda de contato com a realidade (ex:
                         seu comportamento parece estranho ou sem sentido/ conduta estranha evidente (ex: hiperatividade,
                         impulsividade, comportamento hostil)/ou risco de causar danos a outros a si mesmo (a)</label>
-                    <input type="radio" name="Mental_Avalização" id="Mental_Avalização" value="Normal" ><label for="Normal">Normal &nbsp&nbsp&nbsp</label>
-                    <input type="radio" name="Mental_Avalização" id="Mental_Avalização" value="Anormal"><label for="Anormal">Anormal. &nbsp&nbsp&nbsp</label>
-                    <textarea cols="70" rows="5">Digite aqui a anormalidade em caso de Não....</textarea>
+                    <input type="radio" name="Mental_Avaliação" id="Mental_Avaliação_Normal" value="Normal" ><label for="Normal">Normal &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Mental_Avaliação" id="Mental_Avaliação_Anormal" value="Anormal"><label for="Anormal">Anormal. &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5" id="Mental_Avaliação" placeholder="Digite aqui a anormalidade em caso de Não...."></textarea>
                 </div>
                 <div>
-                    <label for="Fisico_Avalização">Avaliação física preliminar: sinalize se a criança ou adolescente apresenta sinais visíveis de trauma físico
+                    <label for="Fisico_Avaliação">Avaliação física preliminar: sinalize se a criança ou adolescente apresenta sinais visíveis de trauma físico
                         ou deficiência física; queixa-se de dores ou doenças, quadro de deficiência motora, etc.</label>
-                    <input type="radio" name="Fisico_Avalização" id="Fisico_Avalização" value="Normal" ><label for="Normal">Normal &nbsp&nbsp&nbsp</label>
-                    <input type="radio" name="Fisico_Avalização" id="Fisico_Avalização" value="Anormal"><label for="Anormal">Anormal. &nbsp&nbsp&nbsp</label>
-                    <textarea cols="70" rows="5">Digite aqui a anormalidade em caso de Não....</textarea>
+                    <input type="radio" name="Fisico_Avaliação" id="Fisico_Avaliação_Normal" value="Normal" ><label for="Normal">Normal &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Fisico_Avaliação" id="Fisico_Avaliação_Anormal" value="Anormal"><label for="Anormal">Anormal. &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5" id="Fisico_Avaliação" placeholder="Digite aqui a anormalidade em caso de Não...."></textarea>
                 </div>
                 <div>
-                    <label for="Fisico_Avalização">Avaliação de idade e maturidade (a avaliação de idade só deve ser realizada quando houver significativas
+                    <label for="Idade_Avaliação">Avaliação de idade e maturidade (a avaliação de idade só deve ser realizada quando houver significativas
                         dúvidas sobre a idade da criança ou adolescente, tal como ausência de documentação, e não deve levar em
                         consideração apenas a aparência física, mas também a maturidade psicológica)</label>
-                    <input type="radio" name="Idade_Avalização" id="Idade_Avalização" value="Normal" ><label for="Normal">Normal &nbsp&nbsp&nbsp</label>
-                    <input type="radio" name="Idade_Avalização" id="Idade_Avalização" value="Anormal"><label for="Anormal">Anormal. &nbsp&nbsp&nbsp</label>
-                    <textarea cols="70" rows="5">Digite aqui a anormalidade em caso de Não....</textarea>
+                    <input type="radio" name="Idade_Avaliação" id="Idade_Avaliação_Normal" value="Normal" ><label for="Normal">Normal &nbsp&nbsp&nbsp</label>
+                    <input type="radio" name="Idade_Avaliação" id="Idade_Avaliação_Anormal" value="Anormal"><label for="Anormal">Anormal. &nbsp&nbsp&nbsp</label>
+                    <textarea cols="70" rows="5" id="Idade_Avaliação" placeholder="Digite aqui a anormalidade em caso de Não...."></textarea>
                 </div>
             </form>
         </div>
