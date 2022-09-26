@@ -41,14 +41,14 @@
     $Pais_Reconhecido_Pessoa       = $_POST['Pais_Reconhecido_Pessoa'];
     
     //Variáveis tabela Situação
-    $Vida_Pais_Origem          = $_POST['Vida_Pais_Origem'];
-    $Razao_Saida               = $_POST['Razao_Saida'];
-    $Situação_Pessoa           = $_POST['Situação_Pessoa'];
-    $Alguem_Pessoa             = $_POST['Alguem_Pessoa'];
-    $Viagem_Pessoa             = $_POST['Viagem_Pessoa'];
-    $Entrou_Pessoa             = $_POST['Entrou_Pessoa'];
-    $Retornar_Pessoa           = $_POST['Retornar_Pessoa'];
-    $Medo_Pessoa               = $_POST['Medo_Pessoa'];
+    $Vida_antes                = $_POST['Vida_antes'];
+    $Razão_Saida               = $_POST['Razão_Saida'];
+    $Txt_Situação_Pessoa       = $_POST['Txt_Situação_Pessoa'];
+    $Txt_Alguem_Pessoa         = $_POST['Txt_Alguem_Pessoa'];
+    $Txt_Viagem_Pessoa         = $_POST['Txt_Viagem_Pessoa'];
+    $Txt_Entrou_Pessoa         = $_POST['Txt_Entrou_Pessoa'];
+    $Txt_Retornar_Pessoa       = $_POST['Txt_Retornar_Pessoa'];
+    $Txt_Medo_Pessoa           = $_POST['Txt_Medo_Pessoa'];
 
     //Variáveis tabela Medidas_Protetivas
 
@@ -58,15 +58,17 @@
     $Vara_Protetivas                        = $_POST['Vara_Protetivas'];
     $Responsavel_Protetivas                 = $_POST['Responsavel_Protetivas'];
     $Documento_Protetivas                   = $_POST['Documento_Protetivas'];
+    $Text_Documento_Protetivas              = $_POST['Text_Documento_Protetivas'];
+    $Text_Copia_Documento_Protetivas        = $_POST['Text_Copia_Documento_Protetivas'];
     $Numero_Documento_Protetivas            = $_POST['Numero_Documento_Protetivas'];
     $Responsavel_Nascimento_Protetivas      = $_POST['Responsavel_Nascimento_Protetivas'];
     $Gênero_Protetivas                      = $_POST['Gênero_Protetivas'];
     $Responsavel_Nacionalidade_Protetivas   = $_POST['Responsavel_Nacionalidade_Protetivas'];
     $Responsavel_Endereço_Protetivas        = $_POST['Responsavel_Endereço_Protetivas'];
     $Responsavel_Parentesco_Protetivas      = $_POST['Responsavel_Parentesco_Protetivas'];
-    $Mental_Avaliação                       = $_POST['Mental_Avaliação'];
-    $Fisico_Avaliação                       = $_POST['Fisico_Avaliação'];
-    $Idade_Avaliação                        = $_POST['Idade_Avaliação'];
+    $Txt_Mental_Avaliação                   = $_POST['Txt_Mental_Avaliação'];
+    $Txt_Fisico_Avaliação                   = $_POST['Txt_Fisico_Avaliação'];
+    $Txt_Idade_Avaliação                    = $_POST['Txt_Idade_Avaliação'];
     
     //Variáveis tabela INTÉRPRETE
     $Nome_Interprete           = $_POST['Nome_Interprete'];
@@ -88,7 +90,11 @@
         //chamada do banco de dados
         include_once('config.php');
 
-        //$result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
+        //$result = mysqli_query($conexao,"INSERT INTO Entrada(idEntrada,Cidade_saida,Cidade_Chegada,Data_Chegada,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
+
+
+
+        //$result = mysqli_query($conexao,"INSERT INTO Defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
          //** Problema no foreign key - DAR UMA OLHADA **/
 
 
@@ -99,6 +105,7 @@
 
 
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -511,7 +518,7 @@
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DO" onclick="Preencher('Text_Documento_Protetivas')"><label for="DO">OUTRO. </label><br>
                     <input type="text" name="Text_Documento_Protetivas" id="Text_Documento_Protetivas" style="display:none;text-transform:uppercase" placeholder="digite o outro Tipo de documento"/>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCO" onclick="Preencher('Text_Copia_Documento_Protetivas')"><label for="DCO">COPIA OUTRO </label><br>
-                    <input type="text" name="Text_Copia_Documento_Protetivas" id="Text_Documento_Protetivas" style="display:none;text-transform:uppercase" placeholder="digite o outro Tipo de documento em copia"/>
+                    <input type="text" name="Text_Copia_Documento_Protetivas" id="Text_Copia_Documento_Protetivas" style="display:none;text-transform:uppercase" placeholder="digite o outro Tipo de documento em copia"/>
 
 
                 </div>
@@ -526,8 +533,8 @@
 
                 <div class="field radiobox">
                     <label>Gênero:</label><br>
-                    <input type="radio" name="Gênero" id="masculino" value="masculino" ><label for="masculino">Masculino</label>
-                    <input type="radio" name="Gênero" id="feminino" value="feminino"><label for="feminino">Feminino</label>
+                    <input type="radio" name="Gênero_Protetivas" id="masculino" value="masculino" ><label for="masculino">Masculino</label>
+                    <input type="radio" name="Gênero_Protetivas" id="feminino" value="feminino"><label for="feminino">Feminino</label>
                 </div>
                 <div>
                     <label for="Responsavel_Nacionalidade_Protetivas">Nacionalidade:</label><br>
@@ -557,28 +564,28 @@
             <h2> AVALIAÇÃO PRELIMINAR DA CRIANÇA OU ADOLESCENTE:</h2>
             <form action="Formulario.php" method="post">
                 <div>
-                    <label for="Mental_Avalização">Avaliação de saúde mental (conduta): indique se a criança ou adolescente apresenta pensamento confuso
+                    <label for="Mental_Avaliação">Avaliação de saúde mental (conduta): indique se a criança ou adolescente apresenta pensamento confuso
                         (ex. respostas frequentemente incoerentes ou contraditórias)/evidencia perda de contato com a realidade (ex:
                         seu comportamento parece estranho ou sem sentido/ conduta estranha evidente (ex: hiperatividade,
                         impulsividade, comportamento hostil)/ou risco de causar danos a outros a si mesmo (a)</label><br>
-                    <input type="radio" name="Mental_Avalização" id="Mental_Avalização" value="Normal" ><label for="Normal">Normal </label>
-                    <input type="radio" name="Mental_Avalização" id="Mental_Avalização" value="Anormal" onclick="Preencher('Txt_Mental_Avalização')"><label for="Anormal">Anormal. </label>
-                    <textarea name="Txt_Mental_Avalização" id="Txt_Mental_Avalização" cols="70" rows="5" style="display:none;text-transform:uppercase" placeholder="Digite aqui a Situação em caso de Anormal...."></textarea><br>
+                    <input type="radio" name="Mental_Avaliação" id="Mental_Avaliação" value="Normal" ><label for="Normal">Normal </label>
+                    <input type="radio" name="Mental_Avaliação" id="Mental_Avaliação" value="Anormal" onclick="Preencher('Txt_Mental_Avaliação')"><label for="Anormal">Anormal. </label>
+                    <textarea name="Txt_Mental_Avaliação" id="Txt_Mental_Avaliação" cols="70" rows="5" style="display:none;text-transform:uppercase" placeholder="Digite aqui a Situação em caso de Anormal...."></textarea><br>
                 </div>
                 <div>
-                    <label for="Fisico_Avalização">Avaliação física preliminar: sinalize se a criança ou adolescente apresenta sinais visíveis de trauma físico
+                    <label for="Fisico_Avaliação">Avaliação física preliminar: sinalize se a criança ou adolescente apresenta sinais visíveis de trauma físico
                         ou deficiência física; queixa-se de dores ou doenças, quadro de deficiência motora, etc.</label><br>
-                    <input type="radio" name="Fisico_Avalização" id="Fisico_Avalização" value="Normal" ><label for="Normal">Normal </label>
-                    <input type="radio" name="Fisico_Avalização" id="Fisico_Avalização" value="Anormal" onclick="Preencher('Txt_Fisico_Avalização')"><label for="Anormal">Anormal. </label>
-                    <textarea name="Txt_Fisico_Avalização" id="Txt_Fisico_Avalização" cols="70" rows="5" style="display:none;text-transform:uppercase" placeholder="Digite aqui a Situação em caso de Anormal...."></textarea><br>
+                    <input type="radio" name="Fisico_Avaliação" id="Fisico_Avaliação" value="Normal" ><label for="Normal">Normal </label>
+                    <input type="radio" name="Fisico_Avaliação" id="Fisico_Avaliação" value="Anormal" onclick="Preencher('Txt_Fisico_Avaliação')"><label for="Anormal">Anormal. </label>
+                    <textarea name="Txt_Fisico_Avaliação" id="Txt_Fisico_Avaliação" cols="70" rows="5" style="display:none;text-transform:uppercase" placeholder="Digite aqui a Situação em caso de Anormal...."></textarea><br>
                 </div>
                 <div>
-                    <label for="Fisico_Avalização">Avaliação de idade e maturidade (a avaliação de idade só deve ser realizada quando houver significativas
+                    <label for="Fisico_Avaliação">Avaliação de idade e maturidade (a avaliação de idade só deve ser realizada quando houver significativas
                         dúvidas sobre a idade da criança ou adolescente, tal como ausência de documentação, e não deve levar em
                         consideração apenas a aparência física, mas também a maturidade psicológica)</label><br>
-                    <input type="radio" name="Idade_Avalização" id="Idade_Avalização" value="Normal" ><label for="Normal">Normal </label>
-                    <input type="radio" name="Idade_Avalização" id="Idade_Avalização" value="Anormal" onclick="Preencher('Txt_Idade_Avalização')"><label for="Anormal">Anormal. </label>
-                    <textarea name="Txt_Idade_Avalização" id="Txt_Idade_Avalização" cols="70" rows="5" style="display:none;text-transform:uppercase" placeholder="Digite aqui a Situação em caso de Anormal...."></textarea><br>
+                    <input type="radio" name="Idade_Avaliação" id="Idade_Avaliação" value="Normal" ><label for="Normal">Normal </label>
+                    <input type="radio" name="Idade_Avaliação" id="Idade_Avaliação" value="Anormal" onclick="Preencher('Txt_Idade_Avaliação')"><label for="Anormal">Anormal. </label>
+                    <textarea name="Txt_Idade_Avaliação" id="Txt_Idade_Avaliação" cols="70" rows="5" style="display:none;text-transform:uppercase" placeholder="Digite aqui a Situação em caso de Anormal...."></textarea><br>
                 </div>
             </form>
         </div>
@@ -689,4 +696,3 @@
 </body>
 
 </html>
-
