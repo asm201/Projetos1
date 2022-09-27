@@ -1,5 +1,5 @@
 <?php
-
+    error_reporting (0);
     //Variáveis tabela defensor
     $Nome_Defensor      = $_POST['Nome_Defensor'];
     $Documento_defensor = $_POST['Documento_Defensor'];
@@ -90,15 +90,20 @@
         //chamada do banco de dados
         include_once('config.php');
 
-        //$result = mysqli_query($conexao,"INSERT INTO Entrada(idEntrada,Cidade_saida,Cidade_Chegada,Data_Chegada,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
-
+        //$result = mysqli_query($conexao,"INSERT INTO Entrada(idEntrada,Cidade_saida,Cidade_Chegada,Data_Chegada,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");        
 
 
         //$result = mysqli_query($conexao,"INSERT INTO Defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
          //** Problema no foreign key - DAR UMA OLHADA **/
 
+        //$result = mysqli_query($conexao,"INSERT INTO Intérprete(Doc_Interprete,Nome,Endereço_Int,Contato_Int,Telefone_int) VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$mail_Interprete','$Telefone_Interprete')");
 
-        //$result = mysqli_query($conexao, "INSERT INTO entrada(Cidade_Saida,Data_Saida,Cidade_Chegada,Data_Chegada,Transporte,Transporte_Detalhe,Data_Reconhecido,Pais_Reconhecido) VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa')");
+
+        //$result = mysqli_query($conexao,"INSERT INTO Defensor(Nome_Def) VALUES ('asdasdad')");
+        //$result = mysqli_query($conexao,"INSERT INTO Defensor(Doc_Defensor) VALUES ('$Documento_defensor')");
+        //$result = mysqli_query($conexao,"INSERT INTO Defensor(Cargo) VALUES ('$Cargo_defensor')");
+        
+        $result = mysqli_query($conexao, "INSERT INTO entrada(Cidade_Saida,Data_Saida,Cidade_Chegada,Data_Chegada,Transporte,Transporte_Detalhe,Data_Reconhecido,Pais_Reconhecido) VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa')");
         //FUNÇÃO ACIMA FUNCIONANDO, APENAS COMENTADA, PODE USAR DE BASE   
     }   
    
@@ -110,8 +115,26 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
 <title> Form Cadastro: </title>
 <head>
+<nav class="navbar navbar-light bg-dark">
+          <div>
+          <a class="navbar-brand text-white" href="#">Formulário</a>
+          </div>
+          <ul class="nav">
+            <li class="nav-item p-3">
+              <a class="nav-link text-white" href="Formulario.php">Home</a> >
+            </li>
+            <li class="nav-item p-3">
+              <a class="nav-link text-white" href="#">Lista de apresentação</a> >
+            </li>
+            <li class="nav-item p-3">
+              <a class="nav-link text-white" href="https://app.powerbi.com/groups/me/reports/40f2ddb6-4d43-42d7-9f57-e0831380c1c2/ReportSection">Visualização</a> >
+            </li>
+          </ul>
+        </nav> 
 <br>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="style.css" media="screen" />
@@ -400,9 +423,10 @@
                 <div>
                     <label for="Pais_Reconhecido_Pessoa">Pais Reconhecido Pessoa:</label>
                     <input type="text" name="Pais_Reconhecido_Pessoa" id="Pais_Reconhecido_Pessoa" placeholder="digite o País em que foi reconhecido:"/>
-                </div>
-
-                <input type = "submit" name="submit" id = "submit">
+                </div><br >
+                <input type = "submit" name="submit" id = "submit">	
+                
+                 
 
             </form>
         </div>
@@ -677,8 +701,9 @@
 					<canvas id="signature-pad" class="signature-pad" width=500px height=150px></canvas>
 				</div>
 			</form>
-		</div>
-		
+            
+		</div><br>
+        
 	</div>
 		
 		<script>
@@ -691,7 +716,13 @@
 			}	
 		</script>
 	</div>	
-
+    <div class ="container-fluid bg-dark  p-5">
+            <div class="row">
+                <div class="col-sm-12 text-white text-center">
+                    <p class="mb=0">Siste Boiola®Direitos reservados/2022</p>
+                </div>  
+            </div>   
+        </div>
     
 </body>
 
