@@ -1,5 +1,5 @@
 <?php
-    error_reporting (0);
+    //error_reporting (0);
     //Variáveis tabela defensor
     $Nome_Defensor      = $_POST['Nome_Defensor'];
     $Documento_defensor = $_POST['Documento_Defensor'];
@@ -91,9 +91,7 @@
         include_once('config.php');
 
         //$result = mysqli_query($conexao,"INSERT INTO Entrada(idEntrada,Cidade_saida,Cidade_Chegada,Data_Chegada,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");        
-
-
-        //$result = mysqli_query($conexao,"INSERT INTO Defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
+        $result = mysqli_query($conexao,"INSERT INTO Defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
          //** Problema no foreign key - DAR UMA OLHADA **/
 
         //$result = mysqli_query($conexao,"INSERT INTO Intérprete(Doc_Interprete,Nome,Endereço_Int,Contato_Int,Telefone_int) VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$mail_Interprete','$Telefone_Interprete')");
@@ -102,7 +100,6 @@
         //$result = mysqli_query($conexao,"INSERT INTO Defensor(Nome_Def) VALUES ('asdasdad')");
         //$result = mysqli_query($conexao,"INSERT INTO Defensor(Doc_Defensor) VALUES ('$Documento_defensor')");
         //$result = mysqli_query($conexao,"INSERT INTO Defensor(Cargo) VALUES ('$Cargo_defensor')");
-        
         $result = mysqli_query($conexao, "INSERT INTO entrada(Cidade_Saida,Data_Saida,Cidade_Chegada,Data_Chegada,Transporte,Transporte_Detalhe,Data_Reconhecido,Pais_Reconhecido) VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa')");
         //FUNÇÃO ACIMA FUNCIONANDO, APENAS COMENTADA, PODE USAR DE BASE   
     }   
@@ -292,8 +289,6 @@
 
                 <br>
 
-                
-
             </form>
         </div>
     
@@ -424,7 +419,7 @@
                     <label for="Pais_Reconhecido_Pessoa">Pais Reconhecido Pessoa:</label>
                     <input type="text" name="Pais_Reconhecido_Pessoa" id="Pais_Reconhecido_Pessoa" placeholder="digite o País em que foi reconhecido:"/>
                 </div><br >
-                <input type = "submit" name="submit" id = "submit">	
+                
                 
                  
 
@@ -703,6 +698,7 @@
 			</form>
             
 		</div><br>
+        <input type = "submit" name="submit" id = "submit">	
         
 	</div>
 		
