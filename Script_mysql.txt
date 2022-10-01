@@ -116,8 +116,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Defensor` (
   `Cargo` VARCHAR(45) NOT NULL,
   `Endereço_Def` VARCHAR(100) NOT NULL,
   `Cidade_UF` VARCHAR(45) NOT NULL,
-  `Contato_Def` INT NOT NULL,
-  `Telefone_Def` VARCHAR(45) NOT NULL,
+  `Contato_Def` Varchar(100) NOT NULL,
+  `Telefone_Def` int(12) NOT NULL,
   UNIQUE INDEX `Doc_Defensor_UNIQUE` (`Doc_Defensor` ASC),
   PRIMARY KEY (`idDefensor`))
 ENGINE = InnoDB;
@@ -130,8 +130,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Intérprete` (
   `Doc_Interprete` VARCHAR(100) NOT NULL,
   `Nome` VARCHAR(45) NOT NULL,
   `Endereço_Int` INT NOT NULL,
-  `Contato_Int` INT NOT NULL,
-  `Telefone_int` VARCHAR(45) NOT NULL,
+  `Contato_Int` VARCHAR(100)NOT NULL,
+  `Telefone_int` INT NOT NULL,
   PRIMARY KEY (`Doc_Interprete`),
   UNIQUE INDEX `Doc_Interprete_UNIQUE` (`Doc_Interprete` ASC))
 ENGINE = InnoDB;
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
   `Escolaridade` VARCHAR(45) NOT NULL,
   `Endereço_origem` VARCHAR(45) NOT NULL,
   `Endereço_atual` VARCHAR(45) NOT NULL,
-  `Telefone_criança` VARCHAR(45) NULL,
+  `Telefone_criança` int NULL,
   `Passaporte` VARCHAR(45) NOT NULL,
   `Certidão_de_Nascimento` VARCHAR(45) NOT NULL,
   `Data_de_Cadastro` DATETIME NOT NULL,
@@ -158,7 +158,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
   `Pai_Vivo` VARCHAR(45) NOT NULL,
   `Nome_mae` VARCHAR(45) NULL,
   `Nome_pai` VARCHAR(45) NULL,
-  `Email_Criança` INT NOT NULL,
+  `Email_Criança` varchar(100) NOT NULL,
   `Entrada` INT NOT NULL,
   `Medidas_Protetivas` INT NOT NULL,
   `Situação` INT NOT NULL,
