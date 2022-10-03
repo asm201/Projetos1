@@ -1,34 +1,4 @@
 <?php
-    ////Variáveis tabela Medidas_Protetivas
-
-    //$Instituicão_Protetivas                 = $_POST['Instituicão_Protetivas'];
-    //$Endereco_Protetivas                    = $_POST['Endereco_Protetivas'];
-    //$Responsável_Protetivas                 = $_POST['Responsável_Protetivas'];
-    //$Vara_Protetivas                        = $_POST['Vara_Protetivas'];
-    //$Responsavel_Protetivas                 = $_POST['Responsavel_Protetivas'];
-    //$Documento_Protetivas                   = $_POST['Documento_Protetivas'];
-    //$Text_Documento_Protetivas              = $_POST['Text_Documento_Protetivas'];
-    //$Text_Copia_Documento_Protetivas        = $_POST['Text_Copia_Documento_Protetivas'];
-    //$Numero_Documento_Protetivas            = $_POST['Numero_Documento_Protetivas'];
-    //$Responsavel_Nascimento_Protetivas      = $_POST['Responsavel_Nascimento_Protetivas'];
-    //$Gênero_Protetivas                      = $_POST['Gênero_Protetivas'];
-    //$Responsavel_Nacionalidade_Protetivas   = $_POST['Responsavel_Nacionalidade_Protetivas'];
-    //$Responsavel_Endereco_Protetivas        = $_POST['Responsavel_Endereco_Protetivas'];
-    //$Responsavel_Parentesco_Protetivas      = $_POST['Responsavel_Parentesco_Protetivas'];
-    //$Txt_Mental_Avaliacão                   = $_POST['Txt_Mental_Avaliacão'];
-    //$Txt_Fisico_Avaliacão                   = $_POST['Txt_Fisico_Avaliacão'];
-    //$Txt_Idade_Avaliacão                    = $_POST['Txt_Idade_Avaliacão'];
-    //
-    ////Variáveis tabela INTÉRPRETE
-    //$Nome_Interprete           = $_POST['Nome_Interprete'];
-    //$Documento_Interprete      = $_POST['Documento_Interprete'];
-    //$Endereco_Interprete       = $_POST['Endereco_Interprete'];
-    //$Telefone_Interprete       = $_POST['Telefone_Interprete'];
-    //$email_Interprete           = $_POST['e-mail_Interprete']; //***Incluir na tabela contato
-    
-    /*** ADICIONAR TODAS OS OUTROS ELEMENTOS ***/
-
-    
 
 
     //Se o botão de envio for pressionado
@@ -40,30 +10,32 @@
         //Defensor
         $Nome_Defensor      = $_POST['Nome_Defensor'];
         $Documento_defensor = $_POST['Documento_Defensor'];
-        $Cargo_defensor     = $_POST['Cargo_Defensor'];
+        $Cargo_Defensor     = $_POST['txt_Cargo_Defensor'];
         $Endereco_defensor  = $_POST['Endereco_Defensor'];
         $Cidade_defensor    = $_POST['Cidade/UF_Defensor'];
         $Telefone_defensor  = $_POST['Telefone_Defensor'];
         $Email_defensor     = $_POST['e-mail_Defensor']; 
         //Variáveis tabela Crianca
-        $Nome_Pessoa            = $_POST['Nome_Pessoa'];
-        $Nascimento_pessoa      = $_POST['Nascimento_Pessoa'];
-        $Genero_pessoa          = $_POST['gênero_pessoa'];
-        $Nacionalidade_pessoa   = $_POST['Nacionalidade_Pessoa'];
-        $País_Cid_pessoa        = $_POST['País_Cid_Pessoa'];
-        $Escolaridade_pessoa    = $_POST['Escolaridade_Pessoa'];
-        $Endereco_antigo_pessoa = $_POST['Endereco_Antigo_Pessoa'];
-        $Endereco_atual_pessoa  = $_POST['Endereco_Atual_Pessoa'];
-        $Telefone_pessoa        = $_POST['Telefone_Pessoa'];
-        $Email_pessoa           = $_POST['e-mail_Pessoa']; //***Incluir na tabela contato
-        $Identidade_pessoa      = $_POST['Identidade_Pessoa'];
-        $Passaporte_pessoa      = $_POST['Passaporte_Pessoa'];
-        $Certidao_pessoa        = $_POST['certidão'];
-        $Genero_pessoa          = $_POST['gênero_pessoa'];
-        $Mae_pessoa             = $_POST['Mãe_Viva'];
-        $Nome_mae_pessoa        = $_POST['Text_Mae_Viva'];
-        $Pai_pessoa             = $_POST['Pai_Vivo'];
-        $Nome_pai_pessoa        = $_POST['Text_Pai_Vivo'];
+        $Nome_Pessoa                    = $_POST['Nome_Pessoa'];
+        $Nascimento_pessoa              = $_POST['Nascimento_Pessoa'];
+        $Genero_pessoa                  = $_POST['gênero_pessoa'];
+        $Nacionalidade_pessoa           = $_POST['Nacionalidade_Pessoa'];
+        $País_Cid_pessoa                = $_POST['País_Cid_Pessoa'];
+        $Escolaridade_pessoa            = $_POST['Escolaridade_Pessoa'];
+        $Endereco_antigo_pessoa         = $_POST['Endereco_Antigo_Pessoa'];
+        $Endereco_atual_pessoa          = $_POST['Endereco_Atual_Pessoa'];
+        $Telefone_pessoa                = $_POST['Telefone_Pessoa'];
+        $Email_pessoa                   = $_POST['e-mail_Pessoa']; //***Incluir na tabela contato
+        $Identidade_pessoa              = $_POST['Identidade_Pessoa'];
+        $Passaporte_pessoa              = $_POST['Passaporte_Pessoa'];
+        $Certidao_pessoa                = $_POST['certidão'];
+        $Genero_pessoa                  = $_POST['gênero_pessoa'];
+        $Mae_pessoa                     = $_POST['Mãe_Viva'];
+        $Nome_mae_pessoa                = $_POST['Text_Mae_Viva'];
+        $Pai_pessoa                     = $_POST['Pai_Vivo'];
+        $Nome_pai_pessoa                = $_POST['Text_Pai_Vivo'];
+        $Text_Residencia_Mae_Pessoa     = $_POST['Text_Residencia_Mae_Pessoa'];
+        $Text_Residencia_Pai_Pessoa     = $_POST['Text_Residencia_Pai_Pessoa'];
 
         //Entrada
         $Cidade_Saida_pessoa           = $_POST['Cidade_Saida_Pessoa'];
@@ -87,9 +59,9 @@
         $Txt_Retornar_Pessoa       = $_POST['Retornar_Pessoa'];
         $Txt_Medo_Pessoa           = $_POST['Txt_Medo_Pessoa'];
         $Parentes_Origem_Pessoa    = $_POST['Parentes_Origem_Pessoa'];
-        $Txt_Mental_Avaliacão      = $_POST['Mental_Avaliacão'];
-        $Txt_Fisico_Avaliacão      = $_POST['Fisico_Avaliacão'];
-        $Txt_Idade_Avaliacão       = $_POST['Idade_Avaliacão'];
+        $Txt_Mental_Avaliacão      = $_POST['Txt_Mental_Avaliacão'];
+        $Txt_Fisico_Avaliacão      = $_POST['Txt_Fisico_Avaliacão'];
+        $Txt_Idade_Avaliacão       = $_POST['Txt_Idade_Avaliacão '];
 
     ////Variáveis tabela Medidas_Protetivas
 
@@ -103,15 +75,15 @@
         $Responsavel_Nacionalidade_Protetivas   = $_POST['Responsavel_Nacionalidade_Protetivas'];
         $Responsavel_Endereco_Protetivas        = $_POST['Responsavel_Endereco_Protetivas'];
         $Responsavel_Parentesco_Protetivas      = $_POST['Responsavel_Parentesco_Protetivas'];
-        //$Text_Documento_Protetivas              = $_POST['Text_Documento_Protetivas'];
+        $Text_Documento_Protetivas              = $_POST['Text_Documento_Protetivas'];
         //$Text_Copia_Documento_Protetivas        = $_POST['Text_Copia_Documento_Protetivas'];
-        //$Numero_Documento_Protetivas            = $_POST['Numero_Documento_Protetivas'];
-        //$Responsavel_Nascimento_Protetivas      = $_POST['Responsavel_Nascimento_Protetivas'];
+        $Numero_Documento_Protetivas            = $_POST['Numero_Documento_Protetivas'];
+        $Responsavel_Nascimento_Protetivas      = $_POST['Responsavel_Nascimento_Protetivas'];
        
         //
         $Nome_Interprete           = $_POST['Nome_Interprete'];
         $Documento_Interprete      = $_POST['Documento_Interprete'];
-        $Endereco_Interprete       = $_POST['Endereco_Interprete'];
+        $Endereço_Interprete       = $_POST['Endereço_Interprete'];
         $Telefone_Interprete       = $_POST['Telefone_Interprete'];
         $email_Interprete           = $_POST['e-mail_Interprete'];
         
@@ -121,16 +93,19 @@
         //chamada do banco de dados
 
         //Defensor
-        $result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereco_Def,Cidade_UF,Contato_Def,Telefone_Def) 
-        VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
+        $result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def) 
+        VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_Defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
 
         //DADOS DA CRIANÇA OU ADOLESCENTE
-        $result = mysqli_query($conexao, "INSERT INTO criança/adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereço_origem,Endereço_atual,Telefone_criança,Passaporte,Certidão_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai) 
-        VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereço_antigo_pessoa','$Endereço_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa','$Data_de_Cadastro','$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa')");
-
-        
-
+        //$result = mysqli_query($conexao, "INSERT INTO criança/adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereço_origem,Endereço_atual,Telefone_criança,Passaporte,Certidão_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Residencia_mae,Residencia_pai) 
+        //VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereço_antigo_pessoa','$Endereço_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa','$Data_de_Cadastro','$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa')");
          //** Problema no foreign key - DAR UMA OLHADA **/
+
+
+        //documento
+        //$result = mysqli_query($conexao, "INSERT INTO documento(Descrição, Numero) 
+        //VALUES ('$Text_Documento_Protetivas','$Numero_Documento_Protetivas')");
+
 
         //entrada
         $result = mysqli_query($conexao, "INSERT INTO entrada(Cidade_Saida,Data_Saida,Cidade_Chegada,Data_Chegada,Transporte,Transporte_Detalhe,Data_Reconhecido,Pais_Reconhecido) 
@@ -139,24 +114,19 @@
 
         //SITUAcÃO DA CRIANcA OU ADOLESCENTE
         //id trocar para auto increment no Bd
-        $result = mysqli_query($conexao, "INSERT INTO situação(Vida_Antes,Razão_Saida,Saida_Forçada,Motivo_Saida_forcada,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica) 
-        VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$situação_pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Fisico_Avaliacão','$Txt_Idade_Avaliacão')");
+        //$result = mysqli_query($conexao, "INSERT INTO situação(Vida_Antes,Razão_Saida,Saida_Forçada,Motivo_Saida_forcada,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica) 
+        //VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$situação_pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Fisico_Avaliacão','$Txt_Idade_Avaliacão')");
 
         //Medidas Protetivas
         //$result = mysqli_query($conexao, "INSERT INTO Situação(Vida_Antes,Razão_Saida,Saida_Forçada,Motivo_Saida_forcada,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica) 
         //VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$situação_pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Fisico_Avaliacão','$Txt_Idade_Avaliacão')");
-        $result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereço_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereço_Respo,Parentesco,Vinculo,Nacionalidade) 
-        VALUES ('$Endereco_Protetivas','$Instituicão_Protetivas','$Responsável_Protetivas','$Responsavel_Protetivas','$Documento_Protetivas','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_prospectivas','$Responsavel_Nacionalidade_Protetivas')");
+        //$result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereço_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereço_Respo,Parentesco,Vinculo,Nacionalidade,Data_Nascimento) 
+        //VALUES ('$Endereco_Protetivas','$Instituicão_Protetivas','$Responsável_Protetivas','$Responsavel_Protetivas','$Documento_Protetivas','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_prospectivas','$Responsavel_Nacionalidade_Protetivas','$Responsavel_Nascimento_Protetivas')");
 
         //IDENTIFICAÇÃO DO INTÉRPRETE//
         $result = mysqli_query($conexao, "INSERT INTO Intérprete(Doc_interprete,Nome,Endereço_Int,Contato_Int,Telefone_Int) 
-        VALUES ('$Nome_Interprete','$Documento_Interprete','$Endereco_Interprete','$Telefone_Interprete','$email_Interprete')");
+        VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete')");
         
-        
-
-
-
-
 
     }      
    
@@ -267,7 +237,7 @@
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Cargo_Defensor" id="Cargo_Defensor" class="inputUser" required>
+                    <input type="text" name="txt_Cargo_Defensor" id="Cargo_Defensor" class="inputUser" required>
                     <label for="Cargo_Defensor" class="labelInput">Cargo do Defensor:</label>
                 </div>
                 <br><br>
@@ -653,7 +623,7 @@
                     <input type="radio" name="Mental_Avaliacão" id="Mental_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Mental_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Mental_Avaliacão" id="Mental_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Mental_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <!--- <textarea type="text" name="Txt_Mental_Avaliacão" id="Txt_Mental_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea> Colocar no Db--->
+                    <textarea type="text" name="Txt_Mental_Avaliacão" id="Txt_Mental_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -662,7 +632,7 @@
                     <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Fisico_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Fisico_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                   <!--- <textarea type="text" name="Txt_Fisico_Avaliacão" id="Txt_Fisico_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea> Colocar no Db--->
+                    <textarea type="text" name="Txt_Fisico_Avaliacão" id="Txt_Fisico_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -672,7 +642,7 @@
                     <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Idade_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Idade_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <!---  <textarea type="text" name="Txt_Idade_Avaliacão" id="Txt_Idade_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea> Colocar no Db--->
+                    <textarea type="text" name="Txt_Idade_Avaliacão" id="Txt_Idade_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
                 </div>
                 <br>
 
@@ -763,7 +733,7 @@
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="text" name="mail_Interprete"id="mail_Interprete" class="inputUser" required>
+                    <input type="text" name="e-mail_Interprete"id="e-mail_Interprete" class="inputUser" required>
                     <label for="e-mail_Interprete" class="labelInput">E-mail:</label>
                 </div>
                 <br><br>
