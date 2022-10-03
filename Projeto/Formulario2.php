@@ -79,12 +79,17 @@
         //Variáveis tabela Situacão
         $Vida_antes                = $_POST['Vida_antes'];
         $Razão_Saida               = $_POST['Razão_Saida'];
-        $Txt_Situacão_Pessoa       = $_POST['Txt_Situacão_Pessoa'];
-        $Txt_Alguem_Pessoa         = $_POST['Txt_Alguem_Pessoa'];
-        $Txt_Viagem_Pessoa         = $_POST['Txt_Viagem_Pessoa'];
-        $Txt_Entrou_Pessoa         = $_POST['Txt_Entrou_Pessoa'];
-        $Txt_Retornar_Pessoa       = $_POST['Txt_Retornar_Pessoa'];
+        $Txt_Situacão_Pessoa       = $_POST['Situacão_Pessoa'];
+        $situação_pessoa           = $_POST['Txt_Situacão_Pessoa'];
+        $Txt_Alguem_Pessoa         = $_POST['Alguem_Pessoa'];
+        $Txt_Viagem_Pessoa         = $_POST['Viagem_Pessoa'];
+        $Txt_Entrou_Pessoa         = $_POST['Entrou_Pessoa'];
+        $Txt_Retornar_Pessoa       = $_POST['Retornar_Pessoa'];
         $Txt_Medo_Pessoa           = $_POST['Txt_Medo_Pessoa'];
+        $Parentes_Origem_Pessoa    = $_POST['Parentes_Origem_Pessoa'];
+        $Txt_Mental_Avaliacão      = $_POST['Mental_Avaliacão'];
+        $Txt_Fisico_Avaliacão      = $_POST['Fisico_Avaliacão'];
+        $Txt_Idade_Avaliacão       = $_POST['Idade_Avaliacão'];
 
     ////Variáveis tabela Medidas_Protetivas
 
@@ -93,45 +98,67 @@
         $Responsável_Protetivas                 = $_POST['Responsável_Protetivas'];
         $Vara_Protetivas                        = $_POST['Vara_Protetivas'];
         $Responsavel_Protetivas                 = $_POST['Responsavel_Protetivas'];
-        $Documento_Protetivas                   = $_POST['Documento_Protetivas'];
         $Text_Documento_Protetivas              = $_POST['Text_Documento_Protetivas'];
-        $Text_Copia_Documento_Protetivas        = $_POST['Text_Copia_Documento_Protetivas'];
-        $Numero_Documento_Protetivas            = $_POST['Numero_Documento_Protetivas'];
-        $Responsavel_Nascimento_Protetivas      = $_POST['Responsavel_Nascimento_Protetivas'];
         $Gênero_Protetivas                      = $_POST['Gênero_Protetivas'];
         $Responsavel_Nacionalidade_Protetivas   = $_POST['Responsavel_Nacionalidade_Protetivas'];
         $Responsavel_Endereco_Protetivas        = $_POST['Responsavel_Endereco_Protetivas'];
         $Responsavel_Parentesco_Protetivas      = $_POST['Responsavel_Parentesco_Protetivas'];
-        $Txt_Mental_Avaliacão                   = $_POST['Txt_Mental_Avaliacão'];
-        $Txt_Fisico_Avaliacão                   = $_POST['Txt_Fisico_Avaliacão'];
-        $Txt_Idade_Avaliacão                    = $_POST['Txt_Idade_Avaliacão'];
-    //
-    ////Variáveis tabela INTÉRPRETE
-    //$Nome_Interprete           = $_POST['Nome_Interprete'];
-    //$Documento_Interprete      = $_POST['Documento_Interprete'];
-    //$Endereco_Interprete       = $_POST['Endereco_Interprete'];
-    //$Telefone_Interprete       = $_POST['Telefone_Interprete'];
-    //$email_Interprete           = $_POST['e-mail_Interprete']; //***Incluir na tabela contato
-    
-    /*** ADICIONAR TODAS OS OUTROS ELEMENTOS ***/
+        //$Text_Documento_Protetivas              = $_POST['Text_Documento_Protetivas'];
+        //$Text_Copia_Documento_Protetivas        = $_POST['Text_Copia_Documento_Protetivas'];
+        //$Numero_Documento_Protetivas            = $_POST['Numero_Documento_Protetivas'];
+        //$Responsavel_Nascimento_Protetivas      = $_POST['Responsavel_Nascimento_Protetivas'];
+       
+        //
+        $Nome_Interprete           = $_POST['Nome_Interprete'];
+        $Documento_Interprete      = $_POST['Documento_Interprete'];
+        $Endereco_Interprete       = $_POST['Endereco_Interprete'];
+        $Telefone_Interprete       = $_POST['Telefone_Interprete'];
+        $email_Interprete           = $_POST['e-mail_Interprete'];
+        
+        /*** ADICIONAR TODAS OS OUTROS ELEMENTOS ***/
 
 
         //chamada do banco de dados
 
-
-        $result = mysqli_query($conexao,"INSERT INTO Defensor(Nome_Def,Doc_Defensor,Cargo,Endereco_Def,Cidade_UF,Contato_Def,Telefone_Def) 
+        //Defensor
+        $result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereco_Def,Cidade_UF,Contato_Def,Telefone_Def) 
         VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
 
-        
+        //DADOS DA CRIANÇA OU ADOLESCENTE
+        $result = mysqli_query($conexao, "INSERT INTO criança/adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereço_origem,Endereço_atual,Telefone_criança,Passaporte,Certidão_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai) 
+        VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereço_antigo_pessoa','$Endereço_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa','$Data_de_Cadastro','$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa')");
+
         
 
          //** Problema no foreign key - DAR UMA OLHADA **/
 
-
+        //entrada
         $result = mysqli_query($conexao, "INSERT INTO entrada(Cidade_Saida,Data_Saida,Cidade_Chegada,Data_Chegada,Transporte,Transporte_Detalhe,Data_Reconhecido,Pais_Reconhecido) 
         VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa')");
         //FUNcÃO ACIMA FUNCIONANDO, trocar para as demais inserts
-    }   
+
+        //SITUAcÃO DA CRIANcA OU ADOLESCENTE
+        //id trocar para auto increment no Bd
+        $result = mysqli_query($conexao, "INSERT INTO situação(Vida_Antes,Razão_Saida,Saida_Forçada,Motivo_Saida_forcada,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica) 
+        VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$situação_pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Fisico_Avaliacão','$Txt_Idade_Avaliacão')");
+
+        //Medidas Protetivas
+        //$result = mysqli_query($conexao, "INSERT INTO Situação(Vida_Antes,Razão_Saida,Saida_Forçada,Motivo_Saida_forcada,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica) 
+        //VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$situação_pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Fisico_Avaliacão','$Txt_Idade_Avaliacão')");
+        $result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereço_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereço_Respo,Parentesco,Vinculo,Nacionalidade) 
+        VALUES ('$Endereco_Protetivas','$Instituicão_Protetivas','$Responsável_Protetivas','$Responsavel_Protetivas','$Documento_Protetivas','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_prospectivas','$Responsavel_Nacionalidade_Protetivas')");
+
+        //IDENTIFICAÇÃO DO INTÉRPRETE//
+        $result = mysqli_query($conexao, "INSERT INTO Intérprete(Doc_interprete,Nome,Endereço_Int,Contato_Int,Telefone_Int) 
+        VALUES ('$Nome_Interprete','$Documento_Interprete','$Endereco_Interprete','$Telefone_Interprete','$email_Interprete')");
+        
+        
+
+
+
+
+
+    }      
    
 
 
@@ -219,6 +246,7 @@
     </style>
 </head>
 <body>
+<meta charset="UTF-8">
     <div class="box">
         <form action="Formulario2.php" method="post">
             <fieldset>
@@ -351,6 +379,11 @@
                 </div>
                 <br>
 
+                <div class="inputBox">
+                    <label for="data_cadastro"><b>Data de Cadastro</b></label>
+                    <input type="date" name="data_cadastro id="Nascimento_Pessoa" class="inputUser"  required>
+                </div>
+
                 <div class="field radiobox">            
                 <p>Mãe Viva?</p>
                 <input type="radio" id="Mãe_Viva_Sim" name="Mãe_Viva" value="SIM" onclick="Preencher('Mãe_Pessoa');Preencher('Mãe_Pessoa_Endereco')" required>
@@ -446,7 +479,7 @@
                     <input type="radio" name="Situacão_Pessoa" id="Situacão_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Situacão_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Situacão_Pessoa" id="Situacão_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Situacão_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Situacão_Pessoa" id="Txt_Situacão_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
+                    <textarea type="text" name="Txt_Situacão_Pessoa" id="Txt_Situacão_Pessoa" style="display:none" placeholder="Digite aqui a situação." class="inputUser" required></textarea>
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -454,7 +487,7 @@
                     <input type="radio" name="Alguem_Pessoa" id="Alguem_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Alguem_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Alguem_Pessoa" id="Alguem_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Alguem_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Alguem_Pessoa" id="Txt_Alguem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
+                    <!--<textarea type="text" name="Txt_Alguem_Pessoa" id="Txt_Alguem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea> falta adicionar campo no Bd-->
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -462,7 +495,7 @@
                     <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Viagem_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Viagem_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Viagem_Pessoa" id="Txt_Viagem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>                    
+                   <!-- <textarea type="text" name="Txt_Viagem_Pessoa" id="Txt_Viagem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>  falta adicionar campo no Db-->                  
                 </div>
                 <br>
 
@@ -471,7 +504,7 @@
                     <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Entrou_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Entrou_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Entrou_Pessoa" id="Txt_Entrou_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
+                    <!-- <textarea type="text" name="Txt_Entrou_Pessoa" id="Txt_Entrou_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea> falta adicionar campo no Db-->  
                 </div>
                 <br>
 
@@ -492,7 +525,7 @@
                 </div>
                 <br><br>
 
-                <!--- SITUAcÃO DA CRIANcA OU ADOLESCENTE--->
+                <!--- MEDIDAS PROTETIVAS--->
 
                 <h2> MEDIDAS PROTETIVAS </h2>
 
@@ -563,10 +596,10 @@
                 
                 <div class="field radiobox">            
                     <p>Genero:</p>
-                    <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino" required>
+                    <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino " required>
                     <label for="feminino">Feminino</label>
-                    <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino" required>
-                    <label for="masculino">Masculino</label>
+                    <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino " required>
+                    <label for="masculino2">Masculino</label>
                     </div>
                 <br>
                 
@@ -620,7 +653,7 @@
                     <input type="radio" name="Mental_Avaliacão" id="Mental_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Mental_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Mental_Avaliacão" id="Mental_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Mental_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Mental_Avaliacão" id="Txt_Mental_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
+                    <!--- <textarea type="text" name="Txt_Mental_Avaliacão" id="Txt_Mental_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea> Colocar no Db--->
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -629,7 +662,7 @@
                     <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Fisico_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Fisico_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Fisico_Avaliacão" id="Txt_Fisico_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
+                   <!--- <textarea type="text" name="Txt_Fisico_Avaliacão" id="Txt_Fisico_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea> Colocar no Db--->
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -639,11 +672,11 @@
                     <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Idade_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Idade_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Idade_Avaliacão" id="Txt_Idade_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
+                    <!---  <textarea type="text" name="Txt_Idade_Avaliacão" id="Txt_Idade_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea> Colocar no Db--->
                 </div>
                 <br>
 
-                <!--- INDICADORES --->
+                <!--- INDICADORES 
 
                 <h2> INDICADORES </h2>
 
@@ -701,11 +734,11 @@
                     <input type="radio" name="Proteção_Indicadores" id="Outro_Proteção" value="ProteçãoO" onclick="Preencher('Txt_Proteção_Indicadores')"><label for="Outro_Proteção" required>Outra medida de regularização migratória ou proteção como refugiado ou apátrida, conforme a legislação em vigor. Informe: </label><br><br>
                     <input type="text" name="Txt_Proteção_Indicadores" id="Txt_Proteção_Indicadores" style="display:none" placeholder="Digite aqui" class="inputUser" required></input>
                 </div>
-                <br>
+                <br>--->
 
                 <!--- IDENTIFICAÇÃO DO INTÉRPRETE --->
                 <!--- Fazer exatamente igual as demais acima e tirar o comentario das declaracões --->
-                <!--- tudo a ser colocado é antes do imput --->
+                <!--- tudo a ser colocado é antes do imput ---> 
 
                 <h2> IDENTIFICAÇÃO DO INTÉRPRETE </h2>
                 <div class="inputBox">
@@ -731,11 +764,11 @@
 
                 <div class="inputBox">
                     <input type="text" name="mail_Interprete"id="mail_Interprete" class="inputUser" required>
-                    <label for="mail_Interprete" class="labelInput">E-mail:</label>
+                    <label for="e-mail_Interprete" class="labelInput">E-mail:</label>
                 </div>
                 <br><br>
 
-                <div class="field radiobox">            
+                <!--<div class="field radiobox">            
                     <p>Assinatura da criança, adolescente ou responsável</p>
                     <input type="radio" id="assinatura_refiguiado_Assinar" name="assinatura_refiguiado" value="assinar" required>
                     <label for="assinar">Assinar digitalmente</label>
@@ -758,7 +791,7 @@
 				<div class="wrapper">
 					<img src="Hatch.jpg" width=500px height=150px />
 					<canvas id="signature-pad" class="signature-pad" width=500px height=150px></canvas>
-				</div>
+				</div>-->
 
                 <input type="submit" name="submit" id="submit">
             </fieldset>
