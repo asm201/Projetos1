@@ -2,7 +2,7 @@
 
 
     //Se o botão de envio for pressionado
-
+    error_reporting (0);
     if(isset($_POST['submit']))
     {
 
@@ -149,7 +149,7 @@
         .box{
             color: white;
             position: absolute;
-            top: 460%;
+            top: 350%;
             left: 50%;
             transform: translate(-50%,-50%);
             background-color: rgba(0, 0, 0, 0.6);
@@ -267,116 +267,116 @@
 
                 <!---- DADOS DA CRIANcA OU ADOLESCENTE -->
 
-                <h2> DADOS DA CRIANcA OU ADOLESCENTE </h2>
+                <h2> DADOS DA CRIANÇA OU ADOLESCENTE </h2>
                  
                 <div class="inputBox">
-                <input type="text" name="Nome_Pessoa" id="Nome_Pessoa" class="inputUser" required>
+                <input type="text" name="Nome_Pessoa" id="Nome_Pessoa" class="inputUser" >
                     <label for="Nome_Pessoa" class="labelInput">Nome Completo:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                     <label for="Nascimento_Pessoa"><b>Data de Nascimento:</b></label>
-                    <input type="date" name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser"  required>
+                    <input type="date" name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser"  >
                 </div>
 
                 <div class="field radiobox">            
                 <p>Genero:</p>
-                <input type="radio" id="feminino" name="gênero_pessoa" value="feminino" required>
+                <input type="radio" id="feminino" name="gênero_pessoa" value="feminino" >
                 <label for="feminino">Feminino</label>
-                <input type="radio" id="masculino" name="gênero_pessoa" value="masculino" required>
+                <input type="radio" id="masculino" name="gênero_pessoa" value="masculino" >
                 <label for="masculino">Masculino</label>
                 </div>
                 <br>
 
                 <div class="inputBox">
-                <input type="text" name="Nacionalidade_Pessoa" id="Nacionalidade_Pessoa" class="inputUser" required>
+                <input type="text" name="Nacionalidade_Pessoa" id="Nacionalidade_Pessoa" class="inputUser" >
                     <label for="Nacionalidade_Pessoa" class="labelInput">Nacionalidade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="País_Cid_Pessoa" id="País_Cid_Pessoa" class="inputUser" required>
+                <input type="text" name="País_Cid_Pessoa" id="País_Cid_Pessoa" class="inputUser" >
                     <label for="País_Cid_Pessoa" class="labelInput">País e cidade de nascimento:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Escolaridade_Pessoa" id="Escolaridade_Pessoa" class="inputUser" required>
+                <input type="text" name="Escolaridade_Pessoa" id="Escolaridade_Pessoa" class="inputUser" >
                     <label for="Escolaridade_Pessoa" class="labelInput">Escolaridade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Endereco_Atual_Pessoa" id="Endereco_Atual_Pessoa" class="inputUser" required>
+                <input type="text" name="Endereco_Atual_Pessoa" id="Endereco_Atual_Pessoa" class="inputUser" >
                     <label for="Endereco_Atual_Pessoa" class="labelInput">Endereco atual:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Telefone_Pessoa" id="Telefone_Pessoa" class="inputUser" required>
+                <input type="text" name="Telefone_Pessoa" id="Telefone_Pessoa" class="inputUser" >
                     <label for="Telefone_Pessoa" class="labelInput">Telefone:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="e-mail_Pessoa" id="e-mail_Pessoa" class="inputUser" required>
+                <input type="text" name="e-mail_Pessoa" id="e-mail_Pessoa" class="inputUser" >
                     <label for="e-mail_Pessoa" class="labelInput">E-mail:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Identidade_Pessoa" id="Identidade_Pessoa" class="inputUser" required>
+                <input type="text" name="Identidade_Pessoa" id="Identidade_Pessoa" class="inputUser" >
                     <label for="Identidade_Pessoa" class="labelInput">Cédula de identidade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Passaporte_Pessoa" id="Passaporte_Pessoa" class="inputUser" required>
+                <input type="text" name="Passaporte_Pessoa" id="Passaporte_Pessoa" class="inputUser" >
                     <label for="Passaporte_Pessoa" class="labelInput">Passaporte:</label>
                 </div>
 
                 <div class="field radiobox">            
                 <p>Possui certidão de nascimento?</p>
-                <input type="radio" id="Certidão_SIM" name="certidão" value="SIM" required>
+                <input type="radio" id="Certidão_SIM" name="certidão" value="SIM" >
                 <label for="Certidão_SIM">Sim</label>
-                <input type="radio" id="Certidão_NÃO" name="certidão" value="NÃO" required>
+                <input type="radio" id="Certidão_NÃO" name="certidão" value="NÃO" >
                 <label for="Certidão_NÂO">Não</label>
-                <input type="radio" id="Certidão_COP" name="certidão" value="COP" required>
+                <input type="radio" id="Certidão_COP" name="certidão" value="COP" >
                 <label for="Certidão_COP">Possui cópia</label>
-                <input type="radio" id="Certidão_NAS" name="certidão" value="NAS" required>
+                <input type="radio" id="Certidão_NAS" name="certidão" value="NAS" >
                 <label for="Certidão_NAS">Possui apenas a declaracão de nascido vivo</label>
                 </div>
                 <br>
 
                 <div class="inputBox">
                     <label for="data_cadastro"><b>Data de Cadastro</b></label>
-                    <input type="date" name="data_cadastro id="Nascimento_Pessoa" class="inputUser"  required>
+                    <input type="date" name="data_cadastro id="Nascimento_Pessoa" class="inputUser"  >
                 </div>
 
                 <div class="field radiobox">            
                 <p>Mãe Viva?</p>
-                <input type="radio" id="Mãe_Viva_Sim" name="Mãe_Viva" value="SIM" onclick="Preencher('Mãe_Pessoa');Preencher('Mãe_Pessoa_Endereco')" required>
+                <input type="radio" id="Mãe_Viva_Sim" name="Mãe_Viva" value="SIM" onclick="Preencher('Mãe_Pessoa');Preencher('Mãe_Pessoa_Endereco')" >
                 <label for="Mãe_Viva_Sim">Sim</label>
-                <input type="radio" id="Mãe_Viva_NÃO" name="Mãe_Viva" value="NÃO" onclick="Sumir('Mãe_Pessoa');Sumir('Mãe_Pessoa_Endereco')" required>
+                <input type="radio" id="Mãe_Viva_NÃO" name="Mãe_Viva" value="NÃO" onclick="Sumir('Mãe_Pessoa');Sumir('Mãe_Pessoa_Endereco')" >
                 <label for="Mãe_Viva_Não">Não</label>
-                <input type="text"  name="Text_Mae_Viva" id="Mãe_Pessoa" style="display:none"  class="inputUser" required placeholder="Digite o Nome da Mãe caso viva:"/>
+                <input type="text"  name="Text_Mae_Viva" id="Mãe_Pessoa" style="display:none"  class="inputUser"  placeholder="Digite o Nome da Mãe caso viva:"/>
                 <!---Verificar se funfa qualquer coisa muda no Bd para que posssa ser null--->
                 <br><br>
-                <input type="text"  name="Text_Residencia_Mae_Pessoa" id="Mãe_Pessoa_Endereco" style="display:none"  class="inputUser" required placeholder="Digite a Residência da Mãe:"/>
+                <input type="text"  name="Text_Residencia_Mae_Pessoa" id="Mãe_Pessoa_Endereco" style="display:none"  class="inputUser"  placeholder="Digite a Residência da Mãe:"/>
                 <!---Verificar se funfa qualquer coisa muda no Bd para que posssa ser null--->
                 </div>
 
                 <div class="field radiobox">            
                 <p>Pai Vivo?</p>
-                <input type="radio" id="Pai_Viva_Sim" name="Pai_Vivo" value="SIM" onclick="Preencher('Pai_Pessoa');Preencher('Pai_Pessoa_Endereco')" required>
+                <input type="radio" id="Pai_Viva_Sim" name="Pai_Vivo" value="SIM" onclick="Preencher('Pai_Pessoa');Preencher('Pai_Pessoa_Endereco')" >
                 <label for="Pai_Viva_Sim">Sim</label>
-                <input type="radio" id="Pai_Viva_NÃO" name="Pai_Vivo" value="NÃO" onclick="Sumir('Pai_Pessoa');Sumir('Pai_Pessoa_Endereco')" required>
+                <input type="radio" id="Pai_Viva_NÃO" name="Pai_Vivo" value="NÃO" onclick="Sumir('Pai_Pessoa');Sumir('Pai_Pessoa_Endereco')" >
                 <label for="Pai_Viva_Não">Não</label>
-                <input type="text"  name="Text_Pai_Viva" id="Pai_Pessoa" style="display:none" class="inputUser" required placeholder="Digite o Nome do Pai caso vivo:"/>
+                <input type="text"  name="Text_Pai_Viva" id="Pai_Pessoa" style="display:none" class="inputUser"  placeholder="Digite o Nome do Pai caso vivo:"/>
                 <!---Verificar se funfa qualquer coisa muda no Bd para que posssa ser null--->
                 <br><br>
-                <input type="text"  name="Text_Residencia_Pai_Pessoa" id="Pai_Pessoa_Endereco" style="display:none"  class="inputUser" required placeholder="Digite a Residência do Pai:"/>
+                <input type="text"  name="Text_Residencia_Pai_Pessoa" id="Pai_Pessoa_Endereco" style="display:none"  class="inputUser"  placeholder="Digite a Residência do Pai:"/>
                 <!---Verificar se funfa qualquer coisa muda no Bd para que posssa ser null--->
                 </div>
                 <br>
@@ -425,7 +425,7 @@
 
                 <div class="inputBox">
                     
-                <input type="text" name="Pais_Reconhecido_Pessoa" id="Pais_Reconhecido_Pessoa" class="inputUser" required>
+                <input type="text" name="Pais_Reconhecido_Pessoa" id="Pais_Reconhecido_Pessoa" class="inputUser" >
                     <label for="Pais_Reconhecido_Pessoa" class="labelInput">Pais Reconhecido:</label>
                 </div>
                 <br><br>
@@ -435,12 +435,12 @@
                 <h2> SITUAcÃO DA CRIANcA OU ADOLESCENTE </h2>
 
                 <div class="inputBox">
-                    <textarea type="text" name="Vida_antes" id="Vida_antes" class="inputUser" required></textarea>
+                    <textarea type="text" name="Vida_antes" id="Vida_antes" class="inputUser" ></textarea>
                     <label for="Vida_antes" class="labelInput">Como era sua vida em seu país de origem, antes de você se separar de sua família ?</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <textarea type="text" name="Pais_ReconhecRazão_Saidaido_Pessoa" id="Razão_Saida" class="inputUser" required></textarea>
+                    <textarea type="text" name="Pais_ReconhecRazão_Saidaido_Pessoa" id="Razão_Saida" class="inputUser" ></textarea>
                     <label for="Vida_antes" class="labelInput">Em que momento e por qual razão você deixou seu país e se separou de sua família?</label>
                 </div>
                 <br><br>
@@ -449,7 +449,7 @@
                     <input type="radio" name="Situacão_Pessoa" id="Situacão_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Situacão_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Situacão_Pessoa" id="Situacão_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Situacão_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Situacão_Pessoa" id="Txt_Situacão_Pessoa" style="display:none" placeholder="Digite aqui a situação." class="inputUser" required></textarea>
+                    <textarea type="text" name="Txt_Situacão_Pessoa" id="Txt_Situacão_Pessoa" style="display:none" placeholder="Digite aqui a situação." class="inputUser" ></textarea>
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -457,7 +457,7 @@
                     <input type="radio" name="Alguem_Pessoa" id="Alguem_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Alguem_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Alguem_Pessoa" id="Alguem_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Alguem_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                    <!--<textarea type="text" name="Txt_Alguem_Pessoa" id="Txt_Alguem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea> falta adicionar campo no Bd-->
+                    <!--<textarea type="text" name="Txt_Alguem_Pessoa" id="Txt_Alguem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea> falta adicionar campo no Bd-->
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -465,7 +465,7 @@
                     <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Viagem_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Viagem_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                   <!-- <textarea type="text" name="Txt_Viagem_Pessoa" id="Txt_Viagem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>  falta adicionar campo no Db-->                  
+                   <!-- <textarea type="text" name="Txt_Viagem_Pessoa" id="Txt_Viagem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>  falta adicionar campo no Db-->                  
                 </div>
                 <br>
 
@@ -474,7 +474,7 @@
                     <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Entrou_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Entrou_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                    <!-- <textarea type="text" name="Txt_Entrou_Pessoa" id="Txt_Entrou_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea> falta adicionar campo no Db-->  
+                    <!-- <textarea type="text" name="Txt_Entrou_Pessoa" id="Txt_Entrou_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea> falta adicionar campo no Db-->  
                 </div>
                 <br>
 
@@ -483,7 +483,7 @@
                     <input type="radio" name="Medo_Pessoa" id="Medo_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Medo_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Medo_Pessoa" id="Medo_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Medo_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Medo_Pessoa" id="Txt_Medo_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
+                    <textarea type="text" name="Txt_Medo_Pessoa" id="Txt_Medo_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
                 </div>
                 <br>
 
@@ -501,107 +501,107 @@
 
                 <div class="field radiobox">            
                     <p>Em caso de a crianca ou o adolescente já encaminhado para instituicão de acolhimento, favor informar:</p>
-                    <input type="radio" id="Encaminhada_Protetivas_Sim" name="Encaminhada_Protetivas" value="SIM" required>
+                    <input type="radio" id="Encaminhada_Protetivas_Sim" name="Encaminhada_Protetivas" value="SIM" >
                     <label for="Encaminhada_Protetivas_Sim">Sim</label>
-                    <input type="radio" id="Encaminhada_Protetivas_Nao" name="Encaminhada_Protetivas" value="NÃO" required>
+                    <input type="radio" id="Encaminhada_Protetivas_Nao" name="Encaminhada_Protetivas" value="NÃO" >
                     <label for="Encaminhada_Protetivas_Nao">Não</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="text" name="Instituicão_Protetivas" id="Instituicão_Protetivas" class="inputUser" required>
+                    <input type="text" name="Instituicão_Protetivas" id="Instituicão_Protetivas" class="inputUser" >
                     <label for="Instituicão_Protetivas" class="labelInput">Instituicão de acolhimento:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Responsável_Protetivas" id="Responsável_Protetivas" class="inputUser" required>
+                    <input type="text" name="Responsável_Protetivas" id="Responsável_Protetivas" class="inputUser" >
                     <label for="Responsável_Protetivas" class="labelInput">Endereco:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Cargo_Defensor" id="Cargo_Defensor" class="inputUser" required>
+                    <input type="text" name="Cargo_Defensor" id="Cargo_Defensor" class="inputUser" >
                     <label for="Cargo_Defensor" class="labelInput">Responsável:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Vara_Protetivas" id="Vara_Protetivas" class="inputUser" required>
+                    <input type="text" name="Vara_Protetivas" id="Vara_Protetivas" class="inputUser" >
                     <label for="Vara_Protetivas" class="labelInput">Vara da Infância e da Juventude:</label>
                 </div>
                 <br>
 
                 <div class="field radiobox">            
                 <p>Em caso de a crianca ou o adolescente representado por responsável legal já designado(a) no Brasil, favor informar:</p>
-                <input type="radio" id="Representante_Protetiva_Sim" name="Representante_Protetiva" value="SIM" required>
+                <input type="radio" id="Representante_Protetiva_Sim" name="Representante_Protetiva" value="SIM" >
                 <label for="Representante_Protetiva_Sim">Sim</label>
-                <input type="radio" id="Representante_Protetiva_Nao" name="Representante_Protetiva" value="NÃO" required>
+                <input type="radio" id="Representante_Protetiva_Nao" name="Representante_Protetiva" value="NÃO" >
                 <label for="Representante_Protetiva_Nao">Não</label>
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="text" name="Responsavel_Protetivas" id="Responsavel_Protetivas" class="inputUser" required>
+                    <input type="text" name="Responsavel_Protetivas" id="Responsavel_Protetivas" class="inputUser" >
                     <label for="Responsavel_Protetivas" class="labelInput">Nome completo do responsável legal</label>
                 </div>
                 <br>
 
                 <div class="field radiobox">            
                 <p>Possui certidão de nascimento?</p>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCN" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" required><label for="DCN">CERTIDÃO DE NASCIMENTO </label> <br>                   
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCI" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" required><label for="DCI">CEDULA DE IDENTIDADE </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCCN" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" required><label for="DCCN">COPIA DA CERTIDÃO DE NASCIMENTO </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCCI" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" required><label for="DCCI">COPIA CÉDULA DE IDENTIDADE </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DDNV" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" required><label for="DDNV">DECLARAcÃO DE NASCIDO VIVO </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DPSMC" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" required><label for="DPSMC">PARECER SOCIAL DO MINISTERIO DA CIDADANIA </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DND" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" required><label for="DND">NENHUM DOCUMENTO </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCN" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DCN">CERTIDÃO DE NASCIMENTO </label> <br>                   
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCI" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DCI">CEDULA DE IDENTIDADE </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCCN" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DCCN">COPIA DA CERTIDÃO DE NASCIMENTO </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCCI" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DCCI">COPIA CÉDULA DE IDENTIDADE </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DDNV" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DDNV">DECLARAcÃO DE NASCIDO VIVO </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DPSMC" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DPSMC">PARECER SOCIAL DO MINISTERIO DA CIDADANIA </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DND" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DND">NENHUM DOCUMENTO </label><br>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DO" onclick="Preencher('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')"><label for="DO">OUTRO. </label><br>
-                    <input type="text" name="Text_Documento_Protetivas" id="Text_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" required></input>
+                    <input type="text" name="Text_Documento_Protetivas" id="Text_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" ></input>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCO" onclick="Preencher('Text_Copia_Documento_Protetivas');Sumir('Text_Documento_Protetivas')"><label for="DCO">COPIA OUTRO </label><br>
-                    <input type="text" name="Text_Copia_Documento_Protetivas" id="Text_Copia_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" required></input>
+                    <input type="text" name="Text_Copia_Documento_Protetivas" id="Text_Copia_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" ></input>
                 </div>
                 <br>
 
                 <div class="inputBox">
-                    <input type="text" name="Numero_Documento_Protetivas" id="Numero_Documento_Protetivas" class="inputUser" required>
+                    <input type="text" name="Numero_Documento_Protetivas" id="Numero_Documento_Protetivas" class="inputUser" >
                     <label for="Numero_Documento_Protetivas" class="labelInput">Número do Documento:</label>
                 </div>
                 
                 <div class="field radiobox">            
                     <p>Genero:</p>
-                    <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino " required>
+                    <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino " >
                     <label for="feminino">Feminino</label>
-                    <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino " required>
+                    <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino " >
                     <label for="masculino2">Masculino</label>
                     </div>
                 <br>
                 
                 <div class="inputBox">
                     <label for="Responsavel_Nascimento_Protetivas">Data de Nascimento:</label>
-                    <input type="date" name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser"  required>
+                    <input type="date" name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser"  >
                 </div>
                     <br><br>
                 
                 <div class="inputBox">
-                <input type="text" name="Responsavel_Nacionalidade_Protetivas" id="Responsavel_Nacionalidade_Protetivas" class="inputUser" required>
+                <input type="text" name="Responsavel_Nacionalidade_Protetivas" id="Responsavel_Nacionalidade_Protetivas" class="inputUser" >
                     <label for="Responsavel_Nacionalidade_Protetivas" class="labelInput">Nacionalidade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Responsavel_Endereco_Protetivas" id="Responsavel_Endereco_Protetivas" class="inputUser" required>
+                <input type="text" name="Responsavel_Endereco_Protetivas" id="Responsavel_Endereco_Protetivas" class="inputUser" >
                     <label for="Responsavel_Endereco_Protetivas" class="labelInput">Endereco:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="e-Responsavel_Parentesco_Protetivas" id="e-Responsavel_Parentesco_Protetivas" class="inputUser" required>
+                <input type="text" name="e-Responsavel_Parentesco_Protetivas" id="e-Responsavel_Parentesco_Protetivas" class="inputUser" >
                     <label for="e-Responsavel_Parentesco_Protetivas" class="labelInput">Parentesco:</label>
                 </div>
                 <br>
 
                 <div class="field radiobox">            
                     <p>Constata o vínculo pelos observacão e documentacão apresentada?</p>
-                    <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="SIM" required>
+                    <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="SIM" >
                     <label for="Vinculo_Protetivas_Sim">Sim</label>
-                    <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="NÃO" required>
+                    <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="NÃO" >
                     <label for="Vinculo_Protetivas_Nao">Não</label>
                 </div>
                 <br><br>
@@ -623,7 +623,7 @@
                     <input type="radio" name="Mental_Avaliacão" id="Mental_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Mental_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Mental_Avaliacão" id="Mental_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Mental_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Mental_Avaliacão" id="Txt_Mental_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
+                    <textarea type="text" name="Txt_Mental_Avaliacão" id="Txt_Mental_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -632,7 +632,7 @@
                     <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Fisico_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Fisico_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Fisico_Avaliacão" id="Txt_Fisico_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
+                    <textarea type="text" name="Txt_Fisico_Avaliacão" id="Txt_Fisico_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -642,7 +642,7 @@
                     <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Idade_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Idade_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Idade_Avaliacão" id="Txt_Idade_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" required></textarea>
+                    <textarea type="text" name="Txt_Idade_Avaliacão" id="Txt_Idade_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
                 </div>
                 <br>
 
