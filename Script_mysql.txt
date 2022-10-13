@@ -18,53 +18,60 @@ USE `mydb` ;
 -- -----------------------------------------------------
 -- Table `mydb`.`Entrada`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Entrada` (
-  `idEntrada` INT NOT NULL AUTO_INCREMENT,
-  `Cidade_Saida` VARCHAR(45) NOT NULL,
-  `Data_saida` DATETIME NOT NULL,
-  `Cidade_Chegada` VARCHAR(45) NOT NULL,
-  `Data_Chegada` DATETIME NOT NULL,
-  `Transporte` VARCHAR(45) NOT NULL,
-  `Transporte_Detalhe` VARCHAR(45) NOT NULL,
-  `Data_Reconhecido` DATETIME NOT NULL,
-  `Pais_Reconhecido` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idEntrada`),
-  UNIQUE INDEX `idEntrada_UNIQUE` (`idEntrada` ASC))
+create table if not exists `mydb`. entrada
+(
+    idEntrada          int auto_increment
+        primary key,
+    Cidade_Saida       varchar(45) not null,
+    Data_saida         datetime    not null,
+    Cidade_Chegada     varchar(45) not null,
+    Data_Chegada       datetime    not null,
+    Transporte         varchar(45) not null,
+    Transporte_Detalhe varchar(45) not null,
+    Data_Reconhecido   datetime    not null,
+    Pais_Reconhecido   varchar(45) not null,
+    constraint idEntrada_UNIQUE
+        unique (idEntrada))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Situação`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Situação` (
-  `idSituação` INT NOT NULL,
-  `Vida_Antes` VARCHAR(800) NOT NULL,
-  `Razão_Saida` VARCHAR(800) NOT NULL,
-  `Saida_Forçada` VARCHAR(500) NOT NULL,
-  `Motivo_Saida_forcada` VARCHAR(45) NULL,
-  `Ajuda` VARCHAR(500) NOT NULL,
-  `Acompanhado` VARCHAR(500) NOT NULL,
-  `Entrada_Sozinho` VARCHAR(500) NOT NULL,
-  `Retorno` VARCHAR(500) NOT NULL,
-  `Medo_Retorno` VARCHAR(500) NOT NULL,
-  `Parente_Pais_Origem` VARCHAR(45) NOT NULL,
-  `Saude_Mental` VARCHAR(800) NOT NULL,
-  `Idade_Mental` VARCHAR(800) NOT NULL,
-  `Saude_Fisica` VARCHAR(800) NOT NULL,
-  PRIMARY KEY (`idSituação`),
-  UNIQUE INDEX `idSituação_UNIQUE` (`idSituação` ASC))
+create table if not exists `mydb`. situação
+(
+    idSituação           int auto_increment
+        primary key,
+    Vida_Antes           varchar(800) not null,
+    Razão_Saida          varchar(800) not null,
+    Saida_Forçada        varchar(500) not null,
+    Motivo_Saida_forcada varchar(45)  null,
+    Ajuda                varchar(500) not null,
+    Acompanhado          varchar(500) not null,
+    Entrada_Sozinho      varchar(500) not null,
+    Retorno              varchar(500) not null,
+    Medo_Retorno         varchar(500) not null,
+    Parente_Pais_Origem  varchar(45)  not null,
+    Saude_Mental         varchar(800) not null,
+    Idade_Mental         varchar(800) not null,
+    Saude_Fisica         varchar(800) not null,
+    constraint idSituação_UNIQUE
+        unique (idSituação))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Documentos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Documentos` (
-  `idDocumentos` INT NOT NULL,
-  `Descrição` VARCHAR(45) NOT NULL,
-  `Numero` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idDocumentos`),
-  UNIQUE INDEX `idDocumentos_UNIQUE` (`idDocumentos` ASC))
+create table if not exists `mydb`. documentos
+(
+    idDocumentos int auto_increment
+        primary key,
+    Descrição    varchar(45) not null,
+    Numero       varchar(45) not null,
+    constraint idDocumentos_UNIQUE
+        unique (idDocumentos)
+)
 ENGINE = InnoDB;
 
 
@@ -72,27 +79,29 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Medidas_Protetivas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Medidas_Protetivas` (
-  `idMedidas_Protetivas` INT NOT NULL,
-  `Endereço_Inst` INT NOT NULL,
-  `Nome_Inst` VARCHAR(45) NOT NULL,
-  `Nome_Respo_Inst` VARCHAR(45) NOT NULL,
-  `Nome_Respo` VARCHAR(45) NOT NULL,
-  `Document_Respo` INT NOT NULL,
-  `Genero` VARCHAR(45) NOT NULL,
-  `Endereço_respo` VARCHAR(100) NOT NULL,
-  `Parentesco` VARCHAR(45) NOT NULL,
-  `Vinculo` VARCHAR(45) NOT NULL,
-  `Nacionalidade` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idMedidas_Protetivas`),
-  UNIQUE INDEX `idMedidas_Protetivas_UNIQUE` (`idMedidas_Protetivas` ASC),
-  INDEX `Documento_Respo_idx` (`Document_Respo` ASC),
-  CONSTRAINT `Documento_Respo`
-    FOREIGN KEY (`Document_Respo`)
-    REFERENCES `mydb`.`Documentos` (`idDocumentos`)
+    idMedidas_Protetivas int auto_increment
+        primary key,
+    Endereço_Inst        int          not null,
+    Nome_Inst            varchar(45)  not null,
+    Nome_Respo_Inst      varchar(45)  not null,
+    Nome_Respo           varchar(45)  not null,
+    Document_Respo       int          not null,
+    Genero               varchar(45)  not null,
+    Endereço_respo       varchar(100) not null,
+    Parentesco           varchar(45)  not null,
+    Vinculo              varchar(45)  not null,
+    Nacionalidade        varchar(45)  not null,
+    Data_Nascimento      datetime     null,
+    constraint idMedidas_Protetivas_UNIQUE
+        unique (idMedidas_Protetivas),
+    constraint documento_resposavel
+        foreign key (Document_Respo) references documentos (idDocumentos)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+create index if not exists Documento_Respo_idx
+    on medidas_protetivas (Document_Respo);
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Guardião`
@@ -110,16 +119,15 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Defensor`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Defensor` (
-  `idDefensor` INT NOT NULL AUTO_INCREMENT,
-  `Nome_Def` VARCHAR(45) NOT NULL,
-  `Doc_Defensor` VARCHAR(100) NOT NULL,
-  `Cargo` VARCHAR(45) NOT NULL,
-  `Endereço_Def` VARCHAR(100) NOT NULL,
-  `Cidade_UF` VARCHAR(45) NOT NULL,
-  `Contato_Def` Varchar(100) NOT NULL,
-  `Telefone_Def` int(12) NOT NULL,
-  UNIQUE INDEX `Doc_Defensor_UNIQUE` (`Doc_Defensor` ASC),
-  PRIMARY KEY (`idDefensor`))
+    idDefensor   int auto_increment
+        primary key,
+    Nome_Def     varchar(45)  not null,
+    Doc_Defensor varchar(100) not null,
+    Cargo        varchar(45)  not null,
+    Endereço_Def varchar(100) not null,
+    Cidade_UF    varchar(45)  not null,
+    Contato_Def  varchar(100) not null,
+    Telefone_Def int(12)      not null)
 ENGINE = InnoDB;
 
 
@@ -127,13 +135,14 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Intérprete`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Intérprete` (
-  `Doc_Interprete` VARCHAR(100) NOT NULL,
-  `Nome` VARCHAR(45) NOT NULL,
-  `Endereço_Int` INT NOT NULL,
-  `Contato_Int` VARCHAR(100)NOT NULL,
-  `Telefone_int` INT NOT NULL,
-  PRIMARY KEY (`Doc_Interprete`),
-  UNIQUE INDEX `Doc_Interprete_UNIQUE` (`Doc_Interprete` ASC))
+    Doc_Interprete varchar(100) not null
+        primary key,
+    Nome           varchar(45)  not null,
+    Endereço_Int   varchar(100) not null,
+    Contato_Int    varchar(100) not null,
+    Telefone_int   int(12)      not null,
+    constraint Doc_Interprete_UNIQUE
+        unique (Doc_Interprete))
 ENGINE = InnoDB;
 
 
@@ -141,73 +150,71 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Criança/Adolecente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
-  `Documento` VARCHAR(45) NOT NULL,
-  `Nome` VARCHAR(150) NOT NULL,
-  `Data_de_Nascimento` DATETIME NOT NULL,
-  `Genero` VARCHAR(1) NOT NULL,
-  `Nacionalidade` VARCHAR(45) NOT NULL,
-  `Local_Nasc` VARCHAR(45) NOT NULL,
-  `Escolaridade` VARCHAR(45) NOT NULL,
-  `Endereço_origem` VARCHAR(45) NOT NULL,
-  `Endereço_atual` VARCHAR(45) NOT NULL,
-  `Telefone_criança` int NULL,
-  `Passaporte` VARCHAR(45) NOT NULL,
-  `Certidão_de_Nascimento` VARCHAR(45) NOT NULL,
-  `Data_de_Cadastro` DATETIME NOT NULL,
-  `Mae_viva` VARCHAR(45) NOT NULL,
-  `Pai_Vivo` VARCHAR(45) NOT NULL,
-  `Nome_mae` VARCHAR(45) NULL,
-  `Nome_pai` VARCHAR(45) NULL,
-  `Email_Criança` varchar(100) NOT NULL,
-  `Entrada` INT NOT NULL,
-  `Medidas_Protetivas` INT NOT NULL,
-  `Situação` INT NOT NULL,
-  `Guardião` VARCHAR(100) NOT NULL,
-  `Defensor` INT NOT NULL,
-  `Intérprete` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`Documento`),
-  UNIQUE INDEX `Documento_UNIQUE` (`Documento` ASC),
-  UNIQUE INDEX `Medidas_Protetivas_UNIQUE` (`Medidas_Protetivas` ASC),
-  INDEX `Entrada_idx` (`Entrada` ASC),
-  INDEX `Situação_idx` (`Situação` ASC),
-  UNIQUE INDEX `Entrada_UNIQUE` (`Entrada` ASC),
-  UNIQUE INDEX `Medida_Protetica_UNIQUE` (`Medidas_Protetivas` ASC),
-  UNIQUE INDEX `Situação_UNIQUE` (`Situação` ASC),
-  UNIQUE INDEX `Email_Criança_UNIQUE` (`Email_Criança` ASC),
-  UNIQUE INDEX `Guardião_UNIQUE` (`Guardião` ASC),
-  UNIQUE INDEX `Defensor_UNIQUE` (`Defensor` ASC),
-  INDEX `Intérprete_idx` (`Intérprete` ASC),
-  CONSTRAINT `Entrada`
-    FOREIGN KEY (`Entrada`)
-    REFERENCES `mydb`.`Entrada` (`idEntrada`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Situação`
-    FOREIGN KEY (`Situação`)
-    REFERENCES `mydb`.`Situação` (`idSituação`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Medidas_Protetivas`
-    FOREIGN KEY (`Medidas_Protetivas`)
-    REFERENCES `mydb`.`Medidas_Protetivas` (`idMedidas_Protetivas`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Guardião`
-    FOREIGN KEY (`Guardião`)
-    REFERENCES `mydb`.`Guardião` (`Documento_Guardião`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Defensor`
-    FOREIGN KEY (`Defensor`)
-    REFERENCES `mydb`.`Defensor` (`idDefensor`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `Intérprete`
-    FOREIGN KEY (`Intérprete`)
-    REFERENCES `mydb`.`Intérprete` (`Doc_Interprete`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    Documento              varchar(45)  not null
+        primary key,
+    Nome                   varchar(150) not null,
+    Data_de_Nascimento     datetime     not null,
+    Genero                 varchar(1)   not null,
+    Nacionalidade          varchar(45)  not null,
+    Local_Nasc             varchar(45)  not null,
+    Escolaridade           varchar(45)  not null,
+    Endereço_origem        varchar(45)  not null,
+    Endereço_atual         varchar(45)  not null,
+    Telefone_criança       int(12)      null,
+    Passaporte             varchar(45)  not null,
+    Certidão_de_Nascimento varchar(45)  not null,
+    Data_de_Cadastro       datetime     not null,
+    Mae_viva               varchar(45)  not null,
+    Pai_Vivo               varchar(45)  not null,
+    Nome_mae               varchar(45)  null,
+    Nome_pai               varchar(45)  null,
+    Email_Criança          varchar(100) not null,
+    Entrada                int          not null,
+    Medidas_Protetivas     int          not null,
+    Situação               int          not null,
+    Guardião               varchar(100) not null,
+    Defensor               int          not null,
+    Intérprete             varchar(100) not null,
+    Residencia_mae         varchar(100) null,
+    Residencia_pai         varchar(100) null,
+    constraint Defensor_UNIQUE
+        unique (Defensor),
+    constraint Documento_UNIQUE
+        unique (Documento),
+    constraint Email_Criança_UNIQUE
+        unique (Email_Criança),
+    constraint Entrada_UNIQUE
+        unique (Entrada),
+    constraint Guardião_UNIQUE
+        unique (Guardião),
+    constraint Medida_Protetica_UNIQUE
+        unique (Medidas_Protetivas),
+    constraint Medidas_Protetivas_UNIQUE
+        unique (Medidas_Protetivas),
+    constraint Situação_UNIQUE
+        unique (Situação),
+    constraint Defensor
+        foreign key (Defensor) references defensor (idDefensor),
+    constraint Entrada
+        foreign key (Entrada) references entrada (idEntrada),
+    constraint Guardião
+        foreign key (Guardião) references guardião (Documento_Guardião),
+    constraint Intérprete
+        foreign key (Intérprete) references intérprete (Doc_Interprete),
+    constraint Medidas_Protetivas
+        foreign key (Medidas_Protetivas) references medidas_protetivas (idMedidas_Protetivas),
+    constraint Situação
+        foreign key (Situação) references situação (idSituação))
 ENGINE = InnoDB;
+
+create index if not exists Entrada_idx
+    on `criança/adolecente` (Entrada);
+
+create index if not exists Intérprete_idx
+    on `criança/adolecente` (Intérprete);
+
+create index if not exists Situação_idx
+    on `criança/adolecente` (Situação);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
