@@ -30,6 +30,7 @@ create table if not exists `mydb`. entrada
     Transporte_Detalhe varchar(45) not null,
     Data_Reconhecido   datetime    not null,
     Pais_Reconhecido   varchar(45) not null,
+    Criança            varchar(45) null,
     constraint idEntrada_UNIQUE
         unique (idEntrada))
 ENGINE = InnoDB;
@@ -40,21 +41,23 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 create table if not exists `mydb`. situação
 (
-    idSituação           int auto_increment
+    idSituação          int auto_increment
         primary key,
-    Vida_Antes           varchar(800) not null,
-    Razão_Saida          varchar(800) not null,
-    Saida_Forçada        varchar(500) not null,
-    Motivo_Saida_forcada varchar(45)  null,
-    Ajuda                varchar(500) not null,
-    Acompanhado          varchar(500) not null,
-    Entrada_Sozinho      varchar(500) not null,
-    Retorno              varchar(500) not null,
-    Medo_Retorno         varchar(500) not null,
-    Parente_Pais_Origem  varchar(45)  not null,
-    Saude_Mental         varchar(800) not null,
-    Idade_Mental         varchar(800) not null,
-    Saude_Fisica         varchar(800) not null,
+    Vida_Antes          varchar(800) not null,
+    Razão_Saida         varchar(800) not null,
+    Saida_Forçada       varchar(500) not null,
+    Permanencia         varchar(45)  null,
+    Ajuda               varchar(500) not null,
+    Acompanhado         varchar(500) not null,
+    Entrada_Sozinho     varchar(500) not null,
+    Retorno             varchar(500) not null,
+    Medo_Retorno        varchar(500) not null,
+    Parente_Pais_Origem varchar(45)  not null,
+    Saude_Mental        varchar(800) not null,
+    Idade_Mental        varchar(800) not null,
+    Saude_Fisica        varchar(800) not null,
+    Parente_Brasil      varchar(100) null,
+    Criança             varchar(45)  null,
     constraint idSituação_UNIQUE
         unique (idSituação))
 ENGINE = InnoDB;
@@ -69,6 +72,8 @@ create table if not exists `mydb`. documentos
         primary key,
     Descrição    varchar(45) not null,
     Numero       varchar(45) not null,
+    constraint Numero
+        unique (Numero),
     constraint idDocumentos_UNIQUE
         unique (idDocumentos)
 )
@@ -81,38 +86,29 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Medidas_Protetivas` (
     idMedidas_Protetivas int auto_increment
         primary key,
-    Endereço_Inst        int          not null,
+    Endereço_Inst        varchar(100) not null,
     Nome_Inst            varchar(45)  not null,
     Nome_Respo_Inst      varchar(45)  not null,
     Nome_Respo           varchar(45)  not null,
-    Document_Respo       int          not null,
+    Documento_Respo      int          not null,
     Genero               varchar(45)  not null,
     Endereço_respo       varchar(100) not null,
     Parentesco           varchar(45)  not null,
     Vinculo              varchar(45)  not null,
     Nacionalidade        varchar(45)  not null,
     Data_Nascimento      datetime     null,
+    Vara                 varchar(100) null,
+    Criança              varchar(45)  null,
     constraint idMedidas_Protetivas_UNIQUE
         unique (idMedidas_Protetivas),
     constraint documento_resposavel
-        foreign key (Document_Respo) references documentos (idDocumentos)
+        foreign key (Documento_Respo) references documentos (idDocumentos)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 create index if not exists Documento_Respo_idx
     on medidas_protetivas (Document_Respo);
-
--- -----------------------------------------------------
--- Table `mydb`.`Guardião`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Guardião` (
-  `ID_Guardiao` INT NOT NULL,
-  `Documento_Guardião` VARCHAR(45) NOT NULL,
-  `Nome_Gauardião` VARCHAR(45) NULL,
-  PRIMARY KEY (`Documento_Guardião`),
-  UNIQUE INDEX `ID_Guardiao_UNIQUE` (`ID_Guardiao` ASC))
-ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -154,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
         primary key,
     Nome                   varchar(150) not null,
     Data_de_Nascimento     datetime     not null,
-    Genero                 varchar(1)   not null,
+    Genero                 varchar(100) not null,
     Nacionalidade          varchar(45)  not null,
     Local_Nasc             varchar(45)  not null,
     Escolaridade           varchar(45)  not null,
@@ -168,11 +164,10 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
     Pai_Vivo               varchar(45)  not null,
     Nome_mae               varchar(45)  null,
     Nome_pai               varchar(45)  null,
-    Email_Criança          varchar(100) not null,
+    Email_Crianca          varchar(100) not null,
     Entrada                int          not null,
     Medidas_Protetivas     int          not null,
     Situação               int          not null,
-    Guardião               varchar(100) not null,
     Defensor               int          not null,
     Intérprete             varchar(100) not null,
     Residencia_mae         varchar(100) null,
@@ -182,11 +177,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
     constraint Documento_UNIQUE
         unique (Documento),
     constraint Email_Criança_UNIQUE
-        unique (Email_Criança),
+        unique (Email_Crianca),
     constraint Entrada_UNIQUE
         unique (Entrada),
-    constraint Guardião_UNIQUE
-        unique (Guardião),
     constraint Medida_Protetica_UNIQUE
         unique (Medidas_Protetivas),
     constraint Medidas_Protetivas_UNIQUE
@@ -197,8 +190,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
         foreign key (Defensor) references defensor (idDefensor),
     constraint Entrada
         foreign key (Entrada) references entrada (idEntrada),
-    constraint Guardião
-        foreign key (Guardião) references guardião (Documento_Guardião),
     constraint Intérprete
         foreign key (Intérprete) references intérprete (Doc_Interprete),
     constraint Medidas_Protetivas
