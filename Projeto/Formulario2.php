@@ -29,7 +29,6 @@
         $Identidade_pessoa              = $_POST['Identidade_Pessoa'];
         $Passaporte_pessoa              = $_POST['Passaporte_Pessoa'];
         $Certidao_pessoa                = $_POST['certidão'];
-        $Genero_pessoa                  = $_POST['gênero_pessoa'];
         $Mae_pessoa                     = $_POST['Mãe_Viva'];
         $Nome_mae_pessoa                = $_POST['Text_Mae_Viva'];
         $Pai_pessoa                     = $_POST['Pai_Vivo'];
@@ -51,36 +50,38 @@
         //Variáveis tabela Situacão
         $Vida_antes                = $_POST['Vida_antes'];
         $Razão_Saida               = $_POST['Razão_Saida'];
-        $Txt_Situacão_Pessoa       = $_POST['Situacão_Pessoa'];
-        $situação_pessoa           = $_POST['Txt_Situacão_Pessoa'];
-        $Txt_Alguem_Pessoa         = $_POST['Alguem_Pessoa'];
-        $Txt_Viagem_Pessoa         = $_POST['Viagem_Pessoa'];
-        $Txt_Entrou_Pessoa         = $_POST['Entrou_Pessoa'];
-        $Txt_Retornar_Pessoa       = $_POST['Retornar_Pessoa'];
+        $Txt_Situacão_Pessoa       = $_POST['Txt_Situacão_Pessoa'];
+        $Txt_Alguem_Pessoa         = $_POST['Txt_Alguem_Pessoa'];
+        $Txt_Viagem_Pessoa         = $_POST['Txt_Viagem_Pessoa'];
+        $Txt_Entrou_Pessoa         = $_POST['Txt_Entrou_Pessoa'];
+        $Txt_Retornar_Pessoa       = $_POST['Txt_Retornar_Pessoa'];
+        $Txt_Permancer_Pessoa      = $_POST['Txt_Permancer_Pessoa'];
         $Txt_Medo_Pessoa           = $_POST['Txt_Medo_Pessoa'];
         $Parentes_Origem_Pessoa    = $_POST['Parentes_Origem_Pessoa'];
+        $Parentes_Brasil_Pessoa    = $_POST['Parentes_Brasil_Pessoa'];
         $Txt_Mental_Avaliacão      = $_POST['Txt_Mental_Avaliacão'];
         $Txt_Fisico_Avaliacão      = $_POST['Txt_Fisico_Avaliacão'];
-        $Txt_Idade_Avaliacão       = $_POST['Txt_Idade_Avaliacão '];
+        $Txt_Idade_Avaliacão       = $_POST['Txt_Idade_Avaliacão'];
 
     ////Variáveis tabela Medidas_Protetivas
 
         $Instituicão_Protetivas                 = $_POST['Instituicão_Protetivas'];
-        $Endereco_Protetivas                    = $_POST['Endereco_Protetivas'];
-        $Responsável_Protetivas                 = $_POST['Responsável_Protetivas'];
+        $Endereco_Inst_Protetivas               = $_POST['Endereco_Inst_Protetivas'];
         $Vara_Protetivas                        = $_POST['Vara_Protetivas'];
+        $Responsavel_Inst_Protetivas            = $_POST['Responsavel_Inst_Protetivas'];
         $Responsavel_Protetivas                 = $_POST['Responsavel_Protetivas'];
-        $Text_Documento_Protetivas              = $_POST['Text_Documento_Protetivas'];
         $Gênero_Protetivas                      = $_POST['Gênero_Protetivas'];
         $Responsavel_Nacionalidade_Protetivas   = $_POST['Responsavel_Nacionalidade_Protetivas'];
         $Responsavel_Endereco_Protetivas        = $_POST['Responsavel_Endereco_Protetivas'];
         $Responsavel_Parentesco_Protetivas      = $_POST['Responsavel_Parentesco_Protetivas'];
-        $Text_Documento_Protetivas              = $_POST['Text_Documento_Protetivas'];
-        //$Text_Copia_Documento_Protetivas        = $_POST['Text_Copia_Documento_Protetivas'];
+        $Documento_Protetivas                    = $_POST['Documento_Protetivas'];
+        $Text_Outro_Documento_Protetivas        = $_POST['Text_Documento_Protetivas'];
+        $Text_Copia_Documento_Protetivas        = $_POST['Text_Copia_Documento_Protetivas'];
         $Numero_Documento_Protetivas            = $_POST['Numero_Documento_Protetivas'];
         $Responsavel_Nascimento_Protetivas      = $_POST['Responsavel_Nascimento_Protetivas'];
+        $Vinculo_Protetivas                     =$_POST['Vinculo_Protetivas'];
        
-        //
+    ////Variáveis tabela Intérprete
         $Nome_Interprete           = $_POST['Nome_Interprete'];
         $Documento_Interprete      = $_POST['Documento_Interprete'];
         $Endereço_Interprete       = $_POST['Endereço_Interprete'];
@@ -92,40 +93,88 @@
 
         //chamada do banco de dados
 
-        //Defensor
-        $result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def) 
-        VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_Defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
+        //Defensor - OK
+        //$result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def) 
+        //VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_Defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
 
-        //DADOS DA CRIANÇA OU ADOLESCENTE
-        //$result = mysqli_query($conexao, "INSERT INTO criança/adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereço_origem,Endereço_atual,Telefone_criança,Passaporte,Certidão_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Residencia_mae,Residencia_pai) 
-        //VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereço_antigo_pessoa','$Endereço_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa','$Data_de_Cadastro','$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa')");
-         //** Problema no foreign key - DAR UMA OLHADA **/
+        //documento - OK
+        $Decricao_Documento = $Documento_Protetivas;
+        if($Documento_Protetivas == "DO"){
+            $Decricao_Documento = $Text_Outro_Documento_Protetivas;
+        }elseif ($Documento_Protetivas == "DCO") {
+            $Decricao_Documento = $Text_Copia_Documento_Protetivas;
+        }elseif($Documento_Protetivas == "NENHUM DOCUMENTO"){
+            $Numero_Documento_Protetivas = "N/A";
+        }   
 
 
-        //documento
-        //$result = mysqli_query($conexao, "INSERT INTO documento(Descrição, Numero) 
-        //VALUES ('$Text_Documento_Protetivas','$Numero_Documento_Protetivas')");
+        //$result = mysqli_query($conexao, "INSERT INTO documentos(Descrição, Numero) 
+        //VALUES ('$Decricao_Documento','$Numero_Documento_Protetivas')");
 
 
-        //entrada
-        $result = mysqli_query($conexao, "INSERT INTO entrada(Cidade_Saida,Data_Saida,Cidade_Chegada,Data_Chegada,Transporte,Transporte_Detalhe,Data_Reconhecido,Pais_Reconhecido) 
-        VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa')");
+        //entrada - OK
+        //$result = mysqli_query($conexao, "INSERT INTO entrada(Cidade_Saida,Data_Saida,Cidade_Chegada,Data_Chegada,Transporte,Transporte_Detalhe,Data_Reconhecido,Pais_Reconhecido,Criança) 
+        //VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa','$Identidade_pessoa')");
         //FUNcÃO ACIMA FUNCIONANDO, trocar para as demais inserts
 
-        //SITUAcÃO DA CRIANcA OU ADOLESCENTE
-        //id trocar para auto increment no Bd
-        //$result = mysqli_query($conexao, "INSERT INTO situação(Vida_Antes,Razão_Saida,Saida_Forçada,Motivo_Saida_forcada,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica) 
-        //VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$situação_pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Fisico_Avaliacão','$Txt_Idade_Avaliacão')");
+        //SITUAÇÃO DA CRIANcA OU ADOLESCENTE - ok
+        //$result = mysqli_query($conexao, "INSERT INTO situação(Vida_Antes,Razão_Saida,Saida_Forçada,Permanencia,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica,Parente_Brasil,Criança) 
+        //VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$Txt_Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Identidade_pessoa')");
 
-        //Medidas Protetivas
-        //$result = mysqli_query($conexao, "INSERT INTO Situação(Vida_Antes,Razão_Saida,Saida_Forçada,Motivo_Saida_forcada,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica) 
-        //VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$situação_pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Fisico_Avaliacão','$Txt_Idade_Avaliacão')");
-        //$result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereço_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereço_Respo,Parentesco,Vinculo,Nacionalidade,Data_Nascimento) 
-        //VALUES ('$Endereco_Protetivas','$Instituicão_Protetivas','$Responsável_Protetivas','$Responsavel_Protetivas','$Documento_Protetivas','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_prospectivas','$Responsavel_Nacionalidade_Protetivas','$Responsavel_Nascimento_Protetivas')");
+        //Medidas Protetivas - OK
+        //$query = mysqli_query($conexao, "SELECT idDocumentos FROM documentos WHERE Numero = '$Numero_Documento_Protetivas'");
+        
+        //while ($row = mysqli_fetch_assoc($query )) {            
+        //   $Id_Documento = $row['idDocumentos'];
+        //    settype($Id_Documento, "integer");
+        //}
+        
+        //$result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereço_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereço_Respo,Parentesco,Vinculo,Nacionalidade,Data_Nascimento,Vara,Criança) 
+        //VALUES ('$Endereco_Inst_Protetivas','$Instituicão_Protetivas','$Responsavel_Inst_Protetivas','$Responsavel_Protetivas','$Id_Documento','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_Protetivas','$Responsavel_Nacionalidade_Protetivas','$Responsavel_Nascimento_Protetivas','$Vara_Protetivas',$Identidade_pessoa')");
 
-        //IDENTIFICAÇÃO DO INTÉRPRETE//
-        $result = mysqli_query($conexao, "INSERT INTO Intérprete(Doc_interprete,Nome,Endereço_Int,Contato_Int,Telefone_Int) 
-        VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete')");
+        //IDENTIFICAÇÃO DO INTÉRPRETE - OK
+        //$result = mysqli_query($conexao, "INSERT INTO Intérprete(Doc_interprete,Nome,Endereço_Int,Contato_Int,Telefone_Int) 
+        //VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete')");
+
+         //DADOS DA CRIANÇA OU ADOLESCENTE
+        if($Mae_pessoa == "NÃO"){
+            $Nome_mae_pessoa = "N/A";
+            $Text_Residencia_Mae_Pessoa = "N/A";
+        }
+        if($Pai_pessoa == "NÃO") {
+           $Nome_pai_pessoa = "N/A";
+           $Text_Residencia_Pai_Pessoa = "N/A";
+        }
+
+        $query = mysqli_query($conexao, "SELECT idEntrada FROM entrada WHERE Criança = '$Identidade_pessoa'");
+        
+        while ($row = mysqli_fetch_assoc($query)) {            
+            $Entrada = $row['idEntrada'];
+            settype($Entrada, "integer");
+        }
+        $query = mysqli_query($conexao, "SELECT idMedidas_Protetivas FROM medidas_protetivas WHERE Criança = '$Identidade_pessoa'");
+        
+        while ($row = mysqli_fetch_assoc($query)) {            
+            $Medidas_Protetivas = $row['idMedidas_Protetivas'];
+            settype($Medidas_Protetivas, "integer");
+        }
+
+        $query = mysqli_query($conexao, "SELECT idSituação FROM situação WHERE Criança = '$Identidade_pessoa'");
+        
+        while ($row = mysqli_fetch_assoc($query)) {            
+            $Situacao = $row['idSituação'];
+            settype($Situacao, "integer");
+        }
+
+        $query = mysqli_query($conexao, "SELECT idDefensor FROM defensor WHERE Doc_Defensor = '$Documento_defensor'");
+        
+        while ($row = mysqli_fetch_assoc($query)) {            
+            $Defensor = $row['idDefensor'];
+            settype($Defensor, "integer");
+        }
+
+        $result = mysqli_query($conexao, "INSERT INTO criança_adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereço_origem,Endereço_atual,Telefone_criança,Passaporte,Certidão_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Email_Crianca,Entrada,Medidas_Protetivas,Situação,Defensor,Intérprete,Residencia_mae,Residencia_pai) 
+        VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa','$Data_de_Cadastro','$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa')");
         
 
     }      
@@ -149,7 +198,7 @@
         .box{
             color: white;
             position: absolute;
-            top: 350%;
+            top: 400%;
             left: 50%;
             transform: translate(-50%,-50%);
             background-color: rgba(0, 0, 0, 0.6);
@@ -166,6 +215,10 @@
             text-align: center;
             background-color: dodgerblue;
             border-radius: 8px;
+        }
+        input[type = "date"]::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            filter: invert(1)  ;
         }
         .inputBox{
             position: relative;
@@ -227,40 +280,41 @@
 
                 <h1> DADOS DO DEFENSOR PÚBLICO FEDERAL </h1>
                 <div class="inputBox">
-                    <input type="text" name="Nome_Defensor" id="Nome_Defensor" class="inputUser" required>
+                    <input type="text" name="Nome_Defensor" id="Nome_Defensor" class="inputUser">
                     <label for="Nome_Defensor" class="labelInput">Nome completo do defensor:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Documento_Defensor" id="Documento_Defensor" class="inputUser" required>
+                    <input type="text" name="Documento_Defensor" id="Documento_Defensor" class="inputUser">
                     <label for="Documento_Defensor" class="labelInput">Documento de Identificacão:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="txt_Cargo_Defensor" id="Cargo_Defensor" class="inputUser" required>
+                    <input type="text" name="txt_Cargo_Defensor" id="Cargo_Defensor" class="inputUser">
                     <label for="Cargo_Defensor" class="labelInput">Cargo do Defensor:</label>
                 </div>
                 <br><br>
+
                 <div class="inputBox">
-                    <input type="text" name="Endereco_Defensor" id="Endereco_Defensor" class="inputUser" required>
+                    <input type="text" name="Endereco_Defensor" id="Endereco_Defensor" class="inputUser">
                     <label for="Endereco_Defensor" class="labelInput">Endereco do Defensor:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="text" name="Cidade/UF_Defensor"id="Cidade/UF_Defensor" class="inputUser" required>
+                    <input type="text" name="Cidade/UF_Defensor"id="Cidade/UF_Defensor" class="inputUser">
                     <label for="Cidade/UF_Defensor" class="labelInput">Cidade/UF_Defensor:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="tel" name="Telefone_Defensor" id="Telefone_Defensor" class="inputUser" required>
+                    <input type="tel" name="Telefone_Defensor" id="Telefone_Defensor" class="inputUser">
                     <label for="Telefone_Defensor" class="labelInput">Telefone:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="text" name="e-mail_Defensor" id="e-mail_Defensor" class="inputUser" required>
+                    <input type="text" name="e-mail_Defensor" id="e-mail_Defensor" class="inputUser">
                     <label for="e-mail_Defensor" class="labelInput">Email:</label>
                 </div>    
                 <br>
@@ -270,14 +324,14 @@
                 <h2> DADOS DA CRIANÇA OU ADOLESCENTE </h2>
                  
                 <div class="inputBox">
-                <input type="text" name="Nome_Pessoa" id="Nome_Pessoa" class="inputUser" >
+                <input type="text" name="Nome_Pessoa" id="Nome_Pessoa" class="inputUser" required>
                     <label for="Nome_Pessoa" class="labelInput">Nome Completo:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                     <label for="Nascimento_Pessoa"><b>Data de Nascimento:</b></label>
-                    <input type="date" name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser"  >
+                    <input type="date" name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser"  required>
                 </div>
 
                 <div class="field radiobox">            
@@ -290,49 +344,55 @@
                 <br>
 
                 <div class="inputBox">
-                <input type="text" name="Nacionalidade_Pessoa" id="Nacionalidade_Pessoa" class="inputUser" >
+                <input type="text" name="Nacionalidade_Pessoa" id="Nacionalidade_Pessoa" class="inputUser" required>
                     <label for="Nacionalidade_Pessoa" class="labelInput">Nacionalidade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="País_Cid_Pessoa" id="País_Cid_Pessoa" class="inputUser" >
+                <input type="text" name="País_Cid_Pessoa" id="País_Cid_Pessoa" class="inputUser" required>
                     <label for="País_Cid_Pessoa" class="labelInput">País e cidade de nascimento:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Escolaridade_Pessoa" id="Escolaridade_Pessoa" class="inputUser" >
+                <input type="text" name="Escolaridade_Pessoa" id="Escolaridade_Pessoa" class="inputUser"required >
                     <label for="Escolaridade_Pessoa" class="labelInput">Escolaridade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Endereco_Atual_Pessoa" id="Endereco_Atual_Pessoa" class="inputUser" >
+                <input type="text" name="Endereco_Antigo_Pessoa" id="Endereco_Antigo_Pessoa" class="inputUser" required>
+                    <label for="Endereco_Antigo_Pessoa" class="labelInput">Endereço no pais de origem:</label>
+                </div>
+                <br><br>
+
+                <div class="inputBox">
+                <input type="text" name="Endereco_Atual_Pessoa" id="Endereco_Atual_Pessoa" class="inputUser" required>
                     <label for="Endereco_Atual_Pessoa" class="labelInput">Endereco atual:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Telefone_Pessoa" id="Telefone_Pessoa" class="inputUser" >
+                <input type="text" name="Telefone_Pessoa" id="Telefone_Pessoa" class="inputUser"required >
                     <label for="Telefone_Pessoa" class="labelInput">Telefone:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="e-mail_Pessoa" id="e-mail_Pessoa" class="inputUser" >
+                <input type="text" name="e-mail_Pessoa" id="e-mail_Pessoa" class="inputUser" required>
                     <label for="e-mail_Pessoa" class="labelInput">E-mail:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Identidade_Pessoa" id="Identidade_Pessoa" class="inputUser" >
+                <input type="text" name="Identidade_Pessoa" id="Identidade_Pessoa" class="inputUser" required>
                     <label for="Identidade_Pessoa" class="labelInput">Cédula de identidade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Passaporte_Pessoa" id="Passaporte_Pessoa" class="inputUser" >
+                <input type="text" name="Passaporte_Pessoa" id="Passaporte_Pessoa" class="inputUser" required>
                     <label for="Passaporte_Pessoa" class="labelInput">Passaporte:</label>
                 </div>
 
@@ -351,7 +411,7 @@
 
                 <div class="inputBox">
                     <label for="data_cadastro"><b>Data de Cadastro</b></label>
-                    <input type="date" name="data_cadastro id="Nascimento_Pessoa" class="inputUser"  >
+                    <input type="date" name="data_cadastro" id="Nascimento_Pessoa" class="inputUser" required >
                 </div>
 
                 <div class="field radiobox">            
@@ -386,41 +446,41 @@
                 <h2> Circunstâncias de entrada no Brasil </h2>
 
                 <div class="inputBox">
-                    <input type="text" name="Cidade_Saida_Pessoa" id="Cidade_Saida_Pessoa" class="inputUser" required>
+                    <input type="text" name="Cidade_Saida_Pessoa" id="Cidade_Saida_Pessoa" class="inputUser">
                     <label for="Cidade_Saida_Pessoa" class="labelInput">Cidade de saída:</label>
                 </div>
 
                 <br><br>
                 <div class="inputBox">
                     <label for="Data_Saida_Pessoa"><b>Data de Saida:</b></label>
-                    <input type="date" name="Data_Saida_Pessoa" id="Data_Saida_Pessoa" class="inputUser"  required>
+                    <input type="date" name="Data_Saida_Pessoa" id="Data_Saida_Pessoa"class="inputUser">
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="text" name="Cidade_Chegada_Pessoa" id="Cidade_Chegada_Pessoa" class="inputUser" required>
+                    <input type="text" name="Cidade_Chegada_Pessoa" id="Cidade_Chegada_Pessoa" class="inputUser">
                     <label for="Cidade_Chegada_Pessoa" class="labelInput">Cidade de chegada no Brasil:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                     <label for="Data_Chegada_Pessoa"><b>Data de Chegada ao Brasil:</b></label>
-                    <input type="date" name="Data_Chegada_Pessoa" id="Data_Chegada_Pessoa" class="inputUser" required>
+                    <input type="date" name="Data_Chegada_Pessoa" id="Data_Chegada_Pessoa" class="inputUser">
                 <br><br>
 
                 <div class="field radiobox">
                     <label>Meio de transporte: </label>
-                    <input type="radio" name="Meio_Transporte" id="Transporte_Aereo" value="Aereo"><label for="Aéreo">aéreo </label>
+                    <input type="radio" name="Meio_Transporte" id="Transporte_Aereo" value="Aéreo"><label for="Aéreo">aéreo </label>
                     <input type="radio" name="Meio_Transporte" id="Transporte_Marítimo" value="Marítimo"><label for="Marítimo">marítimo </label>
                     <input type="radio" name="Meio_Transporte" id="Terrestre" value="Terrestre"><label for="Terrestre">Terrestre </label>
                     <br><br>
                     <label for="Transporte_Detalhado_Pessoa">Detalhes do Transporte:</label>
-                    <input type="text" name="Transporte_Detalhado_Pessoa" id="Transporte_Detalhado_Pessoa"  class="inputUser" required>
+                    <input type="text" name="Transporte_Detalhado_Pessoa" id="Transporte_Detalhado_Pessoa"  class="inputUser">
                     <br><br>
                 </div>
 
                 <div class="inputBox">
                     <label for="Data_Reconhecido_Pessoa"><b>Data em que foi reconhecido:</b></label>
-                    <input type="date" name="Data_Reconhecido_Pessoa" id="Data_Reconhecido_Pessoa" class="inputUser"  required>
+                    <input type="date" name="Data_Reconhecido_Pessoa" id="Data_Reconhecido_Pessoa"class="inputUser">
                 <br><br>
 
                 <div class="inputBox">
@@ -432,7 +492,7 @@
 
                 <!--- SITUAcÃO DA CRIANcA OU ADOLESCENTE--->
 
-                <h2> SITUAcÃO DA CRIANcA OU ADOLESCENTE </h2>
+                <h2> SITUAÇÃO DA CRIANÇA OU ADOLESCENTE </h2>
 
                 <div class="inputBox">
                     <textarea type="text" name="Vida_antes" id="Vida_antes" class="inputUser" ></textarea>
@@ -440,8 +500,8 @@
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <textarea type="text" name="Pais_ReconhecRazão_Saidaido_Pessoa" id="Razão_Saida" class="inputUser" ></textarea>
-                    <label for="Vida_antes" class="labelInput">Em que momento e por qual razão você deixou seu país e se separou de sua família?</label>
+                    <textarea type="text" name="Razão_Saida" id="Razão_Saida" class="inputUser" ></textarea>
+                    <label for="Razão_Saida" class="labelInput">Em que momento e por qual razão você deixou seu país e se separou de sua família?</label>
                 </div>
                 <br><br>
                 <div class="field radiobox">
@@ -457,7 +517,7 @@
                     <input type="radio" name="Alguem_Pessoa" id="Alguem_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Alguem_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Alguem_Pessoa" id="Alguem_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Alguem_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                    <!--<textarea type="text" name="Txt_Alguem_Pessoa" id="Txt_Alguem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea> falta adicionar campo no Bd-->
+                    <textarea type="text" name="Txt_Alguem_Pessoa" id="Txt_Alguem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -465,7 +525,7 @@
                     <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Viagem_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Viagem_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                   <!-- <textarea type="text" name="Txt_Viagem_Pessoa" id="Txt_Viagem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>  falta adicionar campo no Db-->                  
+                    <textarea type="text" name="Txt_Viagem_Pessoa" id="Txt_Viagem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>          
                 </div>
                 <br>
 
@@ -474,12 +534,30 @@
                     <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Entrou_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Entrou_Pessoa')"><label for="Não">Não </label>
                     <br><br>
-                    <!-- <textarea type="text" name="Txt_Entrou_Pessoa" id="Txt_Entrou_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea> falta adicionar campo no Db-->  
+                    <textarea type="text" name="Txt_Entrou_Pessoa" id="Txt_Entrou_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea> 
+                </div>
+                <br>
+
+                <div class="field radiobox">
+                    <label>Você tem intenção de peremanecer no Brasil?</label><br>
+                    <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Permancer_Pessoa')"><label for="Sim">Sim </label>
+                    <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Permancer_Pessoa')"><label for="Não">Não </label>
+                    <br><br>
+                    <textarea type="text" name="Txt_Permancer_Pessoa" id="Txt_Permancer_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
                 </div>
                 <br>
 
                 <div class="field radiobox">
                     <label>Você deseja retornar ao seu país?</label><br>
+                    <input type="radio" name="Retornar_Pessoa" id="Retornar_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Retornar_Pessoa')"><label for="Sim">Sim </label>
+                    <input type="radio" name="Retornar_Pessoa" id="Retornar_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Retornar_Pessoa')"><label for="Não">Não </label>
+                    <br><br>
+                    <textarea type="text" name="Txt_Retornar_Pessoa" id="Txt_Retornar_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
+                </div>
+                <br>
+
+                <div class="field radiobox">
+                    <label>Você tem medo de regressar ao seu país de origem?</label><br>
                     <input type="radio" name="Medo_Pessoa" id="Medo_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Medo_Pessoa')"><label for="Sim">Sim </label>
                     <input type="radio" name="Medo_Pessoa" id="Medo_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Medo_Pessoa')"><label for="Não">Não </label>
                     <br><br>
@@ -492,6 +570,13 @@
                     <label>Tem parentes (irmãos tios, primos e avós) no país de origem?</label><br>
                     <input type="radio" name="Parentes_Origem_Pessoa" id="Parentes_Origem_Pessoa_Sim" value="Sim" ><label for="Sim">Sim </label>
                     <input type="radio" name="Parentes_Origem_Pessoa" id="Parentes_Origem_Pessoa_Nao" value="Não" ><label for="Não">Não </label>
+                </div>
+                <br><br>
+
+                <div class="field radiobox">
+                    <label>Tem parentes (irmãos tios, primos e avós) no Brasoç?</label><br>
+                    <input type="radio" name="Parentes_Brasil_Pessoa" id="Parentes_Brasil_Pessoa_Sim" value="Sim" ><label for="Sim">Sim </label>
+                    <input type="radio" name="Parentes_Brasil_Pessoa" id="Parentes_Brasil_Pessoa_Nao" value="Não" ><label for="Não">Não </label>
                 </div>
                 <br><br>
 
@@ -509,22 +594,22 @@
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="text" name="Instituicão_Protetivas" id="Instituicão_Protetivas" class="inputUser" >
+                    <input type="text" name="Instituicão_Protetivas" id="Instituicão_Protetivas" class="inputUser"  >
                     <label for="Instituicão_Protetivas" class="labelInput">Instituicão de acolhimento:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Responsável_Protetivas" id="Responsável_Protetivas" class="inputUser" >
-                    <label for="Responsável_Protetivas" class="labelInput">Endereco:</label>
+                    <input type="text" name="Endereco_Inst_Protetivas" id="Endereco_Inst_Protetivas" class="inputUser"  >
+                    <label for="Endereco_Inst_Protetivas" class="labelInput">Endereco:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Cargo_Defensor" id="Cargo_Defensor" class="inputUser" >
-                    <label for="Cargo_Defensor" class="labelInput">Responsável:</label>
+                    <input type="text" name="Responsavel_Inst_Protetivas" id="Responsavel_Inst_Protetivas" class="inputUser"  >
+                    <label for="Responsavel_Inst_Protetivas" class="labelInput">Responsável:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Vara_Protetivas" id="Vara_Protetivas" class="inputUser" >
+                    <input type="text" name="Vara_Protetivas" id="Vara_Protetivas" class="inputUser"  >
                     <label for="Vara_Protetivas" class="labelInput">Vara da Infância e da Juventude:</label>
                 </div>
                 <br>
@@ -538,24 +623,24 @@
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="text" name="Responsavel_Protetivas" id="Responsavel_Protetivas" class="inputUser" >
+                    <input type="text" name="Responsavel_Protetivas" id="Responsavel_Protetivas" class="inputUser"  >
                     <label for="Responsavel_Protetivas" class="labelInput">Nome completo do responsável legal</label>
                 </div>
                 <br>
 
                 <div class="field radiobox">            
                 <p>Possui certidão de nascimento?</p>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCN" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DCN">CERTIDÃO DE NASCIMENTO </label> <br>                   
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCI" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DCI">CEDULA DE IDENTIDADE </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCCN" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DCCN">COPIA DA CERTIDÃO DE NASCIMENTO </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCCI" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DCCI">COPIA CÉDULA DE IDENTIDADE </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DDNV" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DDNV">DECLARAcÃO DE NASCIDO VIVO </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DPSMC" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DPSMC">PARECER SOCIAL DO MINISTERIO DA CIDADANIA </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DND" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DND">NENHUM DOCUMENTO </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CERTIDÃO DE NASCIMENTO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="CERTIDÃO DE NASCIMENTO" required>CERTIDÃO DE NASCIMENTO </label> <br>                   
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CEDULA DE IDENTIDADE" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="CEDULA DE IDENTIDADE" required>CEDULA DE IDENTIDADE </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA DA CERTIDÃO DE NASCIMENTO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="COPIA DA CERTIDÃO DE NASCIMENTO" required>COPIA DA CERTIDÃO DE NASCIMENTO </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA CÉDULA DE IDENTIDADE" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="COPIA CÉDULA DE IDENTIDADE" required>COPIA CÉDULA DE IDENTIDADE </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DECLARAÇÃO DE NASCIDO VIVO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DDDECLARAÇÃO DE NASCIDO VIVONV" required>DECLARAÇÃO DE NASCIDO VIVO </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="PARECER SOCIAL DO MINISTERIO DA CIDADANIA" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="PARECER SOCIAL DO MINISTERIO DA CIDADANIA" required>PARECER SOCIAL DO MINISTERIO DA CIDADANIA </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="NENHUM DOCUMENTO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="NENHUM DOCUMENTO " required>NENHUM DOCUMENTO </label><br>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DO" onclick="Preencher('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')"><label for="DO">OUTRO. </label><br>
                     <input type="text" name="Text_Documento_Protetivas" id="Text_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" ></input>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCO" onclick="Preencher('Text_Copia_Documento_Protetivas');Sumir('Text_Documento_Protetivas')"><label for="DCO">COPIA OUTRO </label><br>
-                    <input type="text" name="Text_Copia_Documento_Protetivas" id="Text_Copia_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" ></input>
+                    <input type="text" name="Text_Copia_Documento_Protetivas" id="Text_Copia_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser"></input>
                 </div>
                 <br>
 
@@ -575,25 +660,25 @@
                 
                 <div class="inputBox">
                     <label for="Responsavel_Nascimento_Protetivas">Data de Nascimento:</label>
-                    <input type="date" name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser"  >
+                    <input type="date" name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser"   >
                 </div>
                     <br><br>
                 
                 <div class="inputBox">
-                <input type="text" name="Responsavel_Nacionalidade_Protetivas" id="Responsavel_Nacionalidade_Protetivas" class="inputUser" >
+                    <input type="text" name="Responsavel_Nacionalidade_Protetivas" id="Responsavel_Nacionalidade_Protetivas" class="inputUser"  >
                     <label for="Responsavel_Nacionalidade_Protetivas" class="labelInput">Nacionalidade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Responsavel_Endereco_Protetivas" id="Responsavel_Endereco_Protetivas" class="inputUser" >
+                    <input type="text" name="Responsavel_Endereco_Protetivas" id="Responsavel_Endereco_Protetivas" class="inputUser"  >
                     <label for="Responsavel_Endereco_Protetivas" class="labelInput">Endereco:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="e-Responsavel_Parentesco_Protetivas" id="e-Responsavel_Parentesco_Protetivas" class="inputUser" >
-                    <label for="e-Responsavel_Parentesco_Protetivas" class="labelInput">Parentesco:</label>
+                    <input type="text" name="Responsavel_Parentesco_Protetivas" id="Responsavel_Parentesco_Protetivas" class="inputUser"  >
+                    <label for="Responsavel_Parentesco_Protetivas" class="labelInput">Parentesco:</label>
                 </div>
                 <br>
 
@@ -623,7 +708,7 @@
                     <input type="radio" name="Mental_Avaliacão" id="Mental_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Mental_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Mental_Avaliacão" id="Mental_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Mental_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Mental_Avaliacão" id="Txt_Mental_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
+                    <textarea type="text" name="Txt_Mental_Avaliacão" id="Txt_Mental_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser"></textarea>
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -632,7 +717,7 @@
                     <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Fisico_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Fisico_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Fisico_Avaliacão" id="Txt_Fisico_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
+                    <textarea type="text" name="Txt_Fisico_Avaliacão" id="Txt_Fisico_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser"></textarea>
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -642,7 +727,7 @@
                     <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Idade_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Idade_Avaliacão')"><label for="Anormal">Anormal </label>
                     <br><br>
-                    <textarea type="text" name="Txt_Idade_Avaliacão" id="Txt_Idade_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
+                    <textarea type="text" name="Txt_Idade_Avaliacão" id="Txt_Idade_Avaliacão" style="display:none" placeholder="Digite aqui" class="inputUser"></textarea>
                 </div>
                 <br>
 
@@ -702,7 +787,7 @@
                     <input type="radio" name="Proteção_Indicadores" id="Familiar_Proteção" value="ProteçãoF" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Familiar_Proteção" required>Medida de proteção por reunião familiar </label><br>
                     <input type="radio" name="Proteção_Indicadores" id="Trafico_Proteção" value="ProteçãoT" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Trafico_Proteção" required>Proteção como vítima de tráfico de pessoas; </label><br>
                     <input type="radio" name="Proteção_Indicadores" id="Outro_Proteção" value="ProteçãoO" onclick="Preencher('Txt_Proteção_Indicadores')"><label for="Outro_Proteção" required>Outra medida de regularização migratória ou proteção como refugiado ou apátrida, conforme a legislação em vigor. Informe: </label><br><br>
-                    <input type="text" name="Txt_Proteção_Indicadores" id="Txt_Proteção_Indicadores" style="display:none" placeholder="Digite aqui" class="inputUser" required></input>
+                    <input type="text" name="Txt_Proteção_Indicadores" id="Txt_Proteção_Indicadores" style="display:none" placeholder="Digite aqui" class="inputUser"></input>
                 </div>
                 <br>--->
 
@@ -712,28 +797,28 @@
 
                 <h2> IDENTIFICAÇÃO DO INTÉRPRETE </h2>
                 <div class="inputBox">
-                    <input type="text" name="Nome_Interprete" id="Nome_Interprete" class="inputUser" required>
+                    <input type="text" name="Nome_Interprete" id="Nome_Interprete" class="inputUser">
                     <label for="Nome_Interprete" class="labelInput">Nome Completo do Intérprete:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Documento_Interprete" id="Documento_Interprete" class="inputUser" required>
+                    <input type="text" name="Documento_Interprete" id="Documento_Interprete" class="inputUser">
                     <label for="Documento_Interprete" class="labelInput">Documento de Identificacão:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Endereço_Interprete" id="Endereço_Interprete" class="inputUser" required>
+                    <input type="text" name="Endereço_Interprete" id="Endereço_Interprete" class="inputUser">
                     <label for="Endereço_Interprete" class="labelInput">Endereço:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Telefone_Interprete" id="Endereco_Telefone_InterpreteDefensor" class="inputUser" required>
+                    <input type="text" name="Telefone_Interprete" id="Endereco_Telefone_InterpreteDefensor" class="inputUser">
                     <label for="Telefone_Interprete" class="labelInput">Telefone:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="text" name="e-mail_Interprete"id="e-mail_Interprete" class="inputUser" required>
+                    <input type="text" name="e-mail_Interprete"id="e-mail_Interprete" class="inputUser">
                     <label for="e-mail_Interprete" class="labelInput">E-mail:</label>
                 </div>
                 <br><br>

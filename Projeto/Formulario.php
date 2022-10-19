@@ -89,7 +89,7 @@
 
         //chamada do banco de dados
         include_once('config.php');
-
+        print('qweqfdadwe');    
         //$result = mysqli_query($conexao,"INSERT INTO Entrada(idEntrada,Cidade_saida,Cidade_Chegada,Data_Chegada,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");        
         $result = mysqli_query($conexao,"INSERT INTO Defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def) VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_defensor','$Endereço_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor')");
          //** Problema no foreign key - DAR UMA OLHADA **/
@@ -504,7 +504,7 @@
                     <input type="text" name="Instituição_Protetivas"  id="Instituição_Protetivas" placeholder="digite o Nome da Instituição de acolhimento:"/>
                 </div>
                 <div>
-                    <label for="Endereço_Protetivas">Endereço:</label><br>
+                    <label for="Endereço_Protetivas"></label><br>
                     <input type="text" name="Endereço_Protetivas" id="Endereço_Protetivas" placeholder="digite o Endereço:"/>
                 </div>
                 <div>
