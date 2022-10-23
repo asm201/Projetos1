@@ -53,13 +53,11 @@
             echo "<h1>Bem vindo <u>$logado</u></h1>"
         ?>
         <h1>O que deseja?</h1>
-        <input type="text" placeholder="Nome">
-        <input type="password" placeholder="Senha">
-        <br><br>
+        <br>
         <a href="cadastrar_Def.php">Cadastrar Novo Defensor/Interprete</a>
         <a href="formulario2.php">Cadastrar Criança</a>
         <a href="Dados.php">Visão dados internos</a> 
-        <a href="Power_Bi.php">Visão dos Dados</a>
+        <a href="powerBi.php">Visão dos Dados</a>
         <a href="Sair.php">Finalizar Sessão</a>
         <br><br>
 </body>

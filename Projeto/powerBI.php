@@ -4,43 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SITE | GN</title>
+    <link  rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"  crossorigin="anonymous">
+
+    <title>Dados Internos</title>
     <style>
         body{
             font-family: Arial, Helvetica, sans-serif;
             background: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
             text-align: center;
             color: white;
+        }  
+
+        .table-bg{
+            background-color: rgba(0,0,0,0.3)
+            border-radius: 15px 15px 0 0;
         }
-        .box{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 30px;
-            border-radius: 10px;
-        }
-        a{
-            text-decoration: none;
-            color: white;
-            border: 3px solid dodgerblue;
-            border-radius: 10px;
-            padding: 10px;
-        }
-        a:hover{
-            background-color: dodgerblue;
-        }
+
+        
     </style>
-</head>
-<body>
-        <h1>Bem vindo</h1>
-        <h1>O que deseja?</h1>
-        <input type="text" placeholder="Nome">
-        <input type="password" placeholder="Senha">
-        <br><br>
-        <a href="login.php">Login</a>
-        <a href="Power_Bi.php">Visão dos Dados</a>
-        <br><br>
-</body>
-</html>
+    </head>
+    <body>
+            <nav class="p-3 mb-2 bg-dark text-white">
+                <nav class="p-3 mb-2 bg-info text-white">
+                    <div class="container-fluid">
+                    <img src="SIS-DPU.png" title>
+                    <img src="DPU.png" title>
+                    <a href="Sair.php">Finalizar Sessão</a>
+                    </div>
+                </nav>
+            </nav>
+            <iframe title="Power Bi - com dados" width="1300" height="1060" src="https://app.powerbi.com/view?r=eyJrIjoiYjc2YmNjZmYtYTg4YS00ZjcyLWEwMGQtZDI0YjBkMjYzZmVlIiwidCI6IjkxODA4YmQwLTVjNmEtNDlkZi05M2RmLWZiNmE3NDBmNTk0ZCIsImMiOjh9&embedImagePlaceholder=true&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>    </body>
+    </html> 

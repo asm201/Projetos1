@@ -138,9 +138,9 @@
 
 
                 <div class="field radiobox">            
-                <p>Deseja Cadastrar Quem?</p>
-                    <input type="radio" name="Novo_Defensor" id="Novo_Defensor" onclick="Preencher('Form_Defensor');Sumir('Form_Interprete')" ><label for="ND">Novo Defensor.</label> <br>                   
-                    <input type="radio" name="Novo_Interprete" id="Novo_Interprete" onclick="Preencher('Form_Interprete');Sumir('Form_Defensor')"><label for="NI">Novo Interprete. </label><br> 
+                    <p>Deseja Cadastrar Quem?</p>
+                    <input type="radio" name="Cadastrar_Funcionario" id="Cadastrar_Funcionario" onclick="Preencher('Form_Defensor');Sumir('Form_Interprete')" ><label for="ND">Novo Defensor.</label> <br>                   
+                    <input type="radio" name="Cadastrar_Funcionario" id="Cadastrar_Funcionario" onclick="Preencher('Form_Interprete');Sumir('Form_Defensor')"><label for="NI">Novo Interprete. </label><br> 
                 </div>
 
                 <!----Defensor -->
@@ -185,7 +185,7 @@
                     </div>   
                     <br><br> 
                     <div class="inputBox">
-                        <input type="text" name="Senha_Defensor" id="Senha_Defensor" class="inputUser" required>
+                        <input type="password" name="Senha_Defensor" id="Senha_Defensor" class="inputUser" required>
                         <label for="Senha_Defensor" class="labelInput">Senha:</label>
                     </div>
                     <br><br> 

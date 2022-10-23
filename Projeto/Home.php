@@ -12,15 +12,6 @@
             text-align: center;
             color: white;
         }
-        .box{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 30px;
-            border-radius: 10px;
-        }
         a{
             text-decoration: none;
             color: white;
@@ -32,7 +23,8 @@
             background-color: dodgerblue;
         }
         
-        #submit{
+        .submit{
+            background-color: Transparent;
             text-decoration: none;
             color: white;
             border: 3px solid dodgerblue;
