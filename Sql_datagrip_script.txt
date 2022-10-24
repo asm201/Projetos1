@@ -8,7 +8,8 @@ create table if not exists defensor
     Endereço_Def varchar(100) not null,
     Cidade_UF    varchar(45)  not null,
     Contato_Def  varchar(100) not null,
-    Telefone_Def int(12)      not null
+    Telefone_Def int(12)      not null,
+    Status_Def   tinyint(1)   null
 );
 
 create table if not exists documentos
@@ -48,6 +49,7 @@ create table if not exists intérprete
     Endereço_Int   varchar(100) not null,
     Contato_Int    varchar(100) not null,
     Telefone_int   int(12)      not null,
+    Status_Int     tinyint(1)   null,
     constraint Doc_Interprete_UNIQUE
         unique (Doc_Interprete)
 );
@@ -129,6 +131,7 @@ create table if not exists criança_adolecente
     Intérprete             varchar(100) not null,
     Residencia_mae         varchar(100) null,
     Residencia_pai         varchar(100) null,
+    Status_Criança         tinyint(1)   null,
     constraint Defensor_UNIQUE
         unique (Defensor),
     constraint Documento_UNIQUE
