@@ -17,7 +17,7 @@
 
         if($result->num_rows > 0){
             
-            $sqlDelete = "DELETE * FROM defensor WHERE idDefensor=$idDefensor";
+            $sqlDelete = "UPDATE defensor SET Status_Def = 0 WHERE idDefensor=$idDefensor";
             $resultDelete = $conexao->query($sqlDelete);
 
         }
