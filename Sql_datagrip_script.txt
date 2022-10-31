@@ -82,23 +82,25 @@ create index if not exists Documento_Respo_idx
 
 create table if not exists situação
 (
-    idSituação          int auto_increment
+    idSituação                 int auto_increment
         primary key,
-    Vida_Antes          varchar(800) not null,
-    Razão_Saida         varchar(800) not null,
-    Saida_Forçada       varchar(500) not null,
-    Permanencia         varchar(45)  null,
-    Ajuda               varchar(500) not null,
-    Acompanhado         varchar(500) not null,
-    Entrada_Sozinho     varchar(500) not null,
-    Retorno             varchar(500) not null,
-    Medo_Retorno        varchar(500) not null,
-    Parente_Pais_Origem varchar(45)  not null,
-    Saude_Mental        varchar(800) not null,
-    Idade_Mental        varchar(800) not null,
-    Saude_Fisica        varchar(800) not null,
-    Parente_Brasil      varchar(100) null,
-    Criança             varchar(45)  null,
+    Vida_Antes                 varchar(800)  not null,
+    Razão_Saida                varchar(800)  not null,
+    Saida_Forçada              varchar(500)  not null,
+    Permanencia                varchar(45)   null,
+    Ajuda                      varchar(500)  not null,
+    Acompanhado                varchar(500)  not null,
+    Entrada_Sozinho            varchar(500)  not null,
+    Retorno                    varchar(500)  not null,
+    Medo_Retorno               varchar(500)  not null,
+    Parente_Pais_Origem        varchar(45)   not null,
+    Saude_Mental               varchar(800)  not null,
+    Idade_Mental               varchar(800)  not null,
+    Saude_Fisica               varchar(800)  not null,
+    Parente_Brasil             varchar(100)  null,
+    Criança                    varchar(45)   null,
+    Proteção_da_Criança        varchar(1500) null,
+    Solicitação_de_Indicadores varchar(1500) null,
     constraint idSituação_UNIQUE
         unique (idSituação)
 );
@@ -166,3 +168,4 @@ create index if not exists Intérprete_idx
 
 create index if not exists Situação_idx
     on criança_adolecente (Situação);
+
