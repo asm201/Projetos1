@@ -50,18 +50,31 @@
         //Variáveis tabela Situacão
         $Vida_antes                = $_POST['Vida_antes'];
         $Razão_Saida               = $_POST['Razão_Saida'];
+        $Situacão_Pessoa           = $_POST['Situacão_Pessoa'];
+        $Alguem_Pessoa             = $_POST['Alguem_Pessoa'];
+        $Viagem_Pessoa             = $_POST['Viagem_Pessoa'];
+        $Entrou_Pessoa             = $_POST['Entrou_Pessoa'];
+        $Permancer_Pessoa          = $_POST['Permancer_Pessoa'];
+        $Retornar_Pessoa           = $_POST['Retornar_Pessoa'];
+        $Medo_Pessoa               = $_POST['Medo_Pessoa'];
         $Txt_Situacão_Pessoa       = $_POST['Txt_Situacão_Pessoa'];
         $Txt_Alguem_Pessoa         = $_POST['Txt_Alguem_Pessoa'];
         $Txt_Viagem_Pessoa         = $_POST['Txt_Viagem_Pessoa'];
         $Txt_Entrou_Pessoa         = $_POST['Txt_Entrou_Pessoa'];
         $Txt_Retornar_Pessoa       = $_POST['Txt_Retornar_Pessoa'];
-        $Txt_Permancer_Pessoa      = $_POST['Txt_Permancer_Pessoa'];
         $Txt_Medo_Pessoa           = $_POST['Txt_Medo_Pessoa'];
         $Parentes_Origem_Pessoa    = $_POST['Parentes_Origem_Pessoa'];
         $Parentes_Brasil_Pessoa    = $_POST['Parentes_Brasil_Pessoa'];
+        $Proteção_Indicadores      = $_POST['Proteção_Indicadores'];
+        $Mental_Avaliacão          = $_POST['Mental_Avaliacão'];
+        $Fisico_Avaliacão          = $_POST['Fisico_Avaliacão'];
+        $Idade_Avaliacão           = $_POST['Idade_Avaliacão'];
         $Txt_Mental_Avaliacão      = $_POST['Txt_Mental_Avaliacão'];
         $Txt_Fisico_Avaliacão      = $_POST['Txt_Fisico_Avaliacão'];
         $Txt_Idade_Avaliacão       = $_POST['Txt_Idade_Avaliacão'];
+        $Proteção_Indicadores      = $_POST['Proteção_Indicadores'];
+        $Aux_Proteção_Indicadores  = $_POST['Txt_Proteção_Indicadores'];
+        $Solicitação_Indicadores   = $_POST['Solicitação_Indicadores'];
 
     ////Variáveis tabela Medidas_Protetivas
 
@@ -120,8 +133,47 @@
 
 
         //SITUAÇÃO DA CRIANcA OU ADOLESCENTE - ok
-        $result = mysqli_query($conexao, "INSERT INTO situação(Vida_Antes,Razão_Saida,Saida_Forçada,Permanencia,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica,Parente_Brasil,Criança) 
-        VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$Txt_Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Identidade_pessoa')");
+        if($Situacão_Pessoa == "Não"){
+            $Txt_Situacão_Pessoa = "N/A";
+        }
+        if($Alguem_Pessoa == "Não") {
+            $Txt_Alguem_Pessoa = "N/A";
+        }
+        if($Viagem_Pessoa == "Não"){
+            $Txt_Viagem_Pessoa = "N/A";
+        }
+        if($Entrou_Pessoa == "Sim") {
+            $Txt_Entrou_Pessoa = "N/A";
+        }
+        if($Retornar_Pessoa == "Sim"){
+            $Txt_Retornar_Pessoa = "N/A";
+        }
+        if($Medo_Pessoa == "Não") {
+            $Txt_Medo_Pessoa = "N/A";
+        }
+
+        if($Proteção_Indicadores == "ProteçãoC"){
+            $Txt_Proteção_Indicadores = "Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança e do adolescente";
+        }elseif($Proteção_Indicadores == "ProteçãoF"){
+            $Txt_Proteção_Indicadores = "Medida de proteção por reunião familiar";
+        }elseif($Proteção_Indicadores == "ProteçãoT"){
+            $Txt_Proteção_Indicadores = "Proteção como vítima de tráfico de pessoas";
+        }elseif($Proteção_Indicadores == "ProteçãoO"){
+            $Txt_Proteção_Indicadores = $Aux_Proteção_Indicadores;
+        }
+
+        if($Mental_Avaliacão == "Normal") {
+            $Txt_Mental_Avaliacão = "N/A";
+        }
+        if($Fisico_Avaliacão == "Normal"){
+            $Txt_Fisico_Avaliacão = "N/A";
+        }
+        if($Idade_Avaliacão == "Normal") {
+            $Txt_Idade_Avaliacão = "N/A";
+        }
+
+        $result = mysqli_query($conexao, "INSERT INTO situação(Vida_Antes,Razão_Saida,Saida_Forçada,Permanencia,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica,Parente_Brasil,Proteção_da_Criança,'Solicitação_de_Indicadores',Criança) 
+        VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Txt_Proteção_Indicadores','$Solicitação_Indicadores',,'$Identidade_pessoa')");
 
         //Medidas Protetivas - OK
         $query = mysqli_query($conexao, "SELECT idDocumentos FROM documentos WHERE Numero = '$Numero_Documento_Protetivas'");
@@ -200,7 +252,7 @@
         .box{
             color: white;
             position: absolute;
-            top: 400%;
+            top: 450%;
             left: 50%;
             transform: translate(-50%,-50%);
             background-color: rgba(0, 0, 0, 0.6);
@@ -535,8 +587,8 @@
 
                 <div class="field radiobox">
                     <label>Você entrou no Brasil sozinho?</label><br>
-                    <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Entrou_Pessoa')"><label for="Sim">Sim </label>
-                    <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Entrou_Pessoa')"><label for="Não">Não </label>
+                    <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Sim" value="Sim" onclick="Sumir('Txt_Entrou_Pessoa')"><label for="Sim">Sim </label>
+                    <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Nao" value="Não" onclick="Preencher('Txt_Entrou_Pessoa')"><label for="Não">Não </label>
                     <br><br>
                     <textarea type="text" name="Txt_Entrou_Pessoa" id="Txt_Entrou_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea> 
                 </div>
@@ -544,17 +596,15 @@
 
                 <div class="field radiobox">
                     <label>Você tem intenção de peremanecer no Brasil?</label><br>
-                    <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Permancer_Pessoa')"><label for="Sim">Sim </label>
-                    <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Permancer_Pessoa')"><label for="Não">Não </label>
-                    <br><br>
-                    <textarea type="text" name="Txt_Permancer_Pessoa" id="Txt_Permancer_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
-                </div>
+                    <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Sim" value="Sim" ><label for="Sim">Sim </label>
+                    <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Nao" value="Não" ><label for="Não">Não </label>
+                 </div>
                 <br>
 
                 <div class="field radiobox">
                     <label>Você deseja retornar ao seu país?</label><br>
-                    <input type="radio" name="Retornar_Pessoa" id="Retornar_Pessoa_Sim" value="Sim" onclick="Preencher('Txt_Retornar_Pessoa')"><label for="Sim">Sim </label>
-                    <input type="radio" name="Retornar_Pessoa" id="Retornar_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Retornar_Pessoa')"><label for="Não">Não </label>
+                    <input type="radio" name="Retornar_Pessoa" id="Retornar_Pessoa_Sim" value="Sim" onclick="Sumir('Txt_Retornar_Pessoa')"><label for="Sim">Sim </label>
+                    <input type="radio" name="Retornar_Pessoa" id="Retornar_Pessoa_Nao" value="Não" onclick="Preencher('Txt_Retornar_Pessoa')"><label for="Não">Não </label>
                     <br><br>
                     <textarea type="text" name="Txt_Retornar_Pessoa" id="Txt_Retornar_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>
                 </div>
@@ -693,11 +743,28 @@
                     <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="NÃO" >
                     <label for="Vinculo_Protetivas_Nao">Não</label>
                 </div>
+                <br>
+                <div class="field radiobox">            
+                <p>Possíveis necessidades de proteção da criança ou adolescente:</p>
+                    <input type="radio" name="Proteção_Indicadores" id="Convivencia_Proteção" value="ProteçãoC" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Convivencia_Proteção" required>Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança e do adolescente; </label><br>
+                    <input type="radio" name="Proteção_Indicadores" id="Familiar_Proteção" value="ProteçãoF" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Familiar_Proteção" required>Medida de proteção por reunião familiar </label><br>
+                    <input type="radio" name="Proteção_Indicadores" id="Trafico_Proteção" value="ProteçãoT" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Trafico_Proteção" required>Proteção como vítima de tráfico de pessoas; </label><br>
+                    <input type="radio" name="Proteção_Indicadores" id="Outro_Proteção" value="ProteçãoO" onclick="Preencher('Txt_Proteção_Indicadores')"><label for="Outro_Proteção" required>Outra medida de regularização migratória ou proteção como refugiado ou apátrida, conforme a legislação em vigor. Informe: </label><br><br>
+                    <input type="text" name="Txt_Proteção_Indicadores" id="Txt_Proteção_Indicadores" style="display:none" placeholder="Digite aqui" class="inputUser"></input>
+                </div>
+                <br>
+                <div class="field radiobox">  
+                    <label for="Solicitação_Indicadores">Solicitação de:</label><br>
+                    <input type="radio" name="Solicitação_Indicadores" id="Temporaria_Indicadores" value="RESIDÊNCIA TEMPORÁRIA" ><label for="Temporaria_Indicadores" required>RESIDÊNCIA TEMPORÁRIA </label>
+                    <input type="radio" name="Solicitação_Indicadores" id="Refugiu_Indicadores" value="REFÚGIO"><label for="Refugiu_Indicadores" required>REFÚGIO </label>
+                    <input type="radio" name="Solicitação_Indicadores" id="Institucionalização_Indicadores" value="INSTITUCIONALIZAÇÃO" ><label for="Institucionalização_Indicadores" required>INSTITUCIONALIZAÇÃO </label>
+                    <input type="radio" name="Solicitação_Indicadores" id="Ingresso_temporario_Indicadores" value="INGRESSO TEMPORARIO" ><label for="Ingresso_temporario_Indicadores" required>INGRESSO TEMPORARIO </label>
+                </div>
                 <br><br>
 
                 <!--- AVALIAcÃO PRELIMINAR DA CRIANcA OU ADOLESCENTE --->
 
-                <h2> AVALIAcÃO PRELIMINAR DA CRIANcA OU ADOLESCENTE </h2>
+                <h2> AVALIAÇÃO PRELIMINAR DA CRIANcA OU ADOLESCENTE </h2>
                 
                 <label>Avaliacão de saúde mental (conduta): indique se a crianca ou adolescente apresenta pensamento confuso 
                     (ex. respostas frequentemente incoerentes ou contraditórias)/evidencia perda de contato com a realidade 
