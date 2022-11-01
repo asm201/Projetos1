@@ -98,9 +98,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Medidas_Protetivas` (
     Parentesco           varchar(45)  not null,
     Vinculo              varchar(45)  not null,
     Nacionalidade        varchar(45)  not null,
-    Data_Nascimento      datetime     not null,
-    Vara                 varchar(100) not null,
-    Criança              varchar(45)  not null,
+    Data_Nascimento      datetime     null,
+    Vara                 varchar(100) null,
+    Criança              varchar(45)  null,
     constraint idMedidas_Protetivas_UNIQUE
         unique (idMedidas_Protetivas),
     constraint documento_resposavel
@@ -119,14 +119,16 @@ create index if not exists Documento_Respo_idx
 CREATE TABLE IF NOT EXISTS `mydb`.`Defensor` (
     idDefensor   int auto_increment
         primary key,
-    Nome_Def     varchar(45)  not null,
-    Doc_Defensor varchar(100) not null,
-    Cargo        varchar(45)  not null,
-    Endereço_Def varchar(100) not null,
-    Cidade_UF    varchar(45)  not null,
-    Contato_Def  varchar(100) not null,
-    Telefone_Def int(12)      not null,
-    Status_Def   tinyint(1)   not null)
+    Nome_Def     varchar(45)          not null,
+    Doc_Defensor varchar(100)         not null,
+    Cargo        varchar(45)          not null,
+    Endereço_Def varchar(100)         not null,
+    Cidade_UF    varchar(45)          not null,
+    Contato_Def  varchar(100)         not null,
+    Telefone_Def int(12)              not null,
+    Status_Def   tinyint(1) default 1 not null,
+    constraint Doc_Defensor
+        unique (Doc_Defensor))
 ENGINE = InnoDB;
 
 
@@ -134,13 +136,13 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Intérprete`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Intérprete` (
-    Doc_Interprete varchar(100) not null
+    Doc_Interprete varchar(100)         not null
         primary key,
-    Nome           varchar(45)  not null,
-    Endereço_Int   varchar(100) not null,
-    Contato_Int    varchar(100) not null,
-    Telefone_int   int(12)      not null,
-    Status_Int     tinyint(1)   not null,
+    Nome           varchar(45)          not null,
+    Endereço_Int   varchar(100)         not null,
+    Contato_Int    varchar(100)         not null,
+    Telefone_int   int(12)              not null,
+    Status_Int     tinyint(1) default 1 null,
     constraint Doc_Interprete_UNIQUE
         unique (Doc_Interprete))
 ENGINE = InnoDB;
@@ -150,35 +152,33 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Criança/Adolecente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
-    Documento              varchar(45)  not null
+    Documento              varchar(45)          not null
         primary key,
-    Nome                   varchar(150) not null,
-    Data_de_Nascimento     datetime     not null,
-    Genero                 varchar(100) not null,
-    Nacionalidade          varchar(45)  not null,
-    Local_Nasc             varchar(45)  not null,
-    Escolaridade           varchar(45)  not null,
-    Endereço_origem        varchar(45)  not null,
-    Endereço_atual         varchar(45)  not null,
-    Telefone_criança       int(12)      null,
-    Passaporte             varchar(45)  not null,
-    Certidão_de_Nascimento varchar(45)  not null,
-    Data_de_Cadastro       datetime     not null,
-    Mae_viva               varchar(45)  not null,
-    Pai_Vivo               varchar(45)  not null,
-    Nome_mae               varchar(45)  null,
-    Nome_pai               varchar(45)  null,
-    Email_Crianca          varchar(100) not null,
-    Entrada                int          not null,
-    Medidas_Protetivas     int          not null,
-    Situação               int          not null,
-    Defensor               int          not null,
-    Intérprete             varchar(100) not null,
-    Residencia_mae         varchar(100) null,
-    Residencia_pai         varchar(100) null,
-    Status_Criança         tinyint(1)   null,
-    constraint Defensor_UNIQUE
-        unique (Defensor),
+    Nome                   varchar(150)         not null,
+    Data_de_Nascimento     datetime             not null,
+    Genero                 varchar(100)         not null,
+    Nacionalidade          varchar(45)          not null,
+    Local_Nasc             varchar(45)          not null,
+    Escolaridade           varchar(45)          not null,
+    Endereço_origem        varchar(45)          not null,
+    Endereço_atual         varchar(45)          not null,
+    Telefone_criança       int(12)              null,
+    Passaporte             varchar(45)          not null,
+    Certidão_de_Nascimento varchar(45)          not null,
+    Data_de_Cadastro       datetime             not null,
+    Mae_viva               varchar(45)          not null,
+    Pai_Vivo               varchar(45)          not null,
+    Nome_mae               varchar(45)          null,
+    Nome_pai               varchar(45)          null,
+    Email_Crianca          varchar(100)         not null,
+    Entrada                int                  not null,
+    Medidas_Protetivas     int                  not null,
+    Situação               int                  not null,
+    Defensor               varchar(100)         not null,
+    Intérprete             varchar(100)         not null,
+    Residencia_mae         varchar(100)         null,
+    Residencia_pai         varchar(100)         null,
+    Status_Criança         tinyint(1) default 1 null,
     constraint Documento_UNIQUE
         unique (Documento),
     constraint Email_Criança_UNIQUE
@@ -192,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
     constraint Situação_UNIQUE
         unique (Situação),
     constraint Defensor
-        foreign key (Defensor) references defensor (idDefensor),
+        foreign key (Defensor) references defensor (Doc_Defensor),
     constraint Entrada
         foreign key (Entrada) references entrada (idEntrada),
     constraint Intérprete
