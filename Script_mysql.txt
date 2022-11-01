@@ -30,7 +30,7 @@ create table if not exists `mydb`. entrada
     Transporte_Detalhe varchar(45) not null,
     Data_Reconhecido   datetime    not null,
     Pais_Reconhecido   varchar(45) not null,
-    Criança            varchar(45) null,
+    Criança            varchar(45) not null,
     constraint idEntrada_UNIQUE
         unique (idEntrada))
 ENGINE = InnoDB;
@@ -46,7 +46,7 @@ create table if not exists `mydb`. situação
     Vida_Antes                 varchar(800)  not null,
     Razão_Saida                varchar(800)  not null,
     Saida_Forçada              varchar(500)  not null,
-    Permanencia                varchar(45)   null,
+    Permanencia                varchar(45)   not null,
     Ajuda                      varchar(500)  not null,
     Acompanhado                varchar(500)  not null,
     Entrada_Sozinho            varchar(500)  not null,
@@ -56,10 +56,10 @@ create table if not exists `mydb`. situação
     Saude_Mental               varchar(800)  not null,
     Idade_Mental               varchar(800)  not null,
     Saude_Fisica               varchar(800)  not null,
-    Parente_Brasil             varchar(100)  null,
-    Criança                    varchar(45)   null,
-    Proteção_da_Criança        varchar(1500) null,
-    Solicitação_de_Indicadores varchar(1500) null,
+    Parente_Brasil             varchar(100)  not null,
+    Criança                    varchar(45)   not null,
+    Proteção_da_Criança        varchar(1500) not null,
+    Solicitação_de_Indicadores varchar(1500) not null,
     constraint idSituação_UNIQUE
         unique (idSituação))
 ENGINE = InnoDB;
@@ -98,9 +98,9 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Medidas_Protetivas` (
     Parentesco           varchar(45)  not null,
     Vinculo              varchar(45)  not null,
     Nacionalidade        varchar(45)  not null,
-    Data_Nascimento      datetime     null,
-    Vara                 varchar(100) null,
-    Criança              varchar(45)  null,
+    Data_Nascimento      datetime     not null,
+    Vara                 varchar(100) not null,
+    Criança              varchar(45)  not null,
     constraint idMedidas_Protetivas_UNIQUE
         unique (idMedidas_Protetivas),
     constraint documento_resposavel
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Medidas_Protetivas` (
 ENGINE = InnoDB;
 
 create index if not exists Documento_Respo_idx
-    on medidas_protetivas (Document_Respo);
+    on medidas_protetivas (Documento_Respo);
 
 
 -- -----------------------------------------------------
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Defensor` (
     Cidade_UF    varchar(45)  not null,
     Contato_Def  varchar(100) not null,
     Telefone_Def int(12)      not null,
-    Status_Def   tinyint(1)   null)
+    Status_Def   tinyint(1)   not null)
 ENGINE = InnoDB;
 
 
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Intérprete` (
     Endereço_Int   varchar(100) not null,
     Contato_Int    varchar(100) not null,
     Telefone_int   int(12)      not null,
-    Status_Int     tinyint(1)   null,
+    Status_Int     tinyint(1)   not null,
     constraint Doc_Interprete_UNIQUE
         unique (Doc_Interprete))
 ENGINE = InnoDB;
