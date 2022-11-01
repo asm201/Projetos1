@@ -149,9 +149,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Criança/Adolecente`
+-- Table `mydb`.`Criança_Adolecente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
+CREATE TABLE IF NOT EXISTS `mydb`.`Criança_Adolecente` (
     Documento              varchar(45)          not null
         primary key,
     Nome                   varchar(150)         not null,
@@ -204,13 +204,13 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
 ENGINE = InnoDB;
 
 create index if not exists Entrada_idx
-    on `criança/adolecente` (Entrada);
+    on `Criança_Adolecente` (Entrada);
 
 create index if not exists Intérprete_idx
-    on `criança/adolecente` (Intérprete);
+    on `Criança_Adolecente` (Intérprete);
 
 create index if not exists Situação_idx
-    on `criança/adolecente` (Situação);
+    on `Criança_Adolecente` (Situação);
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
