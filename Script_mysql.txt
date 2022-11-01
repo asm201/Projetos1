@@ -41,23 +41,25 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 create table if not exists `mydb`. situação
 (
-    idSituação          int auto_increment
+    idSituação                 int auto_increment
         primary key,
-    Vida_Antes          varchar(800) not null,
-    Razão_Saida         varchar(800) not null,
-    Saida_Forçada       varchar(500) not null,
-    Permanencia         varchar(45)  null,
-    Ajuda               varchar(500) not null,
-    Acompanhado         varchar(500) not null,
-    Entrada_Sozinho     varchar(500) not null,
-    Retorno             varchar(500) not null,
-    Medo_Retorno        varchar(500) not null,
-    Parente_Pais_Origem varchar(45)  not null,
-    Saude_Mental        varchar(800) not null,
-    Idade_Mental        varchar(800) not null,
-    Saude_Fisica        varchar(800) not null,
-    Parente_Brasil      varchar(100) null,
-    Criança             varchar(45)  null,
+    Vida_Antes                 varchar(800)  not null,
+    Razão_Saida                varchar(800)  not null,
+    Saida_Forçada              varchar(500)  not null,
+    Permanencia                varchar(45)   null,
+    Ajuda                      varchar(500)  not null,
+    Acompanhado                varchar(500)  not null,
+    Entrada_Sozinho            varchar(500)  not null,
+    Retorno                    varchar(500)  not null,
+    Medo_Retorno               varchar(500)  not null,
+    Parente_Pais_Origem        varchar(45)   not null,
+    Saude_Mental               varchar(800)  not null,
+    Idade_Mental               varchar(800)  not null,
+    Saude_Fisica               varchar(800)  not null,
+    Parente_Brasil             varchar(100)  null,
+    Criança                    varchar(45)   null,
+    Proteção_da_Criança        varchar(1500) null,
+    Solicitação_de_Indicadores varchar(1500) null,
     constraint idSituação_UNIQUE
         unique (idSituação))
 ENGINE = InnoDB;
@@ -123,7 +125,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Defensor` (
     Endereço_Def varchar(100) not null,
     Cidade_UF    varchar(45)  not null,
     Contato_Def  varchar(100) not null,
-    Telefone_Def int(12)      not null)
+    Telefone_Def int(12)      not null,
+    Status_Def   tinyint(1)   null)
 ENGINE = InnoDB;
 
 
@@ -137,6 +140,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Intérprete` (
     Endereço_Int   varchar(100) not null,
     Contato_Int    varchar(100) not null,
     Telefone_int   int(12)      not null,
+    Status_Int     tinyint(1)   null,
     constraint Doc_Interprete_UNIQUE
         unique (Doc_Interprete))
 ENGINE = InnoDB;
@@ -172,6 +176,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Criança/Adolecente` (
     Intérprete             varchar(100) not null,
     Residencia_mae         varchar(100) null,
     Residencia_pai         varchar(100) null,
+    Status_Criança         tinyint(1)   null,
     constraint Defensor_UNIQUE
         unique (Defensor),
     constraint Documento_UNIQUE
