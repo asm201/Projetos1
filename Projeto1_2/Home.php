@@ -37,8 +37,9 @@
 
         
     </style>
-    </head>
+</head>
     <body>
+        
             <h1>Bem vindo</h1>
             <h1>O que deseja?</h1>
             <form action="testelogin.php" method="POST">
@@ -47,7 +48,18 @@
                 <input class="submit" type="submit" name="submit" value="Login">
             </form>
             <br>
-            <a href="powerBI.php">Visão dos Dados Publicos</a>
+            
+            <a onclick="myalert()" href="powerBI.php">Visão dos Dados Publicos</a>
             <br><br>
     </body>
-    </html> 
+
+</html> 
+
+    <script>
+        function myalert() {
+            alert("Atenção você será encaminhado nesse momento para dados publicos");
+        }
+        
+    </script>
+
+

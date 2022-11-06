@@ -1,8 +1,8 @@
 <?php
     session_start();
+    
        // print_r($_REQUEST);
        // error_reporting (0);
-
     if(isset($_POST['submit']) && !empty($_POST['e-mail_Defensor']) && !empty($_POST['Telefone_Def']) ){ // acessa o sistema 
 
         include_once('config.php');
@@ -24,16 +24,16 @@
      // print_r('<br>');
 
         if(mysqli_num_rows($result) < 1){
-            
             unset($_SESSION['e-mail_Defensor']);
             unset($_SESSION['Telefone_Def']);
             header('Location: Home.php');
+
 
             //print_r('Defensor não aceito');
         } else{
 
             $_SESSION['e-mail_Defensor'] = $Email_defensor;
-            $_SESSION['Telefone_Def'] = $Telefone_Def;
+
             header('Location: login.php');
 
             //print_r('<br>');
@@ -42,10 +42,8 @@
 
        
     } else{
-        header('Location: Home.php'); // retorna para a home
-
+        //header('Location: Home.php'); // retorna para a home
+        echo  '<script>alert("Login ou senha incorreto");location.href="Home.php"</script>';
+    
     }
-
-
-
 ?>

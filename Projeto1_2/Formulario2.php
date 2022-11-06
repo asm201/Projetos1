@@ -7,14 +7,15 @@
     {
 
         include_once('config.php');
-        //Defensor
+        /*//Defensor
         $Nome_Defensor      = $_POST['Nome_Defensor'];
         $Documento_defensor = $_POST['Documento_Defensor'];
         $Cargo_Defensor     = $_POST['txt_Cargo_Defensor'];
         $Endereco_defensor  = $_POST['Endereco_Defensor'];
         $Cidade_defensor    = $_POST['Cidade/UF_Defensor'];
         $Telefone_defensor  = $_POST['Telefone_Defensor'];
-        $Email_defensor     = $_POST['e-mail_Defensor']; 
+        $Email_defensor     = $_POST['e-mail_Defensor'];*/
+
         //Variáveis tabela Crianca
         $Nome_Pessoa                    = $_POST['Nome_Pessoa'];
         $Nascimento_pessoa              = $_POST['Nascimento_Pessoa'];
@@ -94,12 +95,12 @@
         $Responsavel_Nascimento_Protetivas      = $_POST['Responsavel_Nascimento_Protetivas'];
         $Vinculo_Protetivas                     = $_POST['Vinculo_Protetivas'];
        
-    ////Variáveis tabela Intérprete
+    /*//Variáveis tabela Intérprete
         $Nome_Interprete           = $_POST['Nome_Interprete'];
         $Documento_Interprete      = $_POST['Documento_Interprete'];
         $Endereço_Interprete       = $_POST['Endereço_Interprete'];
         $Telefone_Interprete       = $_POST['Telefone_Interprete'];
-        $email_Interprete           = $_POST['e-mail_Interprete'];
+        $email_Interprete           = $_POST['e-mail_Interprete'];*/
     
     //Variavel de Status
         $Status = true;
@@ -108,9 +109,9 @@
 
         //chamada do banco de dados
 
-        //Defensor - OK
+        /*//Defensor - OK
         $result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def,Status_Def) 
-        VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_Defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor','$Status')");
+        VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_Defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor','$Status')");*/
 
         //documento - OK
         $Decricao_Documento = $Documento_Protetivas;
@@ -186,9 +187,9 @@
         $result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereço_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereço_Respo,Parentesco,Vinculo,Nacionalidade,Data_Nascimento,Vara,Criança) 
         VALUES ('$Endereco_Inst_Protetivas','$Instituicão_Protetivas','$Responsavel_Inst_Protetivas','$Responsavel_Protetivas','$Id_Documento','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_Protetivas','$Responsavel_Nacionalidade_Protetivas','$Responsavel_Nascimento_Protetivas','$Vara_Protetivas','$Identidade_pessoa')");
 
-        //IDENTIFICAÇÃO DO INTÉRPRETE - OK
+        /*//IDENTIFICAÇÃO DO INTÉRPRETE - OK
         $result = mysqli_query($conexao, "INSERT INTO Intérprete(Doc_interprete,Nome,Endereço_Int,Contato_Int,Telefone_Int,Status_Int) 
-        VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete','$Status')");
+        VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete','$Status')");*/
 
          //DADOS DA CRIANÇA OU ADOLESCENTE
         if($Mae_pessoa == "NÃO"){
@@ -252,7 +253,7 @@
         .box{
             color: white;
             position: absolute;
-            top: 450%;
+            top: 250%;
             left: 50%;
             transform: translate(-50%,-50%);
             background-color: rgba(0, 0, 0, 0.6);
@@ -330,7 +331,7 @@
                 <legend><b>Fórmulário</b></legend>
                 <br>
 
-                <!----Defensor -->
+                <!----Defensor
 
                 <h1> DADOS DO DEFENSOR PÚBLICO FEDERAL </h1>
                 <div class="inputBox">
@@ -371,7 +372,7 @@
                     <input type="text" name="e-mail_Defensor" id="e-mail_Defensor" class="inputUser" required>
                     <label for="e-mail_Defensor" class="labelInput">Email:</label>
                 </div>    
-                <br>
+                <br>-->
 
                 <!---- DADOS DA CRIANcA OU ADOLESCENTE -->
 
@@ -862,9 +863,9 @@
                 </div>
                 <br>--->
 
-                <!--- IDENTIFICAÇÃO DO INTÉRPRETE --->
-                <!--- Fazer exatamente igual as demais acima e tirar o comentario das declaracões --->
-                <!--- tudo a ser colocado é antes do imput ---> 
+                <!--- IDENTIFICAÇÃO DO INTÉRPRETE 
+                 Fazer exatamente igual as demais acima e tirar o comentario das declaracões
+                 tudo a ser colocado é antes do imput 
 
                 <h2> IDENTIFICAÇÃO DO INTÉRPRETE </h2>
                 <div class="inputBox">
@@ -892,7 +893,7 @@
                     <input type="text" name="e-mail_Interprete"id="e-mail_Interprete" class="inputUser" required>
                     <label for="e-mail_Interprete" class="labelInput">E-mail:</label>
                 </div>
-                <br><br>
+                <br><br>-->
 
                 <!--<div class="field radiobox">            
                     <p>Assinatura da criança, adolescente ou responsável</p>

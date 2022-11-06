@@ -172,7 +172,8 @@
                 </div>    
                     <input type="hidden" name="idDefensor" Value="<?php echo $idDefensor ?>">
                 <br>
-                    <input type="submit" name="update" id="update">
+                    <input onclick="myalert()" type="submit" name="update" id="update">
+                    
                 </div>
                 <br>
 
@@ -182,3 +183,8 @@
     </div>
 </body>
 </html>
+<script>
+        function myalert() {
+            alert("Atualização Salva com sucesso");
+        }
+    </script>

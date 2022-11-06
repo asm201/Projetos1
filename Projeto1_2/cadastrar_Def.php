@@ -245,6 +245,7 @@
 					document.getElementById(el).style.display = 'none';
             }	
             document.getElementById("current_date").innerHTML = Date();
+
 	</script>
     
 </body>
