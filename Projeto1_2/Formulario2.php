@@ -1,6 +1,21 @@
 <?php
 
+    session_start();
+    error_reporting (0);
+    include_once('config.php');
+    //print_r($_SESSION);
+    if((!isset($_SESSION['e-mail_Defensor']) == true) and (!isset($_SESSION['Telefone_Def']) == true)){
 
+        unset($_SESSION['e-mail_Defensor']);
+        unset($_SESSION['Telefone_Def']);
+        header('Location: Home.php');
+
+    }$logado = $_SESSION['e-mail_Defensor'];
+
+    $sql = "SELECT * FROM defensor ORDER BY idDefensor DESC";
+    $result = $conexao->query($sql);
+
+    //print_r($result);
     //Se o botão de envio for pressionado
     error_reporting (0);
     if(isset($_POST['submit']))
@@ -95,12 +110,12 @@
         $Responsavel_Nascimento_Protetivas      = $_POST['Responsavel_Nascimento_Protetivas'];
         $Vinculo_Protetivas                     = $_POST['Vinculo_Protetivas'];
        
-    /*//Variáveis tabela Intérprete
+    //Variáveis tabela Intérprete
         $Nome_Interprete           = $_POST['Nome_Interprete'];
         $Documento_Interprete      = $_POST['Documento_Interprete'];
         $Endereço_Interprete       = $_POST['Endereço_Interprete'];
         $Telefone_Interprete       = $_POST['Telefone_Interprete'];
-        $email_Interprete           = $_POST['e-mail_Interprete'];*/
+        $email_Interprete           = $_POST['e-mail_Interprete'];
     
     //Variavel de Status
         $Status = true;
@@ -187,9 +202,9 @@
         $result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereço_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereço_Respo,Parentesco,Vinculo,Nacionalidade,Data_Nascimento,Vara,Criança) 
         VALUES ('$Endereco_Inst_Protetivas','$Instituicão_Protetivas','$Responsavel_Inst_Protetivas','$Responsavel_Protetivas','$Id_Documento','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_Protetivas','$Responsavel_Nacionalidade_Protetivas','$Responsavel_Nascimento_Protetivas','$Vara_Protetivas','$Identidade_pessoa')");
 
-        /*//IDENTIFICAÇÃO DO INTÉRPRETE - OK
+        //IDENTIFICAÇÃO DO INTÉRPRETE - OK
         $result = mysqli_query($conexao, "INSERT INTO Intérprete(Doc_interprete,Nome,Endereço_Int,Contato_Int,Telefone_Int,Status_Int) 
-        VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete','$Status')");*/
+        VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete','$Status')");
 
          //DADOS DA CRIANÇA OU ADOLESCENTE
         if($Mae_pessoa == "NÃO"){
@@ -229,7 +244,7 @@
         }
 
         $result = mysqli_query($conexao, "INSERT INTO criança_adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereço_origem,Endereço_atual,Telefone_criança,Passaporte,Certidão_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Email_Crianca,Entrada,Medidas_Protetivas,Situação,Defensor,Intérprete,Residencia_mae,Residencia_pai,Status_Criança) 
-        VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa','$Data_de_Cadastro','$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa','$Status')");
+        VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa',NOW(),'$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa','$Status')");
         
 
     }      
@@ -253,7 +268,7 @@
         .box{
             color: white;
             position: absolute;
-            top: 250%;
+            top: 275%;
             left: 50%;
             transform: translate(-50%,-50%);
             background-color: rgba(0, 0, 0, 0.6);
@@ -324,6 +339,7 @@
     </style>
 </head>
 <body>
+    
 <meta charset="UTF-8">
     <div class="box">
         <form action="Formulario2.php" method="post">
@@ -380,17 +396,17 @@
                  
                 <div class="inputBox">
                 <input type="text" name="Nome_Pessoa" id="Nome_Pessoa" class="inputUser" required>
-                    <label for="Nome_Pessoa" class="labelInput">Nome Completo:</label>
+                    <label for="Nome_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Nome Completo:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                    <label for="Nascimento_Pessoa"><b>Data de Nascimento:</b></label>
-                    <input type="date" name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser" required  required>
+                    <label for="Nascimento_Pessoa"><b><label style="color:#FF0000">*</label> Data de Nascimento:</b></label>
+                    <input type="date" name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser" required>
                 </div>
 
                 <div class="field radiobox">            
-                <p>Genero:</p>
+                <p><label style="color:#FF0000">*</label> Genero:</p>
                 <input type="radio" id="feminino" name="gênero_pessoa" value="feminino" >
                 <label for="feminino">Feminino</label>
                 <input type="radio" id="masculino" name="gênero_pessoa" value="masculino" >
@@ -400,59 +416,59 @@
 
                 <div class="inputBox">
                 <input type="text" name="Nacionalidade_Pessoa" id="Nacionalidade_Pessoa" class="inputUser" required>
-                    <label for="Nacionalidade_Pessoa" class="labelInput">Nacionalidade:</label>
+                    <label for="Nacionalidade_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Nacionalidade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                 <input type="text" name="País_Cid_Pessoa" id="País_Cid_Pessoa" class="inputUser" required>
-                    <label for="País_Cid_Pessoa" class="labelInput">País e cidade de nascimento:</label>
+                    <label for="País_Cid_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> País e cidade de nascimento:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                 <input type="text" name="Escolaridade_Pessoa" id="Escolaridade_Pessoa" class="inputUser" required>
-                    <label for="Escolaridade_Pessoa" class="labelInput">Escolaridade:</label>
+                    <label for="Escolaridade_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Escolaridade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                 <input type="text" name="Endereco_Antigo_Pessoa" id="Endereco_Antigo_Pessoa" class="inputUser" required>
-                    <label for="Endereco_Antigo_Pessoa" class="labelInput">Endereço no pais de origem:</label>
+                    <label for="Endereco_Antigo_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Endereço no pais de origem:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                 <input type="text" name="Endereco_Atual_Pessoa" id="Endereco_Atual_Pessoa" class="inputUser" required>
-                    <label for="Endereco_Atual_Pessoa" class="labelInput">Endereco atual:</label>
+                    <label for="Endereco_Atual_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Endereco atual:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                 <input type="text" name="Telefone_Pessoa" id="Telefone_Pessoa" class="inputUser" required>
-                    <label for="Telefone_Pessoa" class="labelInput">Telefone:</label>
+                    <label for="Telefone_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Telefone:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                 <input type="text" name="e-mail_Pessoa" id="e-mail_Pessoa" class="inputUser" required>
-                    <label for="e-mail_Pessoa" class="labelInput">E-mail:</label>
+                    <label for="e-mail_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> E-mail:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                 <input type="text" name="Identidade_Pessoa" id="Identidade_Pessoa" class="inputUser" required>
-                    <label for="Identidade_Pessoa" class="labelInput">Cédula de identidade:</label>
+                    <label for="Identidade_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Cédula de identidade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                 <input type="text" name="Passaporte_Pessoa" id="Passaporte_Pessoa" class="inputUser" required>
-                    <label for="Passaporte_Pessoa" class="labelInput">Passaporte:</label>
+                    <label for="Passaporte_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Passaporte:</label>
                 </div>
 
                 <div class="field radiobox">            
-                <p>Possui certidão de nascimento?</p>
+                <p><label style="color:#FF0000">*</label> Possui certidão de nascimento?</p>
                 <input type="radio" id="Certidão_SIM" name="certidão" value="SIM" >
                 <label for="Certidão_SIM">Sim</label>
                 <input type="radio" id="Certidão_NÃO" name="certidão" value="NÃO" >
@@ -464,13 +480,13 @@
                 </div>
                 <br>
 
-                <div class="inputBox">
-                    <label for="data_cadastro"><b>Data de Cadastro</b></label>
+                <!--<div class="inputBox">
+                    <label for="data_cadastro"><b><label style="color:#FF0000">*</label> Data de Cadastro</b></label>
                     <input type="date" name="data_cadastro" id="Nascimento_Pessoa" class="inputUser" required >
-                </div>
+                </div>-->
 
                 <div class="field radiobox">            
-                <p>Mãe Viva?</p>
+                <p><label style="color:#FF0000">*</label> Mãe Viva?</p>
                 <input type="radio" id="Mãe_Viva_Sim" name="Mãe_Viva" value="SIM" onclick="Preencher('Mãe_Pessoa');Preencher('Mãe_Pessoa_Endereco')" >
                 <label for="Mãe_Viva_Sim">Sim</label>
                 <input type="radio" id="Mãe_Viva_NÃO" name="Mãe_Viva" value="NÃO" onclick="Sumir('Mãe_Pessoa');Sumir('Mãe_Pessoa_Endereco')" >
@@ -483,7 +499,7 @@
                 </div>
 
                 <div class="field radiobox">            
-                <p>Pai Vivo?</p>
+                <p><label style="color:#FF0000">*</label> Pai Vivo?</p>
                 <input type="radio" id="Pai_Viva_Sim" name="Pai_Vivo" value="SIM" onclick="Preencher('Pai_Pessoa');Preencher('Pai_Pessoa_Endereco')" >
                 <label for="Pai_Viva_Sim">Sim</label>
                 <input type="radio" id="Pai_Viva_NÃO" name="Pai_Vivo" value="NÃO" onclick="Sumir('Pai_Pessoa');Sumir('Pai_Pessoa_Endereco')" >
@@ -502,28 +518,28 @@
 
                 <div class="inputBox">
                     <input type="text" name="Cidade_Saida_Pessoa" id="Cidade_Saida_Pessoa" class="inputUser" required>
-                    <label for="Cidade_Saida_Pessoa" class="labelInput">Cidade de saída:</label>
+                    <label for="Cidade_Saida_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Cidade de saída:</label>
                 </div>
 
                 <br><br>
                 <div class="inputBox">
-                    <label for="Data_Saida_Pessoa"><b>Data de Saida:</b></label>
+                    <label for="Data_Saida_Pessoa"><b><label style="color:#FF0000">*</label> Data de Saida:</b></label>
                     <input type="date" name="Data_Saida_Pessoa" id="Data_Saida_Pessoa"class="inputUser" required>
                 <br><br>
 
                 <div class="inputBox">
                     <input type="text" name="Cidade_Chegada_Pessoa" id="Cidade_Chegada_Pessoa" class="inputUser" required>
-                    <label for="Cidade_Chegada_Pessoa" class="labelInput">Cidade de chegada no Brasil:</label>
+                    <label for="Cidade_Chegada_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Cidade de chegada no Brasil:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                    <label for="Data_Chegada_Pessoa"><b>Data de Chegada ao Brasil:</b></label>
+                    <label for="Data_Chegada_Pessoa"><b><label style="color:#FF0000">*</label> Data de Chegada ao Brasil:</b></label>
                     <input type="date" name="Data_Chegada_Pessoa" id="Data_Chegada_Pessoa" class="inputUser" required>
                 <br><br>
 
                 <div class="field radiobox">
-                    <label>Meio de transporte: </label>
+                    <label><label style="color:#FF0000">*</label> Meio de transporte: </label>
                     <input type="radio" name="Meio_Transporte" id="Transporte_Aereo" value="Aéreo"><label for="Aéreo" required>Aéreo </label>
                     <input type="radio" name="Meio_Transporte" id="Transporte_Marítimo" value="Marítimo"><label for="Marítimo" required>Marítimo </label>
                     <input type="radio" name="Meio_Transporte" id="Terrestre" value="Terrestre"><label for="Terrestre" required>Terrestre </label>
@@ -531,19 +547,19 @@
                 </div>
 
                 <div class="inputBox">
-                    <label for="Transporte_Detalhado_Pessoa">Detalhes do Transporte:</label>
+                    <label for="Transporte_Detalhado_Pessoa"><label style="color:#FF0000">*</label> Detalhes do Transporte:</label>
                     <input type="text" name="Transporte_Detalhado_Pessoa" id="Transporte_Detalhado_Pessoa"  class="inputUser" required>
                 <br><br>
 
                 <div class="inputBox">
-                    <label for="Data_Reconhecido_Pessoa"><b>Data em que foi reconhecido:</b></label>
+                    <label for="Data_Reconhecido_Pessoa"><b><label style="color:#FF0000">*</label> Data em que foi reconhecido:</b></label>
                     <input type="date" name="Data_Reconhecido_Pessoa" id="Data_Reconhecido_Pessoa"class="inputUser" required>
                 <br><br>
 
                 <div class="inputBox">
                     
                 <input type="text" name="Pais_Reconhecido_Pessoa" id="Pais_Reconhecido_Pessoa" class="inputUser" required >
-                    <label for="Pais_Reconhecido_Pessoa" class="labelInput">Pais Reconhecido:</label>
+                    <label for="Pais_Reconhecido_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Pais Reconhecido:</label>
                 </div>
                 <br><br>
 
@@ -553,12 +569,12 @@
 
                 <div class="inputBox">
                     <textarea type="text" name="Vida_antes" id="Vida_antes" class="inputUser" required ></textarea>
-                    <label for="Vida_antes" class="labelInput">Como era sua vida em seu país de origem, antes de você se separar de sua família ?</label>
+                    <label for="Vida_antes" class="labelInput"><label style="color:#FF0000">*</label> Como era sua vida em seu país de origem, antes de você se separar de sua família ?</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
                     <textarea type="text" name="Razão_Saida" id="Razão_Saida" class="inputUser" required ></textarea>
-                    <label for="Razão_Saida" class="labelInput">Em que momento e por qual razão você deixou seu país e se separou de sua família?</label>
+                    <label for="Razão_Saida" class="labelInput"><label style="color:#FF0000">*</label> Em que momento e por qual razão você deixou seu país e se separou de sua família?</label>
                 </div>
                 <br><br>
                 <div class="field radiobox">
@@ -567,6 +583,7 @@
                     <input type="radio" name="Situacão_Pessoa" id="Situacão_Pessoa_Nao" value="Não" onclick="Sumir('Txt_Situacão_Pessoa')"><label for="Não">Não </label>
                     <br><br>
                     <textarea type="text" name="Txt_Situacão_Pessoa" id="Txt_Situacão_Pessoa" style="display:none" placeholder="Digite aqui a situação." class="inputUser" ></textarea>
+                    
                 </div>
                 <br>
                 <div class="field radiobox">
@@ -773,7 +790,7 @@
                     causar danos a outros a si mesmo (a)</label><br><br>
 
                 <div class="field radiobox">
-                    <label>Avaliacão de saúde mental (conduta): indique se a crianca ou adolescente apresenta pensamento confuso
+                    <label><label style="color:#FF0000">*</label> Avaliacão de saúde mental (conduta): indique se a crianca ou adolescente apresenta pensamento confuso
                         (ex. respostas frequentemente incoerentes ou contraditórias)/evidencia perda de contato com a realidade (ex:
                         seu comportamento parece estranho ou sem sentido/ conduta estranha evidente (ex: hiperatividade,
                         impulsividade, comportamento hostil)/ou risco de causar danos a outros a si mesmo (a)</label><br>
@@ -784,7 +801,7 @@
                 </div>
                 <br>
                 <div class="field radiobox">
-                    <label>Avaliacão física preliminar: sinalize se a crianca ou adolescente apresenta sinais visíveis de trauma físico
+                    <label><label style="color:#FF0000">*</label> Avaliacão física preliminar: sinalize se a crianca ou adolescente apresenta sinais visíveis de trauma físico
                         ou deficiência física; queixa-se de dores ou doencas, quadro de deficiência motora, etc.</label><br>
                     <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Fisico_Avaliacão')"><label for="Normal">Normal </label>
                     <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Anormal" value="Anormal" onclick="Preencher('Txt_Fisico_Avaliacão')"><label for="Anormal">Anormal </label>
@@ -793,7 +810,7 @@
                 </div>
                 <br>
                 <div class="field radiobox">
-                    <label>Avaliacão de idade e maturidade (a avaliacão de idade só deve ser realizada quando houver significativas
+                    <label><label style="color:#FF0000">*</label> Avaliacão de idade e maturidade (a avaliacão de idade só deve ser realizada quando houver significativas
                         dúvidas sobre a idade da crianca ou adolescente, tal como ausência de documentacão, e não deve levar em
                         consideracão apenas a aparência física, mas também a maturidade psicológica)</label><br>
                     <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Normal" value="Normal" onclick="Sumir('Txt_Idade_Avaliacão')"><label for="Normal">Normal </label>
@@ -865,7 +882,7 @@
 
                 <!--- IDENTIFICAÇÃO DO INTÉRPRETE 
                  Fazer exatamente igual as demais acima e tirar o comentario das declaracões
-                 tudo a ser colocado é antes do imput 
+                 tudo a ser colocado é antes do imput -->
 
                 <h2> IDENTIFICAÇÃO DO INTÉRPRETE </h2>
                 <div class="inputBox">
@@ -893,7 +910,7 @@
                     <input type="text" name="e-mail_Interprete"id="e-mail_Interprete" class="inputUser" required>
                     <label for="e-mail_Interprete" class="labelInput">E-mail:</label>
                 </div>
-                <br><br>-->
+                <br><br>
 
                 <!--<div class="field radiobox">            
                     <p>Assinatura da criança, adolescente ou responsável</p>

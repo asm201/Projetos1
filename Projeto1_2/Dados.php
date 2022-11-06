@@ -113,8 +113,6 @@
         function alterarestado() {
             alert("Estado do defensor(a) alterado para 0");
         }
-    </script>
-    <script>
         function editardados() {
             alert("Sendo encaminhado para o local de edição dos dados");
         }

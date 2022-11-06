@@ -33,5 +33,6 @@
                     </div>
                 </nav>
             </nav>
-            <iframe title="Power Bi - com dados" width="1300" height="1060" src="https://app.powerbi.com/view?r=eyJrIjoiYjc2YmNjZmYtYTg4YS00ZjcyLWEwMGQtZDI0YjBkMjYzZmVlIiwidCI6IjkxODA4YmQwLTVjNmEtNDlkZi05M2RmLWZiNmE3NDBmNTk0ZCIsImMiOjh9&embedImagePlaceholder=true&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>    </body>
+            <iframe title="Power Bi - com dados" width="1300" height="1060" src="https://app.powerbi.com/view?r=eyJrIjoiYjc2YmNjZmYtYTg4YS00ZjcyLWEwMGQtZDI0YjBkMjYzZmVlIiwidCI6IjkxODA4YmQwLTVjNmEtNDlkZi05M2RmLWZiNmE3NDBmNTk0ZCIsImMiOjh9&embedImagePlaceholder=true&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>    
+    </body>
     </html> 
