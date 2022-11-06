@@ -122,130 +122,135 @@
         /*** ADICIONAR TODAS OS OUTROS ELEMENTOS ***/
 
 
-        //chamada do banco de dados
+        try{
+            /*//Defensor - OK
+            $result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def,Status_Def) 
+            VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_Defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor','$Status')");*/
 
-        /*//Defensor - OK
-        $result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def,Status_Def) 
-        VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_Defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor','$Status')");*/
+            //documento - OK
+            $Decricao_Documento = $Documento_Protetivas;
+            if($Documento_Protetivas == "DO"){
+                $Decricao_Documento = $Text_Outro_Documento_Protetivas;
+            }elseif ($Documento_Protetivas == "DCO") {
+                $Decricao_Documento = $Text_Copia_Documento_Protetivas;
+            }elseif($Documento_Protetivas == "NENHUM DOCUMENTO"){
+                $Numero_Documento_Protetivas = "N/A";
+            }   
 
-        //documento - OK
-        $Decricao_Documento = $Documento_Protetivas;
-        if($Documento_Protetivas == "DO"){
-            $Decricao_Documento = $Text_Outro_Documento_Protetivas;
-        }elseif ($Documento_Protetivas == "DCO") {
-            $Decricao_Documento = $Text_Copia_Documento_Protetivas;
-        }elseif($Documento_Protetivas == "NENHUM DOCUMENTO"){
-            $Numero_Documento_Protetivas = "N/A";
-        }   
+            /*
+            $result = mysqli_query($conexao, "INSERT INTO documentos(Descrição, Numero) 
+            VALUES ('$Decricao_Documento','$Numero_Documento_Protetivas')");
+            */
 
-
-        $result = mysqli_query($conexao, "INSERT INTO documentos(Descrição, Numero) 
-        VALUES ('$Decricao_Documento','$Numero_Documento_Protetivas')");
-
-
-        //entrada - OK
-        $result = mysqli_query($conexao, "INSERT INTO entrada(Cidade_Saida,Data_Saida,Cidade_Chegada,Data_Chegada,Transporte,Transporte_Detalhe,Data_Reconhecido,Pais_Reconhecido,Criança) 
-        VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa','$Identidade_pessoa')");
+            //entrada - OK
+            /*
+            $result = mysqli_query($conexao, "INSERT INTO entrada(Cidade_Saida,Data_Saida,Cidade_Chegada,Data_Chegada,Transporte,Transporte_Detalhe,Data_Reconhecido,Pais_Reconhecido,Criança) 
+            VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa','$Identidade_pessoa')");
 
 
-        //SITUAÇÃO DA CRIANcA OU ADOLESCENTE - ok
-        if($Situacão_Pessoa == "Não"){
-            $Txt_Situacão_Pessoa = "N/A";
-        }
-        if($Alguem_Pessoa == "Não") {
-            $Txt_Alguem_Pessoa = "N/A";
-        }
-        if($Viagem_Pessoa == "Não"){
-            $Txt_Viagem_Pessoa = "N/A";
-        }
-        if($Entrou_Pessoa == "Sim") {
-            $Txt_Entrou_Pessoa = "N/A";
-        }
-        if($Retornar_Pessoa == "Sim"){
-            $Txt_Retornar_Pessoa = "N/A";
-        }
-        if($Medo_Pessoa == "Não") {
-            $Txt_Medo_Pessoa = "N/A";
-        }
+            //SITUAÇÃO DA CRIANcA OU ADOLESCENTE - ok
+            if($Situacão_Pessoa == "Não"){
+                $Txt_Situacão_Pessoa = "N/A";
+            }
+            if($Alguem_Pessoa == "Não") {
+                $Txt_Alguem_Pessoa = "N/A";
+            }
+            if($Viagem_Pessoa == "Não"){
+                $Txt_Viagem_Pessoa = "N/A";
+            }
+            if($Entrou_Pessoa == "Sim") {
+                $Txt_Entrou_Pessoa = "N/A";
+            }
+            if($Retornar_Pessoa == "Sim"){
+                $Txt_Retornar_Pessoa = "N/A";
+            }
+            if($Medo_Pessoa == "Não") {
+                $Txt_Medo_Pessoa = "N/A";
+            }
 
-        if($Proteção_Indicadores == "ProteçãoC"){
-            $Txt_Proteção_Indicadores = "Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança e do adolescente";
-        }elseif($Proteção_Indicadores == "ProteçãoF"){
-            $Txt_Proteção_Indicadores = "Medida de proteção por reunião familiar";
-        }elseif($Proteção_Indicadores == "ProteçãoT"){
-            $Txt_Proteção_Indicadores = "Proteção como vítima de tráfico de pessoas";
-        }elseif($Proteção_Indicadores == "ProteçãoO"){
-            $Txt_Proteção_Indicadores = $Aux_Proteção_Indicadores;
-        }
+            if($Proteção_Indicadores == "ProteçãoC"){
+                $Txt_Proteção_Indicadores = "Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança e do adolescente";
+            }elseif($Proteção_Indicadores == "ProteçãoF"){
+                $Txt_Proteção_Indicadores = "Medida de proteção por reunião familiar";
+            }elseif($Proteção_Indicadores == "ProteçãoT"){
+                $Txt_Proteção_Indicadores = "Proteção como vítima de tráfico de pessoas";
+            }elseif($Proteção_Indicadores == "ProteçãoO"){
+                $Txt_Proteção_Indicadores = $Aux_Proteção_Indicadores;
+            }
 
-        if($Mental_Avaliacão == "Normal") {
-            $Txt_Mental_Avaliacão = "N/A";
-        }
-        if($Fisico_Avaliacão == "Normal"){
-            $Txt_Fisico_Avaliacão = "N/A";
-        }
-        if($Idade_Avaliacão == "Normal") {
-            $Txt_Idade_Avaliacão = "N/A";
-        }
+            if($Mental_Avaliacão == "Normal") {
+                $Txt_Mental_Avaliacão = "N/A";
+            }
+            if($Fisico_Avaliacão == "Normal"){
+                $Txt_Fisico_Avaliacão = "N/A";
+            }
+            if($Idade_Avaliacão == "Normal") {
+                $Txt_Idade_Avaliacão = "N/A";
+            }
 
-        $result = mysqli_query($conexao, "INSERT INTO situação(Vida_Antes,Razão_Saida,Saida_Forçada,Permanencia,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica,Parente_Brasil,Proteção_da_Criança,'Solicitação_de_Indicadores',Criança) 
-        VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Txt_Proteção_Indicadores','$Solicitação_Indicadores',,'$Identidade_pessoa')");
+            $result = mysqli_query($conexao, "INSERT INTO situação(Vida_Antes,Razão_Saida,Saida_Forçada,Permanencia,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica,Parente_Brasil,Proteção_da_Criança,'Solicitação_de_Indicadores',Criança) 
+            VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Txt_Proteção_Indicadores','$Solicitação_Indicadores',,'$Identidade_pessoa')");
 
-        //Medidas Protetivas - OK
-        $query = mysqli_query($conexao, "SELECT idDocumentos FROM documentos WHERE Numero = '$Numero_Documento_Protetivas'");
-        
-        while ($row = mysqli_fetch_assoc($query )) {            
-           $Id_Documento = $row['idDocumentos'];
-            settype($Id_Documento, "integer");
-        }
-        
-        $result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereço_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereço_Respo,Parentesco,Vinculo,Nacionalidade,Data_Nascimento,Vara,Criança) 
-        VALUES ('$Endereco_Inst_Protetivas','$Instituicão_Protetivas','$Responsavel_Inst_Protetivas','$Responsavel_Protetivas','$Id_Documento','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_Protetivas','$Responsavel_Nacionalidade_Protetivas','$Responsavel_Nascimento_Protetivas','$Vara_Protetivas','$Identidade_pessoa')");
+            //Medidas Protetivas - OK
+            $query = mysqli_query($conexao, "SELECT idDocumentos FROM documentos WHERE Numero = '$Numero_Documento_Protetivas'");
 
-        //IDENTIFICAÇÃO DO INTÉRPRETE - OK
-        $result = mysqli_query($conexao, "INSERT INTO Intérprete(Doc_interprete,Nome,Endereço_Int,Contato_Int,Telefone_Int,Status_Int) 
-        VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete','$Status')");
+            while ($row = mysqli_fetch_assoc($query )) {            
+            $Id_Documento = $row['idDocumentos'];
+                settype($Id_Documento, "integer");
+            }
 
-         //DADOS DA CRIANÇA OU ADOLESCENTE
-        if($Mae_pessoa == "NÃO"){
-            $Nome_mae_pessoa = "N/A";
-            $Text_Residencia_Mae_Pessoa = "N/A";
-        }
-        if($Pai_pessoa == "NÃO") {
-           $Nome_pai_pessoa = "N/A";
-           $Text_Residencia_Pai_Pessoa = "N/A";
-        }
+            $result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereço_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereço_Respo,Parentesco,Vinculo,Nacionalidade,Data_Nascimento,Vara,Criança) 
+            VALUES ('$Endereco_Inst_Protetivas','$Instituicão_Protetivas','$Responsavel_Inst_Protetivas','$Responsavel_Protetivas','$Id_Documento','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_Protetivas','$Responsavel_Nacionalidade_Protetivas','$Responsavel_Nascimento_Protetivas','$Vara_Protetivas','$Identidade_pessoa')");
 
-        $query = mysqli_query($conexao, "SELECT idEntrada FROM entrada WHERE Criança = '$Identidade_pessoa'");
-        
-        while ($row = mysqli_fetch_assoc($query)) {            
-            $Entrada = $row['idEntrada'];
-            settype($Entrada, "integer");
-        }
-        $query = mysqli_query($conexao, "SELECT idMedidas_Protetivas FROM medidas_protetivas WHERE Criança = '$Identidade_pessoa'");
-        
-        while ($row = mysqli_fetch_assoc($query)) {            
-            $Medidas_Protetivas = $row['idMedidas_Protetivas'];
-            settype($Medidas_Protetivas, "integer");
-        }
+            *///IDENTIFICAÇÃO DO INTÉRPRETE - OK
+            $result = mysqli_query($conexao, "INSERT INTO Intérprete(Doc_interprete,Nome,Endereço_Int,Contato_Int,Telefone_Int,Status_Int) 
+            VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete','$Status')");
 
-        $query = mysqli_query($conexao, "SELECT idSituação FROM situação WHERE Criança = '$Identidade_pessoa'");
-        
-        while ($row = mysqli_fetch_assoc($query)) {            
-            $Situacao = $row['idSituação'];
-            settype($Situacao, "integer");
-        }
+            //DADOS DA CRIANÇA OU ADOLESCENTE
+            /*
+            if($Mae_pessoa == "NÃO"){
+                $Nome_mae_pessoa = "N/A";
+                $Text_Residencia_Mae_Pessoa = "N/A";
+            }
+            if($Pai_pessoa == "NÃO") {
+            $Nome_pai_pessoa = "N/A";
+            $Text_Residencia_Pai_Pessoa = "N/A";
+            }
 
-        $query = mysqli_query($conexao, "SELECT idDefensor FROM defensor WHERE Doc_Defensor = '$Documento_defensor'");
-        
-        while ($row = mysqli_fetch_assoc($query)) {            
-            $Defensor = $row['idDefensor'];
-            settype($Defensor, "integer");
-        }
+            $query = mysqli_query($conexao, "SELECT idEntrada FROM entrada WHERE Criança = '$Identidade_pessoa'");
 
-        $result = mysqli_query($conexao, "INSERT INTO criança_adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereço_origem,Endereço_atual,Telefone_criança,Passaporte,Certidão_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Email_Crianca,Entrada,Medidas_Protetivas,Situação,Defensor,Intérprete,Residencia_mae,Residencia_pai,Status_Criança) 
-        VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa',NOW(),'$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa','$Status')");
-        
+            while ($row = mysqli_fetch_assoc($query)) {            
+                $Entrada = $row['idEntrada'];
+                settype($Entrada, "integer");
+            }
+            $query = mysqli_query($conexao, "SELECT idMedidas_Protetivas FROM medidas_protetivas WHERE Criança = '$Identidade_pessoa'");
+
+            while ($row = mysqli_fetch_assoc($query)) {            
+                $Medidas_Protetivas = $row['idMedidas_Protetivas'];
+                settype($Medidas_Protetivas, "integer");
+            }
+
+            $query = mysqli_query($conexao, "SELECT idSituação FROM situação WHERE Criança = '$Identidade_pessoa'");
+
+            while ($row = mysqli_fetch_assoc($query)) {            
+                $Situacao = $row['idSituação'];
+                settype($Situacao, "integer");
+            }
+
+            $query = mysqli_query($conexao, "SELECT idDefensor FROM defensor WHERE Doc_Defensor = '$Documento_defensor'");
+
+            while ($row = mysqli_fetch_assoc($query)) {            
+                $Defensor = $row['idDefensor'];
+                settype($Defensor, "integer");
+            }
+
+            $result = mysqli_query($conexao, "INSERT INTO criança_adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereço_origem,Endereço_atual,Telefone_criança,Passaporte,Certidão_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Email_Crianca,Entrada,Medidas_Protetivas,Situação,Defensor,Intérprete,Residencia_mae,Residencia_pai,Status_Criança) 
+            VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa','$Data_de_Cadastro','$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa','$Status')");
+
+            */
+            }catch(Exception $e){
+                echo  '<script>alert("Erro ao executar o SQL");</script>';
+            }
 
     }      
    
