@@ -134,6 +134,19 @@
         #submit:hover{
             background-image: linear-gradient(to right,rgb(0, 80, 172), rgb(80, 19, 195));
         }
+        #submit1{
+            background-image: linear-gradient(to right,rgb(0, 92, 197), rgb(90, 20, 220));
+            width: 100%;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        #submit1:hover{
+            background-image: linear-gradient(to right,rgb(0, 80, 172), rgb(80, 19, 195));
+        }
         .table-bg{
             background-color: rgba(0,0,0,0.3)
             border-radius: 15px 15px 0 0;
@@ -212,7 +225,7 @@
                                     <label for="Senha_Defensor" class="labelInput">Senha:</label>
                                 </div>-->
                                 <br><br> 
-                                <input type="submit1" name="submit1" id="submit1">
+                                <input type="submit" name="submit1" id="submit1">
                         </div>
                     </form>
                     <br>
