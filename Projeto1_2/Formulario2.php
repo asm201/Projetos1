@@ -1,7 +1,7 @@
 <?php
 
     session_start();
-    //error_reporting (0);
+    error_reporting (0);
     include_once('config.php');
     //print_r($_SESSION);
     if((!isset($_SESSION['e-mail_Defensor']) == true) and (!isset($_SESSION['Telefone_Def']) == true)){
@@ -17,7 +17,7 @@
 
     //print_r($result);
     //Se o botão de envio for pressionado
-    //error_reporting (0);
+    error_reporting (0);
     if(isset($_POST['submit']))
     {
 
