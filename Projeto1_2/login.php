@@ -56,7 +56,9 @@
         <br>
         <a href="cadastrar_Def.php">Cadastrar Novo Defensor/Interprete</a>
         <a href="formulario2.php">Cadastrar Criança</a>
-        <a href="Dados.php">Visão dados internos</a> 
+        <a href="Dados.php">Visão dados Defensores</a> 
+        <a href="Dados_INT.php">Visão dados Interpretes</a> 
+        <a href="Dados_CRI.php">Visão Dados Crianças</a>
         <a href="powerBi.php">Visão dos Dados</a>
         <a href="Sair.php">Finalizar Sessão</a>
         <br><br>

@@ -137,12 +137,15 @@
             }elseif($Documento_Protetivas == "NENHUM DOCUMENTO"){
                 $Numero_Documento_Protetivas = "N/A";
             }   
-
             
             $result = mysqli_query($conexao, "INSERT INTO documentos(Descrição, Numero) 
             VALUES ('$Decricao_Documento','$Numero_Documento_Protetivas')");
-            
 
+        }catch(Exception $e){
+            echo  '<script>alert("Erro cadastrar Documento");</script>';
+        }
+            
+        try{
             //entrada - OK
             
             
@@ -150,8 +153,12 @@
             VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa','$Identidade_pessoa')");
 
 
+        }catch(Exception $e){
+            echo  '<script>alert("Erro ao Cadastrar");</script>';
+        }
+        try{
             //SITUAÇÃO DA CRIANcA OU ADOLESCENTE - okok
-            
+
             if($Situacão_Pessoa == "Não"){
                 $Txt_Situacão_Pessoa = "N/A";
             }
@@ -194,8 +201,11 @@
             $result = mysqli_query($conexao, "INSERT INTO situação(Vida_Antes,Razão_Saida,Saida_Forçada,Permanencia,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica,Parente_Brasil,Proteção_da_Criança,Solicitação_de_Indicadores,Criança) 
             VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Txt_Proteção_Indicadores','$Solicitação_Indicadores','$Identidade_pessoa')");
 
+        }catch(Exception $e){
+            echo  '<script>alert("Erro ao Cadastrar Situação");</script>';
+        }
+        try{
             //Medidas Protetivas - OK
-            
             $query = mysqli_query($conexao, "SELECT idDocumentos FROM documentos WHERE Numero = '$Numero_Documento_Protetivas'");
 
             while ($row = mysqli_fetch_assoc($query )) {            
@@ -205,10 +215,19 @@
 
             $result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereço_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereço_Respo,Parentesco,Vinculo,Nacionalidade,Data_Nascimento,Vara,Criança) 
             VALUES ('$Endereco_Inst_Protetivas','$Instituicão_Protetivas','$Responsavel_Inst_Protetivas','$Responsavel_Protetivas','$Id_Documento','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_Protetivas','$Responsavel_Nacionalidade_Protetivas','$Responsavel_Nascimento_Protetivas','$Vara_Protetivas','$Identidade_pessoa')");
+           
+        }catch(Exception $e){
+            echo  '<script>alert("Erro ao Cadastrar Medidas Protetivas");</script>';
+        }
+       /* try{
             //IDENTIFICAÇÃO DO INTÉRPRETE - OK
             $result = mysqli_query($conexao, "INSERT INTO Intérprete(Doc_interprete,Nome,Endereço_Int,Contato_Int,Telefone_Int,Status_Int) 
             VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete','$Status')");
+        }catch(Exception $e){
+            echo  '<script>alert("Erro ao Intérprete");</script>';
+        }*/
 
+        try{
             //DADOS DA CRIANÇA OU ADOLESCENTE
             
             if($Mae_pessoa == "NÃO"){
@@ -245,14 +264,13 @@
             while ($row = mysqli_fetch_assoc($query)) {            
                 $Defensor = $row['Doc_Defensor'];
             }
-            echo $Defensor;
 
             $result = mysqli_query($conexao, "INSERT INTO criança_adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereço_origem,Endereço_atual,Telefone_criança,Passaporte,Certidão_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Email_Crianca,Entrada,Medidas_Protetivas,Situação,Defensor,Intérprete,Residencia_mae,Residencia_pai,Status_Criança) 
             VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa',NOW(),'$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa','$Status')");
 
-            }catch(Exception $e){
-                echo  '<script>alert("Erro ao executar o SQL");</script>';
-            }
+        }catch(Exception $e){
+            echo  '<script>alert("Erro ao Cadastrar Criança/Adolescente");</script>';
+        }
 
     }      
    
@@ -891,18 +909,18 @@
                  Fazer exatamente igual as demais acima e tirar o comentario das declaracões
                  tudo a ser colocado é antes do imput -->
 
-                <h2> IDENTIFICAÇÃO DO INTÉRPRETE </h2>
-                <div class="inputBox">
+                <h2> INTÉRPRETE </h2>
+                <!--<div class="inputBox">
                     <input type="text" name="Nome_Interprete" id="Nome_Interprete" class="inputUser" required>
                     <label for="Nome_Interprete" class="labelInput">Nome Completo do Intérprete:</label>
                 </div>
-                <br><br>
+                <br><br>-->
                 <div class="inputBox">
                     <input type="text" name="Documento_Interprete" id="Documento_Interprete" class="inputUser" required>
                     <label for="Documento_Interprete" class="labelInput">Documento de Identificacão:</label>
                 </div>
                 <br><br>
-                <div class="inputBox">
+               <!--- <div class="inputBox">
                     <input type="text" name="Endereço_Interprete" id="Endereço_Interprete" class="inputUser" required>
                     <label for="Endereço_Interprete" class="labelInput">Endereço:</label>
                 </div>
@@ -917,7 +935,7 @@
                     <input type="text" name="e-mail_Interprete"id="e-mail_Interprete" class="inputUser" required>
                     <label for="e-mail_Interprete" class="labelInput">E-mail:</label>
                 </div>
-                <br><br>
+                <br><br>-->
 
                 <!--<div class="field radiobox">            
                     <p>Assinatura da criança, adolescente ou responsável</p>

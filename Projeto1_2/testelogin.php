@@ -39,8 +39,8 @@
             //print_r('<br>');
             //print_r('Login e senha Correto');
         }
-
-       
+        //$response = ["response" => "success"];
+       //return json_encode($response); // Axios ou AJAX
     } else{
         //header('Location: Home.php'); // retorna para a home
         echo  '<script>alert("Login ou senha incorreto");location.href="Home.php"</script>';
