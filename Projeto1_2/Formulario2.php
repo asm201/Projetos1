@@ -677,6 +677,24 @@
                 </div>
                 <br><br>
 
+                <div class="field radiobox">            
+                <p>Possíveis necessidades de proteção da criança ou adolescente:</p>
+                    <input type="radio" name="Proteção_Indicadores" id="Convivencia_Proteção" value="ProteçãoC" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Convivencia_Proteção" required>Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança e do adolescente; </label><br>
+                    <input type="radio" name="Proteção_Indicadores" id="Familiar_Proteção" value="ProteçãoF" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Familiar_Proteção" required>Medida de proteção por reunião familiar </label><br>
+                    <input type="radio" name="Proteção_Indicadores" id="Trafico_Proteção" value="ProteçãoT" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Trafico_Proteção" required>Proteção como vítima de tráfico de pessoas; </label><br>
+                    <input type="radio" name="Proteção_Indicadores" id="Outro_Proteção" value="ProteçãoO" onclick="Preencher('Txt_Proteção_Indicadores')"><label for="Outro_Proteção" required>Outra medida de regularização migratória ou proteção como refugiado ou apátrida, conforme a legislação em vigor. Informe: </label><br><br>
+                    <input type="text" name="Txt_Proteção_Indicadores" id="Txt_Proteção_Indicadores" style="display:none" placeholder="Digite aqui" class="inputUser"></input>
+                </div>
+                <br>
+                <div class="field radiobox">  
+                    <label for="Solicitação_Indicadores">Solicitação de:</label><br>
+                    <input type="radio" name="Solicitação_Indicadores" id="Temporaria_Indicadores" value="RESIDÊNCIA TEMPORÁRIA" ><label for="Temporaria_Indicadores" required>RESIDÊNCIA TEMPORÁRIA </label>
+                    <input type="radio" name="Solicitação_Indicadores" id="Refugiu_Indicadores" value="REFÚGIO"><label for="Refugiu_Indicadores" required>REFÚGIO </label>
+                    <input type="radio" name="Solicitação_Indicadores" id="Institucionalização_Indicadores" value="INSTITUCIONALIZAÇÃO" ><label for="Institucionalização_Indicadores" required>INSTITUCIONALIZAÇÃO </label>
+                    <input type="radio" name="Solicitação_Indicadores" id="Ingresso_temporario_Indicadores" value="INGRESSO TEMPORARIO" ><label for="Ingresso_temporario_Indicadores" required>INGRESSO TEMPORARIO </label>
+                </div>
+                <br><br>
+
                 <!--- MEDIDAS PROTETIVAS--->
 
                 <h2> MEDIDAS PROTETIVAS </h2>
@@ -787,23 +805,7 @@
                     <label for="Vinculo_Protetivas_Nao">Não</label>
                 </div>
                 <br>
-                <div class="field radiobox">            
-                <p>Possíveis necessidades de proteção da criança ou adolescente:</p>
-                    <input type="radio" name="Proteção_Indicadores" id="Convivencia_Proteção" value="ProteçãoC" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Convivencia_Proteção" required>Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança e do adolescente; </label><br>
-                    <input type="radio" name="Proteção_Indicadores" id="Familiar_Proteção" value="ProteçãoF" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Familiar_Proteção" required>Medida de proteção por reunião familiar </label><br>
-                    <input type="radio" name="Proteção_Indicadores" id="Trafico_Proteção" value="ProteçãoT" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Trafico_Proteção" required>Proteção como vítima de tráfico de pessoas; </label><br>
-                    <input type="radio" name="Proteção_Indicadores" id="Outro_Proteção" value="ProteçãoO" onclick="Preencher('Txt_Proteção_Indicadores')"><label for="Outro_Proteção" required>Outra medida de regularização migratória ou proteção como refugiado ou apátrida, conforme a legislação em vigor. Informe: </label><br><br>
-                    <input type="text" name="Txt_Proteção_Indicadores" id="Txt_Proteção_Indicadores" style="display:none" placeholder="Digite aqui" class="inputUser"></input>
-                </div>
-                <br>
-                <div class="field radiobox">  
-                    <label for="Solicitação_Indicadores">Solicitação de:</label><br>
-                    <input type="radio" name="Solicitação_Indicadores" id="Temporaria_Indicadores" value="RESIDÊNCIA TEMPORÁRIA" ><label for="Temporaria_Indicadores" required>RESIDÊNCIA TEMPORÁRIA </label>
-                    <input type="radio" name="Solicitação_Indicadores" id="Refugiu_Indicadores" value="REFÚGIO"><label for="Refugiu_Indicadores" required>REFÚGIO </label>
-                    <input type="radio" name="Solicitação_Indicadores" id="Institucionalização_Indicadores" value="INSTITUCIONALIZAÇÃO" ><label for="Institucionalização_Indicadores" required>INSTITUCIONALIZAÇÃO </label>
-                    <input type="radio" name="Solicitação_Indicadores" id="Ingresso_temporario_Indicadores" value="INGRESSO TEMPORARIO" ><label for="Ingresso_temporario_Indicadores" required>INGRESSO TEMPORARIO </label>
-                </div>
-                <br><br>
+
 
                 <!--- AVALIAcÃO PRELIMINAR DA CRIANcA OU ADOLESCENTE --->
 
