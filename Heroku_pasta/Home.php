@@ -1,65 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+    <link rel="stylesheet" type="text/css" Href="estilo.css">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SITE | GN</title>
-    <style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
-            text-align: center;
-            color: white;
-        }
-        a{
-            text-decoration: none;
-            color: white;
-            border: 3px solid dodgerblue;
-            border-radius: 10px;
-            padding: 10px;
-        }
-        a:hover{
-            background-color: dodgerblue;
-        }
-        
-        .submit{
-            background-color: Transparent;
-            text-decoration: none;
-            color: white;
-            border: 3px solid dodgerblue;
-            border-radius: 10px;
-            padding: 10px;
-        }
-        .submit:hover{
-            background-color: dodgerblue;
-        }
-
-        
-    </style>
 </head>
     <body>
-        
-            <h1>Bem vindo</h1>
-            <h1>O que deseja?</h1>
-            <form action="testelogin.php" method="POST">
-                <input type="text" name="e-mail_Defensor" placeholder="E-mail Defensor">
-                <input type="password" name="Senha_Defensor" placeholder="Senha"><br><br> <!-- trocar telefone_def por Senha_Def-->
-                <input class="submit" type="submit" name="submit" value="Login">
+    <div class="box_home">
+                   <form action="testelogin.php" method="POST">
+    <center> <h1>Bem vindo</h1></center>
+    <center>      <h1>O que deseja?</h1></center>
+ 
+            <center> <input type="text" name="e-mail_Defensor" placeholder="E-mail Defensor"></center><br>
+            <center>  <input type="password" name="Senha_Defensor" placeholder="Senha"><br><br> </center><!-- trocar telefone_def por Senha_Def-->
+            <center>  <input class="submit" type="submit" name="submit" id="login"></center>
             </form>
             <br>
-            
-            <a onclick="myalert()" href="powerBI.php">Visão dos Dados Publicos</a>
+            <br>
+            <center><a onclick="myalert()" id="dados_publicos" href="powerBI.php">Visão dos Dados Publicos</a></center>
             <br><br>
+            <script src="js/jquery-3.6.1.min.js"></script>
+            <script src="js/sweetalert2.all.min.js"></script>
+            <script src="js/script.js"></script>
+            
     </body>
-
 </html> 
-
     <script>
         function myalert() {
             alert("Atenção você será encaminhado nesse momento para dados publicos");
         }
         
     </script>
-
-

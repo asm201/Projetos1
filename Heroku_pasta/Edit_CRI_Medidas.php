@@ -24,6 +24,7 @@
             
             while($user_data = mysqli_fetch_assoc($result)){
 
+                $idMedidas_Protetivas                   = $user_data['idMedidas_Protetivas'];
                 $Nome_Pessoa                            = $user_data['Nome'];
                 $Identidade_pessoa                      = $user_data['Documento'];
                 $Instituicão_Protetivas                 = $user_data['Nome_Inst'];
@@ -56,95 +57,79 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" Href="estilo.css">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário</title>
-    <style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
-        }
-        .box{
-            color: white;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 15px;
-            border-radius: 15px;
-            width: 55%;
-        }
-        fieldset{
-            border: 3px solid dodgerblue;
-        }
-        legend{
-            border: 1px solid dodgerblue;
-            padding: 10px;
-            text-align: center;
-            background-color: dodgerblue;
-            border-radius: 8px;
-        }
-        .inputBox{
-            position: relative;
-        }
-        .inputUser{
-            background: none;
-            border: none;
-            border-bottom: 1px solid white;
-            outline: none;
-            color: white;
-            font-size: 15px;
-            width: 100%;
-            letter-spacing: 2px;
-        }
-        .labelInput{
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            pointer-events: none;
-            transition: .5s;
-        }
-        .inputUser:focus ~ .labelInput,
-        .inputUser:valid ~ .labelInput{
-            top: -20px;
-            font-size: 12px;
-            color: dodgerblue;
-        }
-        .labelInputReadonly{
-            /* top: -20px; */
-            font-size: 12px;
-            color: dodgerblue;
-        }
-        #data_nascimento{
-            border: none;
-            padding: 8px;
-            border-radius: 10px;
-            outline: none;
-            font-size: 15px;
-        }
-        #update{
-            background-image: linear-gradient(to right,rgb(0, 92, 197), rgb(90, 20, 220));
-            width: 100%;
-            border: none;
-            padding: 15px;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        #update:hover{
-            background-image: linear-gradient(to right,rgb(0, 80, 172), rgb(80, 19, 195));
-        }
-    </style>
 </head>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
 <body>
+<div class="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <img src="DPU.png" class="logo">
+            <img src="DPU.png" class="logo2">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="cadastrar_Def.php">Cadastrar Novo Defensor/Interprete        
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Formulario2.php">Cadastrar Criança</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados.php">Visão dados Defensores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados_INT.php">Visão dados interpretes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados_CRI.php">Visão dados Crianças</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="powerBI.php">Visão dos Dados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Sair.php">Finalizar Sessão</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados_CRI.php">Voltar</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
 <meta charset="UTF-8">
     <a href="Dados_CRI.php">Voltar</a>
-    <div class="box">
-        <form action="saveEdit_CRI.php" method="post">
+    <div class="box_CRI_Medidas">
+        <form action="saveEdit_CRI_Medidas.php" method="post">
             <fieldset>
                 <legend><b>Criança - Editar</b></legend>
                 <br>
@@ -152,7 +137,7 @@
                 <h2> MEDIDAS PROTETIVAS </h2>
                 <script>
                         function myalert() {
-                            alert("Atualização Salva com sucesso");
+                            alert("Atualizanado...");
                         }
                         function Preencher(el) {
                                 const elements = document.getElementById(el).querySelectorAll('input');
@@ -294,12 +279,9 @@
                     <label for="Vinculo_Protetivas_Nao">Não</label>
                     <br><br>
                 </div>
-                
-                <div>
+                <input type="hidden" name="idMedidas_Protetivas" Value="<?php echo $idMedidas_Protetivas ?>">
                     <br>
                     <input onclick="myalert()" type="submit" name="update" id="update">
-                </div>
-
             </fieldset>
 
 

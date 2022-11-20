@@ -10,11 +10,17 @@
     $email_Interprete           = $_POST['e-mail_Interprete'];
     $Telefone_Interprete        = $_POST['Telefone_Interprete'];
 
-    $sqlUpdate = "UPDATE interprete SET Nome='$Nome_Interprete',Doc_Interprete='$Documento_Interprete',Endereco_Int='$Endereço_Interprete',Telefone_int='$Telefone_Interprete',Contato_Int='$email_Interprete' 
-    WHERE Doc_Interprete='$Documento_Interprete'"; 
+    try{
+        $sqlUpdate = "UPDATE interprete SET Nome='$Nome_Interprete',Doc_Interprete='$Documento_Interprete',Endereco_Int='$Endereço_Interprete',Telefone_int='$Telefone_Interprete',Contato_Int='$email_Interprete' 
+        WHERE Doc_Interprete='$Documento_Interprete'"; 
+    
+    
+        $result = $conexao->query($sqlUpdate);
+    }catch(Exception $e){
+        echo  '<script>alert("Erro ao atualizar Intérprete");</script>';
+        header('Location: Dados_INT.php');
+    }
 
-
-    $result = $conexao->query($sqlUpdate);
     }
     header('Location: Dados_INT.php');
 

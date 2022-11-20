@@ -25,31 +25,38 @@
         $Text_Residencia_Pai_Pessoa     = $_POST['Text_Residencia_Pai_Pessoa'];
 
 
-        $sqlUpdate =  "UPDATE crianca_adolecente SET Documento='$Identidade_pessoa',
-        Nome='$Nome_Pessoa',
-        Data_de_Nascimento='$Nascimento_pessoa',
-        Genero='$Genero_pessoa',
-        Nacionalidade='$Nacionalidade_pessoa',
-        Local_Nasc='$País_Cid_pessoa',
-        Escolaridade='$Escolaridade_pessoa',
-        Endereco_origem='$Endereco_Antigo_Pessoa',
-        Endereco_atual='$Endereco_atual_pessoa',
-        Telefone_crianca='$Telefone_pessoa',
-        Passaporte='$Passaporte_pessoa',
-        Certidao_de_Nascimento='$Certidao_pessoa',
-        Mae_viva='$Mae_pessoa',
-        Pai_Vivo='$Pai_pessoa',
-        Nome_mae='$Nome_mae_pessoa',
-        Nome_pai='$Nome_pai_pessoa',
-        Email_Crianca='$Email_pessoa',
-        Residencia_mae='$Text_Residencia_Mae_Pessoa',
-        Residencia_pai='$Text_Residencia_Pai_Pessoa'
+        try{
+            $sqlUpdate =  "UPDATE crianca_adolecente SET Documento='$Identidade_pessoa',
+            Nome='$Nome_Pessoa',
+            Data_de_Nascimento='$Nascimento_pessoa',
+            Genero='$Genero_pessoa',
+            Nacionalidade='$Nacionalidade_pessoa',
+            Local_Nasc='$País_Cid_pessoa',
+            Escolaridade='$Escolaridade_pessoa',
+            Endereco_origem='$Endereco_Antigo_Pessoa',
+            Endereco_atual='$Endereco_atual_pessoa',
+            Telefone_crianca='$Telefone_pessoa',
+            Passaporte='$Passaporte_pessoa',
+            Certidao_de_Nascimento='$Certidao_pessoa',
+            Mae_viva='$Mae_pessoa',
+            Pai_Vivo='$Pai_pessoa',
+            Nome_mae='$Nome_mae_pessoa',
+            Nome_pai='$Nome_pai_pessoa',
+            Email_Crianca='$Email_pessoa',
+            Residencia_mae='$Text_Residencia_Mae_Pessoa',
+            Residencia_pai='$Text_Residencia_Pai_Pessoa'
+            
+            WHERE Documento='$Identidade_pessoa'"; 
+            var_dump($sqlUpdate);
         
-        WHERE Documento='$Identidade_pessoa'"; 
-        var_dump($sqlUpdate);
     
+            $result = $conexao->query($sqlUpdate);
+        }catch(Exception $e){
+            echo  '<script>alert("Erro ao atualizar Crinça/Adolescente");</script>';
+            header('Location: Dados_CRI.php');
+        }
 
-        $result = $conexao->query($sqlUpdate);
+
     }
      header('Location: Dados_CRI.php');
 

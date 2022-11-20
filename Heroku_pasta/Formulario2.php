@@ -276,92 +276,75 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <link rel="stylesheet" type="text/css" Href="estilo.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário</title>
-    <style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
-        }
-        .box{
-            color: white;
-            position: absolute;
-            top: 400%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 15px;
-            border-radius: 15px;
-            width: 55%;
-        }
-        fieldset{
-            border: 3px solid dodgerblue;
-        }
-        legend{
-            border: 1px solid dodgerblue;
-            padding: 10px;
-            text-align: center;
-            background-color: dodgerblue;
-            border-radius: 8px;
-        }
-        input[type = "date"]::-webkit-calendar-picker-indicator {
-            cursor: pointer;
-            filter: invert(1)  ;
-        }
-        .inputBox{
-            position: relative;
-        }
-        .inputUser{
-            background: none;
-            border: none;
-            border-bottom: 1px solid white;
-            outline: none;
-            color: white;
-            font-size: 15px;
-            width: 100%;
-            letter-spacing: 2px;
-        }
-        .labelInput{
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            pointer-events: none;
-            transition: .5s;
-        }
-        .inputUser:focus ~ .labelInput,
-        .inputUser:valid ~ .labelInput{
-            top: -20px;
-            font-size: 12px;
-            color: dodgerblue;
-        }
-        #data_nascimento{
-            border: none;
-            padding: 8px;
-            border-radius: 10px;
-            outline: none;
-            font-size: 15px;
-        }
-        #submit{
-            background-image: linear-gradient(to right,rgb(0, 92, 197), rgb(90, 20, 220));
-            width: 100%;
-            border: none;
-            padding: 15px;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        #submit:hover{
-            background-image: linear-gradient(to right,rgb(0, 80, 172), rgb(80, 19, 195));
-        }
-    </style>
-</head>
-<body>
+<head>
     
+    <title>Formulário</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
+<body>
 <meta charset="UTF-8">
+    <div class="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <img src="DPU.png" class="logo">
+            <img src="DPU.png" class="logo2">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="cadastrar_Def.php">Cadastrar Novo Defensor/Interprete        
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Formulario2.php">Cadastrar Criança</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados.php">Visão dados Defensores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados_INT.php">Visão dados interpretes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados_CRI.php">Visão dados Crianças</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="powerBI.php">Visão dos Dados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Sair.php">Finalizar Sessão</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    </div>
+   
     <div class="box">
         <form action="Formulario2.php" method="post">
             <fieldset>
@@ -635,8 +618,10 @@
 
                 <div class="field radiobox">
                     <label>Você tem intenção de peremanecer no Brasil?</label><br>
-                    <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Sim" value="Sim" ><label for="Sim">Sim </label>
-                    <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Nao" value="Não" ><label for="Não">Não </label>
+                    <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Sim" value="Sim" onclick="Sumir('Txt_Permancer_Pessoa')"><label for="Sim">Sim </label>
+                    <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Nao" value="Não" onclick="Preencher('Txt_Permancer_Pessoa')"><label for="Não">Não </label>
+                    <br><br>
+                    <textarea type="text" name="Txt_Permancer_Pessoa" id="Txt_Permancer_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea> 
                  </div>
                 <br>
 

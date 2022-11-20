@@ -26,7 +26,27 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" Href="estilo.css">
 <head>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,42 +54,47 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 
     <title>Dados Internos</title>
-    <style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
-            text-align: center;
-            color: white;
-        }  
-
-        .table-bg{
-            background-color: rgba(0,0,0,0.3)
-            border-radius: 15px 15px 0 0;
-        }
-
-        button{
-            text-decoration: none;
-            color: white;
-            border: 3px solid dodgerblue;
-            border-radius: 10px;
-            padding: 10px;
-        }
-        button:hover{
-            background-color: dodgerblue;
-        }
-        
-    </style>
     </head>
     <body>
-            <nav class="p-3 mb-2 bg-dark text-white">
-                <nav class="p-3 mb-2 bg-info text-white">
-                    <div class="container-fluid">
-                    <img src="SIS-DPU.png" title>
-                    <img src="DPU.png" title>
-                    <a href="Sair.php">Finalizar Sessão</a>
-                    </div>
-                </nav>
-            </nav>
+    <div class="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <img src="DPU.png" class="logo">
+            <img src="DPU.png" class="logo2">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="cadastrar_Def.php">Cadastrar Novo Defensor/Interprete        
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Formulario2.php">Cadastrar Criança</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados.php">Visão dados Defensores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados_INT.php">Visão dados interpretes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados_CRI.php">Visão dados Crianças</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="powerBI.php">Visão dos Dados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Sair.php">Finalizar Sessão</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
             
             <div class= "m-5 text-white table-bg">
                 <div class= "table-responsive">
@@ -169,6 +194,7 @@
                 
             
     </body>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
         <script>
@@ -243,8 +269,6 @@
             } );
         </script>
     </head>
-    </html> 
-
     <script>
 			function Preencher(el) {
 				var display = document.getElementsByName(el).style.display;
