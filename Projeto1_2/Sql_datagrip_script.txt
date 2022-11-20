@@ -1,0 +1,171 @@
+create table if not exists defensor
+(
+    idDefensor   int auto_increment
+        primary key,
+    Nome_Def     varchar(45)  not null,
+    Doc_Defensor varchar(100) not null,
+    Cargo        varchar(45)  not null,
+    Endereço_Def varchar(100) not null,
+    Cidade_UF    varchar(45)  not null,
+    Contato_Def  varchar(100) not null,
+    Telefone_Def int(12)      not null,
+    Status_Def   tinyint(1)   null
+);
+
+create table if not exists documentos
+(
+    idDocumentos int auto_increment
+        primary key,
+    Descrição    varchar(45) not null,
+    Numero       varchar(45) not null,
+    constraint Numero
+        unique (Numero),
+    constraint idDocumentos_UNIQUE
+        unique (idDocumentos)
+);
+
+create table if not exists entrada
+(
+    idEntrada          int auto_increment
+        primary key,
+    Cidade_Saida       varchar(45) not null,
+    Data_saida         datetime    not null,
+    Cidade_Chegada     varchar(45) not null,
+    Data_Chegada       datetime    not null,
+    Transporte         varchar(45) not null,
+    Transporte_Detalhe varchar(45) not null,
+    Data_Reconhecido   datetime    not null,
+    Pais_Reconhecido   varchar(45) not null,
+    Criança            varchar(45) null,
+    constraint idEntrada_UNIQUE
+        unique (idEntrada)
+);
+
+create table if not exists intérprete
+(
+    Doc_Interprete varchar(100) not null
+        primary key,
+    Nome           varchar(45)  not null,
+    Endereço_Int   varchar(100) not null,
+    Contato_Int    varchar(100) not null,
+    Telefone_int   int(12)      not null,
+    Status_Int     tinyint(1)   null,
+    constraint Doc_Interprete_UNIQUE
+        unique (Doc_Interprete)
+);
+
+create table if not exists medidas_protetivas
+(
+    idMedidas_Protetivas int auto_increment
+        primary key,
+    Endereço_Inst        varchar(100) not null,
+    Nome_Inst            varchar(45)  not null,
+    Nome_Respo_Inst      varchar(45)  not null,
+    Nome_Respo           varchar(45)  not null,
+    Documento_Respo      int          not null,
+    Genero               varchar(45)  not null,
+    Endereço_respo       varchar(100) not null,
+    Parentesco           varchar(45)  not null,
+    Vinculo              varchar(45)  not null,
+    Nacionalidade        varchar(45)  not null,
+    Data_Nascimento      datetime     null,
+    Vara                 varchar(100) null,
+    Criança              varchar(45)  null,
+    constraint idMedidas_Protetivas_UNIQUE
+        unique (idMedidas_Protetivas),
+    constraint documento_resposavel
+        foreign key (Documento_Respo) references documentos (idDocumentos)
+);
+
+create index if not exists Documento_Respo_idx
+    on medidas_protetivas (Documento_Respo);
+
+create table if not exists situação
+(
+    idSituação                 int auto_increment
+        primary key,
+    Vida_Antes                 varchar(800)  not null,
+    Razão_Saida                varchar(800)  not null,
+    Saida_Forçada              varchar(500)  not null,
+    Permanencia                varchar(45)   null,
+    Ajuda                      varchar(500)  not null,
+    Acompanhado                varchar(500)  not null,
+    Entrada_Sozinho            varchar(500)  not null,
+    Retorno                    varchar(500)  not null,
+    Medo_Retorno               varchar(500)  not null,
+    Parente_Pais_Origem        varchar(45)   not null,
+    Saude_Mental               varchar(800)  not null,
+    Idade_Mental               varchar(800)  not null,
+    Saude_Fisica               varchar(800)  not null,
+    Parente_Brasil             varchar(100)  null,
+    Criança                    varchar(45)   null,
+    Proteção_da_Criança        varchar(1500) null,
+    Solicitação_de_Indicadores varchar(1500) null,
+    constraint idSituação_UNIQUE
+        unique (idSituação)
+);
+
+create table if not exists criança_adolecente
+(
+    Documento              varchar(45)  not null
+        primary key,
+    Nome                   varchar(150) not null,
+    Data_de_Nascimento     datetime     not null,
+    Genero                 varchar(100) not null,
+    Nacionalidade          varchar(45)  not null,
+    Local_Nasc             varchar(45)  not null,
+    Escolaridade           varchar(45)  not null,
+    Endereço_origem        varchar(45)  not null,
+    Endereço_atual         varchar(45)  not null,
+    Telefone_criança       int(12)      null,
+    Passaporte             varchar(45)  not null,
+    Certidão_de_Nascimento varchar(45)  not null,
+    Data_de_Cadastro       datetime     not null,
+    Mae_viva               varchar(45)  not null,
+    Pai_Vivo               varchar(45)  not null,
+    Nome_mae               varchar(45)  null,
+    Nome_pai               varchar(45)  null,
+    Email_Crianca          varchar(100) not null,
+    Entrada                int          not null,
+    Medidas_Protetivas     int          not null,
+    Situação               int          not null,
+    Defensor               int          not null,
+    Intérprete             varchar(100) not null,
+    Residencia_mae         varchar(100) null,
+    Residencia_pai         varchar(100) null,
+    Status_Criança         tinyint(1)   null,
+    constraint Defensor_UNIQUE
+        unique (Defensor),
+    constraint Documento_UNIQUE
+        unique (Documento),
+    constraint Email_Criança_UNIQUE
+        unique (Email_Crianca),
+    constraint Entrada_UNIQUE
+        unique (Entrada),
+    constraint Medida_Protetica_UNIQUE
+        unique (Medidas_Protetivas),
+    constraint Medidas_Protetivas_UNIQUE
+        unique (Medidas_Protetivas),
+    constraint Situação_UNIQUE
+        unique (Situação),
+    constraint Defensor
+        foreign key (Defensor) references defensor (idDefensor),
+    constraint Entrada
+        foreign key (Entrada) references entrada (idEntrada),
+    constraint Intérprete
+        foreign key (Intérprete) references intérprete (Doc_Interprete),
+    constraint Medidas_Protetivas
+        foreign key (Medidas_Protetivas) references medidas_protetivas (idMedidas_Protetivas),
+    constraint Situação
+        foreign key (Situação) references situação (idSituação)
+);
+
+create index if not exists Entrada_idx
+    on criança_adolecente (Entrada);
+
+create index if not exists Intérprete_idx
+    on criança_adolecente (Intérprete);
+
+create index if not exists Situação_idx
+    on criança_adolecente (Situação);
+

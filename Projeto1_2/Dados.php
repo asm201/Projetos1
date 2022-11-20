@@ -1,6 +1,6 @@
 <?php
 
-    session_start();
+    /*session_start();
     error_reporting (0);
     include_once('config.php');
     //print_r($_SESSION);
@@ -13,7 +13,7 @@
     }$logado = $_SESSION['e-mail_Defensor'];
 
     $sql = "SELECT * FROM defensor ORDER BY idDefensor DESC";
-    $result = $conexao->query($sql);
+    $result = $conexao->query($sql);*/
 
     //print_r($result);
 
@@ -22,6 +22,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" type="text/css" Href="estilo.css">
 <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,32 +31,47 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
 
         <title>Dados Internos</title>
-        <style>
-            body{
-                font-family: Arial, Helvetica, sans-serif;
-                background: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
-                text-align: center;
-                color: white;
-            }  
-
-            .table-bg{
-                background-color: rgba(0,0,0,0.3)
-                border-radius: 15px 15px 0 0;
-            }
-
-            
-        </style>
         </head>
         <body>
-                <nav class="p-3 mb-2 bg-dark text-white">
-                    <nav class="p-3 mb-2 bg-info text-white">
-                        <div class="container-fluid">
-                        <img src="SIS-DPU.png" title>
-                        <img src="DPU.png" title>
-                        <a href="Sair.php">Finalizar Sessão</a>
-                        </div>
-                    </nav>
-                </nav>
+        <div class="navbar">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <img src="DPU.png" class="logo">
+            <img src="DPU.png" class="logo2">
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="cadastrar_Def.php">Cadastrar Novo Defensor/Interprete        
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Formulario2.php">Cadastrar Criança</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados.php">Visão dados Defensores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados_INT.php">Visão dados interpretes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Dados_CRI.php">Visão dados Crianças</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="powerBI.php">Visão dos Dados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Sair.php">Finalizar Sessão</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
                 <div class= "m-5 text-white table-bg">
                     <div class= "table-responsive">
                         <table class="table" id="table">

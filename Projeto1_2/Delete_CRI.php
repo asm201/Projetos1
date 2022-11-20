@@ -1,0 +1,27 @@
+<?php
+    //Se o botão de envio for pressionado
+    //error_reporting (0);
+    if(!empty($_GET['Documento']))
+    {
+
+        include_once('config.php');
+
+
+        $Identidade_Pessoa = $_GET['Documento'];
+
+        $sqlSelect = "SELECT * FROM criança_adolecente WHERE Documento=$Identidade_Pessoa";
+
+        $result = $conexao->query($sqlSelect);
+        
+        //print_r($result);
+
+        if($result->num_rows > 0){
+            
+            $sqlDelete = "UPDATE criança_adolecente SET Status_Criança = 0 WHERE Documento=$Identidade_Pessoa";
+            $resultDelete = $conexao->query($sqlDelete);
+
+        }
+    }  
+    header('Location: Dados_CRI.php');    
+   
+?>

@@ -1,10 +1,4 @@
-
-
-h1{ 
-    text-align: center;
-}
-
-<input{
-    height: 100%;
-    position: absolute; 
+@keyframes bgcolor{
+    100%{
+        background: #0275d8;
 }
