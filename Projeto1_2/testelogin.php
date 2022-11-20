@@ -2,7 +2,7 @@
     session_start();
     
        // print_r($_REQUEST);
-       // error_reporting (0);
+        error_reporting (0);
     if(isset($_POST['submit']) && !empty($_POST['e-mail_Defensor']) && !empty($_POST['Telefone_Def']) ){ // acessa o sistema 
 
         include_once('config.php');
@@ -26,24 +26,25 @@
         if(mysqli_num_rows($result) < 1){
             unset($_SESSION['e-mail_Defensor']);
             unset($_SESSION['Telefone_Def']);
-            header('Location: Home.php');
+            http_response_code(401);
+            //header('Location: Home.php');
+            //echo  '<script>alert("Defensor e senha não aceito");location.href="Home.php"</script>';
 
 
             //print_r('Defensor não aceito');
         } else{
 
             $_SESSION['e-mail_Defensor'] = $Email_defensor;
-
-            header('Location: login.php');
-
+            http_response_code(204);
+            //header('Location: login.php');
             //print_r('<br>');
             //print_r('Login e senha Correto');
         }
-        //$response = ["response" => "success"];
-       //return json_encode($response); // Axios ou AJAX
+
+       
     } else{
+        http_response_code(400);
         //header('Location: Home.php'); // retorna para a home
-        echo  '<script>alert("Login ou senha incorreto");location.href="Home.php"</script>';
-    
+        //echo  '<script>alert("Lamento Insira o E-mail ou senha");location.href="Home.php"</script>';
     }
 ?>
