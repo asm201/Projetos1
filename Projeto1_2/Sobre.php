@@ -84,6 +84,8 @@
                                 <p> "Atualmente" o cadastro é feito manualmente em um PDF e depois manualmente transferido para uma planilha Excel. E a partir dessa planilha que se tem
                                     o banco de dados que faz referencia a essas crianças/adolecentes.
                                 </p>
+                                <p> Vendo como é feito o formato manualmente veio a motivação de criar a ferramenta para melhorar o formato como é.
+                                </p>
                                 
                                 
 
