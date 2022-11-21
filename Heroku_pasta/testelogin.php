@@ -36,7 +36,7 @@
 
             $_SESSION['e-mail_Defensor'] = $Email_defensor;
             http_response_code(204);
-            header('Location: login.php');
+            
             //print_r('<br>');
             //print_r('Login e senha Correto');
         }

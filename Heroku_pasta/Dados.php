@@ -78,14 +78,14 @@
                             <thead>
                                 <tr>
                                 <!--<th scope="col">#</th>-->
-                                <th scope="col">Nome_Def</th>
-                                <th scope="col">Doc_Defensor</th>
+                                <th scope="col">Nome do Defensor</th>
+                                <th scope="col">Indetificação do Defensor</th>
                                 <th scope="col">Cargo</th>
-                                <th scope="col">Endereço_Def</th>
-                                <th scope="col">Cidade_UF</th>
-                                <th scope="col">Contato_Def</th>
-                                <th scope="col">Telefone_Def</th>
-                                <th scope="col">Estado</th>
+                                <th scope="col">Endereço</th>
+                                <th scope="col">Cidade/UF</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Telefonef</th>
+                                <th scope="col">Status do Defensor</th>
                                 <th scope="col">Editar</th>
 
                                 </tr>

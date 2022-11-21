@@ -35,11 +35,6 @@
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="style.css">
 
@@ -103,23 +98,23 @@
                             <tr>
 
                             <!---Parte 1 da listagem -->
-                            <th scope="col">Documento</th>
-                            <th scope="col">Nome_Pessoa</th>
-                            <th scope="col">Nascimento_Pessoa</th>
-                            <th scope="col">gênero_pessoa</th>
-                            <th scope="col">Nacionalidade_Pessoa</th>
-                            <th scope="col">País_Cid_Pessoa</th>
-                            <th scope="col">Escolaridade_Pessoa</th>
-                            <th scope="col">Endereco_Antigo_Pessoa</th>
-                            <th scope="col">Endereco_Atual_Pessoa</th>
-                            <th scope="col">Telefone_Pessoa</th>
-                            <th scope="col">e_mail_Pessoa</th>
-                            <th scope="col">Passaporte_Pessoa</th>
-                            <th scope="col">certidão</th>
-                            <th scope="col">Data_de_Cadastro</th>
-                            <th scope="col">Text_Residencia_Mae_Pessoa</th>
-                            <th scope="col">Text_Residencia_Pai_Pessoa</th>
-                            <th scope="col">Status_Criança</th>
+                            <th scope="col">Documento da Crinça</th>
+                            <th scope="col">Nome da Crinça</th>
+                            <th scope="col">Data Nascimento da Criança </th>
+                            <th scope="col">Gênero da Criança</th>
+                            <th scope="col">Nacionalidade</th>
+                            <th scope="col">Cidade Natal</th>
+                            <th scope="col">Escolaridade</th>
+                            <th scope="col">Endereco de Origem</th>
+                            <th scope="col">Endereco Atual</th>
+                            <th scope="col">Telefone da Criança</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Passaporte</th>
+                            <th scope="col">Certidão de Nascimento</th>
+                            <th scope="col">Data de Cadastro</th>
+                            <th scope="col">Endreço da Mãe</th>
+                            <th scope="col">Endreço da Pai<</th>
+                            <th scope="col">Status da Crinça</th>
                             <th scope="col">Outros Dados</th>
                             <th scope="col">Editar</th>
                             <!---Parte 2 da listagem -->
@@ -147,7 +142,7 @@
                                     echo "<td>" .$user_data['Data_de_Cadastro']."</td>";
                                     echo "<td>" .$user_data['Residencia_mae']."</td>";
                                     echo "<td>" .$user_data['Residencia_pai']."</td>";
-                                    echo "<td>" .$user_data['Status_Crianca']."</td>";
+                                    echo "<td>" .($user_data['Status_Crianca'] != 0 ?"TRUE":"FALSE")."</td>";
                                     echo "<td>
                                         <a onclick='editardados()' class='btn btn-sm btn btn-primary' href='Edit_CRI_Entrada.php?Documento=$user_data[Documento]'>Entrada
                                             <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-view-list' viewBox='0 0 16 16'>

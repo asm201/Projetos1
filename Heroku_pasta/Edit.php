@@ -128,7 +128,7 @@
                 </div>
                 <br><br>
                 <div class="inputBox">
-                    <input type="text" name="Documento_Defensor" id="Documento_Defensor" class="inputUser" value="<?php echo $Documento_defensor ?>" required>
+                    <input type="text" name="Documento_Defensor" id="Documento_Defensor" class="inputUser" maxlength="9" value="<?php echo $Documento_defensor ?>" required>
                     <label for="Documento_Defensor" class="labelInput">Documento de Identificacão:</label>
                 </div>
                 <br><br>
@@ -150,7 +150,7 @@
                 <br><br>
 
                 <div class="inputBox">
-                    <input type="tel" name="Telefone_Defensor" id="Telefone_Defensor" class="inputUser" value="<?php echo $Telefone_defensor ?>" required>
+                    <input type="tel" name="Telefone_Defensor" id="Telefone_Defensor" class="inputUser" maxlength="9" value="<?php echo $Telefone_defensor ?>" required>
                     <label for="Telefone_Defensor" class="labelInput">Telefone:</label>
                 </div>
                 <br><br>

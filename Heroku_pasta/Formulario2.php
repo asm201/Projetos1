@@ -17,9 +17,15 @@
 
     //print_r($result);
     //Se o botão de envio for pressionado
-    error_reporting (0);
+    //error_reporting (0);
     if(isset($_POST['submit']))
     {
+        $filename = $_FILES['arquivo']['name'];
+        $size = $_FILES['arquivo']['size'];
+        $novo_nome = md5(time()) . $extensao;
+        $file = $_FILES['arquivo']['tmp_name'];
+        $destination = 'uploads/';
+        $extension = strtolower(substr($_FILES['arquivo']['name'], -4));
 
         include_once('config.php');
         /*//Defensor
@@ -261,8 +267,10 @@
                 $Defensor = $row['Doc_Defensor'];
             }
 
-            $result = mysqli_query($conexao, "INSERT INTO crianca_adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereco_origem,Endereco_atual,Telefone_crianca,Passaporte,Certidao_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Email_Crianca,Entrada,Medidas_Protetivas,Situacao,Defensor,Interprete,Residencia_mae,Residencia_pai,Status_Crianca) 
-            VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa',NOW(),'$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa','$Status')");
+            move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome);
+
+            $result = mysqli_query($conexao, "INSERT INTO crianca_adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereco_origem,Endereco_atual,Telefone_crianca,Passaporte,Certidao_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Email_Crianca,Entrada,Medidas_Protetivas,Situacao,Defensor,Interprete,Residencia_mae,Residencia_pai,Status_Crianca, Imagem) 
+            VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa',NOW(),'$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa','$Status','$filename')");
 
         }catch(Exception $e){
             echo  '<script>alert("Erro ao Cadastrar Criança/Adolescente");</script>';
@@ -346,7 +354,7 @@
     </div>
    
     <div class="box">
-        <form action="Formulario2.php" method="post">
+        <form action="Formulario2.php" method="post" enctype="multipart/form-data">
             <fieldset>
                 <legend><b>Fórmulário</b></legend>
                 <br>
@@ -406,7 +414,7 @@
 
                 <div class="inputBox">
                     <label for="Nascimento_Pessoa"><b><label style="color:#FF0000">*</label> Data de Nascimento:</b></label>
-                    <input type="date" name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser" required>
+                    <input type="date" min='2004-01-01' max='2022-11-21' name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser" required>
                 </div>
 
                 <div class="field radiobox">            
@@ -449,7 +457,7 @@
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Telefone_Pessoa" id="Telefone_Pessoa" class="inputUser" required>
+                <input type="text" name="Telefone_Pessoa" id="Telefone_Pessoa" class="inputUser" maxlength="9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
                     <label for="Telefone_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Telefone:</label>
                 </div>
                 <br><br>
@@ -461,13 +469,13 @@
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Identidade_Pessoa" id="Identidade_Pessoa" class="inputUser" required>
+                <input type="text" name="Identidade_Pessoa" id="Identidade_Pessoa" class="inputUser" maxlength="9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
                     <label for="Identidade_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Cédula de identidade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Passaporte_Pessoa" id="Passaporte_Pessoa" class="inputUser" required>
+                <input type="text" name="Passaporte_Pessoa" id="Passaporte_Pessoa" class="inputUser" maxlength="8" required>
                     <label for="Passaporte_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Passaporte:</label>
                 </div>
 
@@ -528,7 +536,7 @@
                 <br><br>
                 <div class="inputBox">
                     <label for="Data_Saida_Pessoa"><b><label style="color:#FF0000">*</label> Data de Saida:</b></label>
-                    <input type="date" name="Data_Saida_Pessoa" id="Data_Saida_Pessoa"class="inputUser" required>
+                    <input type="date" name="Data_Saida_Pessoa" id="datePickerId"class="inputUser" required>
                 <br><br>
 
                 <div class="inputBox">
@@ -539,7 +547,7 @@
 
                 <div class="inputBox">
                     <label for="Data_Chegada_Pessoa"><b><label style="color:#FF0000">*</label> Data de Chegada ao Brasil:</b></label>
-                    <input type="date" name="Data_Chegada_Pessoa" id="Data_Chegada_Pessoa" class="inputUser" required>
+                    <input type="date" max='2022-11-21' name="Data_Chegada_Pessoa" id="Data_Chegada_Pessoa" class="inputUser" required>
                 <br><br>
 
                 <div class="field radiobox">
@@ -557,7 +565,7 @@
 
                 <div class="inputBox">
                     <label for="Data_Reconhecido_Pessoa"><b><label style="color:#FF0000">*</label> Data em que foi reconhecido:</b></label>
-                    <input type="date" name="Data_Reconhecido_Pessoa" id="Data_Reconhecido_Pessoa"class="inputUser" required>
+                    <input type="date" max='2022-11-21' name="Data_Reconhecido_Pessoa" id="Data_Reconhecido_Pessoa"class="inputUser" required>
                 <br><br>
 
                 <div class="inputBox">
@@ -755,7 +763,7 @@
                 
                 <div class="inputBox">
                     <label for="Responsavel_Nascimento_Protetivas">Data de Nascimento:</label>
-                    <input type="date" name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser" required   >
+                    <input type="date" max='2004-11-21' name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser" required   >
                 </div>
                     <br><br>
                 
@@ -897,7 +905,7 @@
                 </div>
                 <br><br>-->
                 <div class="inputBox">
-                    <input type="text" name="Documento_Interprete" id="Documento_Interprete" class="inputUser" required>
+                    <input type="text" name="Documento_Interprete" id="Documento_Interprete" maxlength="9" class="inputUser" required>
                     <label for="Documento_Interprete" class="labelInput">Documento de Identificacão:</label>
                 </div>
                 <br><br>
@@ -942,8 +950,14 @@
 					<img src="Hatch.jpg" width=500px height=150px />
 					<canvas id="signature-pad" class="signature-pad" width=500px height=150px></canvas>
 				</div>-->
+                <div>
+                <h2>Assinatura do Defensor:</h2>
+                <br>
+                 <input name="arquivo" type="file" accept="image/*" />
+                </div>
+                <br><br>
 
-                <input type="submit" name="submit" id="submit">
+                <input type="submit" formnovalidate name="submit" id="submit">
             </fieldset>
         </form>
     </div>
@@ -959,5 +973,6 @@
 					document.getElementById(el).style.display = 'none';
             }	
 		</script>
+        <script src="js/script.js"></script>
 </body>
 </html>

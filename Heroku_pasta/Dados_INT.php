@@ -33,7 +33,6 @@
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" type="text/css" Href="estilo.css">
@@ -67,13 +66,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
         crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="style.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
@@ -124,12 +116,12 @@
                     <table class="table" id="table">
                         <thead>
                             <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Doc_Interprete</th>
-                            <th scope="col">Endereço_Int</th>
-                            <th scope="col">Contato_Int</th>
-                            <th scope="col">Telefone_int</th>
-                            <th scope="col">Status_Int</th>
+                            <th scope="col">Nome do Itérprete</th>
+                            <th scope="col">Identificação do Itérprete</th>
+                            <th scope="col">Endereço do Itérprete</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Telefone</th>
+                            <th scope="col">Status do Itérprete</th>
                             <th scope="col">Editar</th>
 
                             </tr>

@@ -1,12 +1,22 @@
 <?php
+    header("Content-type: text/html; charset=utf-8");
+    session_start();
+    //error_reporting (0);
+    include_once('config.php');
+    //print_r($_SESSION);
+    if((!isset($_SESSION['e-mail_Defensor']) == true) and (!isset($_SESSION['Telefone_Def']) == true)){
 
+        unset($_SESSION['e-mail_Defensor']);
+        unset($_SESSION['Telefone_Def']);
+        header('Location: Home.php');
+
+    }$logado = $_SESSION['e-mail_Defensor'];
 
     //Se o botão de envio for pressionado
     //error_reporting (0);
-    try{
-        if(isset($_POST['submit1']))
-        {
-            
+    if(isset($_POST['submit1']))
+    {
+        try{
             include_once('config.php');
             //Defensor
             $Nome_Defensor      = $_POST['Nome_Defensor'];
@@ -25,12 +35,17 @@
     
             $result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereco_Def,Cidade_UF,Contato_Def,Telefone_Def,Senha_Defensor) 
             VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_Defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor','$Senha_Automatica')");
-        }   
-        if(isset($_POST['submit']))
-        {
-    
+            http_response_code(204);
+        }catch(Exception $e){
+            http_response_code(500);  
+        }
+        return;
+    }   
+
+    if(isset($_POST['submit']))
+    {
+        try{
             include_once('config.php');
-    
             //Interprete
             $Nome_Interprete            = $_POST['Nome_Interprete'];
             $Documento_Interprete       = $_POST['Documento_Interprete'];
@@ -43,12 +58,13 @@
             $result = mysqli_query($conexao, "INSERT INTO interprete(Doc_interprete,Nome,Endereco_Int,Contato_Int,Telefone_Int) 
             VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete')");
             //echo gettype($Telefone_Interprete);
+            http_response_code(204);
+        }catch(Exception $e){
+            http_response_code(500);  
+        }
+        return;
     
-            
-        }   
-    }catch(Exception $e){
-        echo  '<script>alert("Erro ao executar o SQL");</script>';
-    }
+    }   
       
    
 
@@ -144,7 +160,7 @@
 
                     <!----Defensor -->
 
-                    <form action="cadastrar_Def.php" method="post">
+                    <form action="cadastrar_Def.php" method="post" id="cadastrar_Def">
                         <div class="Container" name="Form_Defensor" name="Form_Defensor" id="Form_Defensor" style="display:none" class="inputUser">
                                 <h1> DADOS DO DEFENSOR PÚBLICO FEDERAL </h1>
                                 <div class="inputBox">
@@ -153,7 +169,7 @@
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="text" name="Documento_Defensor" id="Documento_Defensor" class="inputUser" required>
+                                    <input type="text" name="Documento_Defensor" id="Documento_Defensor" class="inputUser" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="9" required>
                                     <label for="Documento_Defensor" class="labelInput"><label style="color:#FF0000">*</label>Documento de Identificacão:</label>
                                 </div>
                                 <br><br>
@@ -175,7 +191,7 @@
                                 <br><br>
 
                                 <div class="inputBox">
-                                    <input type="tel" name="Telefone_Defensor" id="Telefone_Defensor" class="inputUser" required>
+                                    <input type="tel" name="Telefone_Defensor" id="Telefone_Defensor" class="inputUser" maxlength="9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  required>
                                     <label for="Telefone_Defensor" class="labelInput"><label style="color:#FF0000">*</label>Telefone:</label>
                                 </div>
                                 <br><br>
@@ -198,7 +214,7 @@
                     <!--- IDENTIFICAÇÃO DO INTÉRPRETE --->
                     <!--- Fazer exatamente igual as demais acima e tirar o comentario das declaracões --->
                     <!--- tudo a ser colocado é antes do imput ---> 
-                    <form action="cadastrar_Def.php" method="post">
+                    <form action="cadastrar_Def.php" method="post" id="cadastrar_Int">
                         <div class="Container" name="Form_Interprete" name="Form_Interprete" id="Form_Interprete" style="display:none" class="inputUser">
                                 <h2> IDENTIFICAÇÃO DO INTÉRPRETE </h2>
                                 <div class="inputBox">
@@ -207,7 +223,7 @@
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="text" name="Documento_Interprete" id="Documento_Interprete" class="inputUser" required>
+                                    <input type="text" name="Documento_Interprete" id="Documento_Interprete" class="inputUser" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="9" required>
                                     <label for="Documento_Interprete" class="labelInput"><label style="color:#FF0000">*</label>Documento de Identificacão:</label>
                                 </div>
                                 <br><br>
@@ -217,7 +233,7 @@
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="text" name="Telefone_Interprete" id="Endereco_Telefone_InterpreteDefensor" class="inputUser" required>
+                                    <input type="text" name="Telefone_Interprete" id="Endereco_Telefone_InterpreteDefensor" class="inputUser" maxlength="9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  required>
                                     <label for="Telefone_Interprete" class="labelInput"><label style="color:#FF0000">*</label>Telefone:</label>
                                 </div>
                                 <br><br>
@@ -248,6 +264,9 @@
                 document.getElementById("current_date").innerHTML = Date();
 
         </script>
+        <script src="js/jquery-3.6.1.min.js"></script>
+        <script src="js/sweetalert2.all.min.js"></script>
+        <script src="js/script_Cadastro_Def.js"></script>
     </meta>
     
 </body>

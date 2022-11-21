@@ -152,7 +152,7 @@
 
                 <div class="inputBox">
                     <label for="Nascimento_Pessoa"><b><label style="color:#FF0000">*</label> Data de Nascimento:</b></label>
-                    <input type="date" name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Nascimento_pessoa)->format("Y-m-d")  ?>" required>
+                    <input type="date" min='2004-1-1' max='2022-11-21'name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Nascimento_pessoa)->format("Y-m-d")  ?>" required>
                 </div>
 
 
@@ -196,7 +196,7 @@
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Telefone_Pessoa" id="Telefone_Pessoa" class="inputUser" value="<?php echo $Telefone_pessoa ?>" required>
+                <input type="text" name="Telefone_Pessoa" id="Telefone_Pessoa" class="inputUser" maxlength="9" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"  value="<?php echo $Telefone_pessoa ?>" required>
                     <label for="Telefone_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Telefone:</label>
                 </div>
                 <br><br>
@@ -208,13 +208,13 @@
                 <br><br>
 
                 <div class="inputBox" style="margin-top: -23px;">
-                    <label for="Identidade_Pessoa" class="labelInputReadonly"><label style="color:#FF0000">*</label> Cédula de identidade:</label>
+                    <label for="Identidade_Pessoa" class="labelInputReadonly" maxlength="9"><label style="color:#FF0000">*</label> Cédula de identidade:</label>
                     <input type="text" name="Identidade_Pessoa" id="Identidade_Pessoa" class="inputUser" value="<?php echo $Identidade_Pessoa?>" readonly>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
-                <input type="text" name="Passaporte_Pessoa" id="Passaporte_Pessoa" class="inputUser" value="<?php echo $Passaporte_pessoa  ?>" required>
+                <input type="text" name="Passaporte_Pessoa" id="Passaporte_Pessoa" class="inputUser" maxlength="8" value="<?php echo $Passaporte_pessoa  ?>" required>
                     <label for="Passaporte_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Passaporte:</label>
                 </div>
 

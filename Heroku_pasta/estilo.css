@@ -18,7 +18,7 @@ body{
     color: white;
     top: 65%;
     position: absolute;
-    margin-top: 188%;
+    margin-top: 165%;
     margin-left: 50%;
     transform: translate(-50%,-50%);
     background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71));
@@ -26,6 +26,25 @@ body{
     border-radius: 15px;
     width: 55%;
 }
+.box_sobre{
+    color: white;
+    position: absolute;
+    margin-top: 100%;
+    margin-left: 50%;
+    transform: translate(-50%,-50%);
+    background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71));
+    padding: 15px;
+    border-radius: 15px;
+    width: 55%;
+}
+.box_Img{
+    display:inline-block;
+    vertical-align:top;
+}
+.box_Txt{
+    display:inline-block;   
+}
+
 .box_home{
     color: white;
     position: absolute;
@@ -200,6 +219,7 @@ input[type = "date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
     border-radius: 10px;
 }
+
 #login{
     background-image: linear-gradient(to right,rgb(0, 92, 197), rgb(90, 20, 220));
     width: 23%;

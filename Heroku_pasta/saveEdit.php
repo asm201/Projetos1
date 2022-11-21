@@ -21,7 +21,7 @@
             $result = $conexao->query($sqlUpdate);
         }catch(Exception $e){
             echo  '<script>alert("Erro ao atualizar Defensor");</script>';
-            header('Location: Dados.php');
+            header('Location: Edit.php');
         }
 
     }

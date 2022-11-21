@@ -126,7 +126,7 @@
 
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="text" name="Documento_Interprete" id="Documento_Interprete" class="inputUser" value="<?php echo $Documento_Interprete ?>" required>
+                                    <input type="text" name="Documento_Interprete" id="Documento_Interprete" maxlength="9" class="inputUser" value="<?php echo $Documento_Interprete ?>" required>
                                     <label for="Documento_Interprete" class="labelInput">Documento de Identificacão:</label>
                                 </div>
                                 <br><br>
@@ -136,7 +136,7 @@
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="text" name="Telefone_Interprete" id="Telefone_Interprete" class="inputUser" value="<?php echo $Telefone_Interprete ?>" required>
+                                    <input type="text" name="Telefone_Interprete" id="Telefone_Interprete" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" class="inputUser" maxlength="9" value="<?php echo $Telefone_Interprete ?>" required>
                                     <label for="Telefone_Interprete" class="labelInput">Telefone:</label>
                                 </div>
                                 <br><br>

@@ -36,7 +36,7 @@
                 $Responsavel_Nacionalidade_Protetivas   = $user_data['Nacionalidade'];
                 $Responsavel_Endereco_Protetivas        = $user_data['Endereco_respo'];
                 $Responsavel_Parentesco_Protetivas      = $user_data['Parentesco'];
-                //$Documento_Protetivas                   = $user_data['Documento_Respo'];
+                $Documento_Protetivas                   = $user_data['Documento_Respo'];
                 //$Text_Outro_Documento_Protetivas        = $user_data['Text_Documento_Protetivas'];
                 //$Text_Copia_Documento_Protetivas        = $user_data['Text_Copia_Documento_Protetivas'];
                 $Numero_Documento_Protetivas            = $user_data['Documento_Respo'];
@@ -49,6 +49,20 @@
             header('Location: Sistema.php');
         }
 
+        $sqlSelect = "SELECT * FROM documentos WHERE idDocumentos=$Documento_Protetivas";
+        $result = $conexao->query($sqlSelect);
+        if($result->num_rows > 0){
+            
+            while($user_data = mysqli_fetch_assoc($result)){
+
+                $Descrição       = $user_data['Descricao'];
+                $Numero_doc        = $user_data['Numero'];
+
+            }
+            //print_r($Identidade_Pessoa);
+        } else{
+            header('Location: Sistema.php');
+        }
 
         
     }     
@@ -220,7 +234,7 @@
                 <div class="field radiobox" id="Documento_Protetivas_Box">            
                 <p>Possui certidão de nascimento?</p>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CERTIDÃO DE NASCIMENTO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="CERTIDÃO DE NASCIMENTO" required>CERTIDÃO DE NASCIMENTO </label> <br>                   
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CEDULA DE IDENTIDADE" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="CEDULA DE IDENTIDADE" required>CEDULA DE IDENTIDADE </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CEDULA DE IDENTIDADE" <?php echo $Descrição == "CEDULA DE IDENTIDADE" ?"checked":"" ?> onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="CEDULA DE IDENTIDADE" required>CEDULA DE IDENTIDADE </label><br>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA DA CERTIDÃO DE NASCIMENTO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="COPIA DA CERTIDÃO DE NASCIMENTO" required>COPIA DA CERTIDÃO DE NASCIMENTO </label><br>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA CÉDULA DE IDENTIDADE" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="COPIA CÉDULA DE IDENTIDADE" required>COPIA CÉDULA DE IDENTIDADE </label><br>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DECLARAÇÃO DE NASCIDO VIVO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DDDECLARAÇÃO DE NASCIDO VIVONV" required>DECLARAÇÃO DE NASCIDO VIVO </label><br>
@@ -234,7 +248,7 @@
                 </div>
 
                 <div class="inputBox" id="Numero_Documento_Protetivas_Box">
-                    <input type="text" name="Numero_Documento_Protetivas" id="Numero_Documento_Protetivas" class="inputUser" value="<?php echo $Numero_Documento_Protetivas ?>" required >
+                    <input type="text" name="Numero_Documento_Protetivas" id="Numero_Documento_Protetivas" class="inputUser" value="<?php echo $Numero_doc ?>" required >
                     <label for="Numero_Documento_Protetivas" class="labelInput">Número do Documento:</label>
                 </div>
                 
@@ -249,7 +263,7 @@
                 
                 <div class="inputBox" id="Responsavel_Nascimento_Protetivas_Box">
                     <label for="Responsavel_Nascimento_Protetivas">Data de Nascimento:</label>
-                    <input type="date" name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Responsavel_Nascimento_Protetivas)->format("Y-m-d")  ?>" required   >
+                    <input type="date" max='2004-11-21' name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Responsavel_Nascimento_Protetivas)->format("Y-m-d")  ?>" required   >
                     <br><br><br>
                 </div>
                 
@@ -280,8 +294,8 @@
                     <br><br>
                 </div>
                 <input type="hidden" name="idMedidas_Protetivas" Value="<?php echo $idMedidas_Protetivas ?>">
-                    <br>
-                    <input onclick="myalert()" type="submit" name="update" id="update">
+                    <!--<br>
+                    <input onclick="myalert()" type="submit" name="update" id="update">-->
             </fieldset>
 
 

@@ -153,7 +153,7 @@
                 <br><br>
                 <div class="inputBox">
                     <label for="Data_Saida_Pessoa"><b><label style="color:#FF0000">*</label> Data de Saida:</b></label>
-                    <input type="date" name="Data_Saida_Pessoa" id="Data_Saida_Pessoa"class="inputUser" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Data_Saida_pessoa)->format("Y-m-d")  ?>" required>
+                    <input type="date" max='2022-11-21' name="Data_Saida_Pessoa" id="Data_Saida_Pessoa"class="inputUser" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Data_Saida_pessoa)->format("Y-m-d")  ?>" required>
                 <br><br>
 
                 <div class="inputBox">
@@ -164,7 +164,7 @@
 
                 <div class="inputBox">
                     <label for="Data_Chegada_Pessoa"><b><label style="color:#FF0000">*</label> Data de Chegada ao Brasil:</b></label>
-                    <input type="date" name="Data_Chegada_Pessoa" id="Data_Chegada_Pessoa" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Data_Chegada_Pessoa)->format("Y-m-d")  ?>" class="inputUser" required>
+                    <input type="date" max='2022-11-21' name="Data_Chegada_Pessoa" id="Data_Chegada_Pessoa" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Data_Chegada_Pessoa)->format("Y-m-d")  ?>" class="inputUser" required>
                 <br><br>
                 <div class="field radiobox">
                     <label><label style="color:#FF0000">*</label> Meio de transporte: </label>
@@ -184,7 +184,7 @@
 
                 <div class="inputBox">
                     <label for="Data_Reconhecido_Pessoa"><b><label style="color:#FF0000">*</label> Data em que foi reconhecido:</b></label>
-                    <input type="date" name="Data_Reconhecido_Pessoa" id="Data_Reconhecido_Pessoa"class="inputUser" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Data_Reconhecido_Pessoa)->format("Y-m-d")  ?>" required>
+                    <input type="date" max='2022-11-21' name="Data_Reconhecido_Pessoa" id="Data_Reconhecido_Pessoa"class="inputUser" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Data_Reconhecido_Pessoa)->format("Y-m-d")  ?>" required>
                 <br><br><br>
 
                 <div class="inputBox">

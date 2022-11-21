@@ -3,13 +3,13 @@ $('#login').submit(function(e){
     e.preventDefault();
 
     var Email_defensor = $('#Email_defensor').val();
-    var Telefone_defensor= $('#Telefone_Def').val();
+    var Senha_Defensor= $('#Senha_Defensor').val();
 
-    console.log(Email_defensor,Telefone_defensor);
+    console.log(Email_defensor,Senha_Defensor);
     $.ajax({
         url:'testelogin.php',
         method: 'POST',
-        data: {submit: '', 'e-mail_Defensor': Email_defensor, Telefone_Def:Telefone_defensor},
+        data: {submit: '', 'e-mail_Defensor': Email_defensor, Senha_Defensor:Senha_Defensor},
         dataType: 'json',
         success: function(){
             Swal.fire("Logado", "Login Realizado com Sucesso", "success").then(() => {
@@ -29,3 +29,5 @@ $('#login').submit(function(e){
     });
 
 });
+
+datePickerId.max = new Date().toISOString().split("T")[0];
