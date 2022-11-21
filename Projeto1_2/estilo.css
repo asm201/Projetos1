@@ -37,6 +37,25 @@ body{
     width: 55%;
 }
 
+.box_sobre{
+    color: white;
+    position: absolute;
+    margin-top: 100%;
+    margin-left: 50%;
+    transform: translate(-50%,-50%);
+    background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71));
+    padding: 15px;
+    border-radius: 15px;
+    width: 55%;
+}
+.box_Img{
+    display:inline-block;
+    vertical-align:top;
+}
+.box_Txt{
+    display:inline-block;   
+}
+
 .box_cad_def{
     color: white;
     position: absolute;
@@ -264,6 +283,3 @@ input[type = "date"]::-webkit-calendar-picker-indicator {
                     margin-top: 0.5%;
 
                 }
-.nav{
-
-}
