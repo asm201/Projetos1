@@ -793,7 +793,7 @@
                         <br><br>
                     </div>
                 </div>
-                <input type="submit" formnovalidate name="submit" id="submit">
+                <input type="submit" name="submit" id="submit">
             </fieldset>
         </form>
     </div>
