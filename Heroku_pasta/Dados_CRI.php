@@ -112,8 +112,8 @@
                             <th scope="col">Passaporte</th>
                             <th scope="col">Certidão de Nascimento</th>
                             <th scope="col">Data de Cadastro</th>
-                            <th scope="col">Endreço da Mãe</th>
-                            <th scope="col">Endreço da Pai<</th>
+                            <th scope="col">Endereço da Mãe</th>
+                            <th scope="col">Endereço do Pai</th>
                             <th scope="col">Status da Crinça</th>
                             <th scope="col">Outros Dados</th>
                             <th scope="col">Editar</th>

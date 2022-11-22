@@ -122,7 +122,7 @@
     <div class="box_CRI_ENTRADA">
         <form action="saveEdit_CRI_Entrada.php" method="post">
             <fieldset>
-                <legend><b>Criança - Editar</b></legend>
+                <legend><b>Entrada - Editar</b></legend>
                 <script>
                         function myalert() {
                             alert("Atualizanado...");

@@ -121,7 +121,7 @@
     <div class="box_CRI_Avaliacao">
         <form action="saveEdit_CRI_Avaliacao.php" method="post">
             <fieldset>
-                <legend><b>Criança - Editar</b></legend>
+                <legend><b>Avaliação - Editar</b></legend>
                 <br>
 
                 <h2> AVALIAÇÃO PRELIMINAR DA CRIANcA OU ADOLESCENTE </h2>

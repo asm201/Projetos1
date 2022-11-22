@@ -137,13 +137,14 @@
         <div class="box_CRI_Situacao">
             <form action="saveEdit_CRI_Medidas.php" method="post">
                 <fieldset>
-                    <legend><b>Criança - Editar</b></legend>
+                    <legend><b>Situção - Editar</b></legend>
                     <br>
     
                     <h2> SITUAÇÃO DA CRIANÇA OU ADOLESCENTE </h2>
                     <div class="inputBox">
-                    <input type="text" name="Nome_Pessoa" id="Nome_Pessoa" class="inputUser" value="<?php echo $Nome_Pessoa ?>" required>
-                        <label for="Nome_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Nome Completo:</label>
+
+                        <label for="Nome_Pessoa" class="labelInputReadonly"><label style="color:#FF0000">*</label> Nome Completo:</label>
+                        <input type="text" name="Nome_Pessoa" id="Nome_Pessoa" class="inputUser" value="<?php echo $Nome_Pessoa ?>" readonly>
                     </div>
                     <br><br>
                     <div class="inputBox" style="margin-top: -23px;">

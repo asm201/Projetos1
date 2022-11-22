@@ -145,7 +145,7 @@
     <div class="box_CRI_Medidas">
         <form action="saveEdit_CRI_Medidas.php" method="post">
             <fieldset>
-                <legend><b>Criança - Editar</b></legend>
+                <legend><b>Medidas Protetivas</b></legend>
                 <br>
 
                 <h2> MEDIDAS PROTETIVAS </h2>

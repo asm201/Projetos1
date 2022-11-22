@@ -169,7 +169,7 @@
                                 </div>
                                 <br><br>
                                 <div class="inputBox">
-                                    <input type="text" name="Documento_Defensor" id="Documento_Defensor" class="inputUser" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" maxlength="9" required>
+                                    <input type="text" name="Documento_Defensor" id="Documento_Defensor" class="inputUser" maxlength="9"  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
                                     <label for="Documento_Defensor" class="labelInput"><label style="color:#FF0000">*</label>Documento de Identificacão:</label>
                                 </div>
                                 <br><br>
@@ -203,7 +203,7 @@
                                 <br><br> 
                                 <div class="inputBox">
                                     <input type="password" name="Senha_Defensor" id="Senha_Defensor" class="inputUser" required>
-                                    <label for="Senha_Defensor" class="labelInput">Senha:</label>
+                                    <label for="Senha_Defensor" class="labelInput"><label style="color:#FF0000">*</label>Senha:</label>
                                 </div>
                                 <br><br> 
                                 <input type="submit" name="submit1" id="submit1">

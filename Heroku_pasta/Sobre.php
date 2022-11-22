@@ -69,7 +69,7 @@
                                     <p>Por ser uma ferramenta com o foco de utilização da DPU, optamos por não colocar o logo<br> proprio ao longo da ferramenta.</p>
                                 </div>
                                 <h2> Sobre a ferramenta </h2>
-                                <p>A sigla CII simboliza a abreviação do nome da ferramenta sendo ela "Cadastro de refugiados infantis"</p>
+                                <p>A sigla CII simboliza a abreviação do nome da ferramenta sendo ela "Cadastro de Imigrantes Infantis"</p>
                                 <p>O projeto tem o intuito de criar uma ferramenta que automatize o cadastro de imigrantes infantis e jovens que adentram o país com foco em perguntas 
                                     específicas para a situação em que essas pessoas se encontram e, caso essas crianças tenham sido separadas da família, elas possam se manter no 
                                     registro para auxiliar o reencontro deles. A automatização, na hora de cadastrar, pode evitar erros ao inserir as informações no banco de dados que 

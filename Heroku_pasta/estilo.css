@@ -29,7 +29,7 @@ body{
 .box_sobre{
     color: white;
     position: absolute;
-    margin-top: 100%;
+    margin-top: 80%;
     margin-left: 50%;
     transform: translate(-50%,-50%);
     background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71));

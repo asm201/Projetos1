@@ -353,7 +353,7 @@
     </nav>
     </div>
    
-    <div class="box">
+    <div class="box" >
         <form action="Formulario2.php" method="post" enctype="multipart/form-data">
             <fieldset>
                 <legend><b>Fórmulário</b></legend>
@@ -571,7 +571,7 @@
                 <div class="inputBox">
                     
                 <input type="text" name="Pais_Reconhecido_Pessoa" id="Pais_Reconhecido_Pessoa" class="inputUser" required >
-                    <label for="Pais_Reconhecido_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Pais Reconhecido:</label>
+                    <label for="Pais_Reconhecido_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> País Reconhecido:</label>
                 </div>
                 <br><br>
 
@@ -666,7 +666,7 @@
                 </div>
                 <br>
                 <div class="field radiobox">            
-                <p>Possíveis necessidades de proteção da criança ou adolescente:</p>
+                <p><label style="color:#FF0000">*</label>Possíveis necessidades de proteção da criança ou adolescente:</p>
                     <input type="radio" name="Proteção_Indicadores" id="Convivencia_Proteção" value="ProteçãoC" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Convivencia_Proteção" required>Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança e do adolescente; </label><br>
                     <input type="radio" name="Proteção_Indicadores" id="Familiar_Proteção" value="ProteçãoF" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Familiar_Proteção" required>Medida de proteção por reunião familiar </label><br>
                     <input type="radio" name="Proteção_Indicadores" id="Trafico_Proteção" value="ProteçãoT" onclick="Sumir('Txt_Proteção_Indicadores')"><label for="Trafico_Proteção" required>Proteção como vítima de tráfico de pessoas; </label><br>
@@ -675,7 +675,7 @@
                 </div>
                 <br>
                 <div class="field radiobox">  
-                    <label for="Solicitação_Indicadores">Solicitação de:</label><br>
+                    <label for="Solicitação_Indicadores"><label style="color:#FF0000">*</label>Solicitação de:</label><br>
                     <input type="radio" name="Solicitação_Indicadores" id="Temporaria_Indicadores" value="RESIDÊNCIA TEMPORÁRIA" ><label for="Temporaria_Indicadores" required>RESIDÊNCIA TEMPORÁRIA </label>
                     <input type="radio" name="Solicitação_Indicadores" id="Refugiu_Indicadores" value="REFÚGIO"><label for="Refugiu_Indicadores" required>REFÚGIO </label>
                     <input type="radio" name="Solicitação_Indicadores" id="Institucionalização_Indicadores" value="INSTITUCIONALIZAÇÃO" ><label for="Institucionalização_Indicadores" required>INSTITUCIONALIZAÇÃO </label>
@@ -698,22 +698,22 @@
 
                 <div class="inputBox">
                     <input type="text" name="Instituicão_Protetivas" id="Instituicão_Protetivas" class="inputUser" required  >
-                    <label for="Instituicão_Protetivas" class="labelInput">Instituicão de acolhimento:</label>
+                    <label for="Instituicão_Protetivas" class="labelInput"><label style="color:#FF0000">*</label> Instituicão de acolhimento:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
                     <input type="text" name="Endereco_Inst_Protetivas" id="Endereco_Inst_Protetivas" class="inputUser" required  >
-                    <label for="Endereco_Inst_Protetivas" class="labelInput">Endereco:</label>
+                    <label for="Endereco_Inst_Protetivas" class="labelInput"><label style="color:#FF0000">*</label >Endereco:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
                     <input type="text" name="Responsavel_Inst_Protetivas" id="Responsavel_Inst_Protetivas" class="inputUser" required  >
-                    <label for="Responsavel_Inst_Protetivas" class="labelInput">Responsável:</label>
+                    <label for="Responsavel_Inst_Protetivas" class="labelInput"><label style="color:#FF0000">*</label> Responsável:</label>
                 </div>
                 <br><br>
                 <div class="inputBox">
                     <input type="text" name="Vara_Protetivas" id="Vara_Protetivas" class="inputUser" required  >
-                    <label for="Vara_Protetivas" class="labelInput">Vara da Infância e da Juventude:</label>
+                    <label for="Vara_Protetivas" class="labelInput"><label style="color:#FF0000">*</label> Vara da Infância e da Juventude:</label>
                 </div>
                 <br>
 
@@ -727,12 +727,12 @@
 
                 <div class="inputBox">
                     <input type="text" name="Responsavel_Protetivas" id="Responsavel_Protetivas" class="inputUser" required  >
-                    <label for="Responsavel_Protetivas" class="labelInput">Nome completo do responsável legal</label>
+                    <label for="Responsavel_Protetivas" class="labelInput"><label style="color:#FF0000">*</label> Nome completo do responsável legal</label>
                 </div>
                 <br>
 
                 <div class="field radiobox">            
-                <p>Possui certidão de nascimento?</p>
+                <p><label style="color:#FF0000">*</label> Possui certidão de nascimento?</p>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CERTIDÃO DE NASCIMENTO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="CERTIDÃO DE NASCIMENTO" required>CERTIDÃO DE NASCIMENTO </label> <br>                   
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CEDULA DE IDENTIDADE" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="CEDULA DE IDENTIDADE" required>CEDULA DE IDENTIDADE </label><br>
                     <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA DA CERTIDÃO DE NASCIMENTO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="COPIA DA CERTIDÃO DE NASCIMENTO" required>COPIA DA CERTIDÃO DE NASCIMENTO </label><br>
@@ -749,7 +749,7 @@
 
                 <div class="inputBox">
                     <input type="text" name="Numero_Documento_Protetivas" id="Numero_Documento_Protetivas" class="inputUser" required >
-                    <label for="Numero_Documento_Protetivas" class="labelInput">Número do Documento:</label>
+                    <label for="Numero_Documento_Protetivas" class="labelInput"><label style="color:#FF0000">*</label>Número do Documento:</label>
                 </div>
                 
                 <div class="field radiobox">            
@@ -762,26 +762,26 @@
                 <br>
                 
                 <div class="inputBox">
-                    <label for="Responsavel_Nascimento_Protetivas">Data de Nascimento:</label>
+                    <label for="Responsavel_Nascimento_Protetivas"><label style="color:#FF0000">*</label> Data de Nascimento:</label>
                     <input type="date" max='2004-11-21' name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser" required   >
                 </div>
                     <br><br>
                 
                 <div class="inputBox">
                     <input type="text" name="Responsavel_Nacionalidade_Protetivas" id="Responsavel_Nacionalidade_Protetivas" class="inputUser" required  >
-                    <label for="Responsavel_Nacionalidade_Protetivas" class="labelInput">Nacionalidade:</label>
+                    <label for="Responsavel_Nacionalidade_Protetivas" class="labelInput"><label style="color:#FF0000">*</label> Nacionalidade:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                     <input type="text" name="Responsavel_Endereco_Protetivas" id="Responsavel_Endereco_Protetivas" class="inputUser" required  >
-                    <label for="Responsavel_Endereco_Protetivas" class="labelInput">Endereco:</label>
+                    <label for="Responsavel_Endereco_Protetivas" class="labelInput"><label style="color:#FF0000">*</label> Endereco:</label>
                 </div>
                 <br><br>
 
                 <div class="inputBox">
                     <input type="text" name="Responsavel_Parentesco_Protetivas" id="Responsavel_Parentesco_Protetivas" class="inputUser" required  >
-                    <label for="Responsavel_Parentesco_Protetivas" class="labelInput">Parentesco:</label>
+                    <label for="Responsavel_Parentesco_Protetivas" class="labelInput"><label style="color:#FF0000">*</label> Parentesco:</label>
                 </div>
                 <br>
 
@@ -906,7 +906,7 @@
                 <br><br>-->
                 <div class="inputBox">
                     <input type="text" name="Documento_Interprete" id="Documento_Interprete" maxlength="9" class="inputUser" required>
-                    <label for="Documento_Interprete" class="labelInput">Documento de Identificacão:</label>
+                    <label for="Documento_Interprete" class="labelInput"><label style="color:#FF0000">*</label>Documento de Identificacão:</label>
                 </div>
                 <br><br>
                <!--- <div class="inputBox">
