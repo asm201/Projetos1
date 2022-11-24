@@ -92,9 +92,6 @@
                         <a class="nav-link" href="Dados_CRI.php">Visão dados Crianças</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="powerBI.php">Visão dos Dados</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="Sair.php">Finalizar Sessão</a>
                     </li>
                     <li class="nav-item">
@@ -171,7 +168,7 @@
 
                 <div class="inputBox">
                 <input type="text" name="Pais_Reconhecido_Pessoa" id="Pais_Reconhecido_Pessoa" class="inputUser" value="<?php echo $Pais_Reconhecido_Pessoa?>" required >
-                    <label for="Pais_Reconhecido_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Pais Reconhecido:</label>
+                    <label for="Pais_Reconhecido_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> País Reconhecido:</label>
                 </div>   
                     <input type="hidden" name="idEntrada" id="idEntrada" value="<?php echo $idEntrada ?>">
                     <input type="submit" name="update" id="update">
