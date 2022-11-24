@@ -21,30 +21,45 @@
         try{
             include_once('config.php');
             //Defensor
-            $Nome_Defensor      = $_POST['Nome_Defensor'];
-            $Documento_defensor = $_POST['Documento_Defensor'];
-            $Cargo_Defensor     = $_POST['txt_Cargo_Defensor'];
-            $Endereco_defensor  = $_POST['Endereco_Defensor'];
-            $Cidade_defensor    = $_POST['Cidade_UF_Defensor'];
-            $Telefone_defensor  = $_POST['Telefone_Defensor'];
-            $Email_defensor     = $_POST['e-mail_Defensor']; 
-            $Senha_Automatica   = $_POST['Senha_Defensor']; /*** senha automatica NOVO***/
+            $Nome_Defensor      = isset($_POST['Nome_Defensor']) ? $_POST['Nome_Defensor'] :  null;
+            $Documento_defensor = isset($_POST['Documento_Defensor']) ? $_POST['Documento_Defensor'] :  null;
+            $Cargo_Defensor     = isset($_POST['txt_Cargo_Defensor']) ? $_POST['txt_Cargo_Defensor'] :  null;
+            $Endereco_defensor  = isset($_POST['Endereco_Defensor']) ? $_POST['Endereco_Defensor'] :  null;
+            $Cidade_defensor    = isset($_POST['Cidade_UF_Defensor']) ? $_POST['Cidade_UF_Defensor'] :  null;
+            $Telefone_defensor  = isset($_POST['Telefone_Defensor']) ? $_POST['Telefone_Defensor'] :  null;
+            $Email_defensor     = isset($_POST['e-mail_Defensor']) ? $_POST['e-mail_Defensor'] :  null;
+            $Senha_Automatica   = isset($_POST['Senha_Defensor']) ? $_POST['Senha_Defensor'] :  null;
 
-            
-    
-    
-            
-            /*Defensor
-            $result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereço_Def,Cidade_UF,Contato_Def,Telefone_Def,Senha_Defensor) 
-            VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_Defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor','$Senha_Automatica')");*/
+            $requiredFields = [
+                'ID faltando' => $Nome_Defensor,
+                'Documento não preenchido' => $Documento_defensor,
+                'Cargo da intituição não preenchido' => $Cargo_Defensor,
+                'Endereço não preenchido' => $Endereco_defensor,
+                'Cidade não preenchido' => $Cidade_defensor,
+                'Telefone Nacionalidade não preenchido' => $Telefone_defensor,
+                'Email endereço não preenchido' => $Email_defensor,
+                'Senha não preenchido' => $Senha_Automatica,
+
+            ];
+            foreach ($requiredFields as $field => $fieldValue) {
+                if (is_null($fieldValue) || $fieldValue == '') {
+                    http_response_code(400);
+                    header('Content-type: application/json');
+                    echo json_encode(['field' => $field]);
+                    return;
+                }
+            }
     
             $result = mysqli_query($conexao,"INSERT INTO defensor(Nome_Def,Doc_Defensor,Cargo,Endereco_Def,Cidade_UF,Contato_Def,Telefone_Def,Senha_Defensor) 
             VALUES ('$Nome_Defensor','$Documento_defensor','$Cargo_Defensor','$Endereco_defensor','$Cidade_defensor','$Email_defensor','$Telefone_defensor','$Senha_Automatica')");
+
             http_response_code(204);
         }catch(Exception $e){
+            //var_dump($e);
             http_response_code(500);  
         }
         return;
+        
     }   
 
     if(isset($_POST['submit']))
@@ -52,14 +67,30 @@
         try{
             include_once('config.php');
             //Interprete
-            $Nome_Interprete            = $_POST['Nome_Interprete'];
-            $Documento_Interprete       = $_POST['Documento_Interprete'];
-            $Endereço_Interprete        = $_POST['Endereço_Interprete'];
-            $email_Interprete           = $_POST['e-mail_Interprete'];
-            $Telefone_Interprete        = $_POST['Telefone_Interprete'];
+            $Nome_Interprete            = $_POST['Nome_Interprete'];isset($_POST['Nome_Interprete']) ? $_POST['Nome_Interprete'] :  null;
+            $Documento_Interprete       = $_POST['Documento_Interprete'];isset($_POST['Documento_Interprete']) ? $_POST['Documento_Interprete'] :  null;
+            $Endereço_Interprete        = $_POST['Endereço_Interprete'];isset($_POST['Endereço_Interprete']) ? $_POST['Endereço_Interprete'] :  null;
+            $email_Interprete           = $_POST['e-mail_Interprete'];isset($_POST['e-mail_Interprete']) ? $_POST['e-mail_Interprete'] :  null;
+            $Telefone_Interprete        = $_POST['Telefone_Interprete'];isset($_POST['Telefone_Interprete']) ? $_POST['Telefone_Interprete'] :  null;
+
+            $requiredFields = [
+                'Nome Interprete faltando' => $Nome_Interprete,
+                'Documento não preenchido' => $Documento_Interprete,
+                'Endereço do Interprete não preenchido' => $Endereço_Interprete,
+                'Email não preenchido' => $email_Interprete,
+                'Telefone não preenchido' => $Telefone_Interprete,
+            ];
     
-            //IDENTIFICAÇÃO DO INTÉRPRETE//
-            settype($Telefone_Interprete, "integer");
+    
+            foreach ($requiredFields as $field => $fieldValue) {
+                if (is_null($fieldValue) || $fieldValue == '') {
+                    http_response_code(400);
+                    header('Content-type: application/json');
+                    echo json_encode(['field' => $field]);
+                    return;
+                }
+            }
+
             $result = mysqli_query($conexao, "INSERT INTO interprete(Doc_interprete,Nome,Endereco_Int,Contato_Int,Telefone_Int) 
             VALUES ('$Documento_Interprete','$Nome_Interprete','$Endereço_Interprete','$email_Interprete','$Telefone_Interprete')");
             //echo gettype($Telefone_Interprete);
@@ -92,26 +123,13 @@
 
     <title>Formulário</title>
 </head>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"  
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="style.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <!--<link rel="stylesheet" href="style.css">-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
 <body>
+<script src="js/script_Codigo.js"></script>
 <div class="navbar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -223,7 +241,7 @@
                         <div class="Container" name="Form_Interprete" name="Form_Interprete" id="Form_Interprete" style="display:none" class="inputUser">
                                 <h2> IDENTIFICAÇÃO DO INTÉRPRETE </h2>
                                 <div class="inputBox">
-                                    <input type="text" name="Nome_Interprete" id="Nome_Interprete" class="inputUser" required>
+                                    <input type="text" name="Nome_Interprete" id="Nome_Interprete" class="inputUser" >
                                     <label for="Nome_Interprete" class="labelInput"><label style="color:#FF0000">*</label>Nome Completo do Intérprete:</label>
                                 </div>
                                 <br><br>
@@ -255,22 +273,19 @@
                 </fieldset>
 
         </div>
-        <script>
-                function Preencher(el) {
-                    var display = document.getElementById(el).style.display;
-                    if(display == "none")
-                        document.getElementById(el).style.display = 'block';
-                }
-                function Sumir(el){
-                    var display = document.getElementById(el).style.display;
-                    if(display != "none")
-                        document.getElementById(el).style.display = 'none';
-                }	
 
-        </script>
-        <script src="js/jquery-3.6.1.min.js"></script>
-        <script src="js/sweetalert2.all.min.js"></script>
-        <script src="js/script_Cadastro_Def.js?v=1"></script>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+    <script src="js/script_Cadastro_Def.js"></script>
     </meta>
     
 </body>
