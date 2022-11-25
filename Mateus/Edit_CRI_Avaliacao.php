@@ -126,10 +126,6 @@
                 </div>
                 <br><br>
                 
-                <label>Avaliacão de saúde mental (conduta): indique se a crianca ou adolescente apresenta pensamento confuso 
-                    (ex. respostas frequentemente incoerentes ou contraditórias)/evidencia perda de contato com a realidade 
-                    (ex: seu comportamento parece estranho ou sem sentido/ conduta estranha evidente (ex: hiperatividade, iIdade_Avaliacãompulsividade, comportamento hostil)/ou risco de 
-                    causar danos a outros a si mesmo (a)</label><br><br>
 
                 <div class="field radiobox">
                     <label><label style="color:#FF0000">*</label> Avaliacão de saúde mental (conduta): indique se a crianca ou adolescente apresenta pensamento confuso

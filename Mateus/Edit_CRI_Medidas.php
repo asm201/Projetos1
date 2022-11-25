@@ -2,7 +2,7 @@
 
 
     //Se o botão de envio for pressionado
-    //error_reporting (0);
+    error_reporting (0);
     if(!empty($_GET['Documento']))
     {
 
@@ -27,6 +27,7 @@
                 $idMedidas_Protetivas                   = $user_data['idMedidas_Protetivas'];
                 $Nome_Pessoa                            = $user_data['Nome'];
                 $Identidade_pessoa                      = $user_data['Documento'];
+
                 $Instituicão_Protetivas                 = $user_data['Nome_Inst'];
                 $Endereco_Inst_Protetivas               = $user_data['Endereco_Inst'];
                 $Vara_Protetivas                        = $user_data['Vara'];
@@ -37,9 +38,9 @@
                 $Responsavel_Endereco_Protetivas        = $user_data['Endereco_respo'];
                 $Responsavel_Parentesco_Protetivas      = $user_data['Parentesco'];
                 $Documento_Protetivas                   = $user_data['Documento_Respo'];
-                //$Text_Outro_Documento_Protetivas        = $user_data['Text_Documento_Protetivas'];
-                //$Text_Copia_Documento_Protetivas        = $user_data['Text_Copia_Documento_Protetivas'];
-                $Numero_Documento_Protetivas            = $user_data['Documento_Respo'];
+                $Representante_Protetiva                = $user_data['Representante_Protetiva'];
+                $Encaminhada_Protetivas                 = $user_data['Encaminhada_Protetivas'];
+                //$Numero_Documento_Protetivas            = $user_data['Documento_Respo'];
                 $Responsavel_Nascimento_Protetivas      = $user_data['Data_Nascimento'];
                 $Vinculo_Protetivas                     = $user_data['Vinculo'];
 
@@ -54,9 +55,11 @@
         if($result->num_rows > 0){
             
             while($user_data = mysqli_fetch_assoc($result)){
-
+                $id_Doc          = $user_data['idDocumentos'];
                 $Descrição       = $user_data['Descricao'];
-                $Numero_doc        = $user_data['Numero'];
+                $Numero_doc      = $user_data['Numero'];
+                $Nome_Doc            = $user_data['Nome_Documento'];
+                
 
             }
             //print_r($Identidade_Pessoa);
@@ -78,26 +81,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário</title>
 </head>
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="style.css">
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-
+        <!--<link rel="stylesheet" href="style.css">-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 <body>
+<script src="js/script_Codigo.js"></script>
 <div class="navbar">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
@@ -127,9 +117,6 @@
                         <a class="nav-link" href="Dados_CRI.php">Visão dados Crianças</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="powerBI.php">Visão dos Dados</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="Sair.php">Finalizar Sessão</a>
                     </li>
                     <li class="nav-item">
@@ -141,59 +128,38 @@
     </nav>
 </div>
 <meta charset="UTF-8">
-    <a href="Dados_CRI.php">Voltar</a>
     <div class="box_CRI_Medidas">
-        <form action="saveEdit_CRI_Medidas.php" method="post">
+        <form action="saveEdit_CRI_Protetivas.php" id="saveEdit_CRI_Protetivas" method="post">
             <fieldset>
                 <legend><b>Criança - Editar</b></legend>
                 <br>
 
                 <h2> MEDIDAS PROTETIVAS </h2>
-                <script>
-                        function myalert() {
-                            alert("Atualizanado...");
-                        }
-                        function Preencher(el) {
-                                const elements = document.getElementById(el).querySelectorAll('input');
-                                for (let i = 0; i < elements.length; i++) {
-                                    const element = elements[i];
-                                    if (element.required) {
-                                        element.value = null;
-                                    }
-                                }
-
-                                var display = document.getElementById(el).style.display;
-                                if(display == "none")
-                                    document.getElementById(el).style.display = 'block';
-                            }
-                            function Sumir(el){
-                                const elements = document.getElementById(el).querySelectorAll('input');
-                                for (let i = 0; i < elements.length; i++) {
-                                    const element = elements[i];
-                                    if (element.required) {
-                                        element.value = "N/A";
-                                    }
-                                }
-
-                                var display = document.getElementById(el).style.display;
-                                if(display != "none")
-                                    document.getElementById(el).style.display = 'none';
-                            }	
-                </script>
-
-                <div class="field radiobox">            
-                    <p>Em caso de a crianca ou o adolescente já encaminhado para instituicão de acolhimento, favor informar:</p>
-                    <input type="radio" id="Encaminhada_Protetivas_Sim" name="Encaminhada_Protetivas" value="SIM" <?php echo $Instituicão_Protetivas != "N/A" ?"checked":"" ?> onclick="Preencher('Instituicão_Protetivas_Box');Preencher('Endereco_Inst_Protetivas_Box');Preencher('Responsavel_Inst_Protetivas_Box');Preencher('Vara_Protetivas_Box')">
-                    <label for="Encaminhada_Protetivas_Sim">Sim</label>
-                    <input type="radio" id="Encaminhada_Protetivas_Nao" name="Encaminhada_Protetivas" value="NÃO" <?php echo $Instituicão_Protetivas == "N/A" ?"checked":"" ?> onclick="Sumir('Instituicão_Protetivas_Box');Sumir('Endereco_Inst_Protetivas_Box');Sumir('Responsavel_Inst_Protetivas_Box');Sumir('Vara_Protetivas_Box')" >
-                    <label for="Encaminhada_Protetivas_Nao">Não</label>
-                    <?php echo $Instituicão_Protetivas != "N/A" ?"<script>Preencher('Instituicão_Protetivas');Preencher('Endereco_Inst_Protetivas'),Preencher('Responsavel_Inst_Protetivas'),Preencher('Vara_Protetivas')</script>":""  ?>
-                    <br>
+                <div class="inputBox">
+                    <label for="Nome_Pessoa" class="labelInputReadonly"><label style="color:#FF0000">*</label> Nome Completo:</label>
+                    <input type="text" name="Nome_Pessoa" id="Nome_Pessoa" class="inputUser" value="<?php echo $Nome_Pessoa ?>" readonly>
                 </div>
                 <br><br>
 
+                <div class="inputBox" style="margin-top: -23px;">
+                    <label for="Identidade_Pessoa" class="labelInputReadonly"><label style="color:#FF0000">*</label> Cédula de identidade:</label>
+                    <input type="text" name="Identidade_Pessoa" id="Identidade_Pessoa" class="inputUser" value="<?php echo $Identidade_Pessoa?>" readonly>
+                </div>
+                <br><br>
+
+                <div class="field radiobox">            
+                    <p>Em caso de a crianca ou o adolescente já encaminhado para instituicão de acolhimento, favor informar:</p>
+                    <input type="radio" id="Encaminhada_Protetivas_Sim" name="Encaminhada_Protetivas" value="Sim" <?php echo $Instituicão_Protetivas != "N/A" ?"checked":"" ?>
+                     onclick="Requerido('Instituicão_Protetivas_Box');Requerido('Endereco_Inst_Protetivas_Box');Requerido('Responsavel_Inst_Protetivas_Box');Requerido('Vara_Protetivas_Box')">
+                    <label for="Encaminhada_Protetivas_Sim">Sim</label>
+                    <input type="radio" id="Encaminhada_Protetivas_Nao" name="Encaminhada_Protetivas" value="Não" <?php echo $Instituicão_Protetivas == "N/A" ?"checked":"" ?>
+                     onclick="Limpar('Instituicão_Protetivas_Box');Limpar('Endereco_Inst_Protetivas_Box');Limpar('Responsavel_Inst_Protetivas_Box');Limpar('Vara_Protetivas_Box')" >
+                    <label for="Encaminhada_Protetivas_Nao">Não</label>
+                </div>
+                <br><br>
+                
                 <div class="inputBox" id="Instituicão_Protetivas_Box">
-                    <input type="text" name="Instituicão_Protetivas" id="Instituicão_Protetivas" class="inputUser" value="<?php echo $Instituicão_Protetivas ?>" required  >
+                    <input type="text" name="Instituicão_Protetivas" id="Instituicão_Protetivas" class="inputUser" value="<?php echo $Instituicão_Protetivas ?>"  required >
                     <label for="Instituicão_Protetivas"  class="labelInput">Instituicão de acolhimento:</label>
                     <br><br>
                 </div>
@@ -212,16 +178,24 @@
                     <label for="Vara_Protetivas" class="labelInput">Vara da Infância e da Juventude:</label>
                     <br>
                 </div>
+                    <?php echo $Instituicão_Protetivas != "N/A" ?"
+                    <script>
+                    Preencher('Instituicão_Protetivas_Box'),
+                    Preencher('Endereco_Inst_Protetivas_Box'),
+                    Preencher('Responsavel_Inst_Protetivas_Box'),
+                    Preencher('Vara_Protetivas_Box')
+                    </script>":""  ?>
+                    <br>
 
                 <div class="field radiobox">            
                 <p>Em caso de a crianca ou o adolescente representado por responsável legal já designado(a) no Brasil, favor informar:</p>
-                <input type="radio" id="Representante_Protetiva_Sim" name="Representante_Protetiva" value="SIM" <?php echo $Responsavel_Protetivas != "N/A" ?"checked":"" ?> 
-                onclick="Preencher('Responsavel_Protetivas_Box');Preencher('Documento_Protetivas_Box');Preencher('Numero_Documento_Protetivas_Box');Preencher('Gênero_Protetivas_Box');Preencher('Responsavel_Nascimento_Protetivas_Box');Preencher('Responsavel_Nacionalidade_Protetivas_Box');Preencher('Responsavel_Endereco_Protetivas_Box');Preencher('Responsavel_Parentesco_Protetivas_Box');Preencher('Vinculo_Protetivas_Box')">
+                <input type="radio" id="Representante_Protetiva_Sim" name="Representante_Protetiva" value="Sim" <?php echo $Responsavel_Protetivas != "N/A" ?"checked":"" ?> 
+                onclick="Requerido('Responsavel_Protetivas_Box');Requerido('Documento_Protetivas_Box');Requerido('Numero_Documento_Protetivas_Box');Requerido('Gênero_Protetivas_Box');Requerido('Responsavel_Nascimento_Protetivas_Box');Requerido('Responsavel_Nacionalidade_Protetivas_Box');Requerido('Responsavel_Endereco_Protetivas_Box');Requerido('Responsavel_Parentesco_Protetivas_Box');Requerido('Vinculo_Protetivas_Box')">
                 <label for="Representante_Protetiva_Sim">Sim</label>
-                <input type="radio" id="Representante_Protetiva_Nao" name="Representante_Protetiva" value="NÃO" <?php echo $Responsavel_Protetivas == "N/A" ?"checked":"" ?>
-                onclick="Sumir('Responsavel_Protetivas_Box');Sumir('Documento_Protetivas_Box');Sumir('Numero_Documento_Protetivas_Box');Sumir('Gênero_Protetivas_Box');Sumir('Responsavel_Nascimento_Protetivas_Box');Sumir('Responsavel_Nacionalidade_Protetivas_Box');Sumir('Responsavel_Endereco_Protetivas_Box');Sumir('Responsavel_Parentesco_Protetivas_Box');Sumir('Vinculo_Protetivas_Box')">
+                <input type="radio" id="Representante_Protetiva_Nao" name="Representante_Protetiva" value="Não" <?php echo $Responsavel_Protetivas == "N/A" ?"checked":"" ?>
+                onclick="Limpar('Responsavel_Protetivas_Box');Limpar('Documento_Protetivas_Box');Limpar('Numero_Documento_Protetivas_Box');Limpar('Gênero_Protetivas_Box');Limpar('Responsavel_Nascimento_Protetivas_Box');Limpar('Responsavel_Nacionalidade_Protetivas_Box');Limpar('Responsavel_Endereco_Protetivas_Box');Limpar('Responsavel_Parentesco_Protetivas_Box');Limpar('Vinculo_Protetivas_Box')">
                 <label for="Representante_Protetiva_Nao">Não</label>
-                <?php echo $Responsavel_Protetivas != "N/A" ?"<script>Preencher('Responsavel_Protetivas_Box');Preencher('Documento_Protetivas_Box'),Preencher('Numero_Documento_Protetivas_Box'),Preencher('Gênero_Protetivas_Box'),Preencher('Responsavel_Nascimento_Protetivas_Box'),Preencher('Responsavel_Nacionalidade_Protetivas_Box'),Preencher('Responsavel_Endereco_Protetivas_Box'),Preencher('Responsavel_Parentesco_Protetivas_Box'),Preencher('Vinculo_Protetivas_Box')</script>":""  ?>
+
                 </div>
                 <br><br>
 
@@ -232,18 +206,20 @@
                 </div>
 
                 <div class="field radiobox" id="Documento_Protetivas_Box">            
-                <p>Possui certidão de nascimento?</p>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CERTIDÃO DE NASCIMENTO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="CERTIDÃO DE NASCIMENTO" required>CERTIDÃO DE NASCIMENTO </label> <br>                   
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CEDULA DE IDENTIDADE" <?php echo $Descrição == "CEDULA DE IDENTIDADE" ?"checked":"" ?> onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="CEDULA DE IDENTIDADE" required>CEDULA DE IDENTIDADE </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA DA CERTIDÃO DE NASCIMENTO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="COPIA DA CERTIDÃO DE NASCIMENTO" required>COPIA DA CERTIDÃO DE NASCIMENTO </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA CÉDULA DE IDENTIDADE" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="COPIA CÉDULA DE IDENTIDADE" required>COPIA CÉDULA DE IDENTIDADE </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DECLARAÇÃO DE NASCIDO VIVO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="DDDECLARAÇÃO DE NASCIDO VIVONV" required>DECLARAÇÃO DE NASCIDO VIVO </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="PARECER SOCIAL DO MINISTERIO DA CIDADANIA" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="PARECER SOCIAL DO MINISTERIO DA CIDADANIA" required>PARECER SOCIAL DO MINISTERIO DA CIDADANIA </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="NENHUM DOCUMENTO" onclick="Sumir('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')" ><label for="NENHUM DOCUMENTO " required>NENHUM DOCUMENTO </label><br>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DO" onclick="Preencher('Text_Documento_Protetivas');Sumir('Text_Copia_Documento_Protetivas')"><label for="DO">OUTRO. </label><br>
-                    <input type="text" name="Text_Documento_Protetivas" id="Text_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" required></input>
-                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCO" onclick="Preencher('Text_Copia_Documento_Protetivas');Sumir('Text_Documento_Protetivas')"><label for="DCO">COPIA OUTRO </label><br>
-                    <input type="text" name="Text_Copia_Documento_Protetivas" id="Text_Copia_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" required></input>
+                <p>Responsavel em posse de qual documento? </p>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CERTIDÃO DE NASCIMENTO" <?php echo $Descrição == "CERTIDÃO DE NASCIMENTO" ?"checked":"" ?> onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="CERTIDÃO DE NASCIMENTO" required>CERTIDÃO DE NASCIMENTO </label> <br>                   
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CEDULA DE IDENTIDADE" <?php echo $Descrição == "CEDULA DE IDENTIDADE" ?"checked":"" ?> onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="CEDULA DE IDENTIDADE" required>CEDULA DE IDENTIDADE </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA DA CERTIDÃO DE NASCIMENTO" <?php echo $Descrição == "COPIA DA CERTIDÃO DE NASCIMENTO" ?"checked":"" ?> onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="COPIA DA CERTIDÃO DE NASCIMENTO" required>COPIA DA CERTIDÃO DE NASCIMENTO </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA CÉDULA DE IDENTIDADE" <?php echo $Descrição == "COPIA CÉDULA DE IDENTIDADE" ?"checked":"" ?> onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="COPIA CÉDULA DE IDENTIDADE" required>COPIA CÉDULA DE IDENTIDADE </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DECLARAÇÃO DE NASCIDO VIVO" <?php echo $Descrição == "DECLARAÇÃO DE NASCIDO VIVO" ?"checked":"" ?> onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="DDDECLARAÇÃO DE NASCIDO VIVONV" required>DECLARAÇÃO DE NASCIDO VIVO </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="PARECER SOCIAL DO MINISTERIO DA CIDADANIA" <?php echo $Descrição == "CEDULA DE IDENTIDADE" ?"checked":"" ?> onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="PARECER SOCIAL DO MINISTERIO DA CIDADANIA" required>PARECER SOCIAL DO MINISTERIO DA CIDADANIA </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="NENHUM DOCUMENTO" <?php echo $Descrição == "NENHUM DOCUMENTO" ?"checked":"" ?> onclick="Limpar('Numero_Documento_Protetivas');Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="NENHUM DOCUMENTO " required>NENHUM DOCUMENTO </label><br>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DO"<?php echo $Descrição == "DO" ?"checked":"" ?> onclick="Requerido('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="DO">OUTRO </label><br>
+                    <input type="text" name="Text_Documento_Protetivas" id="Text_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" value="<?php echo $Nome_Doc ?>"></input>
+                    <?php echo $Descrição =="DO" ?"<script>Preencher('Text_Documento_Protetivas')</script>":""  ?>
+                    <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCO" <?php echo $Descrição == "DCO" ?"checked":"" ?> onclick="Requerido('Text_Copia_Documento_Protetivas');Sumir('Text_Documento_Protetivas')"><label for="DCO">COPIA OUTRO </label><br>
+                    <?php echo $Descrição == "DCO" ?"<script>Preencher('Text_Copia_Documento_Protetivas')</script>":""  ?>
+                    <input type="text" name="Text_Copia_Documento_Protetivas" id="Text_Copia_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" value="<?php echo $Nome_Doc ?>" ></input>
                     <br><br>
                 </div>
 
@@ -255,15 +231,15 @@
                 <div class="field radiobox" id="Gênero_Protetivas_Box">            
                     <p>Genero:</p>
                     <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino" <?php echo $Gênero_Protetivas == "feminino" ?"checked":"" ?>>
-                    <label for="feminino">Feminino</label>
+                    <label for="feminino_Protetivas" required>Feminino</label>
                     <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino" <?php echo $Gênero_Protetivas == "masculino" ?"checked":"" ?>>
-                    <label for="masculino2">Masculino</label>
+                    <label for="masculino_Protetivas" required>Masculino</label>
                     <br><br>
                 </div>
                 
                 <div class="inputBox" id="Responsavel_Nascimento_Protetivas_Box">
                     <label for="Responsavel_Nascimento_Protetivas">Data de Nascimento:</label>
-                    <input type="date" max='2004-11-21' name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Responsavel_Nascimento_Protetivas)->format("Y-m-d")  ?>" required   >
+                    <input type="date" max='2004-11-21' name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser" value="<?php echo  DateTime::createFromFormat("Y-m-d H:i:s", $Responsavel_Nascimento_Protetivas)->format("Y-m-d")  ?>"   >
                     <br><br><br>
                 </div>
                 
@@ -287,18 +263,44 @@
 
                 <div class="field radiobox" id="Vinculo_Protetivas_Box">            
                     <p>Constata o vínculo pelos observacão e documentacão apresentada?</p>
-                    <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="SIM" <?php echo $Vinculo_Protetivas == "SIM" ?"checked":"" ?>required>
-                    <label for="Vinculo_Protetivas_Sim">Sim</label>
-                    <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="NÃO" <?php echo $Vinculo_Protetivas == "NÃO" ?"checked":"" ?>required>
-                    <label for="Vinculo_Protetivas_Nao">Não</label>
-                    <br><br>
+                    <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="Sim" <?php echo $Vinculo_Protetivas == "Sim" ?"checked":"" ?>>
+                    <label for="Vinculo_Protetivas_Sim" required>Sim</label>
+                    <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="Não" <?php echo $Vinculo_Protetivas == "Não" ?"checked":"" ?>>
+                    <label for="Vinculo_Protetivas_Nao" required>Não</label>   
                 </div>
-                <input type="hidden" name="idMedidas_Protetivas" Value="<?php echo $idMedidas_Protetivas ?>">
-                    <!--<br>
-                    <input onclick="myalert()" type="submit" name="update" id="update">-->
+
+                <?php echo $Responsavel_Protetivas != "N/A" ?"
+                <script>Preencher('Responsavel_Protetivas_Box'),
+                Preencher('Documento_Protetivas_Box'),
+                Preencher('Numero_Documento_Protetivas_Box'),
+                Preencher('Gênero_Protetivas_Box'),
+                Preencher('Responsavel_Nascimento_Protetivas_Box'),
+                Preencher('Responsavel_Nacionalidade_Protetivas_Box'),
+                Preencher('Responsavel_Endereco_Protetivas_Box'),
+                Preencher('Responsavel_Parentesco_Protetivas_Box'),
+                Preencher('Vinculo_Protetivas_Box')</script>":""  ?>
+
+
+
+                <br><br>
+                <input type="hidden" name="idMedidas_Protetivas" id="idMedidas_Protetivas" Value="<?php echo $idMedidas_Protetivas ?>">
+                <input type="hidden" name="id_Doc" id="id_Doc" Value="<?php echo $id_Doc ?>">
+                <input type="submit" name="update" id="update">
+                <br>
             </fieldset>
 
-
     </div>
+    <script src="js/jquery-3.6.1.min.js"></script>
+    <script src="js/sweetalert2.all.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+    <script src="js/script_Update_Protetivas.js"></script>
 </body>
 </html>
