@@ -57,7 +57,7 @@
             while($user_data = mysqli_fetch_assoc($result)){
 
                 $Descrição       = $user_data['Descricao'];
-                $Numero_doc        = $user_data['Numero'];
+                $Numero_doc      = $user_data['Numero'];
 
             }
             //print_r($Identidade_Pessoa);
