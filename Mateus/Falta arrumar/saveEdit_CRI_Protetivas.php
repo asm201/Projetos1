@@ -6,13 +6,12 @@ if(isset($_POST['update'])){
 
                 $idMedidas_Protetivas                   = isset($_POST['idMedidas_Protetivas']) ? $_POST['idMedidas_Protetivas'] :  null;
                 
-                $Instituicao_Protetivas                 = isset($_POST['Instituicão_Protetivas']) ? $_POST['Instituicão_Protetivas'] :  null;
+                $Nome_Inst                              = isset($_POST['Instituicão_Protetivas']) ? $_POST['Instituicão_Protetivas'] :  null;
                 $Endereco_Inst_Protetivas               = isset($_POST['Endereco_Inst_Protetivas']) ? $_POST['Endereco_Inst_Protetivas'] :  null;
                 $Vara_Protetivas                        = isset($_POST['Vara_Protetivas']) ? $_POST['Vara_Protetivas'] :  null;
                 $Responsavel_Inst_Protetivas            = isset($_POST['Responsavel_Inst_Protetivas']) ? $_POST['Responsavel_Inst_Protetivas'] :  null;
 
                 $Responsavel_Protetivas                 = isset($_POST['Responsavel_Protetivas']) ? $_POST['Responsavel_Protetivas'] :  null;
-                //$Documento_Protetivas                 = isset($_POST['Documento_Respo']) ? $_POST['Documento_Respo'] :  null;
                 $Text_Outro_Documento_Protetivas        = isset($_POST['Text_Documento_Protetivas']) ? $_POST['Text_Documento_Protetivas'] :  null;
                 $Text_Copia_Documento_Protetivas        = isset($_POST['Text_Copia_Documento_Protetivas']) ? $_POST['Text_Copia_Documento_Protetivas'] :  null;
 
@@ -24,6 +23,9 @@ if(isset($_POST['update'])){
                 $Responsavel_Endereco_Protetivas        = isset($_POST['Responsavel_Endereco_Protetivas']) ? $_POST['Responsavel_Endereco_Protetivas'] :  null;
                 $Responsavel_Parentesco_Protetivas      = isset($_POST['Responsavel_Parentesco_Protetivas']) ? $_POST['Responsavel_Parentesco_Protetivas'] :  null;
                 $Vinculo_Protetivas                     = isset($_POST['Vinculo_Protetivas']) ? $_POST['Vinculo_Protetivas'] :  null;
+
+                $Descricao                              = isset($_POST['Documento_Protetivas']) ? $_POST['Documento_Protetivas'] :  null;
+                $Numero                                 = isset($_POST['Documento_Respo']) ? $_POST['Documento_Respo'] :  null;
                 
 
         //var_dump($idMedidas_Protetivas);
@@ -31,11 +33,13 @@ if(isset($_POST['update'])){
 
         $requiredFields = [
             'ID faltando' => $idMedidas_Protetivas,
-            'Instituição não preenchido' => $Instituicao_Protetivas,
+            'Instituição não preenchido' => $Nome_Inst,
             'Endereço da intituição não preenchido' => $Endereco_Inst_Protetivas,
             'Vara não preenchido' => $Vara_Protetivas,
             //'Responsavel não preenchido' => $Responsavel_Inst_Protetivas,
             'Responsavel não preenchido' => $Responsavel_Protetivas,
+            'Documento não preenchido' => $Descricao,
+            'Numero não preenchido' => $Numero,
             'Responsavel Nacionalidade não preenchido' => $Responsavel_Nacionalidade_Protetivas,
             'Responsavel endereço não preenchido' => $Responsavel_Endereco_Protetivas,
             'Responsavel parentesco não preenchido' => $Responsavel_Parentesco_Protetivas,
@@ -44,6 +48,7 @@ if(isset($_POST['update'])){
             'Numero do documento não preenchido' => $Numero_Documento_Protetivas,
             'Data do responsavel não preenchido' => $Responsavel_Nascimento_Protetivas,
             'Vinculo não preenchido' => $Vinculo_Protetivas
+
 
         ];
 
@@ -61,7 +66,7 @@ if(isset($_POST['update'])){
             $sqlUpdate =  "UPDATE medidas_protetivas SET
 
             Endereco_Inst='$Endereco_Inst_Protetivas',
-            Nome_Inst='$Instituicão_Protetivas',
+            Nome_Inst='$Nome_Inst',
             Nome_Respo_Inst='$Responsavel_Inst_Protetivas',
             Nome_Respo='$Responsavel_Protetivas',
             Genero='$Gênero_Protetivas',
@@ -74,6 +79,15 @@ if(isset($_POST['update'])){
             
             WHERE idMedidas_Protetivas=$idMedidas_Protetivas";
             var_dump($sqlUpdate);
+            $result = $conexao->query($sqlUpdate);
+
+            $sqlUpdate =  "UPDATE documentos SET
+
+            Descricao='$Descricao',
+            Numero='$Numero'
+
+            WHERE idMedidas_Protetivas=$idMedidas_Protetivas";
+
         
             $result = $conexao->query($sqlUpdate);
             http_response_code(204);
