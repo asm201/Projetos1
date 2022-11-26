@@ -148,7 +148,7 @@ if(isset($_POST['submit']))
             'Dados Criança - Nome do Pai da criança não preenchido' => $Nome_pai,
             'Dados Criança - Residencia da Mae da criança não preenchido' => $Text_Residencia_Mae_Pessoa,
             'Dados Criança - Residencia do Pai da criança não preenchido' => $Text_Residencia_Pai_Pessoa,
-            ////////////////////    Entrada - REVISAR  ////////////////////
+            ////////////////////    Entrada - correto ////////////////////
 
             'Entrada - Cidade Saida não preenchido' => $Cidade_Saida_pessoa,
             'Entrada - Data de saida não preenchido' => $Data_Saida_pessoa,
@@ -158,7 +158,7 @@ if(isset($_POST['submit']))
             'Entrada - Data reconhecido não preenchido' => $Data_Reconhecido_Pessoa,
             'Entrada - Data de chegada não preenchido' => $Data_Chegada_Pessoa,
             'Entrada - País reconhecido não preenchido' => $Pais_Reconhecido_Pesso,
-            ////////////////////     Situacão - REVISAR  ////////////////////
+            ////////////////////     Situacão - Correto  ////////////////////
 
             'Situacão - Vida Antes não preenchido' => $Vida_antes,
             'Situacão - Razão Saida não preenchido' => $Razão_Saida,
@@ -174,12 +174,12 @@ if(isset($_POST['submit']))
             'Situacão - Proteção Indicadores não preenchido' => $Proteção_Indicadores,
             'Situacão - Solicitações não preenchido' => $Solicitação_Indicadores,
             'Situacão - Solicitações outros não preenchido' => $Txt_Protecao_Indicadores,
-            ////////////////////     Avaliação - REVISAR ////////////////////
+            ////////////////////     Avaliação - Correto ////////////////////
 
             'Avaliação - Mental faltando' => $Mental_Avaliacao,
             'Avaliação - Fisico_Avaliacao faltando' => $Fisico_Avaliacao,
             'Avaliação - Idade_Avaliacao faltando' => $Idade_Avaliacao,
-            ////////////////////    Variáveis tabela Medidas_Protetivas - REVISAR ////////////////////
+            ////////////////////    Variáveis tabela Medidas_Protetivas - REVISAR - campo limpar não está limpando o text outro e copia outro ////////////////////
 
             'Medidas Protetivas - Instituição não preenchido' => $Instituicao_Protetivas,
             'Medidas Protetivas - Endereço da intituição não preenchido' => $Endereco_Inst_Protetivas,
@@ -195,8 +195,9 @@ if(isset($_POST['submit']))
             'Medidas Protetivas - Numero do documento não preenchido' => $Numero_Documento_Protetivas,
             'Medidas Protetivas - Data do responsavel não preenchido' => $Responsavel_Nascimento_Protetivas,
             'Medidas Protetivas - Vinculo não preenchido' => $Vinculo_Protetivas,
-            ////////////////////    Variáveis tabela Intérprete  - REVISAR ////////////////////
+            ////////////////////    Variáveis tabela Intérprete  - Correto - FAZER VERIFICAÇÃO SEPARADA ////////////////////
             'Documento não preenchido' => $Documento_Interprete
+            ////////////////////    Verificar necessidade de verificação da assinatura ////////////////////
 
         ];
         foreach ($requiredFields as $field => $fieldValue) {
@@ -215,64 +216,47 @@ if(isset($_POST['submit']))
         //****************************  TABELA DOCUMENTO  *************************************  
         $result = mysqli_query($conexao, "INSERT INTO documentos(Descricao, Numero) 
         VALUES ('$Decricao_Documento','$Numero_Documento_Protetivas')");
-
         //**************************** TABELA ENTRA  *************************************  
             
             
         $result = mysqli_query($conexao, "INSERT INTO entrada(Cidade_Saida,Data_Saida,Cidade_Chegada,Data_Chegada,Transporte,Transporte_Detalhe,Data_Reconhecido,Pais_Reconhecido,Crianca) 
         VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa','$Identidade_pessoa')");
-
-
         //****************************  TABELA SITUACAO  *************************************  
-
             
         $result = mysqli_query($conexao, "INSERT INTO situacao(Vida_Antes,Razao_Saida,Saida_Forcada,Permanencia,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica,Parente_Brasil,Protecao_da_Crianca,Solicitacao_de_Indicadores,Crianca,Txt_Protecao_Indicadores) 
         VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$Txt_Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Proteção_Indicadores','$Solicitação_Indicadores','$Identidade_pessoa','$txt_Proteção_Indicadores')");
-
-
         //****************************  TABELA MEDIDAS PROTETIVAS  ************************************* 
         //select na tabela documento para pegar o id  
         $query = mysqli_query($conexao, "SELECT idDocumentos FROM documentos WHERE Numero = '$Numero_Documento_Protetivas'");
-
         while ($row = mysqli_fetch_assoc($query )) {            
         $Id_Documento = $row['idDocumentos'];
             settype($Id_Documento, "integer");
         }
-
         $result = mysqli_query($conexao, "INSERT INTO Medidas_Protetivas(Endereco_Inst,Nome_Inst,Nome_Respo_Inst,Nome_Respo,Documento_Respo,Genero,Endereco_Respo,Parentesco,Vinculo,Nacionalidade,Data_Nascimento,Vara,Crianca) 
         VALUES ('$Endereco_Inst_Protetivas','$Instituicão_Protetivas','$Responsavel_Inst_Protetivas','$Responsavel_Protetivas','$Id_Documento','$Gênero_Protetivas','$Responsavel_Endereco_Protetivas','$Responsavel_Parentesco_Protetivas','$Vinculo_Protetivas','$Responsavel_Nacionalidade_Protetivas','$Responsavel_Nascimento_Protetivas','$Vara_Protetivas','$Identidade_pessoa')");
-
         //****************************  TABELA CRINÇA/ADOLESCENTE  ************************************* 
             
         //SELCTs para pegar o id das outras tabelas
         $query = mysqli_query($conexao, "SELECT idEntrada FROM entrada WHERE Crianca = '$Identidade_pessoa'");
-
         while ($row = mysqli_fetch_assoc($query)) {            
             $Entrada = $row['idEntrada'];
             settype($Entrada, "integer");
         }
         $query = mysqli_query($conexao, "SELECT idMedidas_Protetivas FROM medidas_protetivas WHERE Crianca = '$Identidade_pessoa'");
-
         while ($row = mysqli_fetch_assoc($query)) {            
             $Medidas_Protetivas = $row['idMedidas_Protetivas'];
             settype($Medidas_Protetivas, "integer");
         }
-
         $query = mysqli_query($conexao, "SELECT idSituacao FROM situacao WHERE Crianca = '$Identidade_pessoa'");
-
         while ($row = mysqli_fetch_assoc($query)) {            
             $Situacao = $row['idSituacao'];
             settype($Situacao, "integer");
         }
-
         $query = mysqli_query($conexao, "SELECT Doc_Defensor FROM defensor WHERE Contato_Def = '$logado'");
-
         while ($row = mysqli_fetch_assoc($query)) {            
             $Defensor = $row['Doc_Defensor'];
         }
-
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome);
-
         $result = mysqli_query($conexao, "INSERT INTO crianca_adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereco_origem,Endereco_atual,Telefone_crianca,Passaporte,Certidao_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Email_Crianca,Entrada,Medidas_Protetivas,Situacao,Defensor,Interprete,Residencia_mae,Residencia_pai,Status_Crianca, Imagem) 
         VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa',NOW(),'$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa','$Status','$filename')");
         */
@@ -555,8 +539,8 @@ if(isset($_POST['submit']))
                     <br>
                     <div class="field radiobox">
                         <label>Você realizou a viagem acompanhado?</label><br>
-                        <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Sim" onclick="Requerido('Txt_Viagem_Pessoa')"><label for="Sim">Sim </label>
-                        <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Nao" onclick="Limpar('Txt_Viagem_Pessoa')"><label for="Não">Não </label>
+                        <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Sim" value="Sim" onclick="Requerido('Txt_Viagem_Pessoa')"><label for="Sim">Sim </label>
+                        <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Nao" value="Não" onclick="Limpar('Txt_Viagem_Pessoa')"><label for="Não">Não </label>
                         <br><br>
                         <textarea type="text" name="Txt_Viagem_Pessoa" id="Txt_Viagem_Pessoa" style="display:none" placeholder="Digite aqui" class="inputUser" ></textarea>         
                     </div>
@@ -599,8 +583,8 @@ if(isset($_POST['submit']))
                     <br>
                     <div class="field radiobox">
                         <label>Tem parentes (irmãos tios, primos e avós) no Brasoç?</label><br>
-                        <input type="radio" name="Parentes_Brasil_Pessoa" id="Parentes_Brasil_Pessoa_Sim" ><label for="Sim">Sim </label>
-                        <input type="radio" name="Parentes_Brasil_Pessoa" id="Parentes_Brasil_Pessoa_Nao" ><label for="Não">Não </label>
+                        <input type="radio" name="Parentes_Brasil_Pessoa" id="Parentes_Brasil_Pessoa_Sim" value="Sim"><label for="Sim">Sim </label>
+                        <input type="radio" name="Parentes_Brasil_Pessoa" id="Parentes_Brasil_Pessoa_Nao" value="Não"><label for="Não">Não </label>
                     </div>
                     </br>
                     <div class="field radiobox">
