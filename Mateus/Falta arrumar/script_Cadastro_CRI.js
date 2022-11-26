@@ -2,7 +2,7 @@
 $('#Formulario2').submit(function (e) {
     e.preventDefault();
 
-    //         //Variáveis tabela Crianca
+    //////////////////////         //Variáveis tabela Crianca   //////////////////////
     var Nome_Pessoa = $('#Nome_Pessoa').val();
     var Nascimento_pessoa = $('#Nascimento_Pessoa').val();
 
@@ -28,7 +28,7 @@ $('#Formulario2').submit(function (e) {
     var Nome_pai = $('#Pai_Pessoa').val();
     var Text_Residencia_Pai_Pessoa = $('#Pai_Pessoa_Endereco').val();
 
-    //         //Entrada
+    //////////////////////         //Entrada    //////////////////////
     //         var idEntrada                = $('#idEntrada').val();
     var Cidade_Saida_pessoa = $('#Cidade_Saida_Pessoa').val();
     var Data_Saida_pessoa = $('#Data_Saida_Pessoa').val();
@@ -41,8 +41,20 @@ $('#Formulario2').submit(function (e) {
     var Data_Reconhecido_Pessoa = $('#Data_Reconhecido_Pessoa').val();
     var Pais_Reconhecido_Pessoa = $('#Pais_Reconhecido_Pessoa').val();
 
+    if(Meio_Transporte == "Aéreo")
+     {
+        Meio_Transporte = Meio_Transporte;
+     }
+     else if(Meio_Transporte == "Terrestre")
+     {
+        Meio_Transporte = Meio_Transporte;
+     }else
+     {
+        Meio_Transporte = Meio_Transporte;
+     }
 
-    //         //Variáveis tabela Situacão
+
+    //////////////////////         //Variáveis tabela Situacão  //////////////////////
     //         var idSituacao = $('#idSituacao').val();
     var Vida_antes = $('#Vida_antes').val();
     var Razão_Saida = $('#Razão_Saida').val();
@@ -71,7 +83,42 @@ $('#Formulario2').submit(function (e) {
     var Proteção_Indicadores_Txt = $('#Txt_Protecao_Indicadores').val();
     var Solicitação_Indicadores = $("input[name='Solicitação_Indicadores']:checked").val();
 
-    //         ////AVALIAÇÃO PRELIMINAR DA CRIANcA OU ADOLESCENTE
+    if(Situacao_Pessoa_Btn == "Não"){
+        Situacao_Pessoa = "N/A";
+    }
+    if(Alguem_Pessoa_Btn == "Não") {
+        Alguem_Pessoa = "N/A";
+    }
+    if(Viagem_Pessoa_Btn == "Não"){
+        Viagem_Pessoa = "N/A";
+    }
+    if(Entrou_Pessoa_Btn == "Sim") {
+        Entrou_Pessoa = "N/A";
+    }
+    if(Retornar_Pessoa_Btn == "Sim"){
+        Retornar_Pessoa = "N/A";
+    }
+    if(Medo_Pessoa_Btn == "Não") {
+        Medo_Pessoa = "N/A";
+    }
+    if(Permancer_Pessoa_Btn == "Sim") {
+        Permancer_Pessoa = "N/A";
+    }
+
+    if (Proteção_Indicadores == "ProteçãoC") 
+    {
+        Proteção_Indicadores_Txt = "Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança;";
+    } else if (Proteção_Indicadores == "ProteçãoF") 
+    {
+        Proteção_Indicadores_Txt = "Medida de proteção por reunião familiar ";
+    } else if (Proteção_Indicadores == "ProteçãoT") 
+    {
+        Proteção_Indicadores_Txt = "Proteção como vítima de tráfico de pessoas;";
+    } else {
+        Proteção_Indicadores_Txt = Proteção_Indicadores_Txt
+    }
+
+    //////////////////////         ////AVALIAÇÃO PRELIMINAR DA CRIANcA OU ADOLESCENTE       //////////////////////
 
     //         var idSituacao                = $('#idSituacao').val();
 
@@ -79,9 +126,10 @@ $('#Formulario2').submit(function (e) {
     var Fisico_Avaliacão = $('#Txt_Fisico_Avaliacão').val();
     var Idade_Avaliacão = $('#Txt_Idade_Avaliacão').val();
 
-    //         ////Variáveis tabela Medidas_Protetivas
+    //////////////////////         ////Variáveis tabela Medidas_Protetivas      //////////////////////
 
     //         var idMedidas_Protetivas = $('#idMedidas_Protetivas').val();
+    //var ID_Documento_Respo = $('#id_Doc').val();
     var Encaminhada_Protetivas = $("input[name='Encaminhada_Protetivas']:checked").val();
 
     var Instituicão_Protetivas = $('#Instituicão_Protetivas').val();
@@ -106,7 +154,6 @@ $('#Formulario2').submit(function (e) {
     var Responsavel_Nacionalidade_Protetivas = $('#Responsavel_Nacionalidade_Protetivas').val();
     var Responsavel_Endereco_Protetivas = $('#Responsavel_Endereco_Protetivas').val();
 
-    var ID_Documento_Respo = $('#id_Doc').val();
 
 
     var Vinculo_Protetivas = $("input[name='Vinculo_Protetivas']:checked").val();
@@ -114,7 +161,17 @@ $('#Formulario2').submit(function (e) {
     var Descricao = $("input[name='Documento_Protetivas']:checked").val();
     var Responsavel_Parentesco_Protetivas = $('#Responsavel_Parentesco_Protetivas').val();
 
-    //     //Variáveis tabela Intérprete
+    if(Representante_Protetiva == 'Não'){
+        Responsavel_Nascimento_Protetivas = "0000-00-00";
+        //Gênero_Protetivas = "";
+        //Vinculo_Protetivas = "";
+        Descricao = "NENHUM DOCUMENTO";
+    }
+    if(Descricao == "NENHUM DOCUMENTO"){
+        Numero_Documento_Protetivas = "N/A";
+    }
+
+    //////////////////////     //Variáveis tabela Intérprete        //////////////////////
 
     //         /*var Nome_Interprete         = $('#Nome_Interprete').val();
     var Documento_Interprete = $('#Documento_Interprete').val();
@@ -227,11 +284,11 @@ $('#Formulario2').submit(function (e) {
 
            Txt_Mental_Avaliacão : Mental_Avaliacão,
            Txt_Fisico_Avaliacão : Fisico_Avaliacão,
-           Txt_Idade_Avaliacão : Idade_Avaliacã,
+           Txt_Idade_Avaliacão : Idade_Avaliacão,
 
            ///////////////////     Intérprete    ///////////////////
 
-           Documento_Interprete: Documento_Interprete
+           Documento_Interprete: Documento_Interprete   
     };
 
 
