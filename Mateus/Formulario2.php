@@ -76,6 +76,7 @@
         $Txt_Viagem_Pessoa         = $_POST['Txt_Viagem_Pessoa'];
         $Txt_Entrou_Pessoa         = $_POST['Txt_Entrou_Pessoa'];
         $Txt_Retornar_Pessoa       = $_POST['Txt_Retornar_Pessoa'];
+        $Txt_Permancer_Pessoa       = $_POST['Txt_Permancer_Pessoa'];
         $Txt_Medo_Pessoa           = $_POST['Txt_Medo_Pessoa'];
         $Parentes_Origem_Pessoa    = $_POST['Parentes_Origem_Pessoa'];
         $Parentes_Brasil_Pessoa    = $_POST['Parentes_Brasil_Pessoa'];
@@ -170,6 +171,9 @@
             if($Medo_Pessoa == "Não") {
                 $Txt_Medo_Pessoa = "N/A";
             }
+            if($Permancer_Pessoa == "Não") {
+                $Txt_Permancer_Pessoa = "N/A";
+            }
 
             if($Proteção_Indicadores == "ProteçãoO"){
                 $txt_Proteção_Indicadores = $Aux_Proteção_Indicadores;
@@ -188,7 +192,7 @@
             }
             
             $result = mysqli_query($conexao, "INSERT INTO situacao(Vida_Antes,Razao_Saida,Saida_Forcada,Permanencia,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica,Parente_Brasil,Protecao_da_Crianca,Solicitacao_de_Indicadores,Crianca,Txt_Protecao_Indicadores) 
-            VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Proteção_Indicadores','$Solicitação_Indicadores','$Identidade_pessoa','$txt_Proteção_Indicadores')");
+            VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$Txt_Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Proteção_Indicadores','$Solicitação_Indicadores','$Identidade_pessoa','$txt_Proteção_Indicadores')");
 
         }catch(Exception $e){
             echo  '<script>alert("Erro ao Cadastrar Situação");</script>';
