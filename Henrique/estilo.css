@@ -1,9 +1,8 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     color: #DCDCDC;
-    background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71));
+    background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71)); 
 }
-
 .navbar{
     color: white;
     font: white;
@@ -15,9 +14,9 @@ body{
 }
 .box{
     color: white;
-    top: 65%;
-    position: fixed;
-    margin-top: 165%;
+    top: 150px;
+    position: absolute;
+    margin-top: 150px;
     margin-left: 50%;
     transform: translate(-50%,-50%);
     background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71));
@@ -46,7 +45,8 @@ body{
 
 .box_home{
     color: white;
-    position: top;
+    position: absolute;
+    margin-top: 25%;
     margin-left: 50%;
     transform: translate(-50%,-50%);
     background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71));
@@ -269,17 +269,19 @@ input[type = "date"]::-webkit-calendar-picker-indicator {
 }
 
 .logo{
-    position: fixed;
-    height: auto;
-    left: 25px;
-    width: 150px;
-    margin-top: 0.5%;
-}
-.logo2{
-    position: fixed;
-    height: auto;
-    right:25px;
-    width: 150px;
-    margin-top: 0.5%;
+                    position: fixed;
+                    height: auto;
+                    left: 25px;
+                    width: 150px;
+                    margin-top: 0.5%;
 
-}
+                }
+.logo2
+                {
+                    position: fixed;
+                    height: auto;
+                    right:25px;
+                    width: 150px;
+                    margin-top: 0.5%;
+
+                }
