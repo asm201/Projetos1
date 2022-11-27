@@ -22,7 +22,7 @@ if(isset($_POST['submit']))
 {
     try{
 
-        $filename = $_FILES['arquivo']['name'];
+        $filename = isset($_POST['arquivo']) ? $_POST['arquivo'] :  null;
         $size = $_FILES['arquivo']['size'];
         $novo_nome = md5(time()) . $extensao;
         $file = $_FILES['arquivo']['tmp_name'];
@@ -130,7 +130,7 @@ if(isset($_POST['submit']))
         $Endereço_Interprete       = isset($_POST['Endereço_Interprete']) ? $_POST['Endereço_Interprete'] :  null;
         $Telefone_Interprete       = isset($_POST['Telefone_Interprete']) ? $_POST['Telefone_Interprete'] :  null;
         $email_Interprete          = isset($_POST['e-mail_Interprete']) ? $_POST['e-mail_Interprete'] :  null;  */
-
+////////////////////    Imagem   ////////////////////
        /* http_response_code(200);
                 header('Content-type: application/json');
                 echo json_encode([
@@ -210,8 +210,10 @@ if(isset($_POST['submit']))
             'Medidas Protetivas - Data do responsavel não preenchido' => $Responsavel_Nascimento_Protetivas,
             'Medidas Protetivas - Vinculo não preenchido' => $Vinculo_Protetivas,
             ////////////////////    Variáveis tabela Intérprete  - Correto - FAZER VERIFICAÇÃO SEPARADA ////////////////////
-            'Documento não preenchido' => $Documento_Interprete
-            ////////////////////    Verificar necessidade de verificação da assinatura ////////////////////
+            'Documento Itérprete não preenchido' => $Documento_Interprete,
+            ////////////////////    Verificar necessidade de verificação da assinatura ///////////////////
+            
+            'Assinatura não preenchido' => $filename 
 
         ];
         foreach ($requiredFields as $field => $fieldValue) {
@@ -226,10 +228,10 @@ if(isset($_POST['submit']))
     
     //Variavel de Status
         $Status = true;
-        
+
         //****************************  TABELA DOCUMENTO  *************************************  
         $result = mysqli_query($conexao, "INSERT INTO documentos(Descricao, Numero,Nome_Documento) 
-        VALUES ('$Responsavel_Protetivas','$Numero_Documento_Protetivas','$Text_Outro_Documento_Protetivas')");
+        VALUES ('$Documento_Protetivas','$Numero_Documento_Protetivas','$Text_Outro_Documento_Protetivas')");
         //**************************** TABELA ENTRA  *************************************  
             
             
@@ -286,12 +288,10 @@ if(isset($_POST['submit']))
         while ($row = mysqli_fetch_assoc($query)) {            
             $Defensor = $row['Doc_Defensor'];
         }
-        move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome);
+        move_uploaded_file($_FILES['arquivo']['tmp_name'], $destination.$novo_nome);
         $result = mysqli_query($conexao, "INSERT INTO crianca_adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereco_origem,Endereco_atual,Telefone_crianca,Passaporte,Certidao_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Email_Crianca,Entrada,Medidas_Protetivas,Situacao,Defensor,Interprete,Residencia_mae,Residencia_pai,Status_Crianca, Imagem) 
         VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa',NOW(),'$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa','$Status','$filename')");
         
-
-
 
             http_response_code(204);
         }catch(Exception $e){
@@ -360,7 +360,7 @@ if(isset($_POST['submit']))
     </div>
    
     <div class="box">
-        <form action="Formulario2.php" method="post" enctype="multipart/form-data" id="Formulario2">
+        <form name ="form"  action="Formulario2.php" method="post" enctype="multipart/form-data" id="Formulario2">
             <fieldset>
                 <legend><b>Fórmulário</b></legend>
                 <br>
@@ -377,7 +377,7 @@ if(isset($_POST['submit']))
 
                     <div class="inputBox">
                         <label for="Nascimento_Pessoa"><b><label style="color:#FF0000">*</label> Data de Nascimento:</b></label>
-                        <input type="date" min='2004-1-1' max='2022-11-21'name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser" required>
+                        <input type="date" min='2004-01-01' max='2022-18-28' name="Nascimento_Pessoa" id="Nascimento_Pessoa" class="inputUser" required>
                     </div>
 
 
@@ -725,9 +725,9 @@ if(isset($_POST['submit']))
                     
                     <div class="field radiobox" id="Gênero_Protetivas_Box">            
                         <p>Genero:</p>
-                        <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino" >
+                        <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino" required >
                         <label for="feminino_Protetivas" required>Feminino</label>
-                        <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino">
+                        <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino" required>
                         <label for="masculino_Protetivas" required>Masculino</label>
                         <br><br>
                     </div>
@@ -758,9 +758,9 @@ if(isset($_POST['submit']))
 
                     <div class="field radiobox" id="Vinculo_Protetivas_Box">            
                         <p>Constata o vínculo pelos observacão e documentacão apresentada?</p>
-                        <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="Sim">
+                        <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="Sim" reqiued>
                         <label for="Vinculo_Protetivas_Sim" required>Sim</label>
-                        <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="Não">
+                        <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="Não" required>
                         <label for="Vinculo_Protetivas_Nao" required>Não</label>   
                     </div>
                 </div>

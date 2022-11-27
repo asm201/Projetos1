@@ -180,7 +180,8 @@ $('#Formulario2').submit(function (e) {
     //         var Telefone_Interprete     = $('#Telefone_Interprete').val();*/
 
     //     //var Telefone_defensor= $('#Telefone_Def').val();
-
+     //////////////////////     //Variáveis imagem      //////////////////////
+     var imagem = document.forms['form']['arquivo'].files[0];
     const data = {
 
         submit: '',
@@ -288,7 +289,11 @@ $('#Formulario2').submit(function (e) {
 
            ///////////////////     Intérprete    ///////////////////
 
-           Documento_Interprete: Documento_Interprete   
+           Documento_Interprete: Documento_Interprete, 
+
+           arquivo:imagem.name
+
+
     };
 
 
@@ -322,3 +327,21 @@ $('#Formulario2').submit(function (e) {
     });
 
 });
+
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("Nascimento_Pessoa").setAttribute("max", today);
+document.getElementById("Data_Saida_Pessoa").setAttribute("max", today);
+document.getElementById("Data_Chegada_Pessoa").setAttribute("max", today);
+document.getElementById("Data_Reconhecido_Pessoa").setAttribute("max", today);
