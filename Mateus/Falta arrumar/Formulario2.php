@@ -51,6 +51,7 @@ if(isset($_POST['submit']))
         $Nome_pai                       = isset($_POST['Pai_Pessoa']) ? $_POST['Pai_Pessoa'] :  null;
         $Text_Residencia_Mae_Pessoa     = isset($_POST['Text_Residencia_Mae_Pessoa']) ? $_POST['Text_Residencia_Mae_Pessoa'] :  null;
         $Text_Residencia_Pai_Pessoa     = isset($_POST['Text_Residencia_Pai_Pessoa']) ? $_POST['Text_Residencia_Pai_Pessoa'] :  null;
+        
 
         ////////////////////    Entrada ////////////////////
         $Cidade_Saida_pessoa           = isset($_POST['Cidade_Saida_Pessoa']) ? $_POST['Cidade_Saida_Pessoa'] : null;
@@ -61,7 +62,6 @@ if(isset($_POST['submit']))
         $Data_Reconhecido_Pessoa       = isset($_POST['Data_Reconhecido_Pessoa']) ?  $_POST['Data_Reconhecido_Pessoa'] :  null;
         $Data_Chegada_Pessoa           = isset($_POST['Data_Chegada_Pessoa']) ? $_POST['Data_Chegada_Pessoa'] :  null;
         $Pais_Reconhecido_Pessoa       = isset($_POST['Pais_Reconhecido_Pessoa']) ? $_POST['Pais_Reconhecido_Pessoa'] :  null;
-
 
         ////////////////////     Situacão   ////////////////////
         $Vida_antes                = isset($_POST['Vida_antes'])  ? $_POST['Vida_antes'] : null;
@@ -89,11 +89,6 @@ if(isset($_POST['submit']))
         $Mental_Avaliacao          = isset($_POST['Txt_Mental_Avaliacão']) ? $_POST['Txt_Mental_Avaliacão'] : null;
         $Fisico_Avaliacao          = isset($_POST['Txt_Fisico_Avaliacão']) ? $_POST['Txt_Fisico_Avaliacão'] : null;
         $Idade_Avaliacao           = isset($_POST['Txt_Idade_Avaliacão']) ? $_POST['Txt_Idade_Avaliacão']: null;
-        /*$Txt_Mental_Avaliacão      = $_POST['Txt_Mental_Avaliacão'];
-        $Txt_Fisico_Avaliacão      = $_POST['Txt_Fisico_Avaliacão'];
-        $Txt_Idade_Avaliacão       = $_POST['Txt_Idade_Avaliacão'];
-        $Aux_Proteção_Indicadores  = $_POST['Txt_Proteção_Indicadores'];
-        $Solicitação_Indicadores   = $_POST['Solicitação_Indicadores'];*/
 
         ////////////////////    Variáveis tabela Medidas_Protetivas ////////////////////
 
@@ -119,13 +114,24 @@ if(isset($_POST['submit']))
         $Vinculo_Protetivas                     = isset($_POST['Vinculo_Protetivas']) ? $_POST['Vinculo_Protetivas'] :  null;
                 
         $Text_Copia_Documento_Protetivas = chop($Text_Copia_Documento_Protetivas, " Cópia");
+
        
     ////////////////////    Variáveis tabela Intérprete ////////////////////
-        $Nome_Interprete           = isset($_POST['Nome_Interprete']) ? $_POST['Nome_Interprete'] :  null;
-        $Documento_Interprete      = isset($_POST['Documento_Interprete']) ? $_POST['Documento_Interprete'] :  null;
+    $Documento_Interprete      = isset($_POST['Documento_Interprete']) ? $_POST['Documento_Interprete'] :  null;
+      /*  $Nome_Interprete           = isset($_POST['Nome_Interprete']) ? $_POST['Nome_Interprete'] :  null;
         $Endereço_Interprete       = isset($_POST['Endereço_Interprete']) ? $_POST['Endereço_Interprete'] :  null;
         $Telefone_Interprete       = isset($_POST['Telefone_Interprete']) ? $_POST['Telefone_Interprete'] :  null;
-        $email_Interprete          = isset($_POST['e-mail_Interprete']) ? $_POST['e-mail_Interprete'] :  null;
+        $email_Interprete          = isset($_POST['e-mail_Interprete']) ? $_POST['e-mail_Interprete'] :  null;  */
+
+       /* http_response_code(200);
+                header('Content-type: application/json');
+                echo json_encode([
+
+                    'Text_Documento_Protetivas' => $Text_Documento_Protetivas,
+                    'Text_Copia_Documento_Protetivas' => $Text_Copia_Documento_Protetivas,
+                    
+                  ]);
+        return;*/
 
 
         $requiredFields = [
@@ -157,7 +163,7 @@ if(isset($_POST['submit']))
             'Entrada - Detalhe do Transporte não preenchido' => $Transporte_Detalhado_Pessoa,
             'Entrada - Data reconhecido não preenchido' => $Data_Reconhecido_Pessoa,
             'Entrada - Data de chegada não preenchido' => $Data_Chegada_Pessoa,
-            'Entrada - País reconhecido não preenchido' => $Pais_Reconhecido_Pesso,
+            'Entrada - País reconhecido não preenchido' => $Pais_Reconhecido_Pessoa,
             ////////////////////     Situacão - Correto  ////////////////////
 
             'Situacão - Vida Antes não preenchido' => $Vida_antes,
@@ -212,7 +218,7 @@ if(isset($_POST['submit']))
     
     //Variavel de Status
         $Status = true;
-        /*
+        
         //****************************  TABELA DOCUMENTO  *************************************  
         $result = mysqli_query($conexao, "INSERT INTO documentos(Descricao, Numero) 
         VALUES ('$Decricao_Documento','$Numero_Documento_Protetivas')");
@@ -223,8 +229,24 @@ if(isset($_POST['submit']))
         VALUES ('$Cidade_Saida_pessoa','$Data_Saida_pessoa', '$Cidade_Chegada_pessoa','$Data_Chegada_Pessoa','$Meio_transporte_pessoa','$Transporte_Detalhado_Pessoa','$Data_Reconhecido_Pessoa','$Pais_Reconhecido_Pessoa','$Identidade_pessoa')");
         //****************************  TABELA SITUACAO  *************************************  
             
-        $result = mysqli_query($conexao, "INSERT INTO situacao(Vida_Antes,Razao_Saida,Saida_Forcada,Permanencia,Ajuda,Acompanhado,Entrada_Sozinho,Retorno,Medo_Retorno,Parente_Pais_Origem,Saude_Mental,Idade_Mental,Saude_Fisica,Parente_Brasil,Protecao_da_Crianca,Solicitacao_de_Indicadores,Crianca,Txt_Protecao_Indicadores) 
-        VALUES ('$Vida_antes','$Razão_Saida','$Txt_Situacão_Pessoa','$Txt_Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Proteção_Indicadores','$Solicitação_Indicadores','$Identidade_pessoa','$txt_Proteção_Indicadores')");
+        $result = mysqli_query($conexao, "INSERT INTO situacao(Vida_Antes,
+        Razao_Saida,
+        Saida_Forcada,
+        Permanencia,
+        Ajuda,
+        Acompanhado,
+        Entrada_Sozinho,
+        Retorno,Medo_Retorno,
+        Parente_Pais_Origem,
+        Saude_Mental,
+        Idade_Mental,
+        Saude_Fisica,
+        Parente_Brasil,
+        Protecao_da_Crianca,
+        Solicitacao_de_Indicadores,
+        Crianca,
+        Txt_Protecao_Indicadores) 
+        VALUES ('$Vida_antes','$Razao_Saida','$Txt_Situacão_Pessoa','$Txt_Permancer_Pessoa','$Txt_Alguem_Pessoa ','$Txt_Viagem_Pessoa','$Txt_Entrou_Pessoa','$Txt_Retornar_Pessoa','$Txt_Medo_Pessoa','$Parentes_Origem_Pessoa','$Txt_Mental_Avaliacão','$Txt_Idade_Avaliacão','$Txt_Fisico_Avaliacão','$Parentes_Brasil_Pessoa','$Proteção_Indicadores','$Solicitação_Indicadores','$Identidade_pessoa','$Txt_Protecao_Indicadores')");
         //****************************  TABELA MEDIDAS PROTETIVAS  ************************************* 
         //select na tabela documento para pegar o id  
         $query = mysqli_query($conexao, "SELECT idDocumentos FROM documentos WHERE Numero = '$Numero_Documento_Protetivas'");
@@ -259,8 +281,11 @@ if(isset($_POST['submit']))
         move_uploaded_file($_FILES['arquivo']['tmp_name'], $diretorio.$novo_nome);
         $result = mysqli_query($conexao, "INSERT INTO crianca_adolecente(Documento,Nome,Data_de_Nascimento,Genero,Nacionalidade,Local_Nasc,Escolaridade,Endereco_origem,Endereco_atual,Telefone_crianca,Passaporte,Certidao_de_Nascimento,Data_de_Cadastro,Mae_viva,Pai_Vivo,Nome_mae,Nome_pai,Email_Crianca,Entrada,Medidas_Protetivas,Situacao,Defensor,Interprete,Residencia_mae,Residencia_pai,Status_Crianca, Imagem) 
         VALUES ('$Identidade_pessoa','$Nome_Pessoa','$Nascimento_pessoa','$Genero_pessoa','$Nacionalidade_pessoa','$País_Cid_pessoa','$Escolaridade_pessoa','$Endereco_Antigo_Pessoa','$Endereco_atual_pessoa','$Telefone_pessoa','$Passaporte_pessoa','$Certidao_pessoa',NOW(),'$Mae_pessoa','$Pai_pessoa','$Nome_mae_pessoa','$Nome_pai_pessoa','$Email_pessoa','$Entrada','$Medidas_Protetivas','$Situacao','$Defensor','$Documento_Interprete','$Text_Residencia_Mae_Pessoa','$Text_Residencia_Pai_Pessoa','$Status','$filename')");
-        */
-            http_response_code(204);
+        
+
+
+
+            http_response_code(200);
         }catch(Exception $e){
             http_response_code(500);  
         }
@@ -653,10 +678,10 @@ if(isset($_POST['submit']))
                     <div class="field radiobox">            
                     <p>Em caso de a crianca ou o adolescente representado por responsável legal já designado(a) no Brasil, favor informar:</p>
                     <input type="radio" id="Representante_Protetiva_Sim" name="Representante_Protetiva" value="Sim"
-                    onclick="Requerido('Responsavel_Protetivas_Box');Requerido('Documento_Protetivas_Box');Requerido('Numero_Documento_Protetivas_Box');Requerido('Gênero_Protetivas_Box');Requerido('Responsavel_Nascimento_Protetivas_Box');Requerido('Responsavel_Nacionalidade_Protetivas_Box');Requerido('Responsavel_Endereco_Protetivas_Box');Requerido('Responsavel_Parentesco_Protetivas_Box');Requerido('Vinculo_Protetivas_Box')">
+                    onclick="Requerido('Responsavel_Protetivas_Box');Requerido('Documento_Protetivas_Box');Requerido('Numero_Documento_Protetivas_Box');ColocarOBG('Gênero_Protetivas_Box');Requerido('Responsavel_Nascimento_Protetivas_Box');Requerido('Responsavel_Nacionalidade_Protetivas_Box');Requerido('Responsavel_Endereco_Protetivas_Box');Requerido('Responsavel_Parentesco_Protetivas_Box');ColocarOBG('Vinculo_Protetivas_Box')">
                     <label for="Representante_Protetiva_Sim">Sim</label>
                     <input type="radio" id="Representante_Protetiva_Nao" name="Representante_Protetiva" value="Não"
-                    onclick="Limpar('Responsavel_Protetivas_Box');Limpar('Documento_Protetivas_Box');Limpar('Numero_Documento_Protetivas_Box');Limpar('Gênero_Protetivas_Box');Limpar('Responsavel_Nascimento_Protetivas_Box');Limpar('Responsavel_Nacionalidade_Protetivas_Box');Limpar('Responsavel_Endereco_Protetivas_Box');Limpar('Responsavel_Parentesco_Protetivas_Box');Limpar('Vinculo_Protetivas_Box')">
+                    onclick="Limpar('Responsavel_Protetivas_Box');Limpar('Documento_Protetivas_Box');Limpar('Numero_Documento_Protetivas_Box');RemoverOBG('Gênero_Protetivas_Box');Limpar('Responsavel_Nascimento_Protetivas_Box');Limpar('Responsavel_Nacionalidade_Protetivas_Box');Limpar('Responsavel_Endereco_Protetivas_Box');Limpar('Responsavel_Parentesco_Protetivas_Box');RemoverOBG('Vinculo_Protetivas_Box')">
                     <label for="Representante_Protetiva_Nao">Não</label>
 
                     </div>
@@ -787,7 +812,7 @@ if(isset($_POST['submit']))
                         <br><br>
                     </div>
                 </div>
-                <input type="submit" formnovalidate name="submit" id="submit">
+                <input type="submit" name="submit" id="submit">
             </fieldset>
         </form>
     </div>

@@ -156,8 +156,8 @@ $('#Formulario2').submit(function (e) {
 
 
 
-    var Vinculo_Protetivas = $("input[name='Vinculo_Protetivas']:checked").val();
-    var Gênero_Protetivas = $("input[name='Gênero_Protetivas']:checked").val();
+    var Vinculo_Protetivas = $("input[name='Vinculo_Protetivas']:checked").val() ??"N/A";
+    var Gênero_Protetivas = $("input[name='Gênero_Protetivas']:checked").val() ??"N/A";
     var Descricao = $("input[name='Documento_Protetivas']:checked").val();
     var Responsavel_Parentesco_Protetivas = $('#Responsavel_Parentesco_Protetivas').val();
 
@@ -300,11 +300,11 @@ $('#Formulario2').submit(function (e) {
     //return;
 
     $.ajax({
-        url: 'saveEdit_CRI_Protetivas.php',
+        url: 'Formulario2.php',
         method: 'POST',
         data: data,
         dataType: 'json',
-        success: function () {
+        success: function (response) {
             Swal.fire("Confirmado", "Cadastro de Criança Realizado com sucesso", "success").then(() => {
                 location.href = "Dados_CRI.php";
             });
