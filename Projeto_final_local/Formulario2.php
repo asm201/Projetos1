@@ -362,11 +362,11 @@ if(isset($_POST['submit']))
     <div class="box" id="Box_CadastroCrianca">
         <form name ="form"  action="Formulario2.php" method="post" enctype="multipart/form-data" id="Formulario2">
             <fieldset>
-                <legend><b>Fórmulário</b></legend>
+                <legend><b>Formulário</b></legend>
                 <br>
                 <!---- DADOS DA CRIANcA OU ADOLESCENTE -->
                 <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderDadoCrianca();Preencher('APRESENTACAO_CRI');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
-                <label>DADOS DA CRIANÇA OU ADOLESCENTE</label><br>
+                <label>Etapa 1 -DADOS DA CRIANÇA OU ADOLESCENTE</label><br>
                 <div name="APRESENTACAO_CRI" id="APRESENTACAO_CRI" style="display:none" class="inputUser">
                     
                     <div class="inputBox">
@@ -480,8 +480,8 @@ if(isset($_POST['submit']))
                     <br>
                 </div>
                 <!--- Circunstâncias de entrada no Brasil--->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderCircunstancia();Preencher('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
-                <label>CIRCUSTÂNCIAS DE ENTRADA NO BRASIL</label><br>
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Validar(event, ['APRESENTACAO_CRI']);ResizeBorderCircunstancia();Preencher('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
+                <label>Etapa 2 - CIRCUSTÂNCIAS DE ENTRADA NO BRASIL</label><br>
                 <div name="APRESENTACAO_ENTRADA" id="APRESENTACAO_ENTRADA" style="display:none" class="inputUser">
                     
                     <div class="inputBox">
@@ -537,8 +537,8 @@ if(isset($_POST['submit']))
                 </div>
 
                 <!--- SITUAcÃO DA CRIANcA OU ADOLESCENTE--->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderSituacao();Preencher('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
-                <label>SITUAÇÃO DA CRIANÇA OU ADOLESCENTE</label><br>
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Validar(event, ['APRESENTACAO_CRI', 'APRESENTACAO_ENTRADA']);ResizeBorderSituacao();Preencher('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
+                <label>Etapa 3 - SITUAÇÃO DA CRIANÇA OU ADOLESCENTE</label><br>
                 <div name="APRESENTACAO_SITUACAO" id="APRESENTACAO_SITUACAO" style="display:none" class="inputUser">
 
                 <div class="inputBox">
@@ -589,7 +589,7 @@ if(isset($_POST['submit']))
                     <br>
     
                     <div class="field radiobox">
-                        <label>Você tem intenção de peremanecer no Brasil?</label><br>
+                        <label>Você tem intenção de permanecer no Brasil?</label><br>
                         <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Sim" value="Sim" onclick="Limpar('Txt_Permancer_Pessoa')"><label for="Sim">Sim </label>
                         <input type="radio" name="Permancer_Pessoa" id="Permancer_Pessoa_Nao" value="Não" onclick="Requerido('Txt_Permancer_Pessoa')"><label for="Não">Não </label>
                         <br><br>
@@ -646,8 +646,8 @@ if(isset($_POST['submit']))
                     <br><br>
                 </div>
                 <!--- MEDIDAS PROTETIVAS--->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderMedidas();Preencher('APRESENTACAO_MEDIDAS');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_FIM')">
-                <label>MEDIDAS PROTETIVAS</label><br>
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Validar(event, ['APRESENTACAO_CRI', 'APRESENTACAO_ENTRADA', 'APRESENTACAO_SITUACAO']);ResizeBorderMedidas();Preencher('APRESENTACAO_MEDIDAS');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_FIM')">
+                <label>Etapa 4 - MEDIDAS PROTETIVAS</label><br>
                 <div name="APRESENTACAO_MEDIDAS" id="APRESENTACAO_MEDIDAS" style="display:none" class="inputUser">
 
 
@@ -725,9 +725,9 @@ if(isset($_POST['submit']))
                     
                     <div class="field radiobox" id="Gênero_Protetivas_Box">            
                         <p>Gênero:</p>
-                        <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino" required >
+                        <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino"  >
                         <label for="feminino_Protetivas" required>Feminino</label>
-                        <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino" required>
+                        <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino">
                         <label for="masculino_Protetivas" required>Masculino</label>
                         <br><br>
                     </div>
@@ -758,16 +758,16 @@ if(isset($_POST['submit']))
 
                     <div class="field radiobox" id="Vinculo_Protetivas_Box">            
                         <p>Constata o vínculo pelos observação e documentação apresentada?</p>
-                        <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="Sim" reqiued>
+                        <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="Sim">
                         <label for="Vinculo_Protetivas_Sim" required>Sim</label>
-                        <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="Não" required>
+                        <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="Não">
                         <label for="Vinculo_Protetivas_Nao" required>Não</label>   
                     </div>
                 </div>
                 <!--- AVALIAcÃO PRELIMINAR DA CRIANcA OU ADOLESCENTE --->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderSiruacao2();Preencher('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_MEDIDAS')">
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Validar(event, ['APRESENTACAO_CRI', 'APRESENTACAO_ENTRADA', 'APRESENTACAO_SITUACAO', 'APRESENTACAO_MEDIDAS']);ResizeBorderSiruacao2();Preencher('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_MEDIDAS')">
 
-                <label>SITUAÇÃO DA CRIANÇA OU ADOLESCENTE</label><br>
+                <label>Etapa 5 - AVALIAÇÃO DA CRIANÇA OU ADOLESCENTE</label><br>
                 <div name="APRESENTACAO_AVALIACAO" id="APRESENTACAO_AVALIACAO" style="display:none" class="inputUser">
 
                 <br><br>
@@ -806,8 +806,8 @@ if(isset($_POST['submit']))
                 </div>
 
                 <!--- IDENTIFICAÇÃO DO INTÉRPRETE  -->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderInterprete();Preencher('APRESENTACAO_FIM');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS');Sumir('APRESENTACAO_ENTRADA')">
-                <label>INTÉRPRETE</label><br>
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Validar(event, ['APRESENTACAO_CRI', 'APRESENTACAO_ENTRADA', 'APRESENTACAO_SITUACAO', 'APRESENTACAO_MEDIDAS', 'APRESENTACAO_AVALIACAO' ]);ResizeBorderInterprete();Preencher('APRESENTACAO_FIM');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS');Sumir('APRESENTACAO_ENTRADA')">
+                <label>Etapa 6 - INTÉRPRETE</label><br>
                 <div name="APRESENTACAO_FIM" id="APRESENTACAO_FIM" style="display:none" class="inputUser">
                     <div class="inputBox">
                         <input type="text" name="Documento_Interprete" id="Documento_Interprete" maxlength="9" class="inputUser" required>

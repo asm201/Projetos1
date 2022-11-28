@@ -9,6 +9,20 @@ function Sumir(el) {
         document.getElementById(el).style.display = 'none';
 }
 
+function Validar(event, elements) {
+    for (let i = 0; i < elements.length; i++) {
+        const inputs = document.getElementById(elements[i]).querySelectorAll('input');
+        for (let j = 0; j < inputs.length; j++) {
+            if (!inputs[j].reportValidity()) {
+                event.preventDefault();
+                Swal.fire('Erro', 'Preencha a(s) etapa(s) anterior(es) completamente.', 'error').then(() => {
+                    inputs[j].reportValidity();
+                });
+                throw "Invalid";
+            }
+        }
+    }
+}
 
 function Requerido(el) {
 
