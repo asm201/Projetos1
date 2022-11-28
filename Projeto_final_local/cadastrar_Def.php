@@ -171,16 +171,15 @@
         </div>
     </nav>
 </div>
-        <div class="box_cad_def">
+        <div class="box_cad_def" id="Box_Formuario">
                 <fieldset>
                     <legend><b>Fórmulário</b></legend>
                     <br>
 
-
                     <div class="field radiobox">            
                         <p>Deseja Cadastrar Quem?</p>
-                        <input type="radio" name="Cadastrar_Funcionario" id="Cadastrar_Funcionario" onclick="Preencher('Form_Defensor');Sumir('Form_Interprete')" ><label for="ND">Novo Defensor.</label> <br>                   
-                        <input type="radio" name="Cadastrar_Funcionario" id="Cadastrar_Funcionario" onclick="Preencher('Form_Interprete');Sumir('Form_Defensor')"><label for="NI">Novo Interprete. </label><br> 
+                        <input type="radio" name="Cadastrar_Funcionario" id="Cadastrar_Funcionario" onclick="ResizeBorderDefensor();Preencher('Form_Defensor');Sumir('Form_Interprete')" ><label for="ND">Novo Defensor.</label> <br>                   
+                        <input type="radio" name="Cadastrar_Funcionario" id="Cadastrar_Funcionario" onclick="ResizeBorderInterprete();Preencher('Form_Interprete');Sumir('Form_Defensor')"><label for="NI">Novo Interprete. </label><br> 
                     </div>
 
                     <!----Defensor -->
@@ -275,7 +274,14 @@
                 </fieldset>
 
         </div>
-
+    <script>
+        function ResizeBorderDefensor(){
+            document.getElementById('Box_Formuario').style.marginTop = '550px';
+        }
+        function ResizeBorderInterprete(){
+            document.getElementById('Box_Formuario').style.marginTop = '435px';
+        }
+    </script>
     <script src="js/jquery-3.6.1.min.js"></script>
     <script src="js/sweetalert2.all.min.js"></script>
     

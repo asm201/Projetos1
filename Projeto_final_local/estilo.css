@@ -1,24 +1,22 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
-    font color: #DCDCDC;
-
-        background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71));
-
-    
+    color: #DCDCDC;
+    background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71)); 
 }
 .navbar{
     color: white;
     font: white;
-    font size: 5px;
+    size: 5px;
     position: absolute;
+    height: 80px;
     background-image: linear-gradient(to right, rgb(17, 54, 71), rgb(17, 54, 71));
     border-radius: 8px;
 }
 .box{
     color: white;
-    top: 65%;
+    top: 150px;
     position: absolute;
-    margin-top: 165%;
+    margin-top: 150px;
     margin-left: 50%;
     transform: translate(-50%,-50%);
     background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71));
@@ -60,7 +58,7 @@ body{
 .box_cad_def{
     color: white;
     position: absolute;
-    margin-top: 33.3%;
+    margin-top: 150px;
     margin-left: 50%;
     transform: translate(-50%,-50%);
     background-image: linear-gradient(to left, rgb(20, 147, 220), rgb(17, 54, 71));
@@ -282,11 +280,8 @@ input[type = "date"]::-webkit-calendar-picker-indicator {
                 {
                     position: fixed;
                     height: auto;
-                    margin-left: 75%;
+                    right:25px;
                     width: 150px;
                     margin-top: 0.5%;
 
                 }
-.nav{
-
-}

@@ -359,13 +359,13 @@ if(isset($_POST['submit']))
     </nav>
     </div>
    
-    <div class="box">
+    <div class="box" id="Box_CadastroCrianca">
         <form name ="form"  action="Formulario2.php" method="post" enctype="multipart/form-data" id="Formulario2">
             <fieldset>
                 <legend><b>Fórmulário</b></legend>
                 <br>
                 <!---- DADOS DA CRIANcA OU ADOLESCENTE -->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Preencher('APRESENTACAO_CRI');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderDadoCrianca();Preencher('APRESENTACAO_CRI');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
                 <label>DADOS DA CRIANÇA OU ADOLESCENTE</label><br>
                 <div name="APRESENTACAO_CRI" id="APRESENTACAO_CRI" style="display:none" class="inputUser">
                     
@@ -382,7 +382,7 @@ if(isset($_POST['submit']))
 
 
                     <div class="field radiobox" >            
-                        <p><label style="color:#FF0000">*</label> Genero:</p>
+                        <p><label style="color:#FF0000">*</label> Gênero:</p>
                         <input type="radio" id="feminino" name="gênero_pessoa" value="Feminino" >
                         <label for="feminino">Feminino</label>
                         <input type="radio" id="masculino" name="gênero_pessoa" value="Masculino">
@@ -410,13 +410,13 @@ if(isset($_POST['submit']))
 
                     <div class="inputBox">
                         <input type="text" name="Endereco_Antigo_Pessoa" id="Endereco_Antigo_Pessoa" class="inputUser" required>
-                        <label for="Endereco_Antigo_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Endereço no pais de origem:</label>
+                        <label for="Endereco_Antigo_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Endereço no país de origem:</label>
                     </div>
                     <br><br>
 
                     <div class="inputBox">
                         <input type="text" name="Endereco_Atual_Pessoa" id="Endereco_Atual_Pessoa" class="inputUser" required>
-                        <label for="Endereco_Atual_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Endereco atual:</label>
+                        <label for="Endereco_Atual_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> Endereço atual:</label>
                     </div>
                     <br><br>
 
@@ -452,7 +452,7 @@ if(isset($_POST['submit']))
                         <input type="radio" id="Certidão_COP" name="Certidao_pessoa" value="COP" >
                         <label for="Certidão_COP">Possui cópia</label>
                         <input type="radio" id="Certidão_NAS" name="Certidao_pessoa" value="NAS" >
-                        <label for="Certidão_NAS">Possui apenas a declaracão de nascido vivo</label>
+                        <label for="Certidão_NAS">Possui apenas a declaração de nascido vivo</label>
                     </div>
                     <br>
 
@@ -462,7 +462,7 @@ if(isset($_POST['submit']))
                         <label for="Mãe_Viva_Sim">Sim</label>
                         <input type="radio" id="Mãe_Viva_NÃO" name="Mãe_Viva" value="NÃO" onclick="Limpar('Mãe_Pessoa');Limpar('Mãe_Pessoa_Endereco')" >
                         <label for="Mãe_Viva_Não">Não</label>
-                        <input type="text"  name="Text_Mae_Viva" id="Mãe_Pessoa" style="display:none"  class="inputUser" placeholder="Digite o Nome da Mãe caso viva:" required/>
+                        <input type="text"  name="Text_Mae_Viva" id="Mãe_Pessoa" style="display:none"  class="inputUser" placeholder="Digite o Nome da Mãe:" required/>
                         <br><br>
                         <input type="text"  name="Text_Residencia_Mae_Pessoa" id="Mãe_Pessoa_Endereco" style="display:none"  class="inputUser"  placeholder="Digite a Residência da Mãe:" required/>
                     </div>
@@ -473,14 +473,14 @@ if(isset($_POST['submit']))
                         <label for="Pai_Viva_Sim">Sim</label>
                         <input type="radio" id="Pai_Viva_NÃO" name="Pai_Vivo" value="NÃO" onclick="Limpar('Pai_Pessoa');Limpar('Pai_Pessoa_Endereco')" >
                         <label for="Pai_Viva_Não">Não</label>
-                        <input type="text"  name="Text_Pai_Vivo" id="Pai_Pessoa" style="display:none" class="inputUser"  placeholder="Digite o Nome do Pai caso vivo:" required/>
+                        <input type="text"  name="Text_Pai_Vivo" id="Pai_Pessoa" style="display:none" class="inputUser"  placeholder="Digite o Nome do Pai:" required/>
                         <br><br>
                         <input type="text"  name="Text_Residencia_Pai_Pessoa" id="Pai_Pessoa_Endereco" style="display:none"  class="inputUser" placeholder="Digite a Residência do Pai:"required/>
                     </div>
                     <br>
                 </div>
                 <!--- Circunstâncias de entrada no Brasil--->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Preencher('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderCircunstancia();Preencher('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
                 <label>CIRCUSTÂNCIAS DE ENTRADA NO BRASIL</label><br>
                 <div name="APRESENTACAO_ENTRADA" id="APRESENTACAO_ENTRADA" style="display:none" class="inputUser">
                     
@@ -491,7 +491,7 @@ if(isset($_POST['submit']))
 
                     <br><br>
                     <div class="inputBox">
-                        <label for="Data_Saida_Pessoa"><b><label style="color:#FF0000">*</label> Data de Saida:</b></label>
+                        <label for="Data_Saida_Pessoa"><b><label style="color:#FF0000">*</label> Data de saída:</b></label>
                         <input type="date" max='2022-11-21' name="Data_Saida_Pessoa" id="Data_Saida_Pessoa"class="inputUser" required>
                     </div>
                         <br><br>
@@ -525,19 +525,19 @@ if(isset($_POST['submit']))
                         <br><br>
 
                     <div class="inputBox">
-                        <label for="Data_Reconhecido_Pessoa"><b><label style="color:#FF0000">*</label> Data em que foi reconhecido:</b></label>
+                        <label for="Data_Reconhecido_Pessoa"><b><label style="color:#FF0000">*</label> Data em que foi reconhecido(a):</b></label>
                         <input type="date" max='2022-11-21' name="Data_Reconhecido_Pessoa" id="Data_Reconhecido_Pessoa"class="inputUser" required>
                     </div><br><br>
 
                     <div class="inputBox">
                         <input type="text" name="Pais_Reconhecido_Pessoa" id="Pais_Reconhecido_Pessoa" class="inputUser" required >
-                        <label for="Pais_Reconhecido_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> País Reconhecido:</label>
+                        <label for="Pais_Reconhecido_Pessoa" class="labelInput"><label style="color:#FF0000">*</label> País Reconhecido(a):</label>
                     </div>   
                     <br><br>
                 </div>
 
                 <!--- SITUAcÃO DA CRIANcA OU ADOLESCENTE--->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Preencher('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderSituacao();Preencher('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS')">
                 <label>SITUAÇÃO DA CRIANÇA OU ADOLESCENTE</label><br>
                 <div name="APRESENTACAO_SITUACAO" id="APRESENTACAO_SITUACAO" style="display:none" class="inputUser">
 
@@ -552,7 +552,7 @@ if(isset($_POST['submit']))
                     </div>
                     <br>
                     <div class="field radiobox">
-                        <label>Alguma situacão forcou você a sair do seu país de origem?</label><br>
+                        <label>Alguma situação forçou você a sair do seu país de origem?</label><br>
                         <input type="radio" name="Situacao_Pessoa" id="Situacao_Pessoa_Sim" value="Sim" onclick="Requerido('Txt_Situacao_Pessoa')"><label for="Sim">Sim </label>
                         <input type="radio" name="Situacao_Pessoa" id="Situacao_Pessoa_Nao" value="Não" onclick="Limpar('Txt_Situacao_Pessoa')"><label for="Não">Não </label>
                         <br><br>
@@ -571,7 +571,7 @@ if(isset($_POST['submit']))
                     </div>
                     <br>
                     <div class="field radiobox">
-                        <label>Você realizou a viagem acompanhado?</label><br>
+                        <label>Você realizou a viagem acompanhado(a)?</label><br>
                         <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Sim" value="Sim" onclick="Requerido('Txt_Viagem_Pessoa')"><label for="Sim">Sim </label>
                         <input type="radio" name="Viagem_Pessoa" id="Viagem_Pessoa_Nao" value="Não" onclick="Limpar('Txt_Viagem_Pessoa')"><label for="Não">Não </label>
                         <br><br>
@@ -580,7 +580,7 @@ if(isset($_POST['submit']))
                     <br>
     
                     <div class="field radiobox">
-                        <label>Você entrou no Brasil sozinho?</label><br>
+                        <label>Você entrou no Brasil sozinho(a)?</label><br>
                         <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Sim" value="Sim" onclick="Limpar('Txt_Entrou_Pessoa')"><label for="Sim">Sim </label>
                         <input type="radio" name="Entrou_Pessoa" id="Entrou_Pessoa_Nao" value="Não" onclick="Requerido('Txt_Entrou_Pessoa')"><label for="Não">Não </label>
                         <br><br>
@@ -615,7 +615,7 @@ if(isset($_POST['submit']))
                     </div>
                     <br>
                     <div class="field radiobox">
-                        <label>Tem parentes (irmãos tios, primos e avós) no Brasoç?</label><br>
+                        <label>Tem parentes (irmãos tios, primos e avós) no Brasil?</label><br>
                         <input type="radio" name="Parentes_Brasil_Pessoa" id="Parentes_Brasil_Pessoa_Sim" value="Sim"><label for="Sim">Sim </label>
                         <input type="radio" name="Parentes_Brasil_Pessoa" id="Parentes_Brasil_Pessoa_Nao" value="Não"><label for="Não">Não </label>
                     </div>
@@ -629,9 +629,9 @@ if(isset($_POST['submit']))
     
                     <div class="field radiobox">            
                     <label>Possíveis necessidades de proteção da criança ou adolescente:</label><br>
-                        <input type="radio" name="Proteção_Indicadores" id="Convivencia_Proteção" value="ProteçãoC" onclick="Limpar('Txt_Protecao_Indicadores')"><label for="Convivencia_Proteção" required>Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança; </label><br>
-                        <input type="radio" name="Proteção_Indicadores" id="Familiar_Proteção" value="ProteçãoF"  onclick="Limpar('Txt_Protecao_Indicadores')"><label for="Familiar_Proteção" required>Medida de proteção por reunião familiar </label><br>
-                        <input type="radio" name="Proteção_Indicadores" id="Trafico_Proteção" value="ProteçãoT" onclick="Limpar('Txt_Protecao_Indicadores')"><label for="Trafico_Proteção" required>Proteção como vítima de tráfico de pessoas; </label><br>
+                        <input type="radio" name="Proteção_Indicadores" id="Convivencia_Proteção" value="ProteçãoC" onclick="Limpar('Txt_Protecao_Indicadores')"><label for="Convivencia_Proteção" required>Retorno à convivência familiar, conforme parâmetros de proteção integral e atenção ao interesse superior da criança. </label><br>
+                        <input type="radio" name="Proteção_Indicadores" id="Familiar_Proteção" value="ProteçãoF"  onclick="Limpar('Txt_Protecao_Indicadores')"><label for="Familiar_Proteção" required>Medida de proteção por reunião familiar. </label><br>
+                        <input type="radio" name="Proteção_Indicadores" id="Trafico_Proteção" value="ProteçãoT" onclick="Limpar('Txt_Protecao_Indicadores')"><label for="Trafico_Proteção" required>Proteção como vítima de tráfico de pessoas. </label><br>
                         <input type="radio" name="Proteção_Indicadores" id="Outro_Proteção" value="ProteçãoO"  onclick="Requerido('Txt_Protecao_Indicadores')"><label for="Outro_Proteção" required>Outra medida de regularização migratória ou proteção como refugiado ou apátrida, conforme a legislação em vigor. Informe: </label><br><br>
                         <input type="text" name="Txt_Protecao_Indicadores" id="Txt_Protecao_Indicadores" style="display:none"  placeholder="Digite aqui" class="inputUser"></input>
                     </div>
@@ -641,18 +641,18 @@ if(isset($_POST['submit']))
                         <input type="radio" name="Solicitação_Indicadores" id="Temporaria_Indicadores" value="RESIDÊNCIA TEMPORÁRIA" ><label for="Temporaria_Indicadores"  required >RESIDÊNCIA TEMPORÁRIA </label>
                         <input type="radio" name="Solicitação_Indicadores" id="Refugiu_Indicadores" value="REFÚGIO" ><label for="Refugiu_Indicadores"  required>REFÚGIO </label>
                         <input type="radio" name="Solicitação_Indicadores" id="Institucionalização_Indicadores" value="INSTITUCIONALIZAÇÃO"  ><label for="Institucionalização_Indicadores"  required>INSTITUCIONALIZAÇÃO </label>
-                        <input type="radio" name="Solicitação_Indicadores" id="Ingresso_temporario_Indicadores" value="INGRESSO TEMPORARIO"><label for="Ingresso_temporario_Indicadores"  required>INGRESSO TEMPORARIO </label>
+                        <input type="radio" name="Solicitação_Indicadores" id="Ingresso_temporario_Indicadores" value="INGRESSO TEMPORARIO"><label for="Ingresso_temporario_Indicadores"  required>INGRESSO TEMPORÁRIO </label>
                     </div> 
                     <br><br>
                 </div>
                 <!--- MEDIDAS PROTETIVAS--->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Preencher('APRESENTACAO_MEDIDAS');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_FIM')">
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderMedidas();Preencher('APRESENTACAO_MEDIDAS');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_FIM')">
                 <label>MEDIDAS PROTETIVAS</label><br>
                 <div name="APRESENTACAO_MEDIDAS" id="APRESENTACAO_MEDIDAS" style="display:none" class="inputUser">
 
 
                     <div class="field radiobox">            
-                        <p>Em caso de a crianca ou o adolescente já encaminhado para instituicão de acolhimento, favor informar:</p>
+                        <p>Em caso de a criança ou o adolescente já encaminhado(a) para instituição de acolhimento, favor informar:</p>
                         <input type="radio" id="Encaminhada_Protetivas_Sim" name="Encaminhada_Protetivas" value="Sim" 
                             onclick="Requerido('Instituicão_Protetivas_Box');Requerido('Endereco_Inst_Protetivas_Box');Requerido('Responsavel_Inst_Protetivas_Box');Requerido('Vara_Protetivas_Box')">
                         <label for="Encaminhada_Protetivas_Sim">Sim</label>
@@ -664,12 +664,12 @@ if(isset($_POST['submit']))
                     
                     <div class="inputBox" id="Instituicão_Protetivas_Box">
                         <input type="text" name="Instituicão_Protetivas" id="Instituicão_Protetivas" class="inputUser"  required >
-                        <label for="Instituicão_Protetivas"  class="labelInput">Instituicão de acolhimento:</label>
+                        <label for="Instituicão_Protetivas"  class="labelInput">Instituição de acolhimento:</label>
                         <br><br>
                     </div>
                     <div class="inputBox" id="Endereco_Inst_Protetivas_Box">
                         <input type="text" name="Endereco_Inst_Protetivas" id="Endereco_Inst_Protetivas" class="inputUser"  required  >
-                        <label for="Endereco_Inst_Protetivas" class="labelInput">Endereco:</label>
+                        <label for="Endereco_Inst_Protetivas" class="labelInput">Endereço:</label>
                         <br><br>
                     </div>
                     <div class="inputBox" id="Responsavel_Inst_Protetivas_Box">
@@ -684,7 +684,7 @@ if(isset($_POST['submit']))
                     </div>
 
                     <div class="field radiobox">            
-                    <p>Em caso de a crianca ou o adolescente representado por responsável legal já designado(a) no Brasil, favor informar:</p>
+                    <p>Em caso de a criança ou o adolescente representado por responsável legal já designado(a) no Brasil, favor informar:</p>
                     <input type="radio" id="Representante_Protetiva_Sim" name="Representante_Protetiva" value="Sim"
                     onclick="Requerido('Responsavel_Protetivas_Box');Requerido('Documento_Protetivas_Box');Requerido('Numero_Documento_Protetivas_Box');ColocarOBG('Gênero_Protetivas_Box');Requerido('Responsavel_Nascimento_Protetivas_Box');Requerido('Responsavel_Nacionalidade_Protetivas_Box');Requerido('Responsavel_Endereco_Protetivas_Box');Requerido('Responsavel_Parentesco_Protetivas_Box');ColocarOBG('Vinculo_Protetivas_Box')">
                     <label for="Representante_Protetiva_Sim">Sim</label>
@@ -697,7 +697,7 @@ if(isset($_POST['submit']))
 
                     <div class="inputBox" id="Responsavel_Protetivas_Box">
                         <input type="text" name="Responsavel_Protetivas" id="Responsavel_Protetivas" class="inputUser" required  >
-                        <label for="Responsavel_Protetivas" class="labelInput">Nome completo do responsável legal</label>
+                        <label for="Responsavel_Protetivas" class="labelInput">Nome completo do(a) responsável legal</label>
                         <br>
                     </div>
 
@@ -724,7 +724,7 @@ if(isset($_POST['submit']))
                     </div>
                     
                     <div class="field radiobox" id="Gênero_Protetivas_Box">            
-                        <p>Genero:</p>
+                        <p>Gênero:</p>
                         <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino" required >
                         <label for="feminino_Protetivas" required>Feminino</label>
                         <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino" required>
@@ -746,7 +746,7 @@ if(isset($_POST['submit']))
 
                     <div class="inputBox" id="Responsavel_Endereco_Protetivas_Box">
                         <input type="text" name="Responsavel_Endereco_Protetivas" id="Responsavel_Endereco_Protetivas" class="inputUser"  required  >
-                        <label for="Responsavel_Endereco_Protetivas" class="labelInput">Endereco:</label>
+                        <label for="Responsavel_Endereco_Protetivas" class="labelInput">Endereço:</label>
                         <br><br>
                     </div>
 
@@ -757,7 +757,7 @@ if(isset($_POST['submit']))
                     </div>
 
                     <div class="field radiobox" id="Vinculo_Protetivas_Box">            
-                        <p>Constata o vínculo pelos observacão e documentacão apresentada?</p>
+                        <p>Constata o vínculo pelos observação e documentação apresentada?</p>
                         <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="Sim" reqiued>
                         <label for="Vinculo_Protetivas_Sim" required>Sim</label>
                         <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="Não" required>
@@ -765,15 +765,15 @@ if(isset($_POST['submit']))
                     </div>
                 </div>
                 <!--- AVALIAcÃO PRELIMINAR DA CRIANcA OU ADOLESCENTE --->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Preencher('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_MEDIDAS')">
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderSiruacao2();Preencher('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_MEDIDAS')">
 
-                <label>SITUAcÃO DA CRIANcA OU ADOLESCENTE</label><br>
+                <label>SITUAÇÃO DA CRIANÇA OU ADOLESCENTE</label><br>
                 <div name="APRESENTACAO_AVALIACAO" id="APRESENTACAO_AVALIACAO" style="display:none" class="inputUser">
 
                 <br><br>
 
                     <div class="field radiobox">
-                        <label><label style="color:#FF0000">*</label> Avaliacão de saúde mental (conduta): indique se a crianca ou adolescente apresenta pensamento confuso
+                        <label style="text-align: justify;"><label style="color:#FF0000">*</label> Avaliação de saúde mental (conduta): indique se a criança ou adolescente apresenta pensamento confuso
                             (ex. respostas frequentemente incoerentes ou contraditórias)/evidencia perda de contato com a realidade (ex:
                             seu comportamento parece estranho ou sem sentido/ conduta estranha evidente (ex: hiperatividade,
                             impulsividade, comportamento hostil)/ou risco de causar danos a outros a si mesmo (a)</label><br>
@@ -784,8 +784,8 @@ if(isset($_POST['submit']))
                     </div>
                     <br>
                     <div class="field radiobox">
-                        <label><label style="color:#FF0000">*</label> Avaliacão física preliminar: sinalize se a crianca ou adolescente apresenta sinais visíveis de trauma físico
-                            ou deficiência física; queixa-se de dores ou doencas, quadro de deficiência motora, etc.</label><br>
+                        <label style="text-align: justify;"><label style="color:#FF0000">*</label> Avaliação física preliminar: sinalize se a criança ou adolescente apresenta sinais visíveis de trauma físico
+                            ou deficiência física; queixa-se de dores ou doenças, quadro de deficiência motora, etc.</label><br>
                         <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Normal"  value="Normal"    onclick="Limpar('Txt_Fisico_Avaliacão')"><label for="Normal">Normal </label>
                         <input type="radio" name="Fisico_Avaliacão" id="Fisico_Avaliacão_Anormal"  value="Anormal"  onclick="Requerido('Txt_Fisico_Avaliacão')"><label for="Anormal">Anormal </label>
                         <br><br>
@@ -793,9 +793,9 @@ if(isset($_POST['submit']))
                     </div>
                     <br>
                     <div class="field radiobox">
-                        <label><label style="color:#FF0000">*</label> Avaliacão de idade e maturidade (a avaliacão de idade só deve ser realizada quando houver significativas
-                            dúvidas sobre a idade da crianca ou adolescente, tal como ausência de documentacão, e não deve levar em
-                            consideracão apenas a aparência física, mas também a maturidade psicológica)</label><br>
+                        <label style="text-align: justify;"><label style="color:#FF0000">*</label> Avaliação de idade e maturidade (a avaliação de idade só deve ser realizada quando houver significativas
+                            dúvidas sobre a idade da crianca ou adolescente, tal como ausência de documentação, e não deve levar em
+                            consideração apenas a aparência física, mas também a maturidade psicológica)</label><br>
                         <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Normal" value="Normal"    onclick="Limpar('Txt_Idade_Avaliacão')"><label for="Normal">Normal </label>
                         <input type="radio" name="Idade_Avaliacão" id="Idade_Avaliacão_Anormal" value="Anormal" onclick="Requerido('Txt_Idade_Avaliacão')"><label for="Anormal">Anormal </label>
                         <br><br>
@@ -806,12 +806,12 @@ if(isset($_POST['submit']))
                 </div>
 
                 <!--- IDENTIFICAÇÃO DO INTÉRPRETE  -->
-                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Preencher('APRESENTACAO_FIM');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS');Sumir('APRESENTACAO_ENTRADA')">
+                <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="ResizeBorderInterprete();Preencher('APRESENTACAO_FIM');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_MEDIDAS');Sumir('APRESENTACAO_ENTRADA')">
                 <label>INTÉRPRETE</label><br>
                 <div name="APRESENTACAO_FIM" id="APRESENTACAO_FIM" style="display:none" class="inputUser">
                     <div class="inputBox">
                         <input type="text" name="Documento_Interprete" id="Documento_Interprete" maxlength="9" class="inputUser" required>
-                        <label for="Documento_Interprete" class="labelInput">Documento de Identificacão:</label>
+                        <label for="Documento_Interprete" class="labelInput">Documento de Identificação:</label>
                     </div>
                     <br><br>
                     <div>
@@ -824,6 +824,26 @@ if(isset($_POST['submit']))
             </fieldset>
         </form>
     </div>
+    <script>
+        function ResizeBorderDadoCrianca(){
+            document.getElementById('Box_CadastroCrianca').style.marginTop = '735px';
+        }
+        function ResizeBorderCircunstancia(){
+            document.getElementById('Box_CadastroCrianca').style.marginTop = '495px';
+        }
+        function ResizeBorderSituacao(){
+            document.getElementById('Box_CadastroCrianca').style.marginTop = '1100px';
+        }
+        function ResizeBorderMedidas(){
+            document.getElementById('Box_CadastroCrianca').style.marginTop = '770px';
+        }
+        function ResizeBorderSiruacao2(){
+            document.getElementById('Box_CadastroCrianca').style.marginTop = '438px';
+        }
+        function ResizeBorderInterprete(){
+            document.getElementById('Box_CadastroCrianca').style.marginTop = '245px';
+        }
+    </script>
     <script src="js/jquery-3.6.1.min.js"></script>
     <script src="js/sweetalert2.all.min.js"></script>
     
