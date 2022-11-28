@@ -1,6 +1,0 @@
-function ResizeBorderDefensor(){
-    document.getElementById('Box_Formuario').style.marginTop = '550px';
-}
-function ResizeBorderInterprete(){
-    document.getElementById('Box_Formuario').style.marginTop = '435px';
-}
