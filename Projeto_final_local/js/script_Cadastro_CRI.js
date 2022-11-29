@@ -316,8 +316,15 @@ $('#Formulario2').submit(function (e) {
         },
         error: function (err) {
             switch (err.status) {
+                
                 case 400:
                     Swal.fire('Erro', err.responseJSON.field, 'error');
+                    break;
+                case 406:
+                    Swal.fire('Não aceito', err.responseJSON.field, 'error');
+                    break;
+                case 409:
+                    Swal.fire('Conflito', err.responseJSON.field, 'error');
                     break;
                 case 500:
                     Swal.fire("Falha", "Cadastro não realizado", "error");
@@ -327,8 +334,6 @@ $('#Formulario2').submit(function (e) {
     });
 
 });
-
-
 var today = new Date();
 var dd = today.getDate();
 var mm = today.getMonth()+1; //January is 0!
@@ -345,3 +350,4 @@ document.getElementById("Nascimento_Pessoa").setAttribute("max", today);
 document.getElementById("Data_Saida_Pessoa").setAttribute("max", today);
 document.getElementById("Data_Chegada_Pessoa").setAttribute("max", today);
 document.getElementById("Data_Reconhecido_Pessoa").setAttribute("max", today);
+
