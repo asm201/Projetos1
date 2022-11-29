@@ -816,7 +816,7 @@ if(isset($_POST['submit']))
                     <br><br>
                     <div>
                         <h2>Assinatura do Defensor:</h2><br>
-                        <input name="arquivo" type="file" accept="image/*" required/>
+                        <input name="arquivo" type="file" id="fileName" onchange="validateFileType()" accept="image/*" required/>
                         <br><br>
                     </div>
                 </div>
