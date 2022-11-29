@@ -10,6 +10,7 @@ function Sumir(el) {
 }
 
 function Validar(event, elements) {
+    const etapas = ['etapa1','etapa2','etapa3','etapa4','etapa5', 'etapa6'];
     for (let i = 0; i < elements.length; i++) {
         const inputs = document.getElementById(elements[i]).querySelectorAll('input');
         for (let j = 0; j < inputs.length; j++) {
@@ -18,7 +19,10 @@ function Validar(event, elements) {
                 Swal.fire('Erro', 'Preencha a(s) etapa(s) anterior(es) completamente.', 'error').then(() => {
                     inputs[j].reportValidity();
                 });
+                document.getElementById(etapas[i]).style.color = "red";
                 throw "Invalid";
+            }else{
+                document.getElementById(etapas[i]).style.color = "green";
             }
         }
     }
@@ -54,7 +58,11 @@ function Limpar(el) {
         if (element.required) {
             element.value = "N/A";
         }
-    } else {
+    } else if(element.tagName == "TEXTAREA") {
+        if (element.required) {
+            element.value = "N/A";
+        }
+    }else {
         const elements = element.querySelectorAll('input');
         for (let i = 0; i < elements.length; i++) {
             const element = elements[i];
@@ -104,6 +112,7 @@ function ColocarOBG(el) {
         element.style.display = 'block';
 
 }
+
 
 function limparDatas() {
     document.getElementById("Data_Chegada_Pessoa").value = '000-00-00';
