@@ -1,8 +1,9 @@
 <?php
-
 session_start();
 error_reporting (0);
 include_once('config.php');
+
+
 //print_r($_SESSION);
 if((!isset($_SESSION['e-mail_Defensor']) == true) and (!isset($_SESSION['Senha_Defensor']) == true)){
     
@@ -18,8 +19,10 @@ $result = $conexao->query($sql);
 //print_r($result);
 //Se o botão de envio for pressionado
 //error_reporting (0);
+
 if(isset($_POST['submit']))
 {
+    
     try{
 
         $filename = isset($_POST['arquivo']) ? $_POST['arquivo'] :  null;
@@ -142,6 +145,7 @@ if(isset($_POST['submit']))
         return;*/
 
 
+
         $requiredFields = [
             ////////////////////    Variáveis tabela Criança - correto   ////////////////////
             'Dados Criança - Nome Pessoa não preenchido' => $Nome_Pessoa,
@@ -216,9 +220,52 @@ if(isset($_POST['submit']))
             'Assinatura não preenchido' => $filename 
 
         ];
-        foreach ($requiredFields as $field => $fieldValue) {
-            if (is_null($fieldValue) || $fieldValue == '') {
-                http_response_code(400);
+
+        try {
+
+            foreach ($requiredFields as $field => $fieldValue) {
+                if (is_null($fieldValue) || $fieldValue == '') {
+                    http_response_code(400);
+                    header('Content-type: application/json');
+                    echo json_encode(['field' => $field]);
+                    return;
+                }
+            }
+        } catch (Exception $e) {
+            http_response_code(418);
+            return;
+        }
+        
+
+
+        $query = mysqli_query($conexao, "SELECT * FROM interprete WHERE Doc_Interprete = '$Documento_Interprete'");
+        $interpreteExiste = (bool)mysqli_fetch_assoc($query);
+
+        $noacceptFields = [
+            'Interprete Não cadastrado no Sistema' => $interpreteExiste,
+        ];
+        foreach ($noacceptFields as $field => $fieldValue) {
+            if (!$fieldValue) {
+                http_response_code(406);
+                header('Content-type: application/json');
+                echo json_encode(['field' => $field]);
+                return;
+            }
+        }
+
+        $query = mysqli_query($conexao, "SELECT * FROM crianca_adolecente WHERE Documento = '$Identidade_pessoa'");
+        $criancaExiste = (bool)mysqli_fetch_assoc($query);
+
+        $query = mysqli_query($conexao, "SELECT * FROM crianca_adolecente WHERE Email_Crianca = '$Email_pessoa'");
+        $emailExiste = (bool)mysqli_fetch_assoc($query);
+
+        $uniqueFields = [
+            'Dados Criança - Identidade da criança já cadastrado no sistema' => $criancaExiste,
+            'Dados Criança - E-mail da criança já cadastrado no sistema' => $emailExiste,
+        ];
+        foreach ($uniqueFields as $field => $fieldValue) {
+            if ($fieldValue) {
+                http_response_code(409);
                 header('Content-type: application/json');
                 echo json_encode(['field' => $field]);
                 return;
@@ -295,6 +342,7 @@ if(isset($_POST['submit']))
 
             http_response_code(204);
         }catch(Exception $e){
+            echo $e;
             http_response_code(500);  
         }
         return;
@@ -648,122 +696,124 @@ if(isset($_POST['submit']))
                 <!--- MEDIDAS PROTETIVAS--->
                 <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Validar(event, ['APRESENTACAO_CRI', 'APRESENTACAO_ENTRADA', 'APRESENTACAO_SITUACAO']);ResizeBorderMedidas();Preencher('APRESENTACAO_MEDIDAS');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_FIM')">
                 <label id = "etapa4" style ="color:red">Etapa 4 - MEDIDAS PROTETIVAS</label><br>
+                
                 <div name="APRESENTACAO_MEDIDAS" id="APRESENTACAO_MEDIDAS" style="display:none" class="inputUser">
 
 
                     <div class="field radiobox">            
                         <p>Em caso de a criança ou o adolescente já encaminhado(a) para instituição de acolhimento, favor informar:</p>
                         <input type="radio" id="Encaminhada_Protetivas_Sim" name="Encaminhada_Protetivas" value="Sim" 
-                            onclick="Requerido('Instituicão_Protetivas_Box');Requerido('Endereco_Inst_Protetivas_Box');Requerido('Responsavel_Inst_Protetivas_Box');Requerido('Vara_Protetivas_Box')" required>
+                            onclick="Requerido('Instituicão_BOX');Requerido('Instituicão_Protetivas_Box');Requerido('Endereco_Inst_Protetivas_Box');Requerido('Responsavel_Inst_Protetivas_Box');Requerido('Vara_Protetivas_Box')" required>
                         <label for="Encaminhada_Protetivas_Sim">Sim</label>
                         <input type="radio" id="Encaminhada_Protetivas_Nao" name="Encaminhada_Protetivas" value="Não"
-                            onclick="Limpar('Instituicão_Protetivas_Box');Limpar('Endereco_Inst_Protetivas_Box');Limpar('Responsavel_Inst_Protetivas_Box');Limpar('Vara_Protetivas_Box')" required>
+                            onclick="Limpar('Instituicão_BOX');Limpar('Instituicão_Protetivas_Box');Limpar('Endereco_Inst_Protetivas_Box');Limpar('Responsavel_Inst_Protetivas_Box');Limpar('Vara_Protetivas_Box')" required>
                         <label for="Encaminhada_Protetivas_Nao">Não</label>
                     </div>
                     <br><br>
-                    
-                    <div class="inputBox" id="Instituicão_Protetivas_Box">
-                        <input type="text" name="Instituicão_Protetivas" id="Instituicão_Protetivas" class="inputUser"  required >
-                        <label for="Instituicão_Protetivas"  class="labelInput">Instituição de acolhimento:</label>
-                        <br><br>
-                    </div>
-                    <div class="inputBox" id="Endereco_Inst_Protetivas_Box">
-                        <input type="text" name="Endereco_Inst_Protetivas" id="Endereco_Inst_Protetivas" class="inputUser"  required  >
-                        <label for="Endereco_Inst_Protetivas" class="labelInput">Endereço:</label>
-                        <br><br>
-                    </div>
-                    <div class="inputBox" id="Responsavel_Inst_Protetivas_Box">
-                        <input type="text" name="Responsavel_Inst_Protetivas" id="Responsavel_Inst_Protetivas" onkeydown="return /[a-z çà-ú]/i.test(event.key)" class="inputUser"  required  >
-                        <label for="Responsavel_Inst_Protetivas" class="labelInput">Responsável da Instituição:</label>
-                        <br><br>
-                    </div>
-                    <div class="inputBox" id="Vara_Protetivas_Box">
-                        <input type="text" name="Vara_Protetivas" id="Vara_Protetivas" class="inputUser" required  >
-                        <label for="Vara_Protetivas" class="labelInput">Vara da Infância e da Juventude:</label>
-                        <br>
-                    </div>
-
+                    <div style="display:none" class="inputUser" id="Instituicão_BOX">
+                        <div class="inputBox" id="Instituicão_Protetivas_Box">
+                            <input type="text" name="Instituicão_Protetivas" id="Instituicão_Protetivas" class="inputUser" required >
+                            <label for="Instituicão_Protetivas"  class="labelInput">Instituição de acolhimento:</label>
+                            <br><br>
+                        </div>
+                        <div class="inputBox" id="Endereco_Inst_Protetivas_Box">
+                            <input type="text" name="Endereco_Inst_Protetivas" id="Endereco_Inst_Protetivas" class="inputUser"  required  >
+                            <label for="Endereco_Inst_Protetivas" class="labelInput">Endereço:</label>
+                            <br><br>
+                        </div>
+                        <div class="inputBox" id="Responsavel_Inst_Protetivas_Box">
+                            <input type="text" name="Responsavel_Inst_Protetivas" id="Responsavel_Inst_Protetivas" onkeydown="return /[a-z çà-ú]/i.test(event.key)" class="inputUser"  required  >
+                            <label for="Responsavel_Inst_Protetivas" class="labelInput">Responsável da Instituição:</label>
+                            <br><br>
+                        </div>
+                        <div class="inputBox" id="Vara_Protetivas_Box">
+                            <input type="text" name="Vara_Protetivas" id="Vara_Protetivas" class="inputUser" required  >
+                            <label for="Vara_Protetivas" class="labelInput">Vara da Infância e da Juventude:</label>
+                            <br>
+                        </div>
+                    </div>      
                     <div class="field radiobox">            
                     <p>Em caso de a criança ou o adolescente representado por responsável legal já designado(a) no Brasil, favor informar:</p>
                     <input type="radio" id="Representante_Protetiva_Sim" name="Representante_Protetiva" value="Sim"
-                    onclick="Requerido('Responsavel_Protetivas_Box');Requerido('Documento_Protetivas_Box');Requerido('Numero_Documento_Protetivas_Box');ColocarOBG('Gênero_Protetivas_Box');Requerido('Responsavel_Nascimento_Protetivas_Box');Requerido('Responsavel_Nacionalidade_Protetivas_Box');Requerido('Responsavel_Endereco_Protetivas_Box');Requerido('Responsavel_Parentesco_Protetivas_Box');ColocarOBG('Vinculo_Protetivas_Box')" required>
+                    onclick="Requerido('Responsavel_BOX');Requerido('Responsavel_Protetivas_Box');Requerido('Documento_Protetivas_Box');Requerido('Numero_Documento_Protetivas_Box');ColocarOBG('Gênero_Protetivas_Box');Requerido('Responsavel_Nascimento_Protetivas_Box');Requerido('Responsavel_Nacionalidade_Protetivas_Box');Requerido('Responsavel_Endereco_Protetivas_Box');Requerido('Responsavel_Parentesco_Protetivas_Box');ColocarOBG('Vinculo_Protetivas_Box')" required>
                     <label for="Representante_Protetiva_Sim">Sim</label>
                     <input type="radio" id="Representante_Protetiva_Nao" name="Representante_Protetiva" value="Não"
-                    onclick="Limpar('Responsavel_Protetivas_Box');Limpar('Documento_Protetivas_Box');Limpar('Numero_Documento_Protetivas_Box');RemoverOBG('Gênero_Protetivas_Box');Limpar('Responsavel_Nascimento_Protetivas_Box');Limpar('Responsavel_Nacionalidade_Protetivas_Box');Limpar('Responsavel_Endereco_Protetivas_Box');Limpar('Responsavel_Parentesco_Protetivas_Box');RemoverOBG('Vinculo_Protetivas_Box')" required>
+                    onclick="Limpar('Responsavel_BOX');Limpar('Responsavel_Protetivas_Box');Limpar('Documento_Protetivas_Box');Limpar('Numero_Documento_Protetivas_Box');RemoverOBG('Gênero_Protetivas_Box');Limpar('Responsavel_Nascimento_Protetivas_Box');Limpar('Responsavel_Nacionalidade_Protetivas_Box');Limpar('Responsavel_Endereco_Protetivas_Box');Limpar('Responsavel_Parentesco_Protetivas_Box');RemoverOBG('Vinculo_Protetivas_Box')" required>
                     <label for="Representante_Protetiva_Nao">Não</label>
 
                     </div>
                     <br><br>
+                        <div style="display:none" class="inputUser" id="Responsavel_BOX">
+                            <div class="inputBox" id="Responsavel_Protetivas_Box">
+                                <input type="text" name="Responsavel_Protetivas" id="Responsavel_Protetivas" onkeydown="return /[a-z çà-ú]/i.test(event.key)" class="inputUser" required  >
+                                <label for="Responsavel_Protetivas" class="labelInput">Nome completo do(a) responsável legal</label>
+                                <br>
+                            </div>
 
-                    <div class="inputBox" id="Responsavel_Protetivas_Box">
-                        <input type="text" name="Responsavel_Protetivas" id="Responsavel_Protetivas" onkeydown="return /[a-z çà-ú]/i.test(event.key)" class="inputUser" required  >
-                        <label for="Responsavel_Protetivas" class="labelInput">Nome completo do(a) responsável legal</label>
-                        <br>
-                    </div>
+                            <div class="field radiobox" id="Documento_Protetivas_Box">            
+                            <p>Responsavel em posse de qual documento? </p>
+                                <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CERTIDÃO DE NASCIMENTO" onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="CERTIDÃO DE NASCIMENTO" >CERTIDÃO DE NASCIMENTO </label> <br>                   
+                                <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CEDULA DE IDENTIDADE" onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="CEDULA DE IDENTIDADE" >CEDULA DE IDENTIDADE </label><br>
+                                <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA DA CERTIDÃO DE NASCIMENTO"  onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="COPIA DA CERTIDÃO DE NASCIMENTO" >COPIA DA CERTIDÃO DE NASCIMENTO </label><br>
+                                <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA CÉDULA DE IDENTIDADE" onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="COPIA CÉDULA DE IDENTIDADE" >COPIA CÉDULA DE IDENTIDADE </label><br>
+                                <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DECLARAÇÃO DE NASCIDO VIVO"  onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="DDDECLARAÇÃO DE NASCIDO VIVONV" >DECLARAÇÃO DE NASCIDO VIVO </label><br>
+                                <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="PARECER SOCIAL DO MINISTERIO DA CIDADANIA"  onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="PARECER SOCIAL DO MINISTERIO DA CIDADANIA" >PARECER SOCIAL DO MINISTERIO DA CIDADANIA </label><br>
+                                <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="NENHUM DOCUMENTO"  onclick="Limpar('Numero_Documento_Protetivas');Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="NENHUM DOCUMENTO " >NENHUM DOCUMENTO </label><br>
+                                <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DO" onclick="Requerido('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="DO">OUTRO </label><br>
+                                <input type="text" name="Text_Documento_Protetivas" id="Text_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" ></input>
+                                <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCO" onclick="Requerido('Text_Copia_Documento_Protetivas');Sumir('Text_Documento_Protetivas')"><label for="DCO">COPIA OUTRO </label><br>
+                            
+                                <input type="text" name="Text_Copia_Documento_Protetivas" id="Text_Copia_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser"></input>
+                                <br><br>
+                            </div>
 
-                    <div class="field radiobox" id="Documento_Protetivas_Box">            
-                    <p>Responsavel em posse de qual documento? </p>
-                        <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CERTIDÃO DE NASCIMENTO" onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="CERTIDÃO DE NASCIMENTO" >CERTIDÃO DE NASCIMENTO </label> <br>                   
-                        <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="CEDULA DE IDENTIDADE" onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="CEDULA DE IDENTIDADE" >CEDULA DE IDENTIDADE </label><br>
-                        <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA DA CERTIDÃO DE NASCIMENTO"  onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="COPIA DA CERTIDÃO DE NASCIMENTO" >COPIA DA CERTIDÃO DE NASCIMENTO </label><br>
-                        <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="COPIA CÉDULA DE IDENTIDADE" onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="COPIA CÉDULA DE IDENTIDADE" >COPIA CÉDULA DE IDENTIDADE </label><br>
-                        <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DECLARAÇÃO DE NASCIDO VIVO"  onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')" ><label for="DDDECLARAÇÃO DE NASCIDO VIVONV" >DECLARAÇÃO DE NASCIDO VIVO </label><br>
-                        <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="PARECER SOCIAL DO MINISTERIO DA CIDADANIA"  onclick="Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="PARECER SOCIAL DO MINISTERIO DA CIDADANIA" >PARECER SOCIAL DO MINISTERIO DA CIDADANIA </label><br>
-                        <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="NENHUM DOCUMENTO"  onclick="Limpar('Numero_Documento_Protetivas');Limpar('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="NENHUM DOCUMENTO " >NENHUM DOCUMENTO </label><br>
-                        <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DO" onclick="Requerido('Text_Documento_Protetivas');Limpar('Text_Copia_Documento_Protetivas')"><label for="DO">OUTRO </label><br>
-                        <input type="text" name="Text_Documento_Protetivas" id="Text_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser" ></input>
-                        <input type="radio" name="Documento_Protetivas" id="Documento_Protetivas" value="DCO" onclick="Requerido('Text_Copia_Documento_Protetivas');Sumir('Text_Documento_Protetivas')"><label for="DCO">COPIA OUTRO </label><br>
-                    
-                        <input type="text" name="Text_Copia_Documento_Protetivas" id="Text_Copia_Documento_Protetivas" style="display:none" placeholder="Digite aqui" class="inputUser"></input>
-                        <br><br>
-                    </div>
+                            <div class="inputBox" id="Numero_Documento_Protetivas_Box">
+                                <input type="text" name="Numero_Documento_Protetivas" id="Numero_Documento_Protetivas" class="inputUser" required >
+                                <label for="Numero_Documento_Protetivas" class="labelInput">Número do Documento:</label>
+                            </div>
+                            
+                            <div class="field radiobox" id="Gênero_Protetivas_Box">            
+                                <p>Gênero:</p>
+                                <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino" >
+                                <label for="feminino_Protetivas" required>Feminino</label>
+                                <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino">
+                                <label for="masculino_Protetivas" required>Masculino</label>
+                                <br><br>
+                            </div>
+                            
+                            <div class="inputBox" id="Responsavel_Nascimento_Protetivas_Box">
+                                <label for="Responsavel_Nascimento_Protetivas">Data de Nascimento:</label>
+                                <input type="date" max='2004-11-21' name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser"   >
+                                <br><br><br>
+                            </div>
+                            
+                            <div class="inputBox" id="Responsavel_Nacionalidade_Protetivas_Box">
+                                <input type="text" name="Responsavel_Nacionalidade_Protetivas" onkeydown="return /[a-z çà-ú]/i.test(event.key)" id="Responsavel_Nacionalidade_Protetivas" class="inputUser" required  >
+                                <label for="Responsavel_Nacionalidade_Protetivas" class="labelInput">Nacionalidade:</label>
+                                <br><br>
+                            </div>
 
-                    <div class="inputBox" id="Numero_Documento_Protetivas_Box">
-                        <input type="text" name="Numero_Documento_Protetivas" id="Numero_Documento_Protetivas" class="inputUser" required >
-                        <label for="Numero_Documento_Protetivas" class="labelInput">Número do Documento:</label>
-                    </div>
-                    
-                    <div class="field radiobox" id="Gênero_Protetivas_Box">            
-                        <p>Gênero:</p>
-                        <input type="radio" id="feminino_Protetivas" name="Gênero_Protetivas" value="feminino" >
-                        <label for="feminino_Protetivas" required>Feminino</label>
-                        <input type="radio" id="masculino_Protetivas" name="Gênero_Protetivas" value="masculino">
-                        <label for="masculino_Protetivas" required>Masculino</label>
-                        <br><br>
-                    </div>
-                    
-                    <div class="inputBox" id="Responsavel_Nascimento_Protetivas_Box">
-                        <label for="Responsavel_Nascimento_Protetivas">Data de Nascimento:</label>
-                        <input type="date" max='2004-11-21' name="Responsavel_Nascimento_Protetivas" id="Responsavel_Nascimento_Protetivas" class="inputUser"   >
-                        <br><br><br>
-                    </div>
-                    
-                    <div class="inputBox" id="Responsavel_Nacionalidade_Protetivas_Box">
-                        <input type="text" name="Responsavel_Nacionalidade_Protetivas" onkeydown="return /[a-z çà-ú]/i.test(event.key)" id="Responsavel_Nacionalidade_Protetivas" class="inputUser" required  >
-                        <label for="Responsavel_Nacionalidade_Protetivas" class="labelInput">Nacionalidade:</label>
-                        <br><br>
-                    </div>
+                            <div class="inputBox" id="Responsavel_Endereco_Protetivas_Box">
+                                <input type="text" name="Responsavel_Endereco_Protetivas" id="Responsavel_Endereco_Protetivas" class="inputUser"  required  >
+                                <label for="Responsavel_Endereco_Protetivas" class="labelInput">Endereço:</label>
+                                <br><br>
+                            </div>
 
-                    <div class="inputBox" id="Responsavel_Endereco_Protetivas_Box">
-                        <input type="text" name="Responsavel_Endereco_Protetivas" id="Responsavel_Endereco_Protetivas" class="inputUser"  required  >
-                        <label for="Responsavel_Endereco_Protetivas" class="labelInput">Endereço:</label>
-                        <br><br>
-                    </div>
+                            <div class="inputBox" id="Responsavel_Parentesco_Protetivas_Box">
+                                <input type="text" name="Responsavel_Parentesco_Protetivas" id="Responsavel_Parentesco_Protetivas" class="inputUser"  required  >
+                                <label for="Responsavel_Parentesco_Protetivas" class="labelInput">Parentesco:</label>
+                                <br>
+                            </div>
 
-                    <div class="inputBox" id="Responsavel_Parentesco_Protetivas_Box">
-                        <input type="text" name="Responsavel_Parentesco_Protetivas" id="Responsavel_Parentesco_Protetivas" class="inputUser"  required  >
-                        <label for="Responsavel_Parentesco_Protetivas" class="labelInput">Parentesco:</label>
-                        <br>
+                            <div class="field radiobox" id="Vinculo_Protetivas_Box">            
+                                <p>Constata o vínculo pelos observação e documentação apresentada?</p>
+                                <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="Sim">
+                                <label for="Vinculo_Protetivas_Sim" required>Sim</label>
+                                <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="Não">
+                                <label for="Vinculo_Protetivas_Nao" required>Não</label>   
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="field radiobox" id="Vinculo_Protetivas_Box">            
-                        <p>Constata o vínculo pelos observação e documentação apresentada?</p>
-                        <input type="radio" id="Vinculo_Protetivas_Sim" name="Vinculo_Protetivas" value="Sim">
-                        <label for="Vinculo_Protetivas_Sim" required>Sim</label>
-                        <input type="radio" id="Vinculo_Protetivas_Nao" name="Vinculo_Protetivas" value="Não">
-                        <label for="Vinculo_Protetivas_Nao" required>Não</label>   
-                    </div>
-                </div>
                 <!--- AVALIAcÃO PRELIMINAR DA CRIANcA OU ADOLESCENTE --->
                 <input name="APRESENTACAO" id="APRESENTACAO" type="radio" onclick="Validar(event, ['APRESENTACAO_CRI', 'APRESENTACAO_ENTRADA', 'APRESENTACAO_SITUACAO', 'APRESENTACAO_MEDIDAS']);ResizeBorderSiruacao2();Preencher('APRESENTACAO_AVALIACAO');Sumir('APRESENTACAO_ENTRADA');Sumir('APRESENTACAO_CRI');Sumir('APRESENTACAO_SITUACAO');Sumir('APRESENTACAO_FIM');Sumir('APRESENTACAO_MEDIDAS')">
 
@@ -816,7 +866,7 @@ if(isset($_POST['submit']))
                     <br><br>
                     <div>
                         <h2>Assinatura do Defensor:</h2><br>
-                        <input name="arquivo" type="file" id="fileName" onchange="validateFileType()" accept="image/*" required/>
+                        <input name="arquivo" type="file" accept="image/*" required/>
                         <br><br>
                     </div>
                 </div>
