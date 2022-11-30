@@ -350,4 +350,3 @@ document.getElementById("Nascimento_Pessoa").setAttribute("max", today);
 document.getElementById("Data_Saida_Pessoa").setAttribute("max", today);
 document.getElementById("Data_Chegada_Pessoa").setAttribute("max", today);
 document.getElementById("Data_Reconhecido_Pessoa").setAttribute("max", today);
-
